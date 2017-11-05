@@ -29,7 +29,7 @@ extension RichEditorView{
         
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageButtonAction))
+        let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageAction))
         
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignRight"), style: .done, target: self, action: #selector(self.alignRight))
         let alignLeft: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignLeft"), style: .done, target: self, action: #selector(self.alignLeft))
@@ -46,18 +46,24 @@ extension RichEditorView{
         self.inputAccessoryView = toolbarScroll
     }
     
+    //MARK: ToolbarItemActions
     func doneButtonAction()
     {
         self.resignFirstResponder()
         self.endEditing(true)
     }
     
+    func insertImageAction() {
+        delegate?.richEditorInsertImage!(self)
+    }
+    
+    /*
     func insertImageButtonAction()
     {
         let pickedImage = UIImage(named: "pallete")
         //let imageUrl = pickedImage.
         self.insertImage("https:////c2.staticflickr.com/6/5450/buddyicons/89692371@N00.jpg?1381089634#89692371@N00", alt: "Gravatar")
-    }
+    }*/
 
     func colorAction() {
         let color = randomColor()

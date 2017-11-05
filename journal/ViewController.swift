@@ -9,9 +9,10 @@
 import UIKit
 import RichEditorView
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var editorView: RichEditorView!
+    
     
     // Here instantiate a toolbar instance, loaded only when accessed
     lazy var toolbar: RichEditorToolbar = {
@@ -23,14 +24,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
         
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         editorView.delegate = self
-        //editorView.inputAccessoryView = toolbar
-        
-        toolbar.delegate = self
-        toolbar.editor = editorView
-        
-        loadToolbarItems()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,52 +40,61 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //Mark: Private Methods
-    func loadToolbarItems() {
-        
-        let Clear = RichEditorOptionItem(image: nil, title: "Clear") {
-            toolbar in
-            toolbar.editor?.html = ""
-        }
-        
-        
-        let InserImage = RichEditorOptionItem(image: UIImage(named: "toolbarInsertImage"), title: "Insert Image") {
-            toolbar in
-            toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
-        }
-        
-        let tailItem = RichEditorOptionItem(image: nil, title: ""){
-            toolbar in
-            print("placeholder clicked, nothing will happen")
-        }
-        
-        
-        //&print(InserImage.image?.alignmentRectInsets)
-        
-        toolbar.options = RichEditorDefaultOption.all
-        var options = toolbar.options
-        options.append(InserImage)
-        options.append(Clear)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        options.append(tailItem)
-        toolbar.options = options
-        
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if the user canceled.
+        dismiss(animated: true, completion: nil)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        let imageUrl = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let imageName         = imageUrl.lastPathComponent
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let photoURL          = NSURL(fileURLWithPath: documentDirectory)
+        let localPath         = photoURL.appendingPathComponent(imageName!)
+        let image             = info[UIImagePickerControllerOriginalImage]as! UIImage
+        let data              = UIImagePNGRepresentation(image)
+        
+        do
+        {
+            try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
+            let myUrl = localPath!.absoluteString
+            print(myUrl)
+            editorView.insertImage(myUrl, alt: myUrl)
+        }
+        catch
+        {
+            // Catch exception here and act accordingly
+        }
+        
+        // Set photoImageView to display the selected image.
+        //photoImageView.image = selectedImage
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //Mark: Private Methods
 
 
 }
 
 extension ViewController: RichEditorDelegate {
-    
+    func richEditorInsertImage(_ editor: RichEditorView) {
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: RichEditorToolbarDelegate {

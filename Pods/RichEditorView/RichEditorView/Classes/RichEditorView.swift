@@ -34,6 +34,9 @@ import UIKit
     /// Called when custom actions are called by callbacks in the JS
     /// By default, this method is not used unless called by some custom JS that you add
     @objc optional func richEditor(_ editor: RichEditorView, handle action: String)
+    
+    // new delegate method added by Diqing Chang, 04.11.2017
+    @objc optional func richEditorInsertImage(_ editor: RichEditorView)
 }
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
