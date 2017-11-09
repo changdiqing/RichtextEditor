@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -109,7 +109,7 @@
 		152E17301044590782E138E7701340AA /* indent@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "indent@2x.png"; path = "RichEditorView/Assets/icons/indent@2x.png"; sourceTree = "<group>"; };
 		16D3E03A2B53F7224B9FB92E81FFA848 /* underline@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "underline@2x.png"; path = "RichEditorView/Assets/icons/underline@2x.png"; sourceTree = "<group>"; };
 		1D609F7639E079275842CA2282B9036A /* Pods-journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-journal.debug.xcconfig"; sourceTree = "<group>"; };
-		25B594DE7A311D34958E62739896A2AC /* style.css */ = {isa = PBXFileReference; includeInIndex = 1; name = style.css; path = RichEditorView/Assets/editor/style.css; sourceTree = "<group>"; };
+		25B594DE7A311D34958E62739896A2AC /* style.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = style.css; path = RichEditorView/Assets/editor/style.css; sourceTree = "<group>"; };
 		2A43F51FE5BBDCF4F55DD3DA0A81900F /* h3@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "h3@2x.png"; path = "RichEditorView/Assets/icons/h3@2x.png"; sourceTree = "<group>"; };
 		2BAF37C7D06CD8A0A3021A1F633FC688 /* Pods-journalUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-journalUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2C7A198E801735E7101D20739D444927 /* h5@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "h5@2x.png"; path = "RichEditorView/Assets/icons/h5@2x.png"; sourceTree = "<group>"; };
@@ -125,15 +125,15 @@
 		429D46EE3DC774D1584A4D1AB75613B9 /* redo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = redo.png; path = RichEditorView/Assets/icons/redo.png; sourceTree = "<group>"; };
 		43FDBF2AD7B881AB6F1F5284DAE8701C /* justify_right@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "justify_right@2x.png"; path = "RichEditorView/Assets/icons/justify_right@2x.png"; sourceTree = "<group>"; };
 		4586D1A3482F09DC3486FCAD2366D04D /* RichEditorToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RichEditorToolbar.swift; path = RichEditorView/Classes/RichEditorToolbar.swift; sourceTree = "<group>"; };
-		49E6D2D744C3D360ECF2F91C4EB0721C /* assert.js */ = {isa = PBXFileReference; includeInIndex = 1; name = assert.js; path = RichEditorView/Assets/editor/assert.js; sourceTree = "<group>"; };
+		49E6D2D744C3D360ECF2F91C4EB0721C /* assert.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = assert.js; path = RichEditorView/Assets/editor/assert.js; sourceTree = "<group>"; };
 		4A0D052C31985749D2625B5800A625C3 /* h4@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "h4@2x.png"; path = "RichEditorView/Assets/icons/h4@2x.png"; sourceTree = "<group>"; };
-		4AE9CB5DE317F34294150A1806F62B39 /* Pods-journalTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-journalTests.modulemap"; sourceTree = "<group>"; };
+		4AE9CB5DE317F34294150A1806F62B39 /* Pods-journalTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-journalTests.modulemap"; sourceTree = "<group>"; };
 		4D62B405001CB8FC9363BA128C99ED3B /* Pods-journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-journal.release.xcconfig"; sourceTree = "<group>"; };
 		507069177DB29B1397C1340D86CF5A5D /* RichEditorOptionItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RichEditorOptionItem.swift; path = RichEditorView/Classes/RichEditorOptionItem.swift; sourceTree = "<group>"; };
 		5278BE72F629880B6D99A0A713DC2216 /* insert_image@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "insert_image@2x.png"; path = "RichEditorView/Assets/icons/insert_image@2x.png"; sourceTree = "<group>"; };
 		534530896D20DB510611421FB2C2D2D2 /* Pods-journalUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalUITests-resources.sh"; sourceTree = "<group>"; };
 		554572B20C29F79C1B4AC2B22C219179 /* Pods-journal-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journal-frameworks.sh"; sourceTree = "<group>"; };
-		5823C2F188623D73B150D68366789C04 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_journalTests.framework; path = "Pods-journalTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5823C2F188623D73B150D68366789C04 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9DED57554A7571D224922AFD23369F /* h6.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = h6.png; path = RichEditorView/Assets/icons/h6.png; sourceTree = "<group>"; };
 		5FE0DAE448A5CC7D0718BCC9ACCA0A71 /* RichEditorView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RichEditorView.xcconfig; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -144,23 +144,23 @@
 		7983B8FFC7D45496B72E8D02776DC55A /* underline.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = underline.png; path = RichEditorView/Assets/icons/underline.png; sourceTree = "<group>"; };
 		7B38C1B37752EB4F4D2EC17F5D15E57F /* Pods-journal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-journal-dummy.m"; sourceTree = "<group>"; };
 		7DB03321B1163FBC06CE295A8A9622B8 /* subscript@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "subscript@2x.png"; path = "RichEditorView/Assets/icons/subscript@2x.png"; sourceTree = "<group>"; };
-		813B16011C20287E5C0E036D8101169E /* Pods-journalUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-journalUITests.modulemap"; sourceTree = "<group>"; };
+		813B16011C20287E5C0E036D8101169E /* Pods-journalUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-journalUITests.modulemap"; sourceTree = "<group>"; };
 		81BC8DB31C21EEE34D177C05D46DE337 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81D7FC78E00FA7B5B209B13A3451C7F6 /* Pods-journalUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-journalUITests-dummy.m"; sourceTree = "<group>"; };
 		8602724132E9E09B134C151212EF14CC /* justify_left@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "justify_left@2x.png"; path = "RichEditorView/Assets/icons/justify_left@2x.png"; sourceTree = "<group>"; };
-		885396D85E057A47FF263BF59B70ECEC /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RichEditorView.framework; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */ = {isa = PBXFileReference; includeInIndex = 1; name = rich_editor.html; path = RichEditorView/Assets/editor/rich_editor.html; sourceTree = "<group>"; };
+		885396D85E057A47FF263BF59B70ECEC /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = rich_editor.html; path = RichEditorView/Assets/editor/rich_editor.html; sourceTree = "<group>"; };
 		898EC88E53BFA7095C360EC7366E036E /* subscript.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = subscript.png; path = RichEditorView/Assets/icons/subscript.png; sourceTree = "<group>"; };
 		8D5D6CB8EA7EFF22CA323855DF16CF42 /* superscript.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = superscript.png; path = RichEditorView/Assets/icons/superscript.png; sourceTree = "<group>"; };
 		8D630CB96C16BF1E840D3D183F886E93 /* RichEditorView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RichEditorView-umbrella.h"; sourceTree = "<group>"; };
 		917BED69F24CF212754D00548388E6D9 /* Pods-journalTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalTests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9428076BDD3B75129CCB19C40A7F4E48 /* strikethrough@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "strikethrough@2x.png"; path = "RichEditorView/Assets/icons/strikethrough@2x.png"; sourceTree = "<group>"; };
-		96A428145979194102E7E6D142AFF6AA /* RichEditorView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RichEditorView.modulemap; sourceTree = "<group>"; };
+		96A428145979194102E7E6D142AFF6AA /* RichEditorView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RichEditorView.modulemap; sourceTree = "<group>"; };
 		9A14FA762EDC7C73551A1545B953BCB1 /* Pods-journalUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalUITests-frameworks.sh"; sourceTree = "<group>"; };
 		9A38CB87930EDAADEFBD6665D5FDFDF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F36ABCE914B43D8A993D54E480FDBFE /* Pods-journalTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-journalTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9FBA5BA8216E81C8A3BE4C19756553E8 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_journalUITests.framework; path = "Pods-journalUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBA5BA8216E81C8A3BE4C19756553E8 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF96EFA800242D97A8D8D5D4B4B243 /* undo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = undo.png; path = RichEditorView/Assets/icons/undo.png; sourceTree = "<group>"; };
 		A24088748F6F730A217597A044C1D27D /* insert_image.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = insert_image.png; path = RichEditorView/Assets/icons/insert_image.png; sourceTree = "<group>"; };
 		A49D973712FF464CDB275A3F5A916696 /* outdent.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = outdent.png; path = RichEditorView/Assets/icons/outdent.png; sourceTree = "<group>"; };
@@ -175,9 +175,9 @@
 		B62D9C2D5E9E425D476FB1C02D136225 /* justify_left.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = justify_left.png; path = RichEditorView/Assets/icons/justify_left.png; sourceTree = "<group>"; };
 		BC2D942C177CB673C03E43EA26843D47 /* RichEditorView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RichEditorView-dummy.m"; sourceTree = "<group>"; };
 		BCA2CE9DCE63B11ED4FF6D17E7303F37 /* insert_link@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "insert_link@2x.png"; path = "RichEditorView/Assets/icons/insert_link@2x.png"; sourceTree = "<group>"; };
-		BDA3B5AA965C25E2E7CBBBDDAE6F8151 /* rich_editor_tests.html */ = {isa = PBXFileReference; includeInIndex = 1; name = rich_editor_tests.html; path = RichEditorView/Assets/editor/rich_editor_tests.html; sourceTree = "<group>"; };
+		BDA3B5AA965C25E2E7CBBBDDAE6F8151 /* rich_editor_tests.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = rich_editor_tests.html; path = RichEditorView/Assets/editor/rich_editor_tests.html; sourceTree = "<group>"; };
 		BEF32312DA0D7FF12222714036B044F4 /* redo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "redo@2x.png"; path = "RichEditorView/Assets/icons/redo@2x.png"; sourceTree = "<group>"; };
-		BF5B7971693158FBE92CD718C5C0BC25 /* normalize.css */ = {isa = PBXFileReference; includeInIndex = 1; name = normalize.css; path = RichEditorView/Assets/editor/normalize.css; sourceTree = "<group>"; };
+		BF5B7971693158FBE92CD718C5C0BC25 /* normalize.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = normalize.css; path = RichEditorView/Assets/editor/normalize.css; sourceTree = "<group>"; };
 		C056FE962CDB05B45D7AD49DCC0DDEF7 /* Pods-journalTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalTests-resources.sh"; sourceTree = "<group>"; };
 		C1B8DBFC03577B841A2AC57DE9478FB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C58CDED505AD01359D363BB94E2D8C48 /* h5.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = h5.png; path = RichEditorView/Assets/icons/h5.png; sourceTree = "<group>"; };
@@ -185,21 +185,21 @@
 		C81B6CDBC03400D0942387E4071A5430 /* bg_color@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "bg_color@2x.png"; path = "RichEditorView/Assets/icons/bg_color@2x.png"; sourceTree = "<group>"; };
 		C858A6B824065B7CAA1EA084E65524A2 /* italic@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "italic@2x.png"; path = "RichEditorView/Assets/icons/italic@2x.png"; sourceTree = "<group>"; };
 		CB3F8B39A626BA4001A378284F2788B7 /* Pods-journal-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-journal-acknowledgements.plist"; sourceTree = "<group>"; };
-		CDC1FACE45E88F92477150553E072B10 /* rich_editor.js */ = {isa = PBXFileReference; includeInIndex = 1; name = rich_editor.js; path = RichEditorView/Assets/editor/rich_editor.js; sourceTree = "<group>"; };
+		CDC1FACE45E88F92477150553E072B10 /* rich_editor.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = rich_editor.js; path = RichEditorView/Assets/editor/rich_editor.js; sourceTree = "<group>"; };
 		D261FA927DAB20DEF3C64CF03C2C3F23 /* String+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "RichEditorView/Classes/String+Extensions.swift"; sourceTree = "<group>"; };
 		D438DCA21BDC75BDD9FFBA6F1FEB428B /* h2.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = h2.png; path = RichEditorView/Assets/icons/h2.png; sourceTree = "<group>"; };
-		D6F19CDA66DE3D8023AAAA19C7FB81AB /* Pods_journal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_journal.framework; path = "Pods-journal.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6F19CDA66DE3D8023AAAA19C7FB81AB /* Pods_journal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D6AA57B374D8195F9E0BCE4A75A481 /* ordered_list@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ordered_list@2x.png"; path = "RichEditorView/Assets/icons/ordered_list@2x.png"; sourceTree = "<group>"; };
 		DAD45D7342C22B049E359397CC3FD9B6 /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DC78400EA6C59F3313B29B0EC25D9B88 /* CJWWebView+HackishAccessoryHiding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJWWebView+HackishAccessoryHiding.h"; path = "RichEditorView/Classes/CJWWebView+HackishAccessoryHiding.h"; sourceTree = "<group>"; };
 		DF57D909D0DF708195956D8200E720D4 /* undo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "undo@2x.png"; path = "RichEditorView/Assets/icons/undo@2x.png"; sourceTree = "<group>"; };
 		E19EAA600F14DF45745A3905264D7759 /* italic.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = italic.png; path = RichEditorView/Assets/icons/italic.png; sourceTree = "<group>"; };
-		E1E4E156F5A111A017E7E4FD605882A5 /* Pods-journal.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-journal.modulemap"; sourceTree = "<group>"; };
+		E1E4E156F5A111A017E7E4FD605882A5 /* Pods-journal.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-journal.modulemap"; sourceTree = "<group>"; };
 		E4E7ABE881B3CE9C352A36B66C3A669A /* clear@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "clear@2x.png"; path = "RichEditorView/Assets/icons/clear@2x.png"; sourceTree = "<group>"; };
 		F197DF1C65B4722801FE284014B0A86A /* indent.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = indent.png; path = RichEditorView/Assets/icons/indent.png; sourceTree = "<group>"; };
 		F263F9DD591328F6CAC6BAAB267E72D5 /* text_color.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = text_color.png; path = RichEditorView/Assets/icons/text_color.png; sourceTree = "<group>"; };
 		F465C77D846474237AC81F17863CE1BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */ = {isa = PBXFileReference; includeInIndex = 1; name = rich_editor_tests.js; path = RichEditorView/Assets/editor/rich_editor_tests.js; sourceTree = "<group>"; };
+		F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = rich_editor_tests.js; path = RichEditorView/Assets/editor/rich_editor_tests.js; sourceTree = "<group>"; };
 		F5CA31A7ABF0275BC251965CDCA8B89F /* bg_color.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = bg_color.png; path = RichEditorView/Assets/icons/bg_color.png; sourceTree = "<group>"; };
 		F65705EAFA54AA57B47C61A66C11BB5F /* h6@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "h6@2x.png"; path = "RichEditorView/Assets/icons/h6@2x.png"; sourceTree = "<group>"; };
 		F69F71A6A398629CE7562F168E0BB5CA /* bold.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = bold.png; path = RichEditorView/Assets/icons/bold.png; sourceTree = "<group>"; };
@@ -339,7 +339,13 @@
 		B1023329ECD21BD9BAE87D248506DA4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF5B7971693158FBE92CD718C5C0BC25 /* normalize.css */,
+				25B594DE7A311D34958E62739896A2AC /* style.css */,
+				BDA3B5AA965C25E2E7CBBBDDAE6F8151 /* rich_editor_tests.html */,
+				88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */,
 				49E6D2D744C3D360ECF2F91C4EB0721C /* assert.js */,
+				F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */,
+				CDC1FACE45E88F92477150553E072B10 /* rich_editor.js */,
 				F5CA31A7ABF0275BC251965CDCA8B89F /* bg_color.png */,
 				C81B6CDBC03400D0942387E4071A5430 /* bg_color@2x.png */,
 				F69F71A6A398629CE7562F168E0BB5CA /* bold.png */,
@@ -372,20 +378,14 @@
 				8602724132E9E09B134C151212EF14CC /* justify_left@2x.png */,
 				3C97976499FE751E9EB776D32C34DDBB /* justify_right.png */,
 				43FDBF2AD7B881AB6F1F5284DAE8701C /* justify_right@2x.png */,
-				BF5B7971693158FBE92CD718C5C0BC25 /* normalize.css */,
 				6C4E18474BAABB0DCF82BF5CC80F0FF1 /* ordered_list.png */,
 				D9D6AA57B374D8195F9E0BCE4A75A481 /* ordered_list@2x.png */,
 				A49D973712FF464CDB275A3F5A916696 /* outdent.png */,
 				0A1A8729CA2A3DA34828A4F77D081887 /* outdent@2x.png */,
 				429D46EE3DC774D1584A4D1AB75613B9 /* redo.png */,
 				BEF32312DA0D7FF12222714036B044F4 /* redo@2x.png */,
-				88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */,
-				CDC1FACE45E88F92477150553E072B10 /* rich_editor.js */,
-				BDA3B5AA965C25E2E7CBBBDDAE6F8151 /* rich_editor_tests.html */,
-				F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */,
 				A719BDB64DE37A895C77ED965A6E7E24 /* strikethrough.png */,
 				9428076BDD3B75129CCB19C40A7F4E48 /* strikethrough@2x.png */,
-				25B594DE7A311D34958E62739896A2AC /* style.css */,
 				898EC88E53BFA7095C360EC7366E036E /* subscript.png */,
 				7DB03321B1163FBC06CE295A8A9622B8 /* subscript@2x.png */,
 				8D5D6CB8EA7EFF22CA323855DF16CF42 /* superscript.png */,
@@ -432,7 +432,6 @@
 				B1023329ECD21BD9BAE87D248506DA4B /* Resources */,
 				1C73AB8F8C21239BB8261B9C3159D283 /* Support Files */,
 			);
-			name = RichEditorView;
 			path = RichEditorView;
 			sourceTree = "<group>";
 		};

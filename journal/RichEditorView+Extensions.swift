@@ -57,6 +57,10 @@ extension RichEditorView{
         delegate?.richEditorInsertImage!(self)
     }
     
+    func resizeImageAction() {
+        self.resizeImage("50px")
+    }
+    
     /*
     func insertImageButtonAction()
     {
