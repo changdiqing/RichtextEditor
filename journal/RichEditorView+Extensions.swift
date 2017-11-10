@@ -30,6 +30,8 @@ extension RichEditorView{
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageAction))
+        let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "enlarge"), style: .done, target: self, action: #selector(self.enlargeImageAction))
+        let lessenImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "lessen"), style: .done, target: self, action: #selector(self.lessenImageAction))
         
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignRight"), style: .done, target: self, action: #selector(self.alignRight))
         let alignLeft: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignLeft"), style: .done, target: self, action: #selector(self.alignLeft))
@@ -38,7 +40,7 @@ extension RichEditorView{
         let italic: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "italic"), style: .done, target: self, action: #selector(self.italic))
         let color: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "pallete")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
         
-        let items = [underline, strikethrough,alignRight,alignLeft,italic,color,insertImage,done]
+        let items = [underline, strikethrough,alignRight,alignLeft,italic,color,insertImage,enlargeImage,lessenImage,done]
         doneToolbar.items = items
         //doneToolbar.sizeToFit()
         toolbarScroll.contentSize.width = doneToolbar.frame.width
@@ -57,9 +59,15 @@ extension RichEditorView{
         delegate?.richEditorInsertImage!(self)
     }
     
-    func resizeImageAction() {
-        self.resizeImage("50px")
+    func enlargeImageAction() {
+        self.enlargeImage()
     }
+    
+    func lessenImageAction() {
+        self.lessenImage()
+    }
+    
+    
     
     /*
     func insertImageButtonAction()

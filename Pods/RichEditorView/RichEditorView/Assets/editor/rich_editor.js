@@ -16,6 +16,8 @@
  "use strict";
 
 var RE = {};
+var defaultImageHeight = 100 // in px
+const defaultImageSizeChangeRate = 25
 
 window.onload = function() {
     RE.callback("ready");
@@ -240,10 +242,29 @@ RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
+    img.setAttribute("height", defaultImageHeight)
     img.onload = RE.updateHeight;
 
     RE.insertHTML(img.outerHTML);
     RE.callback("input");
+};
+
+// Methods added by Diqing Chang, 07.11.2017
+RE.increaseImageSizeOfSelectedDiv = function() {
+    var images = RE.editor.querySelectorAll("img");
+    defaultImageHeight += defaultImageSizeChangeRate;
+    
+    for (var i = 0; i < images.length; i++) {
+        images[i].height = defaultImageHeight;
+    }
+};
+
+RE.decreaseImageSizeOfSelectedDiv = function() {
+    var images = RE.editor.querySelectorAll("img");
+    defaultImageHeight -= defaultImageSizeChangeRate;
+    for (var i = 0; i < images.length; i++) {
+        images[i].height = defaultImageHeight;
+    }
 };
 
 RE.setBlockquote = function() {

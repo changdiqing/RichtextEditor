@@ -340,9 +340,14 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     public func blur() {
         runJS("RE.blurFocus();")
     }
+    
     //MARK: Diqing Methods added by Diqing 07.11.2017
-    public func resizeImage(_ sizeInPx: String) {
-        runJS("RE.resizeImageOfSelectedDiv('\(sizeInPx)');")
+    public func enlargeImage() {
+        runJS("RE.increaseImageSizeOfSelectedDiv();")
+    }
+    
+    public func lessenImage() {
+        runJS("RE.decreaseImageSizeOfSelectedDiv();")
     }
 
     /// Runs some JavaScript on the UIWebView and returns the result
