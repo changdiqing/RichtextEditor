@@ -40,7 +40,16 @@ extension RichEditorView{
         let italic: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "italic"), style: .done, target: self, action: #selector(self.italic))
         let color: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "pallete")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
         
-        let items = [underline, strikethrough,alignRight,alignLeft,italic,color,insertImage,enlargeImage,lessenImage,done]
+        let items = [underline,
+                     strikethrough,
+                     alignRight,
+                     alignLeft,
+                     italic,
+                     color,
+                     insertImage,
+                     enlargeImage,
+                     lessenImage,
+                     done]
         doneToolbar.items = items
         //doneToolbar.sizeToFit()
         toolbarScroll.contentSize.width = doneToolbar.frame.width

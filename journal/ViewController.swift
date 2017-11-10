@@ -52,23 +52,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        let imageUrl = info[UIImagePickerControllerReferenceURL] as! NSURL
-        let imageName         = imageUrl.lastPathComponent
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        let photoURL          = NSURL(fileURLWithPath: documentDirectory)
-        let localPath         = photoURL.appendingPathComponent(imageName!)
-        let image             = info[UIImagePickerControllerOriginalImage]as! UIImage
-        let data              = UIImagePNGRepresentation(image)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        let imageName = "\(dateFormatter.string(from: Date())).png"
+        let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
+        let data = UIImagePNGRepresentation(selectedImage)
         
         do
         {
-            try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
-            let myUrl = localPath!.absoluteString
+            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
+            let myUrl = filepath.absoluteString
             print(myUrl)
             editorView.insertImage(myUrl, alt: myUrl)
         }
         catch
         {
+            print("failed to save image")
             // Catch exception here and act accordingly
         }
         
