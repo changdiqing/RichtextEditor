@@ -239,33 +239,77 @@ RE.setLineHeight = function(height) {
 };
 
 RE.insertImage = function(url, alt) {
+    RE.restorerange();
+    var parentElement = getSelectionBoundaryElement("start");
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
     img.setAttribute("height", defaultImageHeight)
+    img.setAttribute("style","float:left")
     img.onload = RE.updateHeight;
-
-    RE.insertHTML(img.outerHTML);
+    if (parentElement.id == "editor") {
+        var wrapper = document.createElement('div');
+        wrapper.appendChild(img);
+        RE.insertHTML(wrapper.outerHTML);
+    } else {
+        RE.insertHTML(img.outerHTML);
+    }
+    
     RE.callback("input");
 };
 
 // Methods added by Diqing Chang, 07.11.2017
 RE.increaseImageSizeOfSelectedDiv = function() {
-    var images = RE.editor.querySelectorAll("img");
-    defaultImageHeight += defaultImageSizeChangeRate;
-    
+    var editor = getSelectionBoundaryElement("start");
+    //alert(editor.id);
+    var images = editor.querySelectorAll("img");
     for (var i = 0; i < images.length; i++) {
-        images[i].height = defaultImageHeight;
+        images[i].height = images[i].height + defaultImageSizeChangeRate;
     }
 };
 
 RE.decreaseImageSizeOfSelectedDiv = function() {
-    var images = RE.editor.querySelectorAll("img");
-    defaultImageHeight -= defaultImageSizeChangeRate;
+    var editor = getSelectionBoundaryElement("start");
+    //alert(editor.id);
+    var images = editor.querySelectorAll("img");
     for (var i = 0; i < images.length; i++) {
-        images[i].height = defaultImageHeight;
+        images[i].height = images[i].height - defaultImageSizeChangeRate;
     }
 };
+
+function getSelectionBoundaryElement(isStart) {
+    var range, sel, container;
+    if (document.selection) {
+        range = document.selection.createRange();
+        range.collapse(isStart);
+        return range.parentElement();
+    } else {
+        sel = window.getSelection();
+        if (sel.getRangeAt) {
+            if (sel.rangeCount > 0) {
+                range = sel.getRangeAt(0);
+            }
+        } else {
+            // Old WebKit
+            range = document.createRange();
+            range.setStart(sel.anchorNode, sel.anchorOffset);
+            range.setEnd(sel.focusNode, sel.focusOffset);
+            
+            // Handle the case when the selection was selected backwards (from the end to the start in the document)
+            if (range.collapsed !== sel.isCollapsed) {
+                range.setStart(sel.focusNode, sel.focusOffset);
+                range.setEnd(sel.anchorNode, sel.anchorOffset);
+            }
+        }
+        
+        if (range) {
+            container = range[isStart ? "startContainer" : "endContainer"];
+            
+            // Check if the container is a text node and return its parent if so
+            return container.nodeType === 3 ? container.parentNode : container;
+        }
+    }
+}
 
 RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');

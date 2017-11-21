@@ -32,7 +32,7 @@ extension RichEditorView{
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageAction))
         let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "enlarge"), style: .done, target: self, action: #selector(self.enlargeImageAction))
         let lessenImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "lessen"), style: .done, target: self, action: #selector(self.lessenImageAction))
-        
+        let clear: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "clear"), style: .done, target: self, action: #selector(self.clear))
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignRight"), style: .done, target: self, action: #selector(self.alignRight))
         let alignLeft: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignLeft"), style: .done, target: self, action: #selector(self.alignLeft))
         let underline: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "underline"), style: .done, target: self, action: #selector(self.underline))
@@ -70,10 +70,16 @@ extension RichEditorView{
     
     func enlargeImageAction() {
         self.enlargeImage()
+        print(self.html)
     }
     
     func lessenImageAction() {
         self.lessenImage()
+        print(self.html)
+    }
+    
+    func clear() {
+        self.removeFormat()
     }
     
     
