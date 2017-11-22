@@ -258,6 +258,34 @@ RE.insertImage = function(url, alt) {
     RE.callback("input");
 };
 
+RE.floatLeftImage = function() {
+    var editor = getSelectionBoundaryElement("start");
+    //alert(editor.id);
+    var images = editor.querySelectorAll("img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].style = "float:left"
+    }
+};
+
+RE.floatRightImage = function() {
+    var editor = getSelectionBoundaryElement("start");
+    //alert(editor.id);
+    var images = editor.querySelectorAll("img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].style = "float:right"
+    }
+};
+
+RE.centerImage = function() {
+    var editor = getSelectionBoundaryElement("start");
+    //alert(editor.id);
+    var images = editor.querySelectorAll("img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].style = "float:middle"
+    }
+};
+
+
 // Methods added by Diqing Chang, 07.11.2017
 RE.increaseImageSizeOfSelectedDiv = function() {
     var editor = getSelectionBoundaryElement("start");

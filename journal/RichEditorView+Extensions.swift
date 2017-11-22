@@ -32,21 +32,30 @@ extension RichEditorView{
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageAction))
         let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "enlarge"), style: .done, target: self, action: #selector(self.enlargeImageAction))
         let lessenImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "lessen"), style: .done, target: self, action: #selector(self.lessenImageAction))
+        let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "leftImage"), style: .done, target: self, action: #selector(self.floatLeftImage))
+        let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "rightImage"), style: .done, target: self, action: #selector(self.floatRightImage))
+        let centerImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "centerImage"), style: .done, target: self, action: #selector(self.centerImageAction))
         let clear: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "clear"), style: .done, target: self, action: #selector(self.clear))
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignRight"), style: .done, target: self, action: #selector(self.alignRight))
         let alignLeft: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignLeft"), style: .done, target: self, action: #selector(self.alignLeft))
+        let alignCenter: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignMiddle"), style: .done, target: self, action: #selector(self.alignCenter))
         let underline: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "underline"), style: .done, target: self, action: #selector(self.underline))
         let strikethrough: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "strikethrough"), style: .done, target: self, action: #selector(self.strikethrough))
         let italic: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "italic"), style: .done, target: self, action: #selector(self.italic))
         let color: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "pallete")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
         
-        let items = [underline,
+        let items = [clear,
+                     underline,
                      strikethrough,
                      alignRight,
+                     alignCenter,
                      alignLeft,
                      italic,
                      color,
                      insertImage,
+                     floatLeftImage,
+                     floatRightImage,
+                     centerImage,
                      enlargeImage,
                      lessenImage,
                      done]
@@ -75,6 +84,21 @@ extension RichEditorView{
     
     func lessenImageAction() {
         self.lessenImage()
+        print(self.html)
+    }
+    
+    func floatLeftImageAction() {
+        self.floatLeftImage()
+        print(self.html)
+    }
+    
+    func floatRightImageAction() {
+        self.floatRightImage()
+        print(self.html)
+    }
+    
+    func centerImageAction() {
+        self.centerImage()
         print(self.html)
     }
     
