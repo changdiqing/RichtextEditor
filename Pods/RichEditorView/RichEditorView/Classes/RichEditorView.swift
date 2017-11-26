@@ -36,7 +36,9 @@ import UIKit
     @objc optional func richEditor(_ editor: RichEditorView, handle action: String)
     
     // new delegate method added by Diqing Chang, 04.11.2017
-    @objc optional func richEditorInsertImage(_ editor: RichEditorView)
+    @objc optional func richEditorInsertImage()
+    
+    @objc optional func richEditorChangeImage()
 }
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.

@@ -76,6 +76,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+        
     }
     
     //Mark: Private Methods
@@ -84,7 +85,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
 }
 
 extension ViewController: RichEditorDelegate {
-    func richEditorInsertImage(_ editor: RichEditorView) {
+    func richEditorInsertImage() {
         let imagePickerController = UIImagePickerController()
         
         // Only allow photos to be picked, not taken.

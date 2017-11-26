@@ -105,16 +105,6 @@ extension RichEditorView{
     func clear() {
         self.removeFormat()
     }
-    
-    
-    
-    /*
-    func insertImageButtonAction()
-    {
-        let pickedImage = UIImage(named: "pallete")
-        //let imageUrl = pickedImage.
-        self.insertImage("https:////c2.staticflickr.com/6/5450/buddyicons/89692371@N00.jpg?1381089634#89692371@N00", alt: "Gravatar")
-    }*/
 
     func colorAction() {
         let color = randomColor()

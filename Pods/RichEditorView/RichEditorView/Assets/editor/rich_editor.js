@@ -256,10 +256,16 @@ RE.insertImage = function(url, alt) {
     }
     
     RE.callback("input");
+    
+    var sel = document.getSelection();
+    var range = document.createRange();
+    range.setEnd(img, 1);
+    sel.removeAllRanges();
+    sel.addRange(range);
 };
 
 RE.floatLeftImage = function() {
-    var editor = getSelectionBoundaryElement("start");
+    var editor = getSelectionParentElement();
     //alert(editor.id);
     var images = editor.querySelectorAll("img");
     for (var i = 0; i < images.length; i++) {
@@ -268,7 +274,7 @@ RE.floatLeftImage = function() {
 };
 
 RE.floatRightImage = function() {
-    var editor = getSelectionBoundaryElement("start");
+    var editor = getSelectionParentElement();
     //alert(editor.id);
     var images = editor.querySelectorAll("img");
     for (var i = 0; i < images.length; i++) {
@@ -304,6 +310,22 @@ RE.decreaseImageSizeOfSelectedDiv = function() {
         images[i].height = images[i].height - defaultImageSizeChangeRate;
     }
 };
+
+function getSelectionParentElement() {
+    var parentEl = null, sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            if (parentEl.nodeType != 1) {
+                parentEl = parentEl.parentNode;
+            }
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control") {
+        parentEl = sel.createRange().parentElement();
+    }
+    return parentEl;
+}
 
 function getSelectionBoundaryElement(isStart) {
     var range, sel, container;
@@ -353,7 +375,6 @@ RE.insertLink = function(url, title) {
     var sel = document.getSelection();
     if (sel.toString().length !== 0) {
         if (sel.rangeCount) {
-
             var el = document.createElement("a");
             el.setAttribute("href", url);
             el.setAttribute("title", title);
