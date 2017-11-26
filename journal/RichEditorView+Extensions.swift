@@ -74,7 +74,7 @@ extension RichEditorView{
     }
     
     func insertImageAction() {
-        delegate?.richEditorInsertImage!(self)
+        delegate?.richEditorInsertImage!()
     }
     
     func enlargeImageAction() {
@@ -107,8 +107,7 @@ extension RichEditorView{
     }
 
     func colorAction() {
-        let color = randomColor()
-        self.setTextBackgroundColor(color)
+        delegate?.richEditorChangeColor!()
     }
     
     fileprivate func randomColor() -> UIColor {

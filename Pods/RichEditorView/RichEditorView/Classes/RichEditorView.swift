@@ -38,7 +38,7 @@ import UIKit
     // new delegate method added by Diqing Chang, 04.11.2017
     @objc optional func richEditorInsertImage()
     
-    @objc optional func richEditorChangeImage()
+    @objc optional func richEditorChangeColor()
 }
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
@@ -275,9 +275,9 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setUnderline();")
     }
     
-    public func setTextColor(_ color: UIColor) {
+    public func setTextColor(_ colorInHex: String) {
         runJS("RE.prepareInsert();")
-        runJS("RE.setTextColor('\(color.hex)');")
+        runJS("RE.setTextColor('\(colorInHex)');")
     }
     
     public func setTextBackgroundColor(_ color: UIColor) {
@@ -364,6 +364,10 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     
     public func centerImage() {
         runJS("RE.centerImage();")
+    }
+    
+    public func restoreSelectionRange() {
+        runJS("RE.restorerange();")
     }
 
     /// Runs some JavaScript on the UIWebView and returns the result

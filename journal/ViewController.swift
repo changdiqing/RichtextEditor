@@ -79,7 +79,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
     }
     
-    //Mark: Private Methods
+    //Mark: Navigation
+    
+    @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? ColorCardTableViewController {
+
+            let selectedColor = sourceViewController.selectedColor
+            
+            self.editorView.restoreSelectionRange()
+            self.editorView.setTextColor(selectedColor.htmlRGBA)
+            
+            //save new event
+            // here code for saving the LTP.
+            // 首先我得知道如何编辑event，需要删除旧的event添加新的event还是可以直接编辑已有的event呢？
+        }
+    }
 
 
 }
@@ -95,39 +110,11 @@ extension ViewController: RichEditorDelegate {
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-}
-
-extension ViewController: RichEditorToolbarDelegate {
     
-    fileprivate func randomColor() -> UIColor {
-        let colors: [UIColor] = [
-            .red,
-            .orange,
-            .yellow,
-            .green,
-            .blue,
-            .purple
-        ]
+    func richEditorChangeColor() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-        return color
+        let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
+        self.present(colorCardViewController, animated:true, completion:nil)
     }
-    
-    func richEditorToolbarChangeTextColor(_ toolbar: RichEditorToolbar) {
-        let color = randomColor()
-        toolbar.editor?.setTextColor(color)
-    }
-    
-    func richEditorToolbarChangeBackgroundColor(_ toolbar: RichEditorToolbar) {
-        let color = randomColor()
-        toolbar.editor?.setTextBackgroundColor(color)
-    }
-    
-    func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
-        if toolbar.editor?.hasRangeSelection == true {
-            toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
-        }
-    }
-    
-    
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j00-ia-cIp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,7 +45,7 @@
         <!--Color Card Table View Controller-->
         <scene sceneID="Wzw-P1-D5p">
             <objects>
-                <tableViewController id="j00-ia-cIp" customClass="ColorCardTableViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="colorCardViewController" id="j00-ia-cIp" customClass="ColorCardTableViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eKQ-3n-o6H" colorLabel="IBBuiltInLabel-Red">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,6 +59,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="rNA-fU-oc1" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="DaS-M5-rBO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -68,8 +71,9 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkA-Ec-Tlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rNA-fU-oc1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="466" y="53"/>
+            <point key="canvasLocation" x="326" y="53"/>
         </scene>
     </scenes>
 </document>

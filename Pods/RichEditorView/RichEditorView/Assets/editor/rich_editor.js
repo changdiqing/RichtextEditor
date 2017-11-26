@@ -265,27 +265,21 @@ RE.insertImage = function(url, alt) {
 };
 
 RE.floatLeftImage = function() {
-    var editor = getSelectionParentElement();
-    //alert(editor.id);
-    var images = editor.querySelectorAll("img");
+    var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
         images[i].style = "float:left"
     }
 };
 
 RE.floatRightImage = function() {
-    var editor = getSelectionParentElement();
-    //alert(editor.id);
-    var images = editor.querySelectorAll("img");
+    var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
         images[i].style = "float:right"
     }
 };
 
 RE.centerImage = function() {
-    var editor = getSelectionBoundaryElement("start");
-    //alert(editor.id);
-    var images = editor.querySelectorAll("img");
+    var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
         images[i].style = "float:middle"
     }
@@ -294,18 +288,14 @@ RE.centerImage = function() {
 
 // Methods added by Diqing Chang, 07.11.2017
 RE.increaseImageSizeOfSelectedDiv = function() {
-    var editor = getSelectionBoundaryElement("start");
-    //alert(editor.id);
-    var images = editor.querySelectorAll("img");
+    var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
         images[i].height = images[i].height + defaultImageSizeChangeRate;
     }
 };
 
 RE.decreaseImageSizeOfSelectedDiv = function() {
-    var editor = getSelectionBoundaryElement("start");
-    //alert(editor.id);
-    var images = editor.querySelectorAll("img");
+    var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
         images[i].height = images[i].height - defaultImageSizeChangeRate;
     }
@@ -325,6 +315,44 @@ function getSelectionParentElement() {
         parentEl = sel.createRange().parentElement();
     }
     return parentEl;
+}
+
+function pickHighlightedElementsByTag(tag) {
+    var range, sel, allSelected,allWithinRangeParent, el;
+    var allSelected = [];
+
+    sel = window.getSelection();
+    if (sel.getRangeAt) {
+        if (sel.rangeCount > 0) {
+            range = sel.getRangeAt(0);
+        }
+    } else {
+        // Old WebKit
+        range = document.createRange();
+        range.setStart(sel.anchorNode, sel.anchorOffset);
+        range.setEnd(sel.focusNode, sel.focusOffset);
+            
+        // Handle the case when the selection was selected backwards (from the end to the start in the document)
+        if (range.collapsed !== sel.isCollapsed) {
+            range.setStart(sel.focusNode, sel.focusOffset);
+            range.setEnd(sel.anchorNode, sel.anchorOffset);
+        }
+    }
+        
+    if (range) {
+        allWithinRangeParent = range.commonAncestorContainer.getElementsByTagName(tag);
+            
+            
+        for (var i=0; el = allWithinRangeParent[i]; i++) {
+            // The second parameter says to include the element
+            // even if it's not fully selected
+            if (sel.containsNode(el, true) ) {
+                allSelected.push(el);
+            }
+        }
+        
+        return allSelected
+    }
 }
 
 function getSelectionBoundaryElement(isStart) {
