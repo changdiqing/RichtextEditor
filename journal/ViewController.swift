@@ -13,7 +13,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBOutlet var editorView: RichEditorView!
     
-    
     // Here instantiate a toolbar instance, loaded only when accessed
     lazy var toolbar: RichEditorToolbar = {
         let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0,width: self.view.bounds.width, height: 44))
@@ -32,7 +31,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+    
+        
+    
         editorView.delegate = self
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("finger is not touching.")
+        if touches.first != nil {
+            print("finger is not touching.")
+        }
     }
 
     override func didReceiveMemoryWarning() {

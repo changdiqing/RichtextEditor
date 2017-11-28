@@ -17,40 +17,59 @@ extension RichEditorView{
     
     func addDoneButtonOnKeyboard()
     {
-        let toolbarScroll = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        let buttonHeight = defaultParameters.UIToobarItemHeight
+        let toolbarHeight = defaultParameters.UIToobarHeight
+        let toolbarScroll = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
         toolbarScroll.showsHorizontalScrollIndicator = false
         toolbarScroll.showsVerticalScrollIndicator = false
         toolbarScroll.backgroundColor = .clear
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width*1.5, height: 50))
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width*1.5, height: toolbarHeight))
         //let doneToolbar: UIToolbar = UIToolbar()
         doneToolbar.barStyle = .default
         toolbarScroll.addSubview(doneToolbar)
         toolbarScroll.contentSize.width = UIScreen.main.bounds.width
         
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconenlarge = UIImage(named: "enlarge")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconlessen = UIImage(named: "lessen")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconleftImage = UIImage(named: "leftImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconrightImage = UIImage(named: "rightImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconcenterImage = UIImage(named: "centerImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconclear = UIImage(named: "clear")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconalignRight = UIImage(named: "alignRight")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconalignLeft = UIImage(named: "alignLeft")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconalignMiddle = UIImage(named: "alignMiddle")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconUnderline = UIImage(named: "underline")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconstrikethrough = UIImage(named: "strikethrough")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconitalic = UIImage(named: "italic")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        
+        
+        let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
+        let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: iconenlarge, style: .done, target: self, action: #selector(self.enlargeImageAction))
+        let lessenImage: UIBarButtonItem = UIBarButtonItem(image: iconlessen, style: .done, target: self, action: #selector(self.lessenImageAction))
+        let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: iconleftImage, style: .done, target: self, action: #selector(self.floatLeftImage))
+        let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: iconrightImage, style: .done, target: self, action: #selector(self.floatRightImage))
+        let centerImage: UIBarButtonItem = UIBarButtonItem(image: iconcenterImage, style: .done, target: self, action: #selector(self.centerImageAction))
+        let clear: UIBarButtonItem = UIBarButtonItem(image: iconclear, style: .done, target: self, action: #selector(self.clear))
+        let alignRight: UIBarButtonItem = UIBarButtonItem(image: iconalignRight, style: .done, target: self, action: #selector(self.alignRight))
+        let alignLeft: UIBarButtonItem = UIBarButtonItem(image: iconalignLeft, style: .done, target: self, action: #selector(self.alignLeft))
+        let alignCenter: UIBarButtonItem = UIBarButtonItem(image: iconalignMiddle, style: .done, target: self, action: #selector(self.alignCenter))
+        let underline: UIBarButtonItem = UIBarButtonItem(image: iconUnderline, style: .done, target: self, action: #selector(self.underline))
+        let strikethrough: UIBarButtonItem = UIBarButtonItem(image: iconstrikethrough, style: .done, target: self, action: #selector(self.strikethrough))
+        let italic: UIBarButtonItem = UIBarButtonItem(image: iconitalic, style: .done, target: self, action: #selector(self.italic))
+        let color: UIBarButtonItem = UIBarButtonItem(image: iconpallete?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
+        
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        let insertImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "toolbarInsertImage"), style: .done, target: self, action: #selector(self.insertImageAction))
-        let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "enlarge"), style: .done, target: self, action: #selector(self.enlargeImageAction))
-        let lessenImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "lessen"), style: .done, target: self, action: #selector(self.lessenImageAction))
-        let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "leftImage"), style: .done, target: self, action: #selector(self.floatLeftImage))
-        let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "rightImage"), style: .done, target: self, action: #selector(self.floatRightImage))
-        let centerImage: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "centerImage"), style: .done, target: self, action: #selector(self.centerImageAction))
-        let clear: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "clear"), style: .done, target: self, action: #selector(self.clear))
-        let alignRight: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignRight"), style: .done, target: self, action: #selector(self.alignRight))
-        let alignLeft: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignLeft"), style: .done, target: self, action: #selector(self.alignLeft))
-        let alignCenter: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "alignMiddle"), style: .done, target: self, action: #selector(self.alignCenter))
-        let underline: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "underline"), style: .done, target: self, action: #selector(self.underline))
-        let strikethrough: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "strikethrough"), style: .done, target: self, action: #selector(self.strikethrough))
-        let italic: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "italic"), style: .done, target: self, action: #selector(self.italic))
-        let color: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "pallete")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
         
         let items = [clear,
                      underline,
                      strikethrough,
+                     italic,
                      alignRight,
                      alignCenter,
                      alignLeft,
-                     italic,
                      color,
                      insertImage,
                      floatLeftImage,
@@ -108,19 +127,5 @@ extension RichEditorView{
 
     func colorAction() {
         delegate?.richEditorChangeColor!()
-    }
-    
-    fileprivate func randomColor() -> UIColor {
-        let colors: [UIColor] = [
-            .red,
-            .orange,
-            .yellow,
-            .green,
-            .blue,
-            .purple
-        ]
-        
-        let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-        return color
     }
 }
