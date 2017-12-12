@@ -78,6 +78,10 @@ extension RichEditorView{
                      enlargeImage,
                      lessenImage,
                      done]
+        for item in items {
+            item.tintColor = UIColor.ruby()
+        }
+        
         doneToolbar.items = items
         //doneToolbar.sizeToFit()
         toolbarScroll.contentSize.width = doneToolbar.frame.width
@@ -86,14 +90,17 @@ extension RichEditorView{
     }
     
     //MARK: ToolbarItemActions
+    
     func doneButtonAction()
     {
         self.resignFirstResponder()
         self.endEditing(true)
+        self.delegate?.richEditorSaveHTML!()
+        print(self.html)
     }
     
     func insertImageAction() {
-        delegate?.richEditorInsertImage!()
+        self.delegate?.richEditorInsertImage!()
     }
     
     func enlargeImageAction() {

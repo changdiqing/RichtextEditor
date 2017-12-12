@@ -23,7 +23,8 @@ class ColorCardTableViewController: UITableViewController {
                     UIColor.darkestKelly(),
                     UIColor.darkestDaisy(),
                     UIColor.darkerCoral(),
-                    UIColor.darkerRuby()]
+                    UIColor.darkerRuby(),
+                    UIColor.white]
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -264,6 +264,17 @@ RE.insertImage = function(url, alt) {
     sel.addRange(range);
 };
 
+RE.setBackgroundImage = function(url, alt) {
+    RE.restorerange();
+    
+    var parentElement = getSelectionBoundaryElement("start");
+    var selectedBlock = _findNodeByIDInContainer(parentElement,'block','editor');
+    //alert(selectedBlock);
+    selectedBlock.style.backgroundImage = "url(" + url + ")";
+    
+    RE.callback("input");
+};
+
 RE.floatLeftImage = function() {
     var images = pickHighlightedElementsByTag("img");
     for (var i = 0; i < images.length; i++) {
@@ -284,7 +295,6 @@ RE.centerImage = function() {
         images[i].style = "float:middle"
     }
 };
-
 
 // Methods added by Diqing Chang, 07.11.2017
 RE.increaseImageSizeOfSelectedDiv = function() {
@@ -484,7 +494,7 @@ RE.blurFocus = function() {
 Recursively search element ancestors to find a element nodeName e.g. A
 **/
 var _findNodeByNameInContainer = function(element, nodeName, rootElementId) {
-    if (element.nodeName == nodeName) {
+    if (element.nodeName === nodeName) {
         return element;
     } else {
         if (element.id === rootElementId) {
@@ -492,6 +502,17 @@ var _findNodeByNameInContainer = function(element, nodeName, rootElementId) {
         }
         _findNodeByNameInContainer(element.parentElement, nodeName, rootElementId);
     }
+};
+
+function _findNodeByIDInContainer(element, ID, rootElementId) {
+    while (element.id != ID) {
+        if (element.id === rootElementId) {
+            return null;
+        } else {
+            element = element.parentElement;
+        }
+    }
+    return element;
 };
 
 var isAnchorNode = function(node) {
@@ -564,3 +585,13 @@ RE.getRelativeCaretYPosition = function() {
 
     return y;
 };
+
+$('div').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+        // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+        document.execCommand('insertHTML', false, '<br><br>');
+        // prevent the default behaviour of return key pressed
+        return false;
+    }
+});

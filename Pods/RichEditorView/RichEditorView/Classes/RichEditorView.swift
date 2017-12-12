@@ -39,6 +39,8 @@ import UIKit
     @objc optional func richEditorInsertImage()
     
     @objc optional func richEditorChangeColor()
+    
+    @objc optional func richEditorSaveHTML()
 }
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
@@ -326,6 +328,11 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)');")
     }
     
+    public func setBackgroundImage(_ url: String, alt: String) {
+        runJS("RE.prepareInsert();")
+        runJS("RE.setBackgroundImage('\(url.escaped)', '\(alt.escaped)');")
+    }
+    
     public func insertLink(_ href: String, title: String) {
         runJS("RE.prepareInsert();")
         runJS("RE.insertLink('\(href.escaped)', '\(title.escaped)');")
@@ -522,7 +529,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             if !isEditorLoaded {
                 isEditorLoaded = true
                 html = contentHTML
-                isContentEditable = editingEnabledVar
+                isContentEditable = false//editingEnabledVar
                 placeholder = placeholderText
                 lineHeight = innerLineHeight
                 delegate?.richEditorDidLoad?(self)
@@ -562,7 +569,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     @objc private func viewWasTapped() {
         if !webView.containsFirstResponder {
             let point = tapRecognizer.location(in: webView)
-            focus(at: point)
+            //focus(at: point)
         }
     }
     

@@ -15,3 +15,4 @@ class ImageHandler {
         return paths[0]
     }
 }
+
