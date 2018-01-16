@@ -31,7 +31,6 @@
 		4DDB7FA1DB977B08BF56DB979D6D76B4 /* subscript.png in Resources */ = {isa = PBXBuildFile; fileRef = 898EC88E53BFA7095C360EC7366E036E /* subscript.png */; };
 		5427BDD009C97C364CB0257D563230EA /* h5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A198E801735E7101D20739D444927 /* h5@2x.png */; };
 		55FC0FADAEDD5FD8A78A05A402A82BB9 /* insert_link@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCA2CE9DCE63B11ED4FF6D17E7303F37 /* insert_link@2x.png */; };
-		5A59F720B4BF98FD9B1AC90302E7BC9A /* rich_editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */; };
 		5D2D49EE854D6C5B4770C55BA627280C /* rich_editor_tests.js in Resources */ = {isa = PBXBuildFile; fileRef = F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */; };
 		64B21CC535E29B828EEE399EFDB0233B /* CJWWebView+HackishAccessoryHiding.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6C9CAA68D647F65777BF0A44E4F08 /* CJWWebView+HackishAccessoryHiding.m */; };
 		685A581631154E446EEAF6F516E9DD66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -149,7 +148,6 @@
 		81D7FC78E00FA7B5B209B13A3451C7F6 /* Pods-journalUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-journalUITests-dummy.m"; sourceTree = "<group>"; };
 		8602724132E9E09B134C151212EF14CC /* justify_left@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "justify_left@2x.png"; path = "RichEditorView/Assets/icons/justify_left@2x.png"; sourceTree = "<group>"; };
 		885396D85E057A47FF263BF59B70ECEC /* RichEditorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RichEditorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = rich_editor.html; path = RichEditorView/Assets/editor/rich_editor.html; sourceTree = "<group>"; };
 		898EC88E53BFA7095C360EC7366E036E /* subscript.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = subscript.png; path = RichEditorView/Assets/icons/subscript.png; sourceTree = "<group>"; };
 		8D5D6CB8EA7EFF22CA323855DF16CF42 /* superscript.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = superscript.png; path = RichEditorView/Assets/icons/superscript.png; sourceTree = "<group>"; };
 		8D630CB96C16BF1E840D3D183F886E93 /* RichEditorView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RichEditorView-umbrella.h"; sourceTree = "<group>"; };
@@ -159,6 +157,11 @@
 		96A428145979194102E7E6D142AFF6AA /* RichEditorView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RichEditorView.modulemap; sourceTree = "<group>"; };
 		9A14FA762EDC7C73551A1545B953BCB1 /* Pods-journalUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalUITests-frameworks.sh"; sourceTree = "<group>"; };
 		9A38CB87930EDAADEFBD6665D5FDFDF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B8684C6200BA1B600A82C7E /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		9B8684C7200BA1B600A82C7E /* jquery-3.2.1.slim.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.2.1.slim.min.js"; sourceTree = "<group>"; };
+		9BF0E51A200AA9B7004CD877 /* rich_editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = rich_editor.html; path = RichEditorView/Assets/editor/rich_editor.html; sourceTree = "<group>"; };
+		9BF0E51C200AAEB8004CD877 /* jquery-3.2.1.slim.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.2.1.slim.min.js"; sourceTree = "<group>"; };
+		9BF0E51D200AAF17004CD877 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		9F36ABCE914B43D8A993D54E480FDBFE /* Pods-journalTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-journalTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9FBA5BA8216E81C8A3BE4C19756553E8 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF96EFA800242D97A8D8D5D4B4B243 /* undo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = undo.png; path = RichEditorView/Assets/icons/undo.png; sourceTree = "<group>"; };
@@ -336,13 +339,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9B8684C8200BA1B600A82C7E /* js */ = {
+			isa = PBXGroup;
+			children = (
+				9B8684C6200BA1B600A82C7E /* index.js */,
+				9B8684C7200BA1B600A82C7E /* jquery-3.2.1.slim.min.js */,
+			);
+			name = js;
+			path = RichEditorView;
+			sourceTree = "<group>";
+		};
+		9BF0E51B200AAA71004CD877 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				9BF0E51D200AAF17004CD877 /* index.js */,
+				9BF0E51C200AAEB8004CD877 /* jquery-3.2.1.slim.min.js */,
+			);
+			name = js;
+			path = ../../journal/htmlJS/css/RichEditorView;
+			sourceTree = "<group>";
+		};
 		B1023329ECD21BD9BAE87D248506DA4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9BF0E51B200AAA71004CD877 /* js */,
+				9B8684C8200BA1B600A82C7E /* js */,
+				9BF0E51A200AA9B7004CD877 /* rich_editor.html */,
 				BF5B7971693158FBE92CD718C5C0BC25 /* normalize.css */,
 				25B594DE7A311D34958E62739896A2AC /* style.css */,
 				BDA3B5AA965C25E2E7CBBBDDAE6F8151 /* rich_editor_tests.html */,
-				88931BDE9C58C4AC088A8F3CD5C95881 /* rich_editor.html */,
 				49E6D2D744C3D360ECF2F91C4EB0721C /* assert.js */,
 				F4A34F5452BB08EEE8A4DC91377BD51A /* rich_editor_tests.js */,
 				CDC1FACE45E88F92477150553E072B10 /* rich_editor.js */,
@@ -636,7 +661,6 @@
 				D53BBF5CBFC229B77E7B2A55841B59ED /* outdent@2x.png in Resources */,
 				E6BF742D7C46ED2B0FFD433776D3265C /* redo.png in Resources */,
 				2C94AC25D99990AEB5BCAC80B9EA0667 /* redo@2x.png in Resources */,
-				5A59F720B4BF98FD9B1AC90302E7BC9A /* rich_editor.html in Resources */,
 				E1048EC01DA7A158F15438219D811DED /* rich_editor.js in Resources */,
 				1626BECF7D95D3AA60475CC78EE22C48 /* rich_editor_tests.html in Resources */,
 				5D2D49EE854D6C5B4770C55BA627280C /* rich_editor_tests.js in Resources */,

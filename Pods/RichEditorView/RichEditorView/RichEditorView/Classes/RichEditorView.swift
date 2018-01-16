@@ -162,14 +162,18 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         self.addSubview(webView)
         
         if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
+            print("found rich_editor.html")
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
             let request = URLRequest(url: url)
             webView.loadRequest(request)
+        } else {
+            print("found nothing.....")
         }
 
-        tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
+        // Seems to be useless
+        /*tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
         tapRecognizer.delegate = self
-        addGestureRecognizer(tapRecognizer)
+        addGestureRecognizer(tapRecognizer)*/
     }
 
     // MARK: - Rich Text Editing

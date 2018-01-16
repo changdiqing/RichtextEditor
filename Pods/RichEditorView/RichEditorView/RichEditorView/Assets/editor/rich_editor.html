@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="viewport" content="user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="normalize.css"> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="editor" contentEditable="true" placeholder="" class="placeholder" ondblclick="this.contentEditable=true; dblClickFunction();">
+    <table>
+        <tr> <td id="touchsurface" width = 500 onfocusout="this.contentEditable =false;" ondblclick="this.contentEditable=true;">Rama Rao</td><td id="touchsurface" width=200>M.C.A</td></tr>
+        <tr> <td id="touchsurface" width = 100>Dushyanth</td><td id="touchsurface">B.Tech</td></tr>
+        <tr> <td id="touchsurface" width = 200>AnandKumar</td><td id="touchsurface">M.C.A</td></tr>
+    </table>
+</div>
+
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/index.js"></script>
+<script src="rich_editor.js"></script>
+</body>
+</html>

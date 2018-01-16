@@ -14,6 +14,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBOutlet var editorView: RichEditorView!
     var journal: Journal?
+    var chooseLayout: Bool = true
     var isLayoutMode: Bool = false
     var testDate:Date {
         get {
@@ -24,14 +25,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     }
     
     
-    
+    /*
     // Here instantiate a toolbar instance, loaded only when accessed
     lazy var toolbar: RichEditorToolbar = {
         let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0,width: self.view.bounds.width, height: 44))
         toolbar.editor = self.editorView
         //toolbar.options = RichEditorDefaultOption.all
         return toolbar
-    }()
+    }()*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,21 +49,19 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
         if let fetchedDiary = CoreDataHandler.fetchDiaryByDate(testDate)?.first{
             self.journal = fetchedDiary
-            editorView.html = fetchedDiary.html!
+            //editorView.html = fetchedDiary.html!
         } else {
             self.journal = nil
         }
-        
-        // for testing, always load the same demo
-        let path = Bundle.main.path(forResource: "htmlLayout1", ofType: "html")
-        let htmlStr: String = try! String(contentsOfFile: path!)
-        print("htmlStr is \(htmlStr)")
-        self.editorView.html = htmlStr
-        
+
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
         
         //self.editorView.html = self.journal?.html ??
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if chooseLayout {presentJournalLayouts()}
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,6 +80,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Dismiss the picker if the user canceled.
         dismiss(animated: true, completion: nil)
+        //self.editorView.becomeFirstResponder()
+        isLayoutMode = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -116,10 +117,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+        isLayoutMode = false
         
     }
     
     //Mark: Navigation
+    
+    func presentJournalLayouts() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let journalLayoutsViewController = storyBoard.instantiateViewController(withIdentifier: "JournalLayoutsViewController") as! JournalLayoutCollectionViewController
+        self.present(journalLayoutsViewController, animated:true, completion:nil)
+    }
     
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
@@ -133,21 +141,36 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             //save new event
             // here code for saving the LTP.
             // 首先我得知道如何编辑event，需要删除旧的event添加新的event还是可以直接编辑已有的event呢？
+        } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
+            chooseLayout = false
+            let fileName = sourceViewController.selectedLayoutName
+            //loadHTML(from: fileName)
         }
+    }
+    
+    //MARK: Private Methods
+    func loadHTML(from filename: String) {
+        let path = Bundle.main.path(forResource: filename, ofType: "html")
+        do {
+            let htmlStr = try String(contentsOfFile: path!)
+            self.editorView.html = htmlStr
+        }
+        catch {"error: file not found"}
     }
 }
 
 extension ViewController: JavaScriptFuncProtocol {
     func test() {
+        
         isLayoutMode = true
-        let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-        
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+//        let imagePickerController = UIImagePickerController()
+//
+//        // Only allow photos to be picked, not taken.
+//        imagePickerController.sourceType = .photoLibrary
+//
+//        // Make sure ViewController is notified when the user picks an image.
+//        imagePickerController.delegate = self
+//        present(imagePickerController, animated: true, completion: nil)
     }
     
     func test2(_ value: String, _ num: Int) {
@@ -158,7 +181,7 @@ extension ViewController: JavaScriptFuncProtocol {
 
 extension ViewController: RichEditorDelegate {
     func richEditorInsertImage() {
-        isLayoutMode = false
+        //isLayoutMode = false
         let imagePickerController = UIImagePickerController()
         
         // Only allow photos to be picked, not taken.
@@ -171,7 +194,6 @@ extension ViewController: RichEditorDelegate {
     
     func richEditorChangeColor() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
         let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
         self.present(colorCardViewController, animated:true, completion:nil)
     }

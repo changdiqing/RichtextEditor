@@ -24,6 +24,7 @@ window.onload = function() {
 };
 
 RE.editor = document.getElementById('editor');
+//document.getElementById("demo").innerHTML = "lalala";
 
 // Not universally supported, but seems to work in iOS 7 and 8
 document.addEventListener("selectionchange", function() {
@@ -586,7 +587,7 @@ RE.getRelativeCaretYPosition = function() {
     return y;
 };
 
-$('div').keydown(function(e) {
+/*$('div').keydown(function(e) {
     // trap the return key being pressed
     if (e.keyCode === 13) {
         // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
@@ -594,4 +595,4 @@ $('div').keydown(function(e) {
         // prevent the default behaviour of return key pressed
         return false;
     }
-});
+});*/
