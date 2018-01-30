@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- "use strict";
+"use strict";
 
 var RE = {};
 var defaultImageHeight = 100 // in px
@@ -24,21 +24,11 @@ window.onload = function() {
 };
 
 RE.editor = document.getElementById('editor');
-//document.getElementById("demo").innerHTML = "lalala";
 
 // Not universally supported, but seems to work in iOS 7 and 8
 document.addEventListener("selectionchange", function() {
-    RE.backuprange();
-});
-
-// Methods added by Diqing Chang, 07.11.2017
-
-RE.resizeImageOfSelectedDiv = function(size) {
-    var myimg = RE.editor.getElementsByTagName('img');
-    for (i = 0; i < myimg.length; i++) {
-        myimg[i].height = size;
-    }
-}
+                          RE.backuprange();
+                          });
 
 //looks specifically for a Range selection and not a Caret selection
 RE.rangeSelectionExists = function() {
@@ -60,19 +50,19 @@ RE.rangeOrCaretSelectionExists = function() {
 };
 
 RE.editor.addEventListener("input", function() {
-    RE.updatePlaceholder();
-    RE.backuprange();
-    RE.callback("input");
-});
+                           RE.updatePlaceholder();
+                           RE.backuprange();
+                           RE.callback("input");
+                           });
 
 RE.editor.addEventListener("focus", function() {
-    RE.backuprange();
-    RE.callback("focus");
-});
+                           RE.backuprange();
+                           RE.callback("focus");
+                           });
 
 RE.editor.addEventListener("blur", function() {
-    RE.callback("blur");
-});
+                           RE.callback("blur");
+                           });
 
 RE.customAction = function(action) {
     RE.callback("action/" + action);
@@ -87,10 +77,10 @@ RE.runCallbackQueue = function() {
     if (RE.callbackQueue.length === 0) {
         return;
     }
-
+    
     setTimeout(function() {
-        window.location.href = "re-callback://";
-    }, 0);
+               window.location.href = "re-callback://";
+               }, 0);
 };
 
 RE.getCommandQueue = function() {
@@ -108,11 +98,11 @@ RE.setHtml = function(contents) {
     var tempWrapper = document.createElement('div');
     tempWrapper.innerHTML = contents;
     var images = tempWrapper.querySelectorAll("img");
-
+    
     for (var i = 0; i < images.length; i++) {
         images[i].onload = RE.updateHeight;
     }
-
+    
     RE.editor.innerHTML = tempWrapper.innerHTML;
     RE.updatePlaceholder();
 };
@@ -239,6 +229,8 @@ RE.setLineHeight = function(height) {
     RE.editor.style.lineHeight = height;
 };
 
+// Methods added by Diqing Chang, 07.11.2017
+
 RE.insertImage = function(url, alt) {
     RE.restorerange();
     var parentElement = getSelectionBoundaryElement("start");
@@ -275,6 +267,13 @@ RE.setBackgroundImage = function(url, alt) {
     
     RE.callback("input");
 };
+
+RE.resizeImageOfSelectedDiv = function(size) {
+    var myimg = RE.editor.getElementsByTagName('img');
+    for (i = 0; i < myimg.length; i++) {
+        myimg[i].height = size;
+    }
+}
 
 RE.floatLeftImage = function() {
     var images = pickHighlightedElementsByTag("img");
@@ -331,7 +330,7 @@ function getSelectionParentElement() {
 function pickHighlightedElementsByTag(tag) {
     var range, sel, allSelected,allWithinRangeParent, el;
     var allSelected = [];
-
+    
     sel = window.getSelection();
     if (sel.getRangeAt) {
         if (sel.rangeCount > 0) {
@@ -342,18 +341,18 @@ function pickHighlightedElementsByTag(tag) {
         range = document.createRange();
         range.setStart(sel.anchorNode, sel.anchorOffset);
         range.setEnd(sel.focusNode, sel.focusOffset);
-            
+        
         // Handle the case when the selection was selected backwards (from the end to the start in the document)
         if (range.collapsed !== sel.isCollapsed) {
             range.setStart(sel.focusNode, sel.focusOffset);
             range.setEnd(sel.anchorNode, sel.anchorOffset);
         }
     }
-        
+    
     if (range) {
         allWithinRangeParent = range.commonAncestorContainer.getElementsByTagName(tag);
-            
-            
+        
+        
         for (var i=0; el = allWithinRangeParent[i]; i++) {
             // The second parameter says to include the element
             // even if it's not fully selected
@@ -417,7 +416,7 @@ RE.insertLink = function(url, title) {
             var el = document.createElement("a");
             el.setAttribute("href", url);
             el.setAttribute("title", title);
-
+            
             var range = sel.getRangeAt(0).cloneRange();
             range.surroundContents(el);
             sel.removeAllRanges();
@@ -492,8 +491,8 @@ RE.blurFocus = function() {
 };
 
 /**
-Recursively search element ancestors to find a element nodeName e.g. A
-**/
+ Recursively search element ancestors to find a element nodeName e.g. A
+ **/
 var _findNodeByNameInContainer = function(element, nodeName, rootElementId) {
     if (element.nodeName === nodeName) {
         return element;
@@ -522,7 +521,7 @@ var isAnchorNode = function(node) {
 
 RE.getAnchorTagsInNode = function(node) {
     var links = [];
-
+    
     while (node.nextSibling !== null && node.nextSibling !== undefined) {
         node = node.nextSibling;
         if (isAnchorNode(node)) {
@@ -547,7 +546,7 @@ RE.getSelectedHref = function() {
     if (!RE.rangeOrCaretSelectionExists()) {
         return null;
     }
-
+    
     var tags = RE.getAnchorTagsInNode(sel.anchorNode);
     //if more than one link is there, return null
     if (tags.length > 1) {
@@ -558,7 +557,7 @@ RE.getSelectedHref = function() {
         var node = _findNodeByNameInContainer(sel.anchorNode.parentElement, 'A', 'editor');
         href = node.href;
     }
-
+    
     return href ? href : null;
 };
 
@@ -583,16 +582,6 @@ RE.getRelativeCaretYPosition = function() {
             }
         }
     }
-
+    
     return y;
 };
-
-/*$('div').keydown(function(e) {
-    // trap the return key being pressed
-    if (e.keyCode === 13) {
-        // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-        document.execCommand('insertHTML', false, '<br><br>');
-        // prevent the default behaviour of return key pressed
-        return false;
-    }
-});*/

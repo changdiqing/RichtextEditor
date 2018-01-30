@@ -15,6 +15,14 @@ extension RichEditorView{
         }
     }
     
+    //MARK: Extended Methods added by Diqing Chang
+    func reAddEventListener() {
+        runJS("method_enterLayoutMode();")
+    }
+    
+    
+    //MARK: create a toolbar and add to RichEditorView
+    
     func addDoneButtonOnKeyboard()
     {
         let buttonHeight = defaultParameters.UIToobarItemHeight
@@ -44,6 +52,7 @@ extension RichEditorView{
         let iconstrikethrough = UIImage(named: "strikethrough")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconitalic = UIImage(named: "italic")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         
         
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
@@ -60,7 +69,7 @@ extension RichEditorView{
         let strikethrough: UIBarButtonItem = UIBarButtonItem(image: iconstrikethrough, style: .done, target: self, action: #selector(self.strikethrough))
         let italic: UIBarButtonItem = UIBarButtonItem(image: iconitalic, style: .done, target: self, action: #selector(self.italic))
         let color: UIBarButtonItem = UIBarButtonItem(image: iconpallete?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.colorAction))
-        
+        let layouts: UIBarButtonItem = UIBarButtonItem(image: iconLayout?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.insertLayoutAction))
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
         
         let items = [clear,
@@ -70,6 +79,7 @@ extension RichEditorView{
                      alignRight,
                      alignCenter,
                      alignLeft,
+                     layouts,
                      color,
                      insertImage,
                      floatLeftImage,
@@ -101,6 +111,10 @@ extension RichEditorView{
     
     func insertImageAction() {
         self.delegate?.richEditorInsertImage!()
+    }
+    
+    func insertLayoutAction() {
+        self.delegate?.richEditorInsertlayout!()
     }
     
     func enlargeImageAction() {

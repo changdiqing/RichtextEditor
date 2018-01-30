@@ -14,7 +14,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBOutlet var editorView: RichEditorView!
     var journal: Journal?
-    var chooseLayout: Bool = true
+    var chooseLayout: Bool = false
     var isLayoutMode: Bool = false
     var testDate:Date {
         get {
@@ -46,17 +46,46 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
         editorView.delegate = self
-    
-        if let fetchedDiary = CoreDataHandler.fetchDiaryByDate(testDate)?.first{
-            self.journal = fetchedDiary
-            //editorView.html = fetchedDiary.html!
-        } else {
-            self.journal = nil
-        }
+        
+        /*
+        let url = Bundle.main.url(forResource: "index", withExtension: "html")
+        //let url = Bundle.main.url(forResource: "htmlLayout", withExtension: "html")
+        let myRequest = URLRequest(url: url!)
+        print(url)
+        print(myRequest)
+        editorView.webView.loadRequest(myRequest)*/
+        
+        //editorView.becomeFirstResponder()
+        
+        
 
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
         
+        /*  for fethcing save journals, will be used afterwards, Diqing Chang on 21.01.2018
+         if let fetchedDiary = CoreDataHandler.fetchDiaryByDate(testDate)?.first{
+         self.journal = fetchedDiary
+         //editorView.html = fetchedDiary.html!
+         } else {
+         self.journal = nil
+         }*/
+        
+        if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
+            let url = URL(fileURLWithPath: filePath, isDirectory: false)
+            let request = URLRequest(url: url)
+            editorView.webView.loadRequest(request)
+            print("found")
+        }
+        
+        // for testing, always load the same demo
+        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
+        let htmlStr: String = try! String(contentsOfFile: path!)
+        print("htmlStr is \(htmlStr)")
+        //self.editorView.html = htmlStr
+        //self.editorView.insertHTML(htmlStr)
+        print(self.editorView.html)
+        //self.editorView.webView.reload()
+        //print(self.editorView.runJS("document.documentElement.outerHTML"))
         //self.editorView.html = self.journal?.html ??
     }
     
@@ -101,7 +130,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             try data?.write(to: filepath, options: Data.WritingOptions.atomic)
             let myUrl = filepath.absoluteString
             if isLayoutMode {
-                editorView.setBackgroundImage(myUrl, alt: myUrl)
+                //editorView.setBackgroundImage(myUrl, alt: myUrl)
             } else {
                 editorView.insertImage(myUrl, alt: myUrl)
             }
@@ -180,6 +209,17 @@ extension ViewController: JavaScriptFuncProtocol {
 
 
 extension ViewController: RichEditorDelegate {
+    func richEditorDidLoad(_ editor: RichEditorView) {
+        // for testing, always load the same demo
+        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
+        let htmlStr: String = try! String(contentsOfFile: path!)
+        editor.insertHTML(htmlStr)
+        //self.editorView.insertHTML(htmlStr)
+        //self.editorView.webView.reload()
+        //print(self.editorView.runJS("document.documentElement.outerHTML"))
+        //self.editorView.html = self.journal?.html ??
+    }
+    
     func richEditorInsertImage() {
         //isLayoutMode = false
         let imagePickerController = UIImagePickerController()
@@ -190,6 +230,14 @@ extension ViewController: RichEditorDelegate {
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func richEditorInsertlayout() {
+        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
+        let htmlStr: String = try! String(contentsOfFile: path!)
+        self.editorView.insertHTML(htmlStr)
+        self.editorView.reAddEventListener()
+        //self.editorView.webView.reload()
     }
     
     func richEditorChangeColor() {

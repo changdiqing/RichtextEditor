@@ -38,6 +38,8 @@ import UIKit
     // new delegate method added by Diqing Chang, 04.11.2017
     @objc optional func richEditorInsertImage()
     
+    @objc optional func richEditorInsertlayout()
+    
     @objc optional func richEditorChangeColor()
     
     @objc optional func richEditorSaveHTML()
@@ -88,6 +90,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         didSet {
             delegate?.richEditor?(self, heightDidChange: editorHeight)
         }
+        
     }
 
     /// The value we hold in order to be able to set the line height before the JS completely loads.
@@ -110,7 +113,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
 
     // MARK: Private Properties
 
-    /// Whether or not the editor has finished loading or not yet.
+    /// Whether or not the editor has finished loading or not yet. changed to public by Diqing Chang for the purpose of learning, 28.01.2018
     private var isEditorLoaded = false
 
     /// Value that stores whether or not the content should be editable when the editor is loaded.
@@ -161,19 +164,28 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         
         self.addSubview(webView)
         
+        /*
         if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
-            print("found rich_editor.html")
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
             let request = URLRequest(url: url)
             webView.loadRequest(request)
-        } else {
-            print("found nothing.....")
-        }
+        }*/
+        
+        /*
+        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "index/index", ofType: "html") {
+            let url = URL(fileURLWithPath: filePath, isDirectory: false)
+            let request = URLRequest(url: url)
+            webView.loadRequest(request)
+            print("found")
+        }*/
+        
+        print(runJS("RE.getHtml()"))
+        
+        
 
-        // Seems to be useless
-        /*tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
+        tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
         tapRecognizer.delegate = self
-        addGestureRecognizer(tapRecognizer)*/
+        addGestureRecognizer(tapRecognizer)
     }
 
     // MARK: - Rich Text Editing
@@ -189,6 +201,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         set {
             contentHTML = newValue
             if isEditorLoaded {
+                print("html is set")
                 runJS("RE.setHtml('\(newValue.escaped)');")
                 updateHeight()
             }
@@ -332,6 +345,11 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)');")
     }
     
+    public func insertHTML(_ html: String) {
+        print("insertHTML called")
+        runJS("RE.insertHTML('\(html.escaped)');")
+    }
+    
     public func setBackgroundImage(_ url: String, alt: String) {
         runJS("RE.prepareInsert();")
         runJS("RE.setBackgroundImage('\(url.escaped)', '\(alt.escaped)');")
@@ -351,7 +369,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     public func blur() {
-        runJS("RE.blurFocus();")
+        runJS("RE.blurFocus()")
     }
     
     //MARK: New Methods added by Diqing 07.11.2017
@@ -532,8 +550,8 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             // If loading for the first time, we have to set the content HTML to be displayed
             if !isEditorLoaded {
                 isEditorLoaded = true
-                html = contentHTML
-                isContentEditable = false//editingEnabledVar
+                //html = contentHTML
+                isContentEditable = editingEnabledVar
                 placeholder = placeholderText
                 lineHeight = innerLineHeight
                 delegate?.richEditorDidLoad?(self)
@@ -573,7 +591,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     @objc private func viewWasTapped() {
         if !webView.containsFirstResponder {
             let point = tapRecognizer.location(in: webView)
-            //focus(at: point)
+            focus(at: point)
         }
     }
     
