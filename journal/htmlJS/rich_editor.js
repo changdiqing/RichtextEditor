@@ -30,15 +30,6 @@ document.addEventListener("selectionchange", function() {
                           RE.backuprange();
                           });
 
-// Methods added by Diqing Chang, 07.11.2017
-
-RE.resizeImageOfSelectedDiv = function(size) {
-    var myimg = RE.editor.getElementsByTagName('img');
-    for (i = 0; i < myimg.length; i++) {
-        myimg[i].height = size;
-    }
-}
-
 //looks specifically for a Range selection and not a Caret selection
 RE.rangeSelectionExists = function() {
     //!! coerces a null to bool
@@ -238,6 +229,8 @@ RE.setLineHeight = function(height) {
     RE.editor.style.lineHeight = height;
 };
 
+// Methods added by Diqing Chang, 07.11.2017
+
 RE.insertImage = function(url, alt) {
     RE.restorerange();
     var parentElement = getSelectionBoundaryElement("start");
@@ -274,6 +267,13 @@ RE.setBackgroundImage = function(url, alt) {
     
     RE.callback("input");
 };
+
+RE.resizeImageOfSelectedDiv = function(size) {
+    var myimg = RE.editor.getElementsByTagName('img');
+    for (i = 0; i < myimg.length; i++) {
+        myimg[i].height = size;
+    }
+}
 
 RE.floatLeftImage = function() {
     var images = pickHighlightedElementsByTag("img");

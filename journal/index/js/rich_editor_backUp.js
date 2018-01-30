@@ -30,15 +30,6 @@ document.addEventListener("selectionchange", function() {
                           RE.backuprange();
                           });
 
-// Methods added by Diqing Chang, 07.11.2017
-
-RE.resizeImageOfSelectedDiv = function(size) {
-    var myimg = RE.editor.getElementsByTagName('img');
-    for (i = 0; i < myimg.length; i++) {
-        myimg[i].height = size;
-    }
-}
-
 //looks specifically for a Range selection and not a Caret selection
 RE.rangeSelectionExists = function() {
     //!! coerces a null to bool
@@ -114,6 +105,7 @@ RE.setHtml = function(contents) {
     
     RE.editor.innerHTML = tempWrapper.innerHTML;
     RE.updatePlaceholder();
+    document.getElementById("demo").innerHTML = "setHtml";
 };
 
 RE.getHtml = function() {
@@ -239,165 +231,54 @@ RE.setLineHeight = function(height) {
 };
 
 RE.insertImage = function(url, alt) {
-    RE.restorerange();
-    var parentElement = getSelectionBoundaryElement("start");
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
     img.setAttribute("height", defaultImageHeight)
-    img.setAttribute("style","float:left")
     img.onload = RE.updateHeight;
-    if (parentElement.id == "editor") {
-        var wrapper = document.createElement('div');
-        wrapper.appendChild(img);
-        RE.insertHTML(wrapper.outerHTML);
-    } else {
-        RE.insertHTML(img.outerHTML);
-    }
     
+    RE.insertHTML(img.outerHTML);
     RE.callback("input");
-    
-    var sel = document.getSelection();
-    var range = document.createRange();
-    range.setEnd(img, 1);
-    sel.removeAllRanges();
-    sel.addRange(range);
-};
-
-RE.setBackgroundImage = function(url, alt) {
-    RE.restorerange();
-    
-    var parentElement = getSelectionBoundaryElement("start");
-    var selectedBlock = _findNodeByIDInContainer(parentElement,'block','editor');
-    //alert(selectedBlock);
-    selectedBlock.style.backgroundImage = "url(" + url + ")";
-    
-    RE.callback("input");
-};
-
-RE.floatLeftImage = function() {
-    var images = pickHighlightedElementsByTag("img");
-    for (var i = 0; i < images.length; i++) {
-        images[i].style = "float:left"
-    }
-};
-
-RE.floatRightImage = function() {
-    var images = pickHighlightedElementsByTag("img");
-    for (var i = 0; i < images.length; i++) {
-        images[i].style = "float:right"
-    }
-};
-
-RE.centerImage = function() {
-    var images = pickHighlightedElementsByTag("img");
-    for (var i = 0; i < images.length; i++) {
-        images[i].style = "float:middle"
-    }
 };
 
 // Methods added by Diqing Chang, 07.11.2017
 RE.increaseImageSizeOfSelectedDiv = function() {
-    var images = pickHighlightedElementsByTag("img");
+    //var tempWrapper = document.createElement('div');
+    //tempWrapper.innerHTML = RE.editor.innerHTML;
+    //var images = tempWrapper.querySelectorAll("img");
+    //var sel = document.getSelection();
+    //var myString = sel.parent.innerHTML;
+    //RE.insertHTML(myString);
+    var images = RE.editor.querySelectorAll("img");
+    defaultImageHeight += defaultImageSizeChangeRate;
+    //RE.editor.querySelectorAll("img");
+    
     for (var i = 0; i < images.length; i++) {
-        images[i].height = images[i].height + defaultImageSizeChangeRate;
+        images[i].height = defaultImageHeight;
     }
+    
+    //RE.editor.innerHTML = tempWrapper.innerHTML;
+    //RE.updatePlaceholder();
 };
 
 RE.decreaseImageSizeOfSelectedDiv = function() {
-    var images = pickHighlightedElementsByTag("img");
+    //var tempWrapper = document.createElement('div');
+    //tempWrapper.innerHTML = RE.editor.innerHTML;
+    //var images = tempWrapper.querySelectorAll("img");
+    //var sel = document.getSelection();
+    //var myString = sel.parent.innerHTML;
+    //RE.insertHTML(myString);
+    var images = RE.editor.querySelectorAll("img");
+    defaultImageHeight -= defaultImageSizeChangeRate;
+    //RE.editor.querySelectorAll("img");
+    
     for (var i = 0; i < images.length; i++) {
-        images[i].height = images[i].height - defaultImageSizeChangeRate;
+        images[i].height = defaultImageHeight;
     }
+    
+    //RE.editor.innerHTML = tempWrapper.innerHTML;
+    //RE.updatePlaceholder();
 };
-
-function getSelectionParentElement() {
-    var parentEl = null, sel;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            parentEl = sel.getRangeAt(0).commonAncestorContainer;
-            if (parentEl.nodeType != 1) {
-                parentEl = parentEl.parentNode;
-            }
-        }
-    } else if ( (sel = document.selection) && sel.type != "Control") {
-        parentEl = sel.createRange().parentElement();
-    }
-    return parentEl;
-}
-
-function pickHighlightedElementsByTag(tag) {
-    var range, sel, allSelected,allWithinRangeParent, el;
-    var allSelected = [];
-    
-    sel = window.getSelection();
-    if (sel.getRangeAt) {
-        if (sel.rangeCount > 0) {
-            range = sel.getRangeAt(0);
-        }
-    } else {
-        // Old WebKit
-        range = document.createRange();
-        range.setStart(sel.anchorNode, sel.anchorOffset);
-        range.setEnd(sel.focusNode, sel.focusOffset);
-        
-        // Handle the case when the selection was selected backwards (from the end to the start in the document)
-        if (range.collapsed !== sel.isCollapsed) {
-            range.setStart(sel.focusNode, sel.focusOffset);
-            range.setEnd(sel.anchorNode, sel.anchorOffset);
-        }
-    }
-    
-    if (range) {
-        allWithinRangeParent = range.commonAncestorContainer.getElementsByTagName(tag);
-        
-        
-        for (var i=0; el = allWithinRangeParent[i]; i++) {
-            // The second parameter says to include the element
-            // even if it's not fully selected
-            if (sel.containsNode(el, true) ) {
-                allSelected.push(el);
-            }
-        }
-        
-        return allSelected
-    }
-}
-
-function getSelectionBoundaryElement(isStart) {
-    var range, sel, container;
-    if (document.selection) {
-        range = document.selection.createRange();
-        range.collapse(isStart);
-        return range.parentElement();
-    } else {
-        sel = window.getSelection();
-        if (sel.getRangeAt) {
-            if (sel.rangeCount > 0) {
-                range = sel.getRangeAt(0);
-            }
-        } else {
-            // Old WebKit
-            range = document.createRange();
-            range.setStart(sel.anchorNode, sel.anchorOffset);
-            range.setEnd(sel.focusNode, sel.focusOffset);
-            
-            // Handle the case when the selection was selected backwards (from the end to the start in the document)
-            if (range.collapsed !== sel.isCollapsed) {
-                range.setStart(sel.focusNode, sel.focusOffset);
-                range.setEnd(sel.anchorNode, sel.anchorOffset);
-            }
-        }
-        
-        if (range) {
-            container = range[isStart ? "startContainer" : "endContainer"];
-            
-            // Check if the container is a text node and return its parent if so
-            return container.nodeType === 3 ? container.parentNode : container;
-        }
-    }
-}
 
 RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
@@ -413,6 +294,7 @@ RE.insertLink = function(url, title) {
     var sel = document.getSelection();
     if (sel.toString().length !== 0) {
         if (sel.rangeCount) {
+            
             var el = document.createElement("a");
             el.setAttribute("href", url);
             el.setAttribute("title", title);
@@ -494,7 +376,7 @@ RE.blurFocus = function() {
  Recursively search element ancestors to find a element nodeName e.g. A
  **/
 var _findNodeByNameInContainer = function(element, nodeName, rootElementId) {
-    if (element.nodeName === nodeName) {
+    if (element.nodeName == nodeName) {
         return element;
     } else {
         if (element.id === rootElementId) {
@@ -502,17 +384,6 @@ var _findNodeByNameInContainer = function(element, nodeName, rootElementId) {
         }
         _findNodeByNameInContainer(element.parentElement, nodeName, rootElementId);
     }
-};
-
-function _findNodeByIDInContainer(element, ID, rootElementId) {
-    while (element.id != ID) {
-        if (element.id === rootElementId) {
-            return null;
-        } else {
-            element = element.parentElement;
-        }
-    }
-    return element;
 };
 
 var isAnchorNode = function(node) {

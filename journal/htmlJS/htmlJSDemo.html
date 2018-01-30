@@ -1,2 +1,87 @@
 <button onclick='javaScriptCallToSwift.test("test")'>Call Swift test() func</button>
 <button onclick='javaScriptCallToSwift.test2("test2", 2)'>Call Swift test2() func</button>
+
+<div contenteditable="false" class = "flex-row">
+    <div id = "block" contenteditable="true" onclick='javaScriptCallToSwift.test()' style = "flex-basis: 60%"></div>
+    <div id = "block" contenteditable="true" onclick='javaScriptCallToSwift.test()' style = "flex-basis: 40%"></div>
+</div>
+<div contenteditable="false" class = "flex-row">
+    <div id = "block" contenteditable="true" onclick='javaScriptCallToSwift.test()' style = "flex-basis: 60%"></div>
+    <div id = "block" contenteditable="true" onclick='javaScriptCallToSwift.test()' style = "flex-basis: 40%"></div>
+</div>
+
+<table>
+    <tr> <td width=500 onfocusout="this.contentEditable =false; focusOutFunction();" ondblclick="this.contentEditable=true; dblClickFunction();">Rama Rao</td><td width=200>M.C.A</td></tr>
+    <tr> <td width = 100>Dushyanth</td><td>B.Tech</td></tr>
+    <tr> <td width = 200>AnandKumar</td><td>M.C.A</td></tr>
+</table>
+<p id="demo">7777</p>
+<div>this is a div</div>
+
+<!DOCTYPE html>
+<html>
+    <style>
+        table{
+            /*border-collapse:collapse;*/
+        }
+    table td, th{
+        /*border:1px solid red;*/
+    }
+    
+    table th{
+        border-right:2px solid blue;
+        cursor: pointer;
+    }
+    </style>
+    <body>
+        <table>
+            <tr> <td width=500 onfocusout="this.contentEditable =false; focusOutFunction();" ondblclick="this.contentEditable=true; dblClickFunction();">Rama Rao</td><td width=200>M.C.A</td></tr>
+            <tr> <td width = 100>Dushyanth</td><td>B.Tech</td></tr>
+            <tr> <td width = 200>AnandKumar</td><td>M.C.A</td></tr>
+        </table>
+        <p id="demo"></p>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var isEditing = false;
+        var pressed = false;
+        function focusOutFunction() {
+            isEditing = false;
+            document.getElementById("demo").innerHTML = isEditing
+        }
+    
+    function dblClickFunction() {
+        isEditing = true;
+        document.getElementById("demo").innerHTML = isEditing;
+    }
+    
+    $(function(){
+      var pressed = false;
+      var start = undefined;
+      var startX, startY, startWidth, startHeight;
+      
+      $("table td").mousedown(function(e) {
+                              
+                              start = $(this);
+                              pressed = !isEditing;
+                              startX = e.pageX;
+                              startY = e.pageY;
+                              startWidth = $(this).width();
+                              startHeight = $(this).height();
+                              });
+      
+      $(document).mousemove(function(e) {
+                            if(pressed) {
+                            $(start).width(startWidth+(e.pageX-startX));
+                            $(start).height(startHeight+(e.pageY-startY));
+                            }
+                            });
+      
+      $(document).mouseup(function() {
+                          if(pressed) {
+                          pressed = false;
+                          }
+                          });
+      });
+        </script>
+</html>

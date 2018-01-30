@@ -103,7 +103,7 @@ class ColorCardTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let  selectedIndexPath = tableView.indexPathForSelectedRow else {
-            return // or fatalError() or whatever
+            fatalError("cell must be selected!")
         }
         selectedColor = colorCard[selectedIndexPath.row]
     }

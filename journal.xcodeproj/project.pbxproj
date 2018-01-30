@@ -13,7 +13,9 @@
 		9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
 		9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */; };
-		9B3B86061FDC98220019B943 /* htmlLayout1.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B86051FDC98210019B943 /* htmlLayout1.html */; };
+		9B3B86061FDC98220019B943 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B86051FDC98210019B943 /* index.html */; };
+		9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */; };
+		9B3B860C1FE319870019B943 /* JournalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B860B1FE319870019B943 /* JournalLayout.swift */; };
 		9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4349891FD1FAF00009E899 /* CoreDataHandler.swift */; };
 		9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B43498B1FD1FAF30009E899 /* ImageHandler.swift */; };
 		9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78501FAA1519000F39FC /* AppDelegate.swift */; };
@@ -23,9 +25,17 @@
 		9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4A785C1FAA1519000F39FC /* LaunchScreen.storyboard */; };
 		9B4A78691FAA151A000F39FC /* journalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78681FAA151A000F39FC /* journalTests.swift */; };
 		9B4A78741FAA151A000F39FC /* journalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78731FAA151A000F39FC /* journalUITests.swift */; };
+		9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */; };
+		9B53BFD320153F4900648A32 /* rich_editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCF20153F4800648A32 /* rich_editor.js */; };
+		9B53BFD420153F4900648A32 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD020153F4800648A32 /* index.js */; };
+		9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD82015424A00648A32 /* touchsurfaceTable.html */; };
 		9B636A2A1FCA0603003AFF26 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */; };
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B6C0D581FAA1AA1002E34C1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */; };
+		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
+		9B8684C0200BA01800A82C7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684BF200BA01800A82C7E /* style.css */; };
+		9B8684C2200BA05500A82C7E /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684C1200BA05500A82C7E /* normalize.css */; };
+		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		9BF12DB51FD442BC00E45DE4 /* Journal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12DB31FD442BC00E45DE4 /* Journal.xcdatamodeld */; };
@@ -61,7 +71,9 @@
 		9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlJSDemo.html; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
 		9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFunc.swift; sourceTree = "<group>"; };
-		9B3B86051FDC98210019B943 /* htmlLayout1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlLayout1.html; sourceTree = "<group>"; };
+		9B3B86051FDC98210019B943 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewController.swift; sourceTree = "<group>"; };
+		9B3B860B1FE319870019B943 /* JournalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayout.swift; sourceTree = "<group>"; };
 		9B4349891FD1FAF00009E899 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		9B43498B1FD1FAF30009E899 /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		9B4A784D1FAA1519000F39FC /* journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +89,18 @@
 		9B4A786F1FAA151A000F39FC /* journalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = journalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4A78731FAA151A000F39FC /* journalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = journalUITests.swift; sourceTree = "<group>"; };
 		9B4A78751FAA151A000F39FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-3.2.1.slim.min.js"; sourceTree = "<group>"; };
+		9B53BFCF20153F4800648A32 /* rich_editor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = rich_editor.js; sourceTree = "<group>"; };
+		9B53BFD020153F4800648A32 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		9B53BFD82015424A00648A32 /* touchsurfaceTable.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchsurfaceTable.html; sourceTree = "<group>"; };
 		9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCardTableViewController.swift; sourceTree = "<group>"; };
 		9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		9B809961201CBB2900F0121B /* index */ = {isa = PBXFileReference; lastKnownFileType = folder; path = index; sourceTree = "<group>"; };
+		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
+		9B8684BF200BA01800A82C7E /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		9B8684C1200BA05500A82C7E /* normalize.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
+		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		9BF12DB41FD442BC00E45DE4 /* Journal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Journal.xcdatamodel; sourceTree = "<group>"; };
@@ -133,9 +154,16 @@
 			isa = PBXGroup;
 			children = (
 				9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */,
-				9B3B86051FDC98210019B943 /* htmlLayout1.html */,
+				9B53BFD020153F4800648A32 /* index.js */,
+				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
+				9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */,
+				9B53BFCF20153F4800648A32 /* rich_editor.js */,
+				9B8684BF200BA01800A82C7E /* style.css */,
+				9B8684C1200BA05500A82C7E /* normalize.css */,
+				9B3B86051FDC98210019B943 /* index.html */,
 				9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */,
 				9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */,
+				9B53BFD82015424A00648A32 /* touchsurfaceTable.html */,
 			);
 			path = htmlJS;
 			sourceTree = "<group>";
@@ -146,6 +174,7 @@
 				9BF12DBE1FD4446600E45DE4 /* Journal+CoreDataClass.swift */,
 				9BF12DBF1FD4446600E45DE4 /* Journal+CoreDataProperties.swift */,
 				9BF12DB31FD442BC00E45DE4 /* Journal.xcdatamodeld */,
+				9B3B860B1FE319870019B943 /* JournalLayout.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -184,6 +213,7 @@
 		9B4A784F1FAA1519000F39FC /* journal */ = {
 			isa = PBXGroup;
 			children = (
+				9B809961201CBB2900F0121B /* index */,
 				9B3B86001FDB49D40019B943 /* htmlJS */,
 				9B43498D1FD1FAFB0009E899 /* Handlers */,
 				9B4349881FD1FA7F0009E899 /* DataModel */,
@@ -223,6 +253,7 @@
 			children = (
 				9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */,
 				9B4A78521FAA1519000F39FC /* ViewController.swift */,
+				9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,6 +264,7 @@
 				9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */,
 				9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */,
 				9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */,
+				9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,11 +398,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
-				9B3B86061FDC98220019B943 /* htmlLayout1.html in Resources */,
+				9B8684C0200BA01800A82C7E /* style.css in Resources */,
+				9B3B86061FDC98220019B943 /* index.html in Resources */,
+				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
 				9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */,
+				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
+				9B53BFD420153F4900648A32 /* index.js in Resources */,
+				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
+				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,9 +594,12 @@
 				9BF12DC11FD4446600E45DE4 /* Journal+CoreDataProperties.swift in Sources */,
 				9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
+				9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */,
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
+				9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */,
 				9BF12DC01FD4446600E45DE4 /* Journal+CoreDataClass.swift in Sources */,
 				9BF12DB51FD442BC00E45DE4 /* Journal.xcdatamodeld in Sources */,
+				9B3B860C1FE319870019B943 /* JournalLayout.swift in Sources */,
 				9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */,
 				9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */,
 			);

@@ -29,11 +29,6 @@ body, h1, p {
     margin: 0;
 }
 
-img {
-    display: block;
-    margin: auto;
-}
-
 div {
     display: block;
     position: static;
@@ -65,42 +60,12 @@ div {
     font-size: 12pt;
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: unwrap;
-    width: 100%;
-}
-
-.flex-row {
-    display: flex;
-    width: 100%;
-    flex-basis: 100%;
+#touchsurface {
+    width: 300px;
     height: 300px;
-}
-
-.flex-row > div {
-    /* self layout setting */
-    /*display: flex;*/
-    display: inline-block;
-    flex-basis: 100%;
-    margin : 1%;
-    background-color: DodgerBlue;
-    
-    /* background image display setting */
-    background-size:     cover;
-    /*background-repeat:   no-repeat;*/
-    background-position: center center;
-}
-
-.flex-colomn {
-    display: flex;
-    flex-basis: 100%;
-    flex-direction: column;
-    height: 800px;
-}
-.flex-colomn > div {
-    display: flex;
-    flex-basis: 100%;
-    margin : 2%;
-    background-color: DodgerBlue;
+    padding: 10px;
+    font-size: 24px;
+    line-height: 1.1em;
+    background: lightyellow;
+    border: 1px solid orange;
 }
