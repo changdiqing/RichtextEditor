@@ -8,14 +8,20 @@
 
 import UIKit
 
-class ColorCardTableViewController: UITableViewController {
+class ColorCardTableViewController:   UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var colorCardTable: UITableView!
+    @IBOutlet weak var addImageButtonHeight: NSLayoutConstraint!
+    
+    let defaultButtonHeight: CGFloat = 100
+    var buttonHeight: CGFloat = 0.00
     var colorCard:[UIColor] = []
-    var selectedColor:UIColor = UIColor.red
+    var selectedColor:UIColor?
+    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         colorCard = [UIColor.black,
                     UIColor.darkestIndigo(),
                     UIColor.lighterIndigo(),
@@ -25,6 +31,11 @@ class ColorCardTableViewController: UITableViewController {
                     UIColor.darkerCoral(),
                     UIColor.darkerRuby(),
                     UIColor.white]
+        
+        colorCardTable.delegate = self
+        colorCardTable.dataSource = self
+        
+        addImageButtonHeight.constant = buttonHeight
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,32 +45,6 @@ class ColorCardTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 90.0;//Choose your custom row height
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return colorCard.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath)
-
-        // Configure the cell...
-        cell.contentView.backgroundColor = colorCard[indexPath.row]
-        return cell
     }
     
 
@@ -102,10 +87,41 @@ class ColorCardTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let  selectedIndexPath = tableView.indexPathForSelectedRow else {
-            fatalError("cell must be selected!")
+        if let  selectedIndexPath = colorCardTable.indexPathForSelectedRow {
+            selectedColor = colorCard[selectedIndexPath.row]
+        } else {
+            selectedColor = nil
         }
-        selectedColor = colorCard[selectedIndexPath.row]
+        
     }
 
+}
+
+// MARK: - Table view data source
+extension ColorCardTableViewController: UITableViewDelegate{
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 90.0;//Choose your custom row height
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return colorCard.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath)
+        
+        // Configure the cell...
+        cell.contentView.backgroundColor = colorCard[indexPath.row]
+        return cell
+    }
 }

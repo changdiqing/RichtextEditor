@@ -239,6 +239,7 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("alt", alt);
     img.setAttribute("height", defaultImageHeight)
     img.setAttribute("style","float:left")
+    img.setAttribute("class","block")
     img.onload = RE.updateHeight;
     if (parentElement.id == "editor") {
         var wrapper = document.createElement('div');
@@ -257,16 +258,6 @@ RE.insertImage = function(url, alt) {
     sel.addRange(range);
 };
 
-RE.setBackgroundImage = function(url, alt) {
-    RE.restorerange();
-    
-    var parentElement = getSelectionBoundaryElement("start");
-    var selectedBlock = _findNodeByIDInContainer(parentElement,'block','editor');
-    //alert(selectedBlock);
-    selectedBlock.style.backgroundImage = "url(" + url + ")";
-    
-    RE.callback("input");
-};
 
 RE.resizeImageOfSelectedDiv = function(size) {
     var myimg = RE.editor.getElementsByTagName('img');

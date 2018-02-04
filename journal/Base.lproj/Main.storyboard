@@ -90,12 +90,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="-597"/>
+            <point key="canvasLocation" x="-1177" y="-624"/>
         </scene>
         <!--Color Card Table View Controller-->
+        <scene sceneID="SE3-cT-0aD">
+            <objects>
+                <viewController storyboardIdentifier="colorCardViewController" id="dtH-aW-vV8" customClass="ColorCardTableViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OLQ-Rf-n8c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zN-ro-d50">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Q2b-ac-TvQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="XJK-Sr-oni"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-pV-cew">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCardTableCell" id="ZUK-3Q-hVK">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUK-3Q-hVK" id="8n4-nO-ayy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="Mow-OB-lR1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6zN-ro-d50" firstAttribute="leading" secondItem="Kj1-Y9-L6X" secondAttribute="leading" id="0xM-TL-L3I"/>
+                            <constraint firstItem="6zN-ro-d50" firstAttribute="trailing" secondItem="Kj1-Y9-L6X" secondAttribute="trailing" id="9ZO-jd-Df6"/>
+                            <constraint firstItem="Kj1-Y9-L6X" firstAttribute="bottom" secondItem="0Cz-pV-cew" secondAttribute="bottom" id="JHm-Tk-oYo"/>
+                            <constraint firstItem="Kj1-Y9-L6X" firstAttribute="trailing" secondItem="0Cz-pV-cew" secondAttribute="trailing" id="Op5-Cj-33C"/>
+                            <constraint firstItem="6zN-ro-d50" firstAttribute="top" secondItem="OLQ-Rf-n8c" secondAttribute="top" id="ggC-Ow-rma"/>
+                            <constraint firstItem="0Cz-pV-cew" firstAttribute="top" secondItem="6zN-ro-d50" secondAttribute="bottom" id="hFI-DD-sZh"/>
+                            <constraint firstItem="0Cz-pV-cew" firstAttribute="leading" secondItem="Kj1-Y9-L6X" secondAttribute="leading" id="maz-FL-9zJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kj1-Y9-L6X"/>
+                    </view>
+                    <connections>
+                        <outlet property="addImageButtonHeight" destination="Q2b-ac-TvQ" id="d74-ot-YUv"/>
+                        <outlet property="colorCardTable" destination="0Cz-pV-cew" id="vlI-Py-tPF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVa-Dq-HFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dRk-0K-Zh6" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-375.19999999999999" y="9.4452773613193415"/>
+        </scene>
+        <!--Table View Controller-->
         <scene sceneID="Wzw-P1-D5p">
             <objects>
-                <tableViewController storyboardIdentifier="colorCardViewController" id="j00-ia-cIp" customClass="ColorCardTableViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="j00-ia-cIp" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eKQ-3n-o6H" colorLabel="IBBuiltInLabel-Red">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +181,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkA-Ec-Tlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rNA-fU-oc1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="326" y="53"/>
+            <point key="canvasLocation" x="326" y="10"/>
         </scene>
     </scenes>
 </document>
