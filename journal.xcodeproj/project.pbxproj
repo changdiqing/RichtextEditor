@@ -33,6 +33,7 @@
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B6C0D581FAA1AA1002E34C1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */; };
 		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
+		9B8099652024EC4100F0121B /* touchBlock.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlock.html */; };
 		9B8684C0200BA01800A82C7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684BF200BA01800A82C7E /* style.css */; };
 		9B8684C2200BA05500A82C7E /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684C1200BA05500A82C7E /* normalize.css */; };
 		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
@@ -98,6 +99,7 @@
 		9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		9B809961201CBB2900F0121B /* index */ = {isa = PBXFileReference; lastKnownFileType = folder; path = index; sourceTree = "<group>"; };
 		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
+		9B8099642024EC4100F0121B /* touchBlock.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock.html; sourceTree = "<group>"; };
 		9B8684BF200BA01800A82C7E /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		9B8684C1200BA05500A82C7E /* normalize.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
 		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */,
 				9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */,
 				9B53BFD82015424A00648A32 /* touchsurfaceTable.html */,
+				9B8099642024EC4100F0121B /* touchBlock.html */,
 			);
 			path = htmlJS;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			files = (
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
+				9B8099652024EC4100F0121B /* touchBlock.html in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,

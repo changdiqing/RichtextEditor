@@ -48,6 +48,13 @@ import UIKit
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
 open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate {
 
+    
+    //MARK: Public Properties added by Diqing Chang, 02.02.2018
+    public var toolbarScroll: UIScrollView?
+    public var doneToolbar: UIToolbar?
+    public var itemsForLayoutMode = [UIBarButtonItem]()
+    public var itemsForEditMode = [UIBarButtonItem]()
+    
     // MARK: Public Properties
 
     /// The delegate that will receive callbacks when certain actions are completed.
@@ -350,11 +357,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.insertHTML('\(html.escaped)');")
     }
     
-    public func setBackgroundImage(_ url: String, alt: String) {
-        runJS("RE.prepareInsert();")
-        runJS("RE.setBackgroundImage('\(url.escaped)', '\(alt.escaped)');")
-    }
-    
     public func insertLink(_ href: String, title: String) {
         runJS("RE.prepareInsert();")
         runJS("RE.insertLink('\(href.escaped)', '\(title.escaped)');")
@@ -382,6 +384,14 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     //MARK: New Methods added by Diqing 22.11.2017
+    
+    public func enterLayoutMode() {
+        runJS("method_enterLayoutMode();")
+    }
+    
+    public func enterContentMode() {
+        runJS("method_enterContentMode();")
+    }
     
     public func floatLeftImage() {
         runJS("RE.floatLeftImage();")

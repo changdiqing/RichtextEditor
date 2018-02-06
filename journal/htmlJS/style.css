@@ -59,23 +59,20 @@ div {
 
 .flex-row {
     display: flex;
-    width: 100%;
     flex-basis: 100%;
-    height: 300px;
-    resize: vertical;
     overflow: auto;
-}
-
-.flex-row:active {
-    height: 0;
 }
 
 .flex-row > div {
     /* self layout setting */
-    /*display: flex;*/
+    /*display: flex;
+    flex-basis: 100%;*/
     display: inline-block;
-    flex-basis: 100%;
+    width: 45%;
+    
+    
     margin : 1%;
+    height: 300px;
     background-color: DodgerBlue;
     
     /* background image display setting */
@@ -95,14 +92,4 @@ div {
     flex-basis: 100%;
     margin : 2%;
     background-color: DodgerBlue;
-}
-
-#touchsurface {
-    width: 100px;
-    height: 50px;
-    padding: 10px;
-    font-size: 24px;
-    line-height: 1.1em;
-    background: lightyellow;
-    border: 1px solid orange;
 }

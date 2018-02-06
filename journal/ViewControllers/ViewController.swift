@@ -15,7 +15,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     @IBOutlet var editorView: RichEditorView!
     var journal: Journal?
     var chooseLayout: Bool = false
-    var isLayoutMode: Bool = false
+    var touchBlockClicked: Bool = false
     var testDate:Date {
         get {
             let formatter = DateFormatter()
@@ -47,14 +47,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         editorView.delegate = self
         
-        /*
-        let url = Bundle.main.url(forResource: "index", withExtension: "html")
-        //let url = Bundle.main.url(forResource: "htmlLayout", withExtension: "html")
-        let myRequest = URLRequest(url: url!)
-        print(url)
-        print(myRequest)
-        editorView.webView.loadRequest(myRequest)*/
-        
         //editorView.becomeFirstResponder()
         
         
@@ -76,17 +68,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             editorView.webView.loadRequest(request)
             print("found")
         }
-        
-        // for testing, always load the same demo
-        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
-        let htmlStr: String = try! String(contentsOfFile: path!)
-        print("htmlStr is \(htmlStr)")
-        //self.editorView.html = htmlStr
-        //self.editorView.insertHTML(htmlStr)
-        print(self.editorView.html)
-        //self.editorView.webView.reload()
-        //print(self.editorView.runJS("document.documentElement.outerHTML"))
-        //self.editorView.html = self.journal?.html ??
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,7 +91,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         // Dismiss the picker if the user canceled.
         dismiss(animated: true, completion: nil)
         //self.editorView.becomeFirstResponder()
-        isLayoutMode = false
+        touchBlockClicked = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -129,10 +110,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         {
             try data?.write(to: filepath, options: Data.WritingOptions.atomic)
             let myUrl = filepath.absoluteString
-            if isLayoutMode {
-                //editorView.setBackgroundImage(myUrl, alt: myUrl)
-            } else {
+            if !touchBlockClicked {
                 editorView.insertImage(myUrl, alt: myUrl)
+            } else {
+                touchBlockClicked = false
+                editorView.setTouchBlockBackgroundImage(myUrl, alt: myUrl)
             }
         }
         catch
@@ -146,8 +128,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
-        isLayoutMode = false
-        
     }
     
     //Mark: Navigation
@@ -162,14 +142,31 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         if let sourceViewController = sender.source as? ColorCardTableViewController {
 
-            let selectedColor = sourceViewController.selectedColor
+            if let selectedColor = sourceViewController.selectedColor{
+                print(selectedColor)
+                if touchBlockClicked {
+                    touchBlockClicked = false
+                    self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
+                }else {
+                    self.editorView.restoreSelectionRange()
+                    self.editorView.setTextColor(selectedColor.htmlRGBA)
+                }
+            } else {
+                print("no color selected")
+                let imagePickerController = UIImagePickerController()
+                
+                // Only allow photos to be picked, not taken.
+                imagePickerController.sourceType = .photoLibrary
+                
+                // Make sure ViewController is notified when the user picks an image.
+                imagePickerController.delegate = self
+                DispatchQueue.main.async {
+                    self.present(imagePickerController, animated: true, completion: nil)
+                }
+                
+                print("presented")
+            }
             
-            self.editorView.restoreSelectionRange()
-            self.editorView.setTextColor(selectedColor.htmlRGBA)
-            
-            //save new event
-            // here code for saving the LTP.
-            // 首先我得知道如何编辑event，需要删除旧的event添加新的event还是可以直接编辑已有的event呢？
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
             chooseLayout = false
             let fileName = sourceViewController.selectedLayoutName
@@ -191,7 +188,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
 extension ViewController: JavaScriptFuncProtocol {
     func test() {
         
-        isLayoutMode = true
+        touchBlockClicked = true
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
+        colorCardViewController.buttonHeight = colorCardViewController.defaultButtonHeight
+        self.present(colorCardViewController, animated:true, completion:nil)
 //        let imagePickerController = UIImagePickerController()
 //
 //        // Only allow photos to be picked, not taken.
@@ -210,7 +211,7 @@ extension ViewController: JavaScriptFuncProtocol {
 
 extension ViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
-        // for testing, always load the same demo
+        // for testing, always load the same demo  why this block does not work??
         let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
         let htmlStr: String = try! String(contentsOfFile: path!)
         editor.insertHTML(htmlStr)
@@ -221,7 +222,6 @@ extension ViewController: RichEditorDelegate {
     }
     
     func richEditorInsertImage() {
-        //isLayoutMode = false
         let imagePickerController = UIImagePickerController()
         
         // Only allow photos to be picked, not taken.
@@ -233,16 +233,17 @@ extension ViewController: RichEditorDelegate {
     }
     
     func richEditorInsertlayout() {
-        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
+        let path = Bundle.main.path(forResource: "touchBlock", ofType: "html")
         let htmlStr: String = try! String(contentsOfFile: path!)
         self.editorView.insertHTML(htmlStr)
-        self.editorView.reAddEventListener()
+        //self.editorView.enterLayoutMode()
         //self.editorView.webView.reload()
     }
     
     func richEditorChangeColor() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
+        colorCardViewController.buttonHeight = 0.00
         self.present(colorCardViewController, animated:true, completion:nil)
     }
     

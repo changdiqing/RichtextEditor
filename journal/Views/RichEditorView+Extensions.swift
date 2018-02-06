@@ -14,10 +14,13 @@ extension RichEditorView{
             }
         }
     }
+    //MARK: new Methods added to RichEditorView
+    public func setTouchBlockBackgroundColor(_ colorInHex: String) {
+        runJS("method_changeStartBackgroundColor('\(colorInHex)');")
+    }
     
-    //MARK: Extended Methods added by Diqing Chang
-    func reAddEventListener() {
-        runJS("method_enterLayoutMode();")
+    public func setTouchBlockBackgroundImage(_ url: String, alt: String) {
+        runJS("method_changeStartBackgroundImage('\(url)', '\(alt)');")
     }
     
     
@@ -27,17 +30,20 @@ extension RichEditorView{
     {
         let buttonHeight = defaultParameters.UIToobarItemHeight
         let toolbarHeight = defaultParameters.UIToobarHeight
-        let toolbarScroll = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
-        toolbarScroll.showsHorizontalScrollIndicator = false
-        toolbarScroll.showsVerticalScrollIndicator = false
-        toolbarScroll.backgroundColor = .clear
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width*1.5, height: toolbarHeight))
+        
+        self.toolbarScroll = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
+        self.toolbarScroll!.showsHorizontalScrollIndicator = false
+        self.toolbarScroll!.showsVerticalScrollIndicator = false
+        self.toolbarScroll!.backgroundColor = .clear
+        self.doneToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width*1.6, height: toolbarHeight))
         //let doneToolbar: UIToolbar = UIToolbar()
-        doneToolbar.barStyle = .default
-        toolbarScroll.addSubview(doneToolbar)
-        toolbarScroll.contentSize.width = UIScreen.main.bounds.width
+        self.doneToolbar!.barStyle = .default
+        self.toolbarScroll!.addSubview(self.doneToolbar!)
+        self.toolbarScroll!.contentSize.width = UIScreen.main.bounds.width
         
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let iconLayoutMode = UIImage(named: "layoutMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let iconEditMode = UIImage(named: "editMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconenlarge = UIImage(named: "enlarge")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconlessen = UIImage(named: "lessen")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -54,7 +60,8 @@ extension RichEditorView{
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         
-        
+        let enterLayoutMode: UIBarButtonItem = UIBarButtonItem(image: iconLayoutMode, style: .done, target: self, action: #selector(self.enterLayoutModeAction))
+        let enterEditMode: UIBarButtonItem = UIBarButtonItem(image: iconEditMode, style: .done, target: self, action: #selector(self.enterEditModeAction))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
         let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: iconenlarge, style: .done, target: self, action: #selector(self.enlargeImageAction))
         let lessenImage: UIBarButtonItem = UIBarButtonItem(image: iconlessen, style: .done, target: self, action: #selector(self.lessenImageAction))
@@ -72,34 +79,55 @@ extension RichEditorView{
         let layouts: UIBarButtonItem = UIBarButtonItem(image: iconLayout?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.insertLayoutAction))
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
         
-        let items = [clear,
-                     underline,
-                     strikethrough,
-                     italic,
-                     alignRight,
-                     alignCenter,
-                     alignLeft,
-                     layouts,
-                     color,
-                     insertImage,
-                     floatLeftImage,
-                     floatRightImage,
-                     centerImage,
-                     enlargeImage,
-                     lessenImage,
-                     done]
-        for item in items {
+        self.itemsForEditMode = [
+            enterLayoutMode,
+            clear,
+            underline,
+            strikethrough,
+            italic,
+            alignRight,
+            alignCenter,
+            alignLeft,
+            layouts,
+            color,
+            insertImage,
+            floatLeftImage,
+            floatRightImage,
+            centerImage,
+            enlargeImage,
+            lessenImage,
+            done]
+        self.itemsForLayoutMode = [
+            enterEditMode,
+            done]
+        
+        for item in itemsForEditMode {
             item.tintColor = UIColor.ruby()
         }
         
-        doneToolbar.items = items
-        //doneToolbar.sizeToFit()
-        toolbarScroll.contentSize.width = doneToolbar.frame.width
+        for item in itemsForLayoutMode {
+            item.tintColor = UIColor.ruby()
+        }
         
-        self.inputAccessoryView = toolbarScroll
+        self.doneToolbar!.items = itemsForEditMode
+        //doneToolbar.sizeToFit()
+        self.toolbarScroll!.contentSize.width = self.doneToolbar!.frame.width
+        
+        self.inputAccessoryView = self.toolbarScroll
     }
     
     //MARK: ToolbarItemActions
+    
+    func enterLayoutModeAction() {
+        self.enterLayoutMode()
+        self.doneToolbar!.items=self.itemsForLayoutMode
+        
+    }
+    
+    func enterEditModeAction() {
+        self.enterContentMode()
+        self.doneToolbar!.items=self.itemsForEditMode
+    }
     
     func doneButtonAction()
     {
