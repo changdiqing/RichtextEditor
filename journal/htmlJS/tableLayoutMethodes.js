@@ -1,8 +1,8 @@
 var pressed = false,
     isResized = false,
     start = undefined,
-    resizeStepWidth = 20,
-    startX, startY, startWidth, startHeight, checkpointX, checkpointY;
+    resizeStepWidth = 15,
+    startX, startY, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
 
 function method_enterLayoutMode() {
     var touchsurfaceDiv = document.querySelectorAll("div.block");
@@ -43,30 +43,25 @@ function method_touchStartFunction(e){
     start = $(this);
     pressed = true;
     startX = e.pageX;
-    checkpointX = e.pageX;
     startY = e.pageY;
-    checkpointY = e.pageY;
     startWidth = $(this).width();
     startHeight = $(this).height();
-    //touchTimer = setTimeout(function() { myFunction(); }, 1000);
+    startRight = $(this).position().left+startWidth;
+    startBottom = $(this).position().top+startHeight;
     e.preventDefault();
 }
 
 function method_touchMoveFunction(e){
-    if(pressed) {
-        if(Math.abs(e.pageX-checkpointX) > resizeStepWidth) {
-            // if exceed Schrittweite limit then resize and update checkpoint
-            checkpointX = e.pageX;
-            $(start).width(startWidth+(e.pageX-startX));
-            if (!isResized){isResized = true}
-        }
-        if(Math.abs(e.pageY-checkpointY) > resizeStepWidth) {
-            // if exceed Schrittweite limit then resize and update checkpoint
-            checkpointY = e.pageY;
-            $(start).height(startHeight+(e.pageY-startY));
-            if (!isResized){isResized = true}
-        }
-       
+    offsetX = e.pageX-startX;
+    offsetY = e.pageY-startY;
+    
+    if (!isResized) {
+        if ((Math.abs(offsetX) > resizeStepWidth) || (Math.abs(offsetY) > resizeStepWidth)) {isResized = true;}
+    }
+    
+    if(pressed && isResized) {
+        $(start).width(startWidth+offsetX);
+        $(start).height(startHeight+offsetY);
     }
     e.preventDefault();
 }
@@ -76,15 +71,16 @@ function method_touchEndFunction(e){
         pressed = false;
     }
     
-    //if (touchTimer!==null) {
-    //    clearTimeout(doubletapTimer);
-        //start.contentEditable = true;
-    //} else {
-    //}
-    if(!isResized){
-        javaScriptCallToSwift.test();
-    } else {
+    if(isResized){
         isResized = false;
+        
+        newWidth = round($(start).width(), resizeStepWidth)
+        newHeight = round($(start).height(), resizeStepWidth)
+        
+        $(start).width(newWidth);
+        $(start).height(newHeight);
+    } else {
+        javaScriptCallToSwift.test();
     }
     
     e.preventDefault();
@@ -96,4 +92,8 @@ function method_changeStartBackgroundColor(color){
 
 function method_changeStartBackgroundImage(url, alt) {
     $(start).css("background-image", "url(" + url + ")");
+};
+
+var round = function (x, to) {
+    return Math.round(x / to) * to;
 };
