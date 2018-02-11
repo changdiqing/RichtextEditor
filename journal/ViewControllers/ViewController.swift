@@ -133,7 +133,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? ColorCardTableViewController {
-            print(sender.identifier)
             if let selectedColor = sourceViewController.selectedColor{
                 print(selectedColor)
                 if touchBlockClicked {
@@ -147,8 +146,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 self.editorView.setTouchblockTextOrientationHorizon()
             } else if sender.identifier == "textVertical"{
                 self.editorView.setTouchblockTextOrientationVertical()
+            } else if sender.identifier == "delete"{
+                self.editorView.removeClickedTouchblock()
             } else {
-                print(sender.identifier)
                 let imagePickerController = UIImagePickerController()
                 
                 // Only allow photos to be picked, not taken.

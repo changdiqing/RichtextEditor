@@ -146,6 +146,10 @@ function mehtod_setStartTextOrientationHorizon() {
     $(start).css("writing-mode", "horizontal-tb");
 }
 
+function mehtod_removeStart() {
+    $(start).remove();
+}
+
 var round = function (x, to) {
     return Math.round(x / to) * to;
 };

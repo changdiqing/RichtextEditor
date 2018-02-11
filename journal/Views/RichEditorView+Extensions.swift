@@ -50,6 +50,10 @@ extension RichEditorView{
         runJS("mehtod_setStartTextOrientationHorizon();")
     }
     
+    public func removeClickedTouchblock() {
+        runJS("mehtod_removeStart();")
+    }
+    
     
     //MARK: create a toolbar and add to RichEditorView
     

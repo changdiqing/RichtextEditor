@@ -9,12 +9,16 @@
 import UIKit
 import RichEditorView
 
-class ColorCardTableViewController:   UIViewController, UITableViewDataSource {
+class ColorCardTableViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var colorCardTable: UITableView!
     @IBOutlet weak var addImageButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var filterWidth: NSLayoutConstraint!
+    @IBOutlet weak var touchBlockDashTabbar: UITabBar!
+    @IBOutlet weak var filterCollectionView: UIView!
     
     let defaultButtonHeight: CGFloat = 100
+    let screenWidth: CGFloat = UIScreen.main.bounds.width
     var buttonHeight: CGFloat = 0.00
     var colorCard:[UIColor] = []
     var selectedColor:UIColor?
@@ -35,8 +39,10 @@ class ColorCardTableViewController:   UIViewController, UITableViewDataSource {
         
         colorCardTable.delegate = self
         colorCardTable.dataSource = self
+        touchBlockDashTabbar.delegate = self
         
         addImageButtonHeight.constant = buttonHeight
+        filterWidth.constant = 0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -95,10 +101,14 @@ class ColorCardTableViewController:   UIViewController, UITableViewDataSource {
         }
         
     }
-
+    
+    //MARK: - TabbarView Methods
+    
+    
+    
 }
 
-// MARK: - Table view data source
+// MARK: - Table view delegate
 extension ColorCardTableViewController: UITableViewDelegate{
     
     
@@ -124,5 +134,16 @@ extension ColorCardTableViewController: UITableViewDelegate{
         // Configure the cell...
         cell.contentView.backgroundColor = colorCard[indexPath.row]
         return cell
+    }
+}
+
+extension ColorCardTableViewController:  UITabBarDelegate {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if(item.tag == 0) {
+            filterWidth.constant = screenWidth
+            //filterCollectionView.layoutIfNeeded()
+        } else if(item.tag == 1) {
+            filterWidth.constant = 0
+        }
     }
 }
