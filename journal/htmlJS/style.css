@@ -46,7 +46,8 @@ div {
     height: 100%;
     overflow: auto;
     display: block;
-    font-family: 'HelveticaNeue';
+    /*font-family: 'HelveticaNeue';*/
+    font-family: 'Lora', serif;
     color:#666666;
     font-size: 12pt;
 }
@@ -58,27 +59,29 @@ div {
 }
 
 .flex-row {
-    display: flex;
-    flex-basis: 100%;
+    display: inline-flex;
+    /*flex-basis: 100%;*/
     overflow: auto;
 }
 
-.flex-row > div {
+.flex-row > div.block {
     /* self layout setting */
-    /*display: flex;
-    flex-basis: 100%;*/
-    display: inline-block;
-    width: 45%;
-    
-    
+    /*display: inline-block;*/
     margin : 1%;
     height: 300px;
     background-color: DodgerBlue;
+    /*writing-mode: vertical-lr;*/
     
     /* background image display setting */
     background-size:     cover;
     /*background-repeat:   no-repeat;*/
     background-position: center center;
+}
+div.children {
+    /* self layout setting */
+    height:100%;
+    background-color: red;
+    
 }
 
 .flex-colomn {
@@ -92,4 +95,33 @@ div {
     flex-basis: 100%;
     margin : 2%;
     background-color: DodgerBlue;
+    writing-mode: vertical-lr;
+}
+
+font[size='1'] {
+    font-size: 10px;
+}
+
+font[size='2'] {
+    font-size: 20px;
+}
+
+font[size='3'] {
+    font-size: 40px;
+}
+
+font[size='4'] {
+    font-size: 60px;
+}
+
+font[size='5'] {
+    font-size: 80px;
+}
+
+font[size='6'] {
+    font-size: 100px;
+}
+
+font[size='7'] {
+    font-size: 520px;
 }

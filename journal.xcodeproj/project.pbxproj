@@ -33,10 +33,13 @@
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B6C0D581FAA1AA1002E34C1 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */; };
 		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
-		9B8099652024EC4100F0121B /* touchBlock.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlock.html */; };
+		9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlock2x2.html */; };
+		9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099662029C20B00F0121B /* touchBlock3x3.html */; };
+		9B8099692029C21E00F0121B /* touchBlock4x4.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099682029C21E00F0121B /* touchBlock4x4.html */; };
 		9B8684C0200BA01800A82C7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684BF200BA01800A82C7E /* style.css */; };
 		9B8684C2200BA05500A82C7E /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684C1200BA05500A82C7E /* normalize.css */; };
 		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
+		9B999C8A202CF61500F14891 /* Lora in Resources */ = {isa = PBXBuildFile; fileRef = 9B999C89202CF61500F14891 /* Lora */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		9BF12DB51FD442BC00E45DE4 /* Journal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12DB31FD442BC00E45DE4 /* Journal.xcdatamodeld */; };
@@ -97,12 +100,14 @@
 		9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCardTableViewController.swift; sourceTree = "<group>"; };
 		9B6C0D571FAA1AA1002E34C1 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
-		9B809961201CBB2900F0121B /* index */ = {isa = PBXFileReference; lastKnownFileType = folder; path = index; sourceTree = "<group>"; };
 		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
-		9B8099642024EC4100F0121B /* touchBlock.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock.html; sourceTree = "<group>"; };
+		9B8099642024EC4100F0121B /* touchBlock2x2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock2x2.html; sourceTree = "<group>"; };
+		9B8099662029C20B00F0121B /* touchBlock3x3.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock3x3.html; sourceTree = "<group>"; };
+		9B8099682029C21E00F0121B /* touchBlock4x4.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock4x4.html; sourceTree = "<group>"; };
 		9B8684BF200BA01800A82C7E /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		9B8684C1200BA05500A82C7E /* normalize.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
 		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		9B999C89202CF61500F14891 /* Lora */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lora; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		9BF12DB41FD442BC00E45DE4 /* Journal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Journal.xcdatamodel; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 		9B3B86001FDB49D40019B943 /* htmlJS */ = {
 			isa = PBXGroup;
 			children = (
+				9B999C89202CF61500F14891 /* Lora */,
 				9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */,
 				9B53BFD020153F4800648A32 /* index.js */,
 				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
@@ -166,7 +172,9 @@
 				9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */,
 				9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */,
 				9B53BFD82015424A00648A32 /* touchsurfaceTable.html */,
-				9B8099642024EC4100F0121B /* touchBlock.html */,
+				9B8099642024EC4100F0121B /* touchBlock2x2.html */,
+				9B8099682029C21E00F0121B /* touchBlock4x4.html */,
+				9B8099662029C20B00F0121B /* touchBlock3x3.html */,
 			);
 			path = htmlJS;
 			sourceTree = "<group>";
@@ -216,7 +224,6 @@
 		9B4A784F1FAA1519000F39FC /* journal */ = {
 			isa = PBXGroup;
 			children = (
-				9B809961201CBB2900F0121B /* index */,
 				9B3B86001FDB49D40019B943 /* htmlJS */,
 				9B43498D1FD1FAFB0009E899 /* Handlers */,
 				9B4349881FD1FA7F0009E899 /* DataModel */,
@@ -403,17 +410,20 @@
 			files = (
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
-				9B8099652024EC4100F0121B /* touchBlock.html in Resources */,
+				9B999C8A202CF61500F14891 /* Lora in Resources */,
+				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
 				9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
 				9B53BFD420153F4900648A32 /* index.js in Resources */,
+				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
 				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
+				9B8099692029C21E00F0121B /* touchBlock4x4.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

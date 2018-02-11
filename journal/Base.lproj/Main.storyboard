@@ -100,43 +100,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zN-ro-d50">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Q2b-ac-TvQ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="XJK-Sr-oni"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-pV-cew">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="75" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6zN-ro-d50" userLabel="Change Image">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="Q2b-ac-TvQ"/>
+                                    </constraints>
+                                    <state key="normal" title="Change Image"/>
+                                    <connections>
+                                        <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="XJK-Sr-oni"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCardTableCell" id="ZUK-3Q-hVK">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUK-3Q-hVK" id="8n4-nO-ayy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="Mow-OB-lR1"/>
+                                            <segue destination="dRk-0K-Zh6" kind="unwind" identifier="setColor" unwindAction="unwindToRichtextEditorWithSender:" id="Mow-OB-lR1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-18-q2K">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wM-Vq-3tb">
+                                        <rect key="frame" x="0.0" y="7.5" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="I0r-do-VzM"/>
+                                            <constraint firstAttribute="width" constant="60" id="zuU-aD-ZHE"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="100" height="100"/>
+                                        <state key="normal" image="textDirectionHorizontal"/>
+                                        <connections>
+                                            <segue destination="dRk-0K-Zh6" kind="unwind" identifier="textHorizon" unwindAction="unwindToRichtextEditorWithSender:" id="THD-wH-WGd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-12-dlg">
+                                        <rect key="frame" x="68" y="7.5" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="0Sw-Gh-8Sy"/>
+                                            <constraint firstAttribute="height" constant="60" id="FxD-Pi-t5r"/>
+                                        </constraints>
+                                        <state key="normal" title="align horizontal" image="textDirectionVertical"/>
+                                        <connections>
+                                            <segue destination="dRk-0K-Zh6" kind="unwind" identifier="textVertical" unwindAction="unwindToRichtextEditorWithSender:" id="alG-fm-5qx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCg-WE-jQJ">
+                                        <rect key="frame" x="136" y="22.5" width="46.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-9T-knx">
+                                        <rect key="frame" x="190.5" y="22.5" width="184.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="0Oa-Tq-ZnC"/>
+                                    <constraint firstItem="GBU-12-dlg" firstAttribute="top" secondItem="LYp-18-q2K" secondAttribute="top" constant="8" id="5gw-04-wMb"/>
+                                    <constraint firstItem="2wM-Vq-3tb" firstAttribute="top" secondItem="LYp-18-q2K" secondAttribute="top" constant="8" id="Clc-vp-lmZ"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6zN-ro-d50" firstAttribute="leading" secondItem="Kj1-Y9-L6X" secondAttribute="leading" id="0xM-TL-L3I"/>
-                            <constraint firstItem="6zN-ro-d50" firstAttribute="trailing" secondItem="Kj1-Y9-L6X" secondAttribute="trailing" id="9ZO-jd-Df6"/>
+                            <constraint firstItem="LYp-18-q2K" firstAttribute="top" secondItem="OLQ-Rf-n8c" secondAttribute="top" id="4TX-Rw-32C"/>
                             <constraint firstItem="Kj1-Y9-L6X" firstAttribute="bottom" secondItem="0Cz-pV-cew" secondAttribute="bottom" id="JHm-Tk-oYo"/>
+                            <constraint firstItem="0Cz-pV-cew" firstAttribute="top" secondItem="LYp-18-q2K" secondAttribute="bottom" id="OF7-op-6fc"/>
                             <constraint firstItem="Kj1-Y9-L6X" firstAttribute="trailing" secondItem="0Cz-pV-cew" secondAttribute="trailing" id="Op5-Cj-33C"/>
-                            <constraint firstItem="6zN-ro-d50" firstAttribute="top" secondItem="OLQ-Rf-n8c" secondAttribute="top" id="ggC-Ow-rma"/>
-                            <constraint firstItem="0Cz-pV-cew" firstAttribute="top" secondItem="6zN-ro-d50" secondAttribute="bottom" id="hFI-DD-sZh"/>
+                            <constraint firstItem="Kj1-Y9-L6X" firstAttribute="trailing" secondItem="LYp-18-q2K" secondAttribute="trailing" id="Uks-3l-VAw"/>
                             <constraint firstItem="0Cz-pV-cew" firstAttribute="leading" secondItem="Kj1-Y9-L6X" secondAttribute="leading" id="maz-FL-9zJ"/>
+                            <constraint firstItem="LYp-18-q2K" firstAttribute="leading" secondItem="Kj1-Y9-L6X" secondAttribute="leading" id="tLp-Ul-kx7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kj1-Y9-L6X"/>
                     </view>
@@ -148,7 +190,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVa-Dq-HFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dRk-0K-Zh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-375.19999999999999" y="9.4452773613193415"/>
+            <point key="canvasLocation" x="-572" y="9"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Wzw-P1-D5p">
@@ -184,4 +226,8 @@
             <point key="canvasLocation" x="326" y="10"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="textDirectionHorizontal" width="75" height="75"/>
+        <image name="textDirectionVertical" width="75" height="75"/>
+    </resources>
 </document>

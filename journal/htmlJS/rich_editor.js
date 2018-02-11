@@ -175,6 +175,31 @@ RE.setUnderline = function() {
     document.execCommand('underline', false, null);
 };
 
+RE.increaseTextSize = function() {
+    var fontSize = document.queryCommandValue("FontSize");
+    var fontSizeInt = Number(fontSize);
+    if (fontSizeInt<7) {fontSizeInt += 1;}
+    document.execCommand("styleWithCSS", null, true);
+    document.execCommand("fontSize", false, fontSizeInt);
+    document.execCommand("styleWithCSS", null, false);
+};
+
+RE.decreaseTextSize = function() {
+    var fontSize = document.queryCommandValue("FontSize");
+    var fontSizeInt = Number(fontSize);
+    if (fontSizeInt>1) {fontSizeInt -= 1;}
+    document.execCommand("styleWithCSS", null, true);
+    document.execCommand("fontSize", false, fontSizeInt);
+    document.execCommand("styleWithCSS", null, false);
+};
+
+RE.setTextColor = function(color) {
+    RE.restorerange();
+    document.execCommand("styleWithCSS", null, true);
+    document.execCommand('foreColor', false, color);
+    document.execCommand("styleWithCSS", null, false);
+};
+
 RE.setTextColor = function(color) {
     RE.restorerange();
     document.execCommand("styleWithCSS", null, true);

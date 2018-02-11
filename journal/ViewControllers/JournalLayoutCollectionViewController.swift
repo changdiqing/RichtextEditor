@@ -19,7 +19,7 @@ class JournalLayoutCollectionViewController: UICollectionViewController {
     fileprivate let itemsPerRow: CGFloat = 3
     
     // values to be passed to other classes
-    var selectedLayoutName:String = ""
+    var selectedLayoutName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

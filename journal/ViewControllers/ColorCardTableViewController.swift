@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RichEditorView
 
 class ColorCardTableViewController:   UIViewController, UITableViewDataSource {
     

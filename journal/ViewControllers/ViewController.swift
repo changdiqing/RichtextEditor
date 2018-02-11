@@ -66,19 +66,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
             let request = URLRequest(url: url)
             editorView.webView.loadRequest(request)
-            print("found")
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if chooseLayout {presentJournalLayouts()}
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("finger is not touching.")
-        if touches.first != nil {
-            print("finger is not touching.")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,7 +133,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? ColorCardTableViewController {
-
+            print(sender.identifier)
             if let selectedColor = sourceViewController.selectedColor{
                 print(selectedColor)
                 if touchBlockClicked {
@@ -151,8 +143,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                     self.editorView.restoreSelectionRange()
                     self.editorView.setTextColor(selectedColor.htmlRGBA)
                 }
+            } else if sender.identifier == "textHorizon"{
+                self.editorView.setTouchblockTextOrientationHorizon()
+            } else if sender.identifier == "textVertical"{
+                self.editorView.setTouchblockTextOrientationVertical()
             } else {
-                print("no color selected")
+                print(sender.identifier)
                 let imagePickerController = UIImagePickerController()
                 
                 // Only allow photos to be picked, not taken.
@@ -163,25 +159,28 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 DispatchQueue.main.async {
                     self.present(imagePickerController, animated: true, completion: nil)
                 }
-                
-                print("presented")
             }
             
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
             chooseLayout = false
-            let fileName = sourceViewController.selectedLayoutName
-            //loadHTML(from: fileName)
+            if let fileName = sourceViewController.selectedLayoutName {
+                insertHTML(from: fileName)
+            }
+            
+            
         }
     }
     
     //MARK: Private Methods
-    func loadHTML(from filename: String) {
-        let path = Bundle.main.path(forResource: filename, ofType: "html")
-        do {
-            let htmlStr = try String(contentsOfFile: path!)
-            self.editorView.html = htmlStr
+    func insertHTML(from filename: String) {
+        if let path = Bundle.main.path(forResource: filename, ofType: "html") {
+            do {
+                let htmlStr = try String(contentsOfFile: path)
+                self.editorView.insertHTML(htmlStr)
+                self.editorView.enterContentMode()
+            }
+            catch {"error: file not found"}
         }
-        catch {"error: file not found"}
     }
 }
 
@@ -211,7 +210,7 @@ extension ViewController: JavaScriptFuncProtocol {
 
 extension ViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
-        // for testing, always load the same demo  why this block does not work??
+        // for testing, always load the same demo
         let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
         let htmlStr: String = try! String(contentsOfFile: path!)
         editor.insertHTML(htmlStr)
@@ -233,11 +232,7 @@ extension ViewController: RichEditorDelegate {
     }
     
     func richEditorInsertlayout() {
-        let path = Bundle.main.path(forResource: "touchBlock", ofType: "html")
-        let htmlStr: String = try! String(contentsOfFile: path!)
-        self.editorView.insertHTML(htmlStr)
-        //self.editorView.enterLayoutMode()
-        //self.editorView.webView.reload()
+        self.presentJournalLayouts()
     }
     
     func richEditorChangeColor() {

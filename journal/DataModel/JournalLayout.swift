@@ -12,17 +12,19 @@ import UIKit
 struct JournalLayoutItem{
     var htmlFileName: String = "wrong name"
     var layoutImage: UIImage = UIImage(named: "centerImage")!
-    init(htmlFileName fileName: String, layoutImage image: UIImage!) {
+    init(htmlFileName fileName: String, layoutImage image: UIImage?) {
         htmlFileName = fileName
-        layoutImage = image!
+        if image != nil {
+            layoutImage = image!
+        }
+        
     }
 }
 
 class JournalLayout {
     static let journalLayoutList:[JournalLayoutItem] = [
-                                                JournalLayoutItem(htmlFileName: "htmlLayout1", layoutImage: UIImage(named: "centerImage")),
-                                                JournalLayoutItem(htmlFileName: "test name", layoutImage: UIImage(named: "centerImage")),
-                                                JournalLayoutItem(htmlFileName: "test name", layoutImage: UIImage(named: "centerImage")),
-                                                JournalLayoutItem(htmlFileName: "test name", layoutImage: UIImage(named: "centerImage"))
+                                                JournalLayoutItem(htmlFileName: "touchBlock2x2", layoutImage: UIImage(named: "layout2x2")),
+                                                JournalLayoutItem(htmlFileName: "touchBlock3x3", layoutImage: UIImage(named: "layout3x3")),
+                                                JournalLayoutItem(htmlFileName: "touchBlock4x4", layoutImage: UIImage(named: "layout4x4")),
                                                 ]
 }

@@ -375,23 +375,16 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     //MARK: New Methods added by Diqing 07.11.2017
+    /* obsolete
     public func enlargeImage() {
         runJS("RE.increaseImageSizeOfSelectedDiv();")
     }
     
     public func lessenImage() {
         runJS("RE.decreaseImageSizeOfSelectedDiv();")
-    }
+    }*/
     
     //MARK: New Methods added by Diqing 22.11.2017
-    
-    public func enterLayoutMode() {
-        runJS("method_enterLayoutMode();")
-    }
-    
-    public func enterContentMode() {
-        runJS("method_enterContentMode();")
-    }
     
     public func floatLeftImage() {
         runJS("RE.floatLeftImage();")
@@ -600,8 +593,10 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     /// If we are not already the first responder, focus the editor.
     @objc private func viewWasTapped() {
         if !webView.containsFirstResponder {
-            let point = tapRecognizer.location(in: webView)
-            focus(at: point)
+            //let point = tapRecognizer.location(in: webView)  // commented by Diqing, 07.02.2017
+            //focus(at: point)   // commented by Diqing, 07.02.2017
+            // changed by Diqing Chang, 07.02.2017 to help select end of editor.
+            runJS("setEndOfContenteditable()")
         }
     }
     
