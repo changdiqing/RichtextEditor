@@ -23,8 +23,8 @@ struct JournalLayoutItem{
 
 class JournalLayout {
     static let journalLayoutList:[JournalLayoutItem] = [
-                                                JournalLayoutItem(htmlFileName: "touchBlock2x2", layoutImage: UIImage(named: "layout2x2")),
-                                                JournalLayoutItem(htmlFileName: "touchBlock3x3", layoutImage: UIImage(named: "layout3x3")),
-                                                JournalLayoutItem(htmlFileName: "touchBlock4x4", layoutImage: UIImage(named: "layout4x4")),
-                                                ]
+        JournalLayoutItem(htmlFileName: "touchBlock2x2", layoutImage: UIImage(named: "layout2x2")),
+        JournalLayoutItem(htmlFileName: "touchBlock3x3", layoutImage: UIImage(named: "layout3x3")),
+        JournalLayoutItem(htmlFileName: "touchBlock4x4", layoutImage: UIImage(named: "layout4x4")),
+    ]
 }

@@ -15,6 +15,10 @@ extension RichEditorView{
         }
     }
     //MARK: new Methods added to RichEditorView
+    public func setTouchblockFilter(_ filterType: String) {
+        runJS("method_setTouchblockFilter('\(filterType)');")
+    }
+    
     public func setTouchBlockBackgroundColor(_ colorInHex: String) {
         runJS("method_changeStartBackgroundColor('\(colorInHex)');")
     }

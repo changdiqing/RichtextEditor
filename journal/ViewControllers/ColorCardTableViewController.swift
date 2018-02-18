@@ -9,19 +9,23 @@
 import UIKit
 import RichEditorView
 
-class ColorCardTableViewController: UIViewController, UITableViewDataSource {
+class ColorCardTableViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
     
     @IBOutlet weak var colorCardTable: UITableView!
     @IBOutlet weak var addImageButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var filterWidth: NSLayoutConstraint!
     @IBOutlet weak var touchBlockDashTabbar: UITabBar!
-    @IBOutlet weak var filterCollectionView: UIView!
+    @IBOutlet weak var filterCollectionView: UICollectionView!
+    
+    fileprivate let filterList = DivFilters.divFilterList
     
     let defaultButtonHeight: CGFloat = 100
-    let screenWidth: CGFloat = UIScreen.main.bounds.width
+    var screenWidth: CGFloat = UIScreen.main.bounds.width
+    var filterCellWidth: CGFloat?
     var buttonHeight: CGFloat = 0.00
     var colorCard:[UIColor] = []
     var selectedColor:UIColor?
+    var selectedFilter:divFilter?
     
 
     
@@ -38,11 +42,14 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource {
                     UIColor.white]
         
         colorCardTable.delegate = self
-        colorCardTable.dataSource = self
+        colorCardTable.dataSource = self as UITableViewDataSource
         touchBlockDashTabbar.delegate = self
+        filterCollectionView.dataSource = self
+        filterCollectionView.delegate = self as UICollectionViewDelegate
         
         addImageButtonHeight.constant = buttonHeight
         filterWidth.constant = 0
+        filterCellWidth = screenWidth/4
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -99,6 +106,13 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource {
         } else {
             selectedColor = nil
         }
+        if segue.identifier == "setFilter" {
+            let cell = sender as! CustomCollectionViewCell
+            if let indexPath = self.filterCollectionView!.indexPath(for: cell){
+                selectedFilter = filterList[indexPath.row]
+            }
+            
+        }
         
     }
     
@@ -137,7 +151,33 @@ extension ColorCardTableViewController: UITableViewDelegate{
     }
 }
 
+extension ColorCardTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: filterCellWidth!, height: filterCellWidth!);
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filterList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+        
+        let filter = filterList[indexPath.row]
+        
+        cell.displayContent(image: filter.coverImage, title: filter.name)
+        
+        return cell
+    }
+    
+}
+
 extension ColorCardTableViewController:  UITabBarDelegate {
+
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if(item.tag == 0) {
             filterWidth.constant = screenWidth

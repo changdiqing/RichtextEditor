@@ -148,6 +148,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 self.editorView.setTouchblockTextOrientationVertical()
             } else if sender.identifier == "delete"{
                 self.editorView.removeClickedTouchblock()
+            } else if sender.identifier == "setFilter"{
+                if let selectedFilter = sourceViewController.selectedFilter{
+                    self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
+                }
             } else {
                 let imagePickerController = UIImagePickerController()
                 

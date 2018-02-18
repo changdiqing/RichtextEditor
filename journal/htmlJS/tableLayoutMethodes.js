@@ -130,6 +130,10 @@ function method_touchEndFunction(e){
     e.preventDefault();
 }
 
+function method_setTouchblockFilter(filterType){
+    $(start).css("filter",filterType);
+}
+
 function method_changeStartBackgroundColor(color){
     $(start).css("background-color",color);
 }
