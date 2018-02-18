@@ -130,6 +130,11 @@ function method_touchEndFunction(e){
     e.preventDefault();
 }
 
+function method_cloneTouchblock() {
+    var $clone = $(start).clone();
+    $(start).parent().append($clone);
+}
+
 function method_setTouchblockFilter(filterType){
     $(start).css("filter",filterType);
 }

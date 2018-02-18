@@ -144,6 +144,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 }
             } else if sender.identifier == "textHorizon"{
                 self.editorView.setTouchblockTextOrientationHorizon()
+            } else if sender.identifier == "clone"{
+                self.editorView.cloneTouchblock()
             } else if sender.identifier == "textVertical"{
                 self.editorView.setTouchblockTextOrientationVertical()
             } else if sender.identifier == "delete"{

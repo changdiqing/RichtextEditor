@@ -15,6 +15,11 @@ extension RichEditorView{
         }
     }
     //MARK: new Methods added to RichEditorView
+    public func cloneTouchblock() {
+        runJS("method_cloneTouchblock();")
+        self.enterLayoutMode()
+    }
+
     public func setTouchblockFilter(_ filterType: String) {
         runJS("method_setTouchblockFilter('\(filterType)');")
     }
