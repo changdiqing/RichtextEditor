@@ -2,8 +2,18 @@ var pressed = false,
     isResized = false,
     start = undefined,
     resizeStepWidth = 15,
-    startX, startY, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
+    startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
 
+
+// new document methods added by Diqing Chang on 25.02.2018
+
+function method_bodyAppendHTML(html) {
+    document.getElementById("demo").innerHTML = "Hello World1";
+    //document.body.innerHTML += html;
+    document.getElementById("demo").innerHTML = "Hello World2";
+    
+}
+// floatingTouchBlock Methods
 function method_enterLayoutMode() {
     var touchsurface = document.querySelectorAll("img.block");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -13,6 +23,16 @@ function method_enterLayoutMode() {
         touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
         touchsurface[i].addEventListener('touchend', method_touchEndFunction, false);
     }
+    
+    var touchsurface = document.querySelectorAll("div.floatingTouchblock");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = false;
+        touchsurface[i].style.border = "thin solid #000000";
+        touchsurface[i].addEventListener('touchstart', method_touchStartFunction, false);
+        touchsurface[i].addEventListener('touchmove', method_touchMoveFloating, false);
+        touchsurface[i].addEventListener('touchend', method_touchEndFunction, false);
+    }
+    
     var touchsurfaceDiv = document.querySelectorAll("div.block");
     for (var i = 0; i < touchsurfaceDiv.length ; i++) {
         touchsurfaceDiv[i].contentEditable = false;
@@ -23,7 +43,6 @@ function method_enterLayoutMode() {
     }
 }
 
-            
 function method_noEnterDivOld(e) {
     // trap the return key being pressed
     e.preventDefault();
@@ -56,17 +75,21 @@ function method_enterContentMode() {
         touchsurfaceDiv[i].removeEventListener('touchmove', method_touchMoveFunction, false);
         touchsurfaceDiv[i].removeEventListener('touchend', method_touchEndFunction, false);
     }
-    /*touchsurfaceDiv[i].addEventListener('touchstart', function(e){
-                                        if (e.keyCode === 13) {
-                                        e.preventDefault();
-                                        // insert 2 br tags (if only one br tag is inserted the             cursor won't go to the next line)
-                                        document.execCommand('insertHTML', false, '<br><br>');
-                                        // prevent the default behaviour of return key pressed
-                                        //document.getElementById("demo").innerHTML = "Hello World";
-                                        return false;
-                                        }
-                                        
-                                        });*/
+    
+    var touchsurface = document.querySelectorAll("div.floatingTouchblock");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = true;
+        touchsurface[i].style.border = "none";
+        touchsurface[i].removeEventListener('touchstart', method_touchStartFunction, false);
+        touchsurface[i].removeEventListener('touchmove', method_touchMoveFloating, false);
+        touchsurface[i].removeEventListener('touchend', method_touchEndFunction, false);
+    }
+    
+    //var touchsurface = document.querySelectorAll("div.touchblockResizeButton");
+    //for (var i = 0; i < touchsurface.length ; i++) {
+    //    touchsurface[i].contentEditable = false;
+    //}
+
     var touchsurface = document.querySelectorAll("img.block");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].contentEditable = true;
@@ -75,10 +98,20 @@ function method_enterContentMode() {
         touchsurface[i].removeEventListener('touchmove', method_touchMoveFunction, false);
         touchsurface[i].removeEventListener('touchend', method_touchEndFunction, false);
     }
+    
     var touchsurfaceDiv = document.querySelectorAll("div.flex-row");
     for (var i = 0; i < touchsurfaceDiv.length ; i++) {
         touchsurfaceDiv[i].contentEditable = false;
     }
+}
+
+var touchsurface = document.querySelectorAll("div.touchblockResizeButton");
+for (var i = 0; i < touchsurface.length ; i++) {
+    touchsurface[i].contentEditable = false;
+}
+
+function method_focusOnClick(e){
+    $(this).focus();
 }
 
 
@@ -90,8 +123,8 @@ function method_touchStartFunction(e){
     startY = e.pageY;
     startWidth = $(this).width();
     startHeight = $(this).height();
-    startRight = $(this).position().left+startWidth;
-    startBottom = $(this).position().top+startHeight;
+    startLeft = $(this).position().left;
+    startTop = $(this).position().top;
     e.preventDefault();
 }
 
@@ -106,6 +139,20 @@ function method_touchMoveFunction(e){
     if(pressed && isResized) {
         $(start).width(startWidth+offsetX);
         $(start).height(startHeight+offsetY);
+    }
+    e.preventDefault();
+}
+
+function method_touchMoveFloating(e){
+    offsetX = e.pageX-startX;
+    offsetY = e.pageY-startY;
+    
+    if (!isResized) {
+        if ((Math.abs(offsetX) > resizeStepWidth) || (Math.abs(offsetY) > resizeStepWidth)) {isResized = true;}
+    }
+    
+    if(pressed && isResized) {
+        $(start).css({top: startTop+offsetY, left: startLeft+offsetX, position:'absolute'});
     }
     e.preventDefault();
 }

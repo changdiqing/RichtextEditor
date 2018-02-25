@@ -419,9 +419,15 @@ RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
 };
 
+RE.appendHTML = function(html) {
+    //RE.restorerange();
+    document.body.innerHTML += html;
+};
+
 RE.insertHTML = function(html) {
     RE.restorerange();
     document.execCommand('insertHTML', false, html);
+    //document.body.innerHTML += html;
 };
 
 RE.insertLink = function(url, title) {

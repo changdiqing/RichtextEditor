@@ -353,8 +353,11 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     public func insertHTML(_ html: String) {
-        print("insertHTML called")
         runJS("RE.insertHTML('\(html.escaped)');")
+    }
+    
+    public func appendHTML(_ html: String) {
+        runJS("RE.appendHTML('\(html.escaped)');")
     }
     
     public func insertLink(_ href: String, title: String) {
@@ -597,6 +600,9 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             //focus(at: point)   // commented by Diqing, 07.02.2017
             // changed by Diqing Chang, 07.02.2017 to help select end of editor.
             runJS("setEndOfContenteditable()")
+        } else {
+            let point = tapRecognizer.location(in: webView)  // commented by Diqing, 07.02.2017
+            //focus(at: point)
         }
     }
     

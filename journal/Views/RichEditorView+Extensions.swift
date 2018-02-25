@@ -14,7 +14,12 @@ extension RichEditorView{
             }
         }
     }
-    //MARK: new Methods added to RichEditorView
+    //MARK: new document methods added to RichEditorView
+    
+    
+    
+    //MARK: Touchblock Methods
+    
     public func cloneTouchblock() {
         runJS("method_cloneTouchblock();")
         self.enterLayoutMode()

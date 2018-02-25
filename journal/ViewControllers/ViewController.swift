@@ -169,8 +169,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
             chooseLayout = false
-            if let fileName = sourceViewController.selectedLayoutName {
-                insertHTML(from: fileName)
+            if let layout = sourceViewController.selectedLayout {
+                insertHTML(filename: layout.htmlFileName, isAppended: layout.append)
             }
             
             
@@ -178,11 +178,26 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     }
     
     //MARK: Private Methods
-    func insertHTML(from filename: String) {
+    func insertHTML(filename: String, isAppended: Bool) {
         if let path = Bundle.main.path(forResource: filename, ofType: "html") {
             do {
                 let htmlStr = try String(contentsOfFile: path)
-                self.editorView.insertHTML(htmlStr)
+                if isAppended {
+                    self.editorView.appendHTML(htmlStr)
+                } else {
+                    self.editorView.insertHTML(htmlStr)
+                }
+                self.editorView.enterContentMode()
+            }
+            catch {"error: file not found"}
+        }
+    }
+    
+    func appendHTML(from filename: String) {
+        if let path = Bundle.main.path(forResource: filename, ofType: "html") {
+            do {
+                let htmlStr = try String(contentsOfFile: path)
+                self.editorView.appendHTML(htmlStr)
                 self.editorView.enterContentMode()
             }
             catch {"error: file not found"}

@@ -19,7 +19,7 @@ class JournalLayoutCollectionViewController: UICollectionViewController {
     fileprivate let itemsPerRow: CGFloat = 3
     
     // values to be passed to other classes
-    var selectedLayoutName:String?
+    var selectedLayout:JournalLayoutItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class JournalLayoutCollectionViewController: UICollectionViewController {
         guard let  selectedIndexPath = self.collectionView?.indexPathsForSelectedItems?.first else {
             fatalError("cell must be selected!")
         }
-        selectedLayoutName = journalLayoutList[selectedIndexPath.row].htmlFileName
+        selectedLayout = journalLayoutList[selectedIndexPath.row]
     }
     
 
