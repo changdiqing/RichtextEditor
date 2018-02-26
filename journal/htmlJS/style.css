@@ -52,26 +52,6 @@ div {
     color:#666666;
     font-size: 12pt;
 }
-.floatingTouchblock {
-    position: absolute;
-    top: 0px;
-    left: 20px;
-    height: 100px;
-    width: 100px;
-    z-index: 99;
-    background-color: red;
-}
-
-.touchblockResizeButton {
-    position:absolute;
-    display: none;
-    bottom: 0;
-    right: 0;
-    height: 50px;
-    width: 50px;
-    z-index: 90;
-    background-color: black;
-}
 
 .flex-container {
     display: flex;
@@ -85,9 +65,10 @@ div {
     overflow: auto;
 }
 
-.flex-row > div.block {
+.flex-row > div.touchblock {
     /* self layout setting */
     /*display: inline-block;*/
+    position: relative;
     margin : 1%;
     height: 130px;
     background-color: DodgerBlue;
@@ -97,6 +78,54 @@ div {
     background-size:     cover;
     /*background-repeat:   no-repeat;*/
     background-position: center center;
+}
+
+.floatingTouchblock {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    height: 100px;
+    width: 100px;
+    z-index: 90;
+    background-color: red;
+    /* background image display setting */
+    background-size:     cover;
+    /*background-repeat:   no-repeat;*/
+    background-position: center center;
+}
+
+.touchblock > div.touchblockResizeCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    opacity: 0.5;
+    background-color: white;
+}
+
+.floatingTouchblock > div.touchblockResizeCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    opacity: 0.5;
+    background-color: white;
+}
+
+
+.touchblockMoveCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    z-index: 99;
+    opacity: 0.5;
+    background-color: black;
 }
 
 div.children {

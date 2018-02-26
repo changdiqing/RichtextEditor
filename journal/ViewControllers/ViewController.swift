@@ -187,6 +187,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 } else {
                     self.editorView.insertHTML(htmlStr)
                 }
+                self.editorView.initTouchblockCovers()
                 self.editorView.enterContentMode()
             }
             catch {"error: file not found"}

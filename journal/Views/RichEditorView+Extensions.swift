@@ -22,6 +22,7 @@ extension RichEditorView{
     
     public func cloneTouchblock() {
         runJS("method_cloneTouchblock();")
+        self.initTouchblockCovers()
         self.enterLayoutMode()
     }
 
@@ -46,6 +47,10 @@ extension RichEditorView{
         
         runJS("RE.prepareInsert();")
         runJS("RE.decreaseTextSize();")
+    }
+    
+    public func initTouchblockCovers() {
+        runJS("method_initTouchblockCovers();")
     }
     
     public func enterLayoutMode() {
