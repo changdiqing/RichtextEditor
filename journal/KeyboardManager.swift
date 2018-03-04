@@ -24,12 +24,12 @@ class KeyboardManager: NSObject {
     /**
      The toolbar that will be shown and hidden.
      */
-    var toolbar: RichEditorToolbar
+    //var toolbar: RichEditorToolbar
     
     init(view: UIView) {
         self.view = view
-        toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 44))
-        toolbar.options = RichEditorDefaultOption.all
+        //toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 44))
+        //toolbar.options = RichEditorDefaultOption.all
     }
     
     /**

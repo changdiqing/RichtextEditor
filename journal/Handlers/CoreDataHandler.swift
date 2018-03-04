@@ -5,7 +5,7 @@
 //  Created by Diqing Chang on 12.11.17.
 //  Copyright © 2017 Diqing Chang. All rights reserved.
 //
-
+/*
 import Foundation
 import UIKit
 import CoreData
@@ -73,4 +73,4 @@ class CoreDataHandler {
             app.saveContext()
         }
     }
-}
+}*/

@@ -186,8 +186,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             print("found")
         }*/
         
-        print(runJS("RE.getHtml()"))
-        
         
 
         tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
@@ -196,6 +194,20 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
 
     // MARK: - Rich Text Editing
+    
+    // MARK: Properties added by Diqing
+    public var bodyHTML: String {
+        get {
+            return runJS("RE.getBodyHtml;")
+        }
+        set {
+            contentHTML = newValue
+            if isEditorLoaded {
+                runJS("RE.setBodyHtml('\(newValue.escaped)');")
+                updateHeight()
+            }
+        }
+    }
 
     // MARK: Properties
 
@@ -208,7 +220,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         set {
             contentHTML = newValue
             if isEditorLoaded {
-                print("html is set")
                 runJS("RE.setHtml('\(newValue.escaped)');")
                 updateHeight()
             }
@@ -264,8 +275,8 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setFontSize('\(size)px');")
     }
     
-    public func setEditorBackgroundColor(_ color: UIColor) {
-        runJS("RE.setBackgroundColor('\(color.hex)');")
+    public func setEditorBackgroundColor(_ colorInHex: String) {
+        runJS("RE.setBackgroundColor('\(colorInHex)');")
     }
     
     public func undo() {
@@ -306,9 +317,9 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setTextColor('\(colorInHex)');")
     }
     
-    public func setTextBackgroundColor(_ color: UIColor) {
+    public func setTextBackgroundColor(_ colorInHex: String) {
         runJS("RE.prepareInsert();")
-        runJS("RE.setTextBackgroundColor('\(color.hex)');")
+        runJS("RE.setTextBackgroundColor('\(colorInHex)');")
     }
     
     public func header(_ h: Int) {

@@ -424,6 +424,14 @@ RE.appendHTML = function(html) {
     document.body.innerHTML += html;
 };
 
+RE.setBodyHtml = function(html) {
+    document.body.innerHTML = html;
+};
+
+RE.getBodyHtml = function() {
+    return document.body.innerHTML;
+};
+
 RE.insertHTML = function(html) {
     RE.restorerange();
     document.execCommand('insertHTML', false, html);

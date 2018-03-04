@@ -16,7 +16,13 @@ extension RichEditorView{
     }
     //MARK: new document methods added to RichEditorView
     
+    public func setBodyHTML(_ html: String) {
+        runJS("setBodyHtml('\(html)');")
+    }
     
+    public func setBodyHTML() {
+        runJS("getBodyHtml();")
+    }
     
     //MARK: Touchblock Methods
     
@@ -95,8 +101,6 @@ extension RichEditorView{
         let iconLayoutMode = UIImage(named: "layoutMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconEditMode = UIImage(named: "editMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        /*let iconenlarge = UIImage(named: "enlarge")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconlessen = UIImage(named: "lessen")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))*/
         let iconleftImage = UIImage(named: "leftImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconrightImage = UIImage(named: "rightImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconcenterImage = UIImage(named: "centerImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -115,8 +119,6 @@ extension RichEditorView{
         let enterLayoutMode: UIBarButtonItem = UIBarButtonItem(image: iconLayoutMode, style: .done, target: self, action: #selector(self.enterLayoutModeAction))
         let enterEditMode: UIBarButtonItem = UIBarButtonItem(image: iconEditMode, style: .done, target: self, action: #selector(self.enterEditModeAction))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
-        /*let enlargeImage: UIBarButtonItem = UIBarButtonItem(image: iconenlarge, style: .done, target: self, action: #selector(self.enlargeImageAction))
-        let lessenImage: UIBarButtonItem = UIBarButtonItem(image: iconlessen, style: .done, target: self, action: #selector(self.lessenImageAction))*/
         let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: iconleftImage, style: .done, target: self, action: #selector(self.floatLeftImage))
         let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: iconrightImage, style: .done, target: self, action: #selector(self.floatRightImage))
         let centerImage: UIBarButtonItem = UIBarButtonItem(image: iconcenterImage, style: .done, target: self, action: #selector(self.centerImageAction))
@@ -150,8 +152,6 @@ extension RichEditorView{
             floatLeftImage,
             floatRightImage,
             centerImage,
-            //enlargeImage, // new method use drag to resize image, no need for button
-            //lessenImage,  // new method use drag to resize image, no need for button
             done]
         self.itemsForLayoutMode = [
             enterEditMode]

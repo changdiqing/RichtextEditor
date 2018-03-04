@@ -9,12 +9,16 @@
 import UIKit
 import RichEditorView
 import JavaScriptCore
+import os.log
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JournalViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet var editorView: RichEditorView!
+    
+    @IBOutlet weak var editorView: RichEditorView!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     var journal: Journal?
-    var chooseLayout: Bool = false
     var touchBlockClicked: Bool = false
     var testDate:Date {
         get {
@@ -51,8 +55,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         
 
-        let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
-        jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
+        //let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
+        //jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
         
         /*  for fethcing save journals, will be used afterwards, Diqing Chang on 21.01.2018
          if let fetchedDiary = CoreDataHandler.fetchDiaryByDate(testDate)?.first{
@@ -67,10 +71,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             let request = URLRequest(url: url)
             editorView.webView.loadRequest(request)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if chooseLayout {presentJournalLayouts()}
+        
+        if let journal = journal {
+            self.editorView.bodyHTML = journal.html
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,11 +129,39 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     //Mark: Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        if let button = sender as? UIBarButtonItem, button === saveButton {
+            let html = self.editorView.bodyHTML
+            let photo = UIImage(named: "leftImage")
+            
+            journal = Journal(html: html, photo: photo)
+        }
+    }
+    
     func presentJournalLayouts() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let journalLayoutsViewController = storyBoard.instantiateViewController(withIdentifier: "JournalLayoutsViewController") as! JournalLayoutCollectionViewController
         self.present(journalLayoutsViewController, animated:true, completion:nil)
     }
+
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        let isPresentingInAddJournalMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddJournalMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }else {
+            fatalError("The JournalViewController is not inside a navigation controller.")
+        }
+    }
+    
+    
     
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
@@ -168,7 +201,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             }
             
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
-            chooseLayout = false
             if let layout = sourceViewController.selectedLayout {
                 insertHTML(filename: layout.htmlFileName, isAppended: layout.append)
             }
@@ -206,7 +238,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     }
 }
 
-extension ViewController: JavaScriptFuncProtocol {
+extension JournalViewController: JavaScriptFuncProtocol {
     func test() {
         
         touchBlockClicked = true
@@ -230,7 +262,7 @@ extension ViewController: JavaScriptFuncProtocol {
 }
 
 
-extension ViewController: RichEditorDelegate {
+extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
         // for testing, always load the same demo
         let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
@@ -267,18 +299,18 @@ extension ViewController: RichEditorDelegate {
     func richEditorSaveHTML() {
         if self.editorView.html.isEmpty {  // if no content then delete journal
             print("is empty!")
-            CoreDataHandler.deleteDiary(self.journal)
+            //CoreDataHandler.deleteDiary(self.journal)
         } else {  // if there is content then save to core data
             print("prepare to save!")
             if self.journal != nil {
                 self.journal?.html = self.editorView.html
                 print("existing journal saved!")
             } else {
-                self.journal = CoreDataHandler.createNewDiary(testDate)
+                //self.journal = CoreDataHandler.createNewDiary(testDate)
                 self.journal?.html = self.editorView.html
                 print("new journal created!")
             }
-            CoreDataHandler.saveDiary()
+            //CoreDataHandler.saveDiary()
         }
     }
 }

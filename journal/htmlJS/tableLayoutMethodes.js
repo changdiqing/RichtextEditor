@@ -4,9 +4,6 @@ var pressed = false,
     resizeStepWidth = 15,
     startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
 
-
-// new document methods added by Diqing Chang on 25.02.2018
-
 // floatingTouchBlock Methods
 
 function method_initTouchblockCovers() {
@@ -48,25 +45,15 @@ function method_enterLayoutMode() {
 }
 
 function method_enterContentMode() {
-
-    
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].style.display= "none";
     }
+    
     var touchsurface = document.querySelectorAll("div.touchblockResizeCover");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].style.display= "none";
     }
-    //var touchsurface = document.querySelectorAll("img.block");
-    //for (var i = 0; i < touchsurface.length ; i++) {
-    //    touchsurface[i].contentEditable = true;
-    //    touchsurface[i].style.border = "none";
-    //    touchsurface[i].removeEventListener('touchstart', method_touchStartFunction, false);
-    //    touchsurface[i].removeEventListener('touchmove', method_touchMoveFunction, false);
-    //    touchsurface[i].removeEventListener('touchend', method_touchEndFunction, false);
-    //}
-
 }
 
 function method_touchStartFunction(e){
