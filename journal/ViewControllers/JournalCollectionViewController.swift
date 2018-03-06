@@ -16,6 +16,7 @@ class JournalCollectionViewController: UICollectionViewController {
     //MARK: Properties
     fileprivate let reuseIdentifier = "journalCell"
     fileprivate var journals = [Journal]()
+    fileprivate let journalLayoutList = JournalLayout.journalLayoutList
     
     var testDate:Date {
         get {
@@ -32,7 +33,7 @@ class JournalCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(JournalCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(JournalCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Load any saved journals
         if let savedJournals = loadJournals() {
@@ -90,29 +91,30 @@ class JournalCollectionViewController: UICollectionViewController {
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
         // Fetches the appropriate journal for the data source layout
-        let journal = journals[indexPath.item]
-        cell.photo.image = journal.photo
-    
+        //let journal = journals[indexPath.item]
+        //let newImageView = UIImageView()
+        //newImageView.image = journal.photo
+        //cell.photo = newImageView   // = journal.photo!
         // Configure the cell
-    
+        cell.photo.image = journals[indexPath.item].photo
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -143,6 +145,7 @@ class JournalCollectionViewController: UICollectionViewController {
                 let newIndexPath = IndexPath(item: journals.count, section: 0)
                 journals.append(journal)
                 collectionView?.insertItems(at: [newIndexPath])
+                print("add")
             }
             
             saveJournals()

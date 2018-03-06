@@ -14,7 +14,6 @@
 		9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */; };
 		9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */; };
 		9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7B204BF6E500123AD5 /* Journal.swift */; };
-		9B2C6D7E204C84C800123AD5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7D204C84C800123AD5 /* CollectionViewController.swift */; };
 		9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */; };
 		9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
@@ -102,7 +101,6 @@
 		9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewController.swift; sourceTree = "<group>"; };
 		9B2C6D7B204BF6E500123AD5 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
-		9B2C6D7D204C84C800123AD5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RichEditorView+Extensions.swift"; sourceTree = "<group>"; };
 		9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlJSDemo.html; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
 				9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
-				9B2C6D7D204C84C800123AD5 /* CollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -691,7 +688,6 @@
 				9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */,
 				9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */,
 				9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */,
-				9B2C6D7E204C84C800123AD5 /* CollectionViewController.swift in Sources */,
 				9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */,
 				9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */,
 				9B636A2A1FCA0603003AFF26 /* UIColorExtensions.swift in Sources */,

@@ -136,7 +136,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
             let html = self.editorView.bodyHTML
-            let photo = UIImage(named: "leftImage")
+            let photo = UIImage(named: "layoutMode")
+            
             
             journal = Journal(html: html, photo: photo)
         }
