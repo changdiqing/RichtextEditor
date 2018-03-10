@@ -15,14 +15,14 @@ extension RichEditorView{
         }
     }
     //MARK: new document methods added to RichEditorView
-    
-    public func setBodyHTML(_ html: String) {
-        runJS("setBodyHtml('\(html)');")
+
+    public func getDocElementHtml()-> String {
+        print("11111111111")
+        print(runJS("getDocElementHtml();"))
+        print("###############")
+        return runJS("getDocElementHtml();")
     }
-    
-    public func setBodyHTML() {
-        runJS("getBodyHtml();")
-    }
+
     
     //MARK: Touchblock Methods
     

@@ -196,18 +196,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     // MARK: - Rich Text Editing
     
     // MARK: Properties added by Diqing
-    public var bodyHTML: String {
-        get {
-            return runJS("RE.getBodyHtml;")
-        }
-        set {
-            contentHTML = newValue
-            if isEditorLoaded {
-                runJS("RE.setBodyHtml('\(newValue.escaped)');")
-                updateHeight()
-            }
-        }
-    }
 
     // MARK: Properties
 
@@ -368,6 +356,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     public func appendHTML(_ html: String) {
+        print("html.escaped: \(html.escaped)")
         runJS("RE.appendHTML('\(html.escaped)');")
     }
     

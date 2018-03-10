@@ -173,3 +173,7 @@ function setEndOfContenteditable()
         range.select();//Select the range (make it the visible selection
     }
 }
+//document.getElementById("demo").innerText = getDocElementHtml();
+function getDocElementHtml() {
+    return document.documentElement.outerHTML;
+};

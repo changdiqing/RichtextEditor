@@ -66,14 +66,16 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
          self.journal = nil
          }*/
         
-        if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
-            let url = URL(fileURLWithPath: filePath, isDirectory: false)
-            let request = URLRequest(url: url)
-            editorView.webView.loadRequest(request)
-        }
-        
         if let journal = journal {
-            self.editorView.bodyHTML = journal.html
+            print("html to be loaded \(journal.html)")
+            editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
+            
+        } else {
+            if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
+                let url = URL(fileURLWithPath: filePath, isDirectory: false)
+                let request = URLRequest(url: url)
+                editorView.webView.loadRequest(request)
+            }
         }
         
     }
@@ -135,10 +137,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
-            let html = self.editorView.bodyHTML
+            let html = self.editorView.getDocElementHtml()
+            print("html is ################: \(html)")
             let photo = UIImage(named: "layoutMode")
-            
-            
             journal = Journal(html: html, photo: photo)
         }
     }
@@ -168,7 +169,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         if let sourceViewController = sender.source as? ColorCardTableViewController {
             if let selectedColor = sourceViewController.selectedColor{
-                print(selectedColor)
                 if touchBlockClicked {
                     touchBlockClicked = false
                     self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
