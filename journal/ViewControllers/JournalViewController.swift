@@ -173,7 +173,11 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 if let selectedFilter = sourceViewController.selectedFilter{
                     self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
                 }
-            } else {
+            } else if sender.identifier == "cancel"{
+                dismiss(animated: true, completion: nil)
+                print("Canceled")
+            }
+            else {
                 let imagePickerController = UIImagePickerController()
                 
                 // Only allow photos to be picked, not taken.
