@@ -17,9 +17,6 @@ extension RichEditorView{
     //MARK: new document methods added to RichEditorView
 
     public func getDocElementHtml()-> String {
-        print("11111111111")
-        print(runJS("getDocElementHtml();"))
-        print("###############")
         return runJS("getDocElementHtml();")
     }
 

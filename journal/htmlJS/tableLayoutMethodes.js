@@ -1,3 +1,6 @@
+// functions to be called everytime when this file is loaded, Diqing Chang, 11.03.2018
+
+
 var pressed = false,
     isResized = false,
     start = undefined,
@@ -31,7 +34,6 @@ function method_initTouchblockCovers() {
         touchsurfaceDiv[i].contentEditable = false;
     }
 }
-
 function method_enterLayoutMode() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {

@@ -137,13 +137,10 @@ class JournalCollectionViewController: UICollectionViewController {
         if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
             
             if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
-                print("1 called")
                 // Update an existing journal
                 journals[selectedIndexPath.item] = journal
                 collectionView?.reloadItems(at: [selectedIndexPath])
-                print("updated journal has the html: \(journals[selectedIndexPath.item].html)")
             } else {
-                print("2 called")
                 // Add a new journal
                 let newIndexPath = IndexPath(item: journals.count, section: 0)
                 journals.append(journal)

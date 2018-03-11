@@ -67,9 +67,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
          }*/
         
         if let journal = journal {
-            print("html to be loaded \(journal.html)")
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
-            
         } else {
             if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
                 let url = URL(fileURLWithPath: filePath, isDirectory: false)
@@ -77,7 +75,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 editorView.webView.loadRequest(request)
             }
         }
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -226,17 +224,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             catch {"error: file not found"}
         }
     }
-    
-    func appendHTML(from filename: String) {
-        if let path = Bundle.main.path(forResource: filename, ofType: "html") {
-            do {
-                let htmlStr = try String(contentsOfFile: path)
-                self.editorView.appendHTML(htmlStr)
-                self.editorView.enterContentMode()
-            }
-            catch {"error: file not found"}
-        }
-    }
 }
 
 extension JournalViewController: JavaScriptFuncProtocol {
@@ -266,9 +253,8 @@ extension JournalViewController: JavaScriptFuncProtocol {
 extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
         // for testing, always load the same demo
-        let path = Bundle.main.path(forResource: "touchsurfaceTable", ofType: "html")
-        let htmlStr: String = try! String(contentsOfFile: path!)
-        editor.insertHTML(htmlStr)
+        print("view did load")
+        self.editorView.initTouchblockCovers()
         //self.editorView.insertHTML(htmlStr)
         //self.editorView.webView.reload()
         //print(self.editorView.runJS("document.documentElement.outerHTML"))
