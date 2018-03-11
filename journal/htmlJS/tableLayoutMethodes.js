@@ -1,6 +1,3 @@
-// functions to be called everytime when this file is loaded, Diqing Chang, 11.03.2018
-
-
 var pressed = false,
     isResized = false,
     start = undefined,
@@ -8,7 +5,6 @@ var pressed = false,
     startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
 
 // floatingTouchBlock Methods
-
 function method_initTouchblockCovers() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -34,6 +30,7 @@ function method_initTouchblockCovers() {
         touchsurfaceDiv[i].contentEditable = false;
     }
 }
+
 function method_enterLayoutMode() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -59,6 +56,7 @@ function method_enterContentMode() {
 }
 
 function method_touchStartFunction(e){
+
     e.stopPropagation();
     start = $(this).parent();
     pressed = true;
@@ -116,7 +114,6 @@ function method_touchEndFunction(e){
     } else {
         javaScriptCallToSwift.test();
     }
-    
     e.preventDefault();
 }
 

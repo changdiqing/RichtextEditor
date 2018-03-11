@@ -15,7 +15,6 @@
 		9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */; };
 		9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7B204BF6E500123AD5 /* Journal.swift */; };
 		9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */; };
-		9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
 		9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */; };
 		9B3B86061FDC98220019B943 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B86051FDC98210019B943 /* index.html */; };
@@ -102,7 +101,6 @@
 		9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewController.swift; sourceTree = "<group>"; };
 		9B2C6D7B204BF6E500123AD5 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RichEditorView+Extensions.swift"; sourceTree = "<group>"; };
-		9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlJSDemo.html; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
 		9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFunc.swift; sourceTree = "<group>"; };
 		9B3B86051FDC98210019B943 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				9B999C89202CF61500F14891 /* Lora */,
-				9B3B85FE1FDB49CF0019B943 /* htmlJSDemo.html */,
 				9B53BFD020153F4800648A32 /* index.js */,
 				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
 				9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */,
@@ -493,7 +490,6 @@
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
-				9B3B85FF1FDB49CF0019B943 /* htmlJSDemo.html in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
 				9B53BFD420153F4900648A32 /* index.js in Resources */,
 				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
