@@ -118,6 +118,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
+            takeUIWebViewScreenShot(webView: self.editorView.webView)
             let html = self.editorView.getDocElementHtml()
             let photo = UIImage(named: "layoutMode")
             journal = Journal(html: html, photo: photo)
@@ -201,6 +202,17 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             }
             catch {"error: file not found"}
         }
+    }
+    func takeUIWebViewScreenShot(webView: UIWebView){
+        //Create the UIImage
+        UIGraphicsBeginImageContextWithOptions(webView.frame.size, true, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        webView.layer.render(in: context)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
+        
+        //Save it to the camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
 }
 
