@@ -4,6 +4,8 @@ var pressed = false,
     resizeStepWidth = 15,
     startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
 
+// test methods
+
 // floatingTouchBlock Methods
 function method_initTouchblockCovers() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
@@ -18,16 +20,6 @@ function method_initTouchblockCovers() {
         touchsurface[i].addEventListener('touchstart', method_touchStartFunction, false);
         touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
         touchsurface[i].addEventListener('touchend', method_touchEndFunction, false);
-    }
-    
-    var touchsurfaceDiv = document.querySelectorAll("div.touchblock");
-    for (var i = 0; i < touchsurfaceDiv.length ; i++) {
-        touchsurfaceDiv[i].contentEditable = true;
-    }
-    
-    var touchsurfaceDiv = document.querySelectorAll("div.flex-row");
-    for (var i = 0; i < touchsurfaceDiv.length ; i++) {
-        touchsurfaceDiv[i].contentEditable = false;
     }
 }
 
@@ -123,23 +115,23 @@ function method_cloneTouchblock() {
 }
 
 function method_setTouchblockFilter(filterType){
-    $(start).css("filter",filterType);
+    $(start).find('.touchblockBGICover').css("filter",filterType);
 }
 
 function method_changeStartBackgroundColor(color){
-    $(start).css("background-color",color);
+    $(start).find('.touchblockBGICover').css("background-color",color);
 }
 
 function method_changeStartBackgroundImage(url, alt) {
-    $(start).css("background-image", "url(" + url + ")");
+    $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
 };
 
 function mehtod_setStartTextOrientationVertical() {
-    $(start).css("writing-mode", "vertical-lr");
+    $(start).find('.touchblockContentCover').css("writing-mode", "vertical-lr");
 }
 
 function mehtod_setStartTextOrientationHorizon() {
-    $(start).css("writing-mode", "horizontal-tb");
+    $(start).find('.touchblockContentCover').css("writing-mode", "horizontal-tb");
 }
 
 function mehtod_removeStart() {
