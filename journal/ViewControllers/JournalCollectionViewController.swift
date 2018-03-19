@@ -12,12 +12,13 @@ import os.log
 private let reuseIdentifier = "Cell"
 
 class JournalCollectionViewController: UICollectionViewController {
-    
     //MARK: Properties
     fileprivate let reuseIdentifier = "journalCell"
     fileprivate var journals = [Journal]()
     fileprivate let journalLayoutList = JournalLayout.journalLayoutList
+    fileprivate var editingMode: Bool = false
     
+    //fileprivate var editing: Bool = false
     var testDate:Date {
         get {
             let formatter = DateFormatter()
@@ -25,7 +26,7 @@ class JournalCollectionViewController: UICollectionViewController {
             return formatter.date(from: "2016/10/08 22:31")!
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,46 +40,73 @@ class JournalCollectionViewController: UICollectionViewController {
         if let savedJournals = loadJournals() {
             journals += savedJournals
         }
+
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.collectionView!.allowsMultipleSelection = editing
+        print("I am here")
+        let indexPaths: [NSIndexPath] = self.collectionView!.indexPathsForVisibleItems as [NSIndexPath]
+        for indexPath in indexPaths {
+            self.collectionView!.deselectItem(at: indexPath as IndexPath, animated: false)
+            let cell: JournalCollectionViewCell? = self.collectionView(collectionView!, cellForItemAt: indexPath as IndexPath) as! JournalCollectionViewCell
+            cell?.isEditing = editing
+            self.editingMode = editing
+            //print(indexPath)
+            //print("Love")
+        }
+        self.collectionView?.reloadData()
+        
+        if editing {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: "deleteSelectedItemsAction:")
+        }
+        
+    }
+    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        switch(segue.identifier ?? "") {
-        case "addJournal":
-            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
-        case "editJournal":
-            guard let journalViewController = segue.destination as? JournalViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let selectedJournalCell = sender as? JournalCollectionViewCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            guard let indexPath = collectionView?.indexPath(for: selectedJournalCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
+        print("Segeue activated")
+        if !editingMode {
             
-            let selectedJournal = journals[indexPath.item]
-            journalViewController.journal = selectedJournal
-        default:
-            fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
+            super.prepare(for: segue, sender: sender)
+            // Get the new view controller using [segue destinationViewController].
+            // Pass the selected object to the new view controller.
+            switch(segue.identifier ?? "") {
+            case "addJournal":
+                os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            case "editJournal":
+                print("Segeue2 activated")
+                guard let journalViewController = segue.destination as? JournalViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let selectedJournalCell = sender as? JournalCollectionViewCell else {
+                    fatalError("Unexpected sender: \(String(describing: sender))")
+                }
+                guard let indexPath = collectionView?.indexPath(for: selectedJournalCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                
+                let selectedJournal = journals[indexPath.item]
+                journalViewController.journal = selectedJournal
+            default:
+                fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
+            }
         }
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {return 1}
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return journals.count
@@ -95,9 +123,12 @@ class JournalCollectionViewController: UICollectionViewController {
         //let newImageView = UIImageView()
         //newImageView.image = journal.photo
         //cell.photo = newImageView   // = journal.photo!
+        
         // Configure the cell
         cell.photo.image = journals[indexPath.item].photo
+        cell.checkboxImageView.isHidden = !self.editingMode
         return cell
+     
     }
 
     // MARK: UICollectionViewDelegate
@@ -108,11 +139,19 @@ class JournalCollectionViewController: UICollectionViewController {
         return true
     }
     
-
     
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        
+        if editingMode == false {
+            print("Not Editing mode")
+            return true
+        }
+        else
+        {
+            print("Editing mode")
+            return true
+        }
     }
     
 
@@ -131,24 +170,34 @@ class JournalCollectionViewController: UICollectionViewController {
     }
     */
     
+    /*
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected")
+        let cell: JournalCollectionViewCell? = self.collectionView(collectionView, cellForItemAt: indexPath as IndexPath) as? JournalCollectionViewCell
+        //cell?.checkboxImageView.image = UIImage(named: "checked")
+        print("This item is selected")
+    }
+    */
     //MARK: Actions
     
     @IBAction func unwindToJournalList(sender: UIStoryboardSegue){
-        if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
-            
-            if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
-                // Update an existing journal
-                journals[selectedIndexPath.item] = journal
-                collectionView?.reloadItems(at: [selectedIndexPath])
-            } else {
-                // Add a new journal
-                let newIndexPath = IndexPath(item: journals.count, section: 0)
-                journals.append(journal)
-                collectionView?.insertItems(at: [newIndexPath])
+        
+            if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
+                
+                if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
+                    // Update an existing journal
+                    journals[selectedIndexPath.item] = journal
+                    collectionView?.reloadItems(at: [selectedIndexPath])
+                } else {
+                    // Add a new journal
+                    let newIndexPath = IndexPath(item: journals.count, section: 0)
+                    journals.append(journal)
+                    collectionView?.insertItems(at: [newIndexPath])
+                }
+                saveJournals()
+                
             }
-            saveJournals()
-            
-        }
+        
     }
     
     //MARK: Private Methods
@@ -165,5 +214,9 @@ class JournalCollectionViewController: UICollectionViewController {
     
     private func loadJournals() -> [Journal]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Journal.ArchiveURL.path) as? [Journal]
+    }
+    
+    private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
+        print("Delete")
     }
 }

@@ -43,10 +43,12 @@ class JournalLayoutCollectionViewController: UICollectionViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let  selectedIndexPath = self.collectionView?.indexPathsForSelectedItems?.first else {
-            fatalError("cell must be selected!")
+            if self.isEditing == false {
+            guard let  selectedIndexPath = self.collectionView?.indexPathsForSelectedItems?.first else {
+                fatalError("cell must be selected!")
+            }
+            selectedLayout = journalLayoutList[selectedIndexPath.row]
         }
-        selectedLayout = journalLayoutList[selectedIndexPath.row]
     }
     
 
