@@ -118,9 +118,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
-            takeUIWebViewScreenShot(webView: self.editorView.webView)
+            var photo: UIImage!
+            if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView) {
+                photo = screenshot
+            } else {
+                photo = UIImage(named: "layoutMode")
+            }
             let html = self.editorView.getDocElementHtml()
-            let photo = UIImage(named: "layoutMode")
+            
             journal = Journal(html: html, photo: photo)
         }
     }
@@ -207,36 +212,27 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             catch {"error: file not found"}
         }
     }
-    func takeUIWebViewScreenShot(webView: UIWebView){
+    func takeUIWebViewScreenShot(webView: UIWebView)->UIImage?{
         //Create the UIImage
         UIGraphicsBeginImageContextWithOptions(webView.frame.size, true, 0)
-        guard let context = UIGraphicsGetCurrentContext() else { return }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil}
         webView.layer.render(in: context)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil}
         UIGraphicsEndImageContext()
         
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        return image
     }
 }
 
 extension JournalViewController: JavaScriptFuncProtocol {
     func test() {
-        print("123123123123123")
-        
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
         colorCardViewController.buttonHeight = colorCardViewController.defaultButtonHeight
         self.present(colorCardViewController, animated:true, completion:nil)
-//        let imagePickerController = UIImagePickerController()
-//
-//        // Only allow photos to be picked, not taken.
-//        imagePickerController.sourceType = .photoLibrary
-//
-//        // Make sure ViewController is notified when the user picks an image.
-//        imagePickerController.delegate = self
-//        present(imagePickerController, animated: true, completion: nil)
     }
     
     func test2(_ value: String, _ num: Int) {

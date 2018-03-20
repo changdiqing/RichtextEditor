@@ -10,9 +10,11 @@ import UIKit
 
 class JournalCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photo: UIImageView!
- 
     @IBOutlet weak var checkboxImageView: UIImageView!
+    private let checkedIcon = UIImage(named: "checked")
+    private let uncheckedIcon = UIImage(named: "unchecked")
     
+    /* comment this block wont change anything
     //var checkboxImageView: UIImageView!
     var isEditing: Bool = false {
         didSet {
@@ -22,17 +24,15 @@ class JournalCollectionViewCell: UICollectionViewCell {
             //print("Hello world, did set is editing")
             //print(isEditing)
         }
-    }
+    }*/
     
     override var isSelected: Bool {
         didSet {
-            //print("Something happened!")
             if self.isSelected == true {
-                self.checkboxImageView.image = UIImage(named: "deleteButton")
-                print("Checked")
+                self.checkboxImageView.image = checkedIcon
             }
             else {
-                self.checkboxImageView.image = UIImage(named: "unchecked")
+                self.checkboxImageView.image = uncheckedIcon
             }
         }
     }
