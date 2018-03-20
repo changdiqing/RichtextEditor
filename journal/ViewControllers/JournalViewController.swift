@@ -20,13 +20,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     var journal: Journal?
     var touchBlockClicked: Bool = false
-    var testDate:Date {
-        get {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-            return formatter.date(from: "2016/10/08 22:31")!
-        }
-    }
     
     
     /*
@@ -49,9 +42,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        editorView.delegate = self
+        editorView.delegate = self // Diqing Debug 13.03.2017
         
-        //editorView.becomeFirstResponder()
+        editorView.becomeFirstResponder()
         
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
@@ -125,6 +118,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
+            takeUIWebViewScreenShot(webView: self.editorView.webView)
             let html = self.editorView.getDocElementHtml()
             let photo = UIImage(named: "layoutMode")
             journal = Journal(html: html, photo: photo)
@@ -212,6 +206,17 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             }
             catch {"error: file not found"}
         }
+    }
+    func takeUIWebViewScreenShot(webView: UIWebView){
+        //Create the UIImage
+        UIGraphicsBeginImageContextWithOptions(webView.frame.size, true, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        webView.layer.render(in: context)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
+        
+        //Save it to the camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
 }
 

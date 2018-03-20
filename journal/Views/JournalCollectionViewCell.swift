@@ -10,9 +10,9 @@ import UIKit
 
 class JournalCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photo: UIImageView!
+ 
     @IBOutlet weak var checkboxImageView: UIImageView!
     
-
     //var checkboxImageView: UIImageView!
     var isEditing: Bool = false {
         didSet {

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+var AssociatedObjectHandle: UInt8 = 0
 /// RichEditorDelegate defines callbacks for the delegate of the RichEditorView
 @objc public protocol RichEditorDelegate: class {
 
@@ -45,6 +45,7 @@ import UIKit
     @objc optional func richEditorSaveHTML()
 }
 
+
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
 open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate {
 
@@ -68,7 +69,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
 
     /// The internal UIWebView that is used to display the text.
-    open private(set) var webView: UIWebView
+    public var webView: UIWebView//NoCrashWebView
 
     /// Whether or not scroll is enabled on the view.
     open var isScrollEnabled: Bool = true {
@@ -168,7 +169,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         webView.scrollView.clipsToBounds = false
         
         webView.cjw_inputAccessoryView = nil
-        
         self.addSubview(webView)
         
         /*
@@ -187,7 +187,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         }*/
         
         
-
+        //commented by Diqing Chang, just for debug purpose
         tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
         tapRecognizer.delegate = self
         addGestureRecognizer(tapRecognizer)
@@ -601,8 +601,8 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             // changed by Diqing Chang, 07.02.2017 to help select end of editor.
             runJS("setEndOfContenteditable()")
         } else {
-            let point = tapRecognizer.location(in: webView)  // commented by Diqing, 07.02.2017
-            //focus(at: point)
+            let point = tapRecognizer.location(in: webView)
+            focus(at: point)
         }
     }
     
