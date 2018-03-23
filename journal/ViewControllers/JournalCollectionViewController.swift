@@ -198,7 +198,7 @@ class JournalCollectionViewController: UICollectionViewController {
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         print("Delete")
-        /*let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems as! [NSIndexPath]
+        let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems as! [NSIndexPath]
         
         var newJournalList: [Journal] = []
         
@@ -217,7 +217,7 @@ class JournalCollectionViewController: UICollectionViewController {
         
         self.journals = newJournalList
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
- */
+ 
         //self.collectionView?.reloadData()
     }
 }
