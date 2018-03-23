@@ -173,7 +173,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                     self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
                 }
             } else if sender.identifier == "cancel"{
-                dismiss(animated: true, completion: nil)
                 print("Canceled")
             }
             else {

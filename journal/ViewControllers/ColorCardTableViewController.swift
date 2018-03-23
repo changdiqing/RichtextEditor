@@ -116,10 +116,7 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource, UIC
         
     }
     
-    //MARK: - TabbarView Methods
-    
-    
-    
+    // MARK: - Actions
 }
 
 // MARK: - Table view delegate
