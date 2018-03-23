@@ -17,6 +17,7 @@ class JournalCollectionViewController: UICollectionViewController {
     fileprivate var journals = [Journal]()
     fileprivate let journalLayoutList = JournalLayout.journalLayoutList
     fileprivate var editingMode: Bool = false
+    @IBOutlet weak var journalAddButton: UIBarButtonItem!
     
     //fileprivate var editing: Bool = false
     var testDate:Date {
@@ -61,6 +62,8 @@ class JournalCollectionViewController: UICollectionViewController {
         
         if editing {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteSelectedItemsAction))
+        } else {
+            self.navigationItem.rightBarButtonItem = self.journalAddButton
         }
         
     }
@@ -173,7 +176,6 @@ class JournalCollectionViewController: UICollectionViewController {
                     collectionView?.insertItems(at: [newIndexPath])
                 }
                 saveJournals()
-                
             }
         
     }
@@ -196,5 +198,26 @@ class JournalCollectionViewController: UICollectionViewController {
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         print("Delete")
+        /*let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems as! [NSIndexPath]
+        
+        var newJournalList: [Journal] = []
+        
+        for i in (0 ..< self.journals.count) {
+            var found: Bool = false
+            for indexPath in selectedIndexPaths {
+                if indexPath.item == i {
+                    found = true
+                    break
+                }
+            }
+            if found == false {
+                newJournalList.append(self.journals[i])
+            }
+        }
+        
+        self.journals = newJournalList
+        self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
+ */
+        //self.collectionView?.reloadData()
     }
 }
