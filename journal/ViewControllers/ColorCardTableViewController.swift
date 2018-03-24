@@ -12,42 +12,29 @@ import RichEditorView
 class ColorCardTableViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
     
     @IBOutlet weak var colorCardTable: UITableView!
-    @IBOutlet weak var addImageButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var filterWidth: NSLayoutConstraint!
     @IBOutlet weak var touchBlockDashTabbar: UITabBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     
     fileprivate let filterList = DivFilters.divFilterList
+    fileprivate let fillingEffectList = FillingEffects.FillingEffectList
     
     let defaultButtonHeight: CGFloat = 100
     var screenWidth: CGFloat = UIScreen.main.bounds.width
     var filterCellWidth: CGFloat?
     var buttonHeight: CGFloat = 0.00
-    var colorCard:[UIColor] = []
-    var selectedColor:UIColor?
+    var selectedFillingEffect:FillingEffect?
     var selectedFilter:divFilter?
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorCard = [UIColor.black,
-                    UIColor.darkestIndigo(),
-                    UIColor.lighterIndigo(),
-                    UIColor.lighterAlice(),
-                    UIColor.darkestKelly(),
-                    UIColor.darkestDaisy(),
-                    UIColor.darkerCoral(),
-                    UIColor.darkerRuby(),
-                    UIColor.white]
-        
         colorCardTable.delegate = self
         colorCardTable.dataSource = self as UITableViewDataSource
         touchBlockDashTabbar.delegate = self
         filterCollectionView.dataSource = self
         filterCollectionView.delegate = self as UICollectionViewDelegate
-        
-        addImageButtonHeight.constant = buttonHeight
         filterWidth.constant = 0
         filterCellWidth = screenWidth/4
         // Uncomment the following line to preserve selection between presentations
@@ -102,9 +89,9 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource, UIC
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let  selectedIndexPath = colorCardTable.indexPathForSelectedRow {
-            selectedColor = colorCard[selectedIndexPath.row]
+            selectedFillingEffect = fillingEffectList[selectedIndexPath.row]
         } else {
-            selectedColor = nil
+            selectedFillingEffect = nil
         }
         if segue.identifier == "setFilter" {
             let cell = sender as! CustomCollectionViewCell
@@ -135,15 +122,17 @@ extension ColorCardTableViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return colorCard.count
+        return fillingEffectList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath) as? colorCardTableViewCell else {
+            fatalError("The dequeued cell is not an instance of colorCardCollectionViewCell.")
+        }
         // Configure the cell...
-        cell.contentView.backgroundColor = colorCard[indexPath.row]
+        let thisFillingEffect = fillingEffectList[indexPath.row]
+        cell.displayContent(type: thisFillingEffect.type, selectedColor: thisFillingEffect.color)
         return cell
     }
 }

@@ -152,13 +152,29 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? ColorCardTableViewController {
-            if let selectedColor = sourceViewController.selectedColor{
-                if touchBlockClicked {
-                    touchBlockClicked = false
-                    self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
-                }else {
-                    self.editorView.restoreSelectionRange()
-                    self.editorView.setTextColor(selectedColor.htmlRGBA)
+            if let fillingEffect = sourceViewController.selectedFillingEffect{
+                if let selectedColor = fillingEffect.color {
+                    if touchBlockClicked {  // if triggered by touchblock then update touchblock color
+                        touchBlockClicked = false
+                        self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
+                    } else {  // else update selected text color
+                        self.editorView.restoreSelectionRange()
+                        self.editorView.setTextColor(selectedColor.htmlRGBA)
+                    }
+                } else if fillingEffect.type == "No Filling" {
+                    self.editorView.setTouchBlockBackgroundColor("transparent")
+                } else if fillingEffect.type == "Photo" {
+                    let imagePickerController = UIImagePickerController()
+                    // Only allow photos to be picked, not taken.
+                    imagePickerController.sourceType = .photoLibrary
+                    
+                    // Make sure ViewController is notified when the user picks an image.
+                    imagePickerController.delegate = self
+                    DispatchQueue.main.async {
+                        self.present(imagePickerController, animated: true, completion: nil)
+                    }
+                } else {
+                    fatalError("Unexpected filling effect type: \(fillingEffect.type)")
                 }
             } else if sender.identifier == "textHorizon"{
                 self.editorView.setTouchblockTextOrientationHorizon()
@@ -174,18 +190,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 }
             } else if sender.identifier == "cancel"{
                 print("Canceled")
-            }
-            else {
-                let imagePickerController = UIImagePickerController()
-                
-                // Only allow photos to be picked, not taken.
-                imagePickerController.sourceType = .photoLibrary
-                
-                // Make sure ViewController is notified when the user picks an image.
-                imagePickerController.delegate = self
-                DispatchQueue.main.async {
-                    self.present(imagePickerController, animated: true, completion: nil)
-                }
+            } else {
+                fatalError("Unexpected segue identifier: \(sender.identifier)")
             }
             
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {

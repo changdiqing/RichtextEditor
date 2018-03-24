@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -183,26 +184,30 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-pV-cew">
                                 <rect key="frame" x="150" y="124" width="225" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6zN-ro-d50" userLabel="Change Image">
-                                    <rect key="frame" x="0.0" y="0.0" width="225" height="100"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="Q2b-ac-TvQ"/>
-                                    </constraints>
-                                    <state key="normal" title="Change Image"/>
-                                    <connections>
-                                        <segue destination="dRk-0K-Zh6" kind="unwind" unwindAction="unwindToRichtextEditorWithSender:" id="XJK-Sr-oni"/>
-                                    </connections>
-                                </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCardTableCell" id="ZUK-3Q-hVK">
-                                        <rect key="frame" x="0.0" y="128" width="225" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCardTableCell" rowHeight="48" id="ZUK-3Q-hVK" customClass="colorCardTableViewCell" customModule="journal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="225" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUK-3Q-hVK" id="8n4-nO-ayy">
-                                            <rect key="frame" x="0.0" y="0.0" width="225" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="225" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJw-oa-xko" userLabel="Type Label">
+                                                    <rect key="frame" x="15" y="11" width="195" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uJw-oa-xko" firstAttribute="trailing" secondItem="8n4-nO-ayy" secondAttribute="trailingMargin" id="3E1-6f-qhU"/>
+                                                <constraint firstItem="uJw-oa-xko" firstAttribute="leading" secondItem="8n4-nO-ayy" secondAttribute="leadingMargin" id="AZx-89-b3M"/>
+                                                <constraint firstItem="uJw-oa-xko" firstAttribute="bottom" secondItem="8n4-nO-ayy" secondAttribute="bottomMargin" id="Ybs-eb-lS3"/>
+                                                <constraint firstItem="uJw-oa-xko" firstAttribute="top" secondItem="8n4-nO-ayy" secondAttribute="topMargin" id="ibW-y8-dhu"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="typeLabel" destination="uJw-oa-xko" id="LIW-UT-u6n"/>
                                             <segue destination="dRk-0K-Zh6" kind="unwind" identifier="setColor" unwindAction="unwindToRichtextEditorWithSender:" id="Mow-OB-lR1"/>
                                         </connections>
                                     </tableViewCell>
@@ -365,7 +370,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addImageButtonHeight" destination="Q2b-ac-TvQ" id="d74-ot-YUv"/>
                         <outlet property="colorCardTable" destination="0Cz-pV-cew" id="vlI-Py-tPF"/>
                         <outlet property="filterCollectionView" destination="ZsN-rg-cog" id="pVC-Re-GLl"/>
                         <outlet property="filterWidth" destination="eBR-7z-pNO" id="3PP-Su-Odr"/>
