@@ -217,7 +217,8 @@ class JournalCollectionViewController: UICollectionViewController {
         
         self.journals = newJournalList
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
- 
+        self.saveJournals()
+        
         //self.collectionView?.reloadData()
     }
 }
