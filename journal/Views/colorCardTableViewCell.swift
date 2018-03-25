@@ -15,7 +15,9 @@ class colorCardTableViewCell: UITableViewCell {
     func displayContent(type: String, selectedColor: UIColor?){
         if let color = selectedColor {
             self.backgroundColor = color
+            self.typeLabel.text = ""
         } else {
+            self.backgroundColor = nil
             self.typeLabel.text = type
         }
     }
