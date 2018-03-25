@@ -119,6 +119,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="journalAddButton" destination="OWp-Af-9Xa" id="rZg-jN-c3S"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="editJournal" id="wel-zr-kdp"/>
                     </connections>
                 </collectionViewController>
@@ -252,7 +253,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MY-9T-knx">
-                                        <rect key="frame" x="204" y="7.5" width="60" height="60"/>
+                                        <rect key="frame" x="234" y="7.5" width="122" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="bBM-mq-4IW"/>
                                             <constraint firstAttribute="width" constant="60" id="jfc-H9-1vv" userLabel="width = 100"/>
