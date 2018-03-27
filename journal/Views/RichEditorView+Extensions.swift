@@ -95,8 +95,6 @@ extension RichEditorView{
         self.toolbarScroll!.contentSize.width = UIScreen.main.bounds.width
         
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let iconLayoutMode = UIImage(named: "layoutMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconEditMode = UIImage(named: "editMode")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconleftImage = UIImage(named: "leftImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconrightImage = UIImage(named: "rightImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -113,8 +111,6 @@ extension RichEditorView{
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         
-        let enterLayoutMode: UIBarButtonItem = UIBarButtonItem(image: iconLayoutMode, style: .done, target: self, action: #selector(self.enterLayoutModeAction))
-        let enterEditMode: UIBarButtonItem = UIBarButtonItem(image: iconEditMode, style: .done, target: self, action: #selector(self.enterEditModeAction))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
         let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: iconleftImage, style: .done, target: self, action: #selector(self.floatLeftImage))
         let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: iconrightImage, style: .done, target: self, action: #selector(self.floatRightImage))
@@ -133,7 +129,6 @@ extension RichEditorView{
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
         
         self.itemsForEditMode = [
-            enterLayoutMode,
             clear,
             underline,
             strikethrough,
@@ -150,14 +145,8 @@ extension RichEditorView{
             floatRightImage,
             centerImage,
             done]
-        self.itemsForLayoutMode = [
-            enterEditMode]
         
         for item in itemsForEditMode {
-            item.tintColor = UIColor.ruby()
-        }
-        
-        for item in itemsForLayoutMode {
             item.tintColor = UIColor.ruby()
         }
         
@@ -169,17 +158,6 @@ extension RichEditorView{
     }
     
     //MARK: ToolbarItemActions
-    
-    func enterLayoutModeAction() {
-        self.enterLayoutMode()
-        self.doneToolbar!.items=self.itemsForLayoutMode
-        
-    }
-    
-    func enterEditModeAction() {
-        self.enterContentMode()
-        self.doneToolbar!.items=self.itemsForEditMode
-    }
     
     func doneButtonAction()
     {

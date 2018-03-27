@@ -69,7 +69,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
 
     /// The internal UIWebView that is used to display the text.
-    public var webView: UIWebView//NoCrashWebView
+    public var webView: UIWebView
 
     /// Whether or not scroll is enabled on the view.
     open var isScrollEnabled: Bool = true {
@@ -356,7 +356,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
     
     public func appendHTML(_ html: String) {
-        print("html.escaped: \(html.escaped)")
         runJS("RE.appendHTML('\(html.escaped)');")
     }
     

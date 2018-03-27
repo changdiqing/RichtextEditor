@@ -17,9 +17,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     @IBOutlet weak var editorView: RichEditorView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var changeModeButton: UIBarButtonItem!
     
     var journal: Journal?
     var touchBlockClicked: Bool = false
+    
+    private var isContentMode: Bool = true
+    private let contentModeIcon = #imageLiteral(resourceName: "editMode")
+    private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
     
     
     /*
@@ -44,8 +49,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         editorView.delegate = self // Diqing Debug 13.03.2017
         
-        editorView.becomeFirstResponder()
-        
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
         
@@ -58,7 +61,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 editorView.webView.loadRequest(request)
             }
         }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +72,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Dismiss the picker if the user canceled.
         dismiss(animated: true, completion: nil)
-        //self.editorView.becomeFirstResponder()
         touchBlockClicked = false
     }
     
@@ -135,7 +136,20 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         let journalLayoutsViewController = storyBoard.instantiateViewController(withIdentifier: "JournalLayoutsViewController") as! JournalLayoutCollectionViewController
         self.present(journalLayoutsViewController, animated:true, completion:nil)
     }
-
+    
+    // MARK: Actions
+    
+    @IBAction func changeModeAction(_ sender: Any) {
+        self.isContentMode = !self.isContentMode
+        if self.isContentMode {
+            self.changeModeButton.image = self.contentModeIcon
+            self.editorView.enterContentMode()
+        } else {
+            self.changeModeButton.image = self.layoutModeIcon
+            self.editorView.enterLayoutMode()
+        }
+    }
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         let isPresentingInAddJournalMode = presentingViewController is UINavigationController
@@ -211,8 +225,10 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 } else {
                     self.editorView.insertHTML(htmlStr)
                 }
+                
                 self.editorView.initTouchblockCovers()
                 self.editorView.enterContentMode()
+                print(self.editorView.html)
             }
             catch {"error: file not found"}
         }

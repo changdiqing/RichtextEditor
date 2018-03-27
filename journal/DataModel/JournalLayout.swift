@@ -28,6 +28,6 @@ class JournalLayout {
     static let journalLayoutList:[JournalLayoutItem] = [
         JournalLayoutItem(htmlFileName: "touchBlock2x2", layoutImage: UIImage(named: "layout2x2"), isAppended: false),
         JournalLayoutItem(htmlFileName: "touchBlockFloating", layoutImage: UIImage(named: "layout2x2"), isAppended: true),
-        JournalLayoutItem(htmlFileName: "touchBlock4x4", layoutImage: UIImage(named: "layout4x4"), isAppended: false),
+        JournalLayoutItem(htmlFileName: "touchBlockFloating", layoutImage: UIImage(named: "layout2x2"), isAppended: false),
     ]
 }

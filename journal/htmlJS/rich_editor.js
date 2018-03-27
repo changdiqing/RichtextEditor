@@ -108,7 +108,8 @@ RE.setHtml = function(contents) {
 };
 
 RE.getHtml = function() {
-    return RE.editor.innerHTML;
+    //return RE.editor.innerHTML;
+    return document.documentElement.innerHTML;
 };
 
 RE.getText = function() {
@@ -268,7 +269,7 @@ RE.insertImage = function(url, alt) {
     img.onload = RE.updateHeight;
     if (parentElement.id == "editor") {
         var wrapper = document.createElement('div');
-        wrapper.appendChild(img);
+        wrapper.Child(img);
         RE.insertHTML(wrapper.outerHTML);
     } else {
         RE.insertHTML(img.outerHTML);
@@ -419,9 +420,9 @@ RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
 };
 
+// new method added by Diqing 27.03.2018
 RE.appendHTML = function(html) {
-    //RE.restorerange();
-    document.body.innerHTML += html;
+    RE.editor.insertAdjacentHTML( 'beforeend', html);
 };
 
 RE.insertHTML = function(html) {

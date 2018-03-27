@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -158,13 +159,21 @@
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="ZaN-dQ-Vf8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wuz-yi-aSa">
-                            <connections>
-                                <segue destination="aZm-Ck-CrT" kind="unwind" identifier="saveJournal" unwindAction="unwindToJournalListWithSender:" id="BG7-VR-keh"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="wuz-yi-aSa">
+                                <connections>
+                                    <segue destination="aZm-Ck-CrT" kind="unwind" identifier="saveJournal" unwindAction="unwindToJournalListWithSender:" id="BG7-VR-keh"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="layoutMode" style="plain" id="YO5-iB-QUx">
+                                <connections>
+                                    <action selector="changeModeAction:" destination="BYZ-38-t0r" id="aW9-lH-4Rq"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="changeModeButton" destination="YO5-iB-QUx" id="RTY-Wo-pOy"/>
                         <outlet property="editorView" destination="ej7-io-UHb" id="jzg-jE-XQB"/>
                         <outlet property="saveButton" destination="wuz-yi-aSa" id="Eur-Qg-0jd"/>
                     </connections>
@@ -453,6 +462,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="layoutMode" width="37" height="37"/>
         <image name="textDirectionHorizontal" width="75" height="75"/>
         <image name="textDirectionVertical" width="75" height="75"/>
         <image name="unchecked" width="48" height="48"/>
