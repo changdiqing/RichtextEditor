@@ -2,9 +2,24 @@ var pressed = false,
     isResized = false,
     start = undefined,
     resizeStepWidth = 15,
-    startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight;
+    startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
+    touchBlockFocused = false;
 
 // test methods
+
+$('button').click(function(){
+                  $('pre').text($('div')[0].outerHTML)
+                  });
+
+$('div[contenteditable]').keydown(function(e) {
+                                  // trap the return key being pressed
+                                  if (e.keyCode === 13) {
+                                  // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+                                  document.execCommand('insertHTML', false, '<br><br>');
+                                  // prevent the default behaviour of return key pressed
+                                  return false;
+                                  }
+                                  });
 
 // floatingTouchBlock Methods
 function method_initTouchblockCovers() {
@@ -44,6 +59,11 @@ function method_enterContentMode() {
     var touchsurface = document.querySelectorAll("div.touchblockResizeCover");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].style.display= "none";
+    }
+    
+    var touchsurface = document.querySelectorAll("div.touchblock");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = "false";
     }
 }
 
@@ -132,6 +152,23 @@ function mehtod_setStartTextOrientationVertical() {
 
 function mehtod_setStartTextOrientationHorizon() {
     $(start).find('.touchblockContentCover').css("writing-mode", "horizontal-tb");
+}
+
+function myFunction() {
+        var touchsurface = document.querySelectorAll("div.touchblockContentCover");
+        for (var i = 0; i < touchsurface.length ; i++) {
+            touchsurface[i].parentNode.contentEditable = "false";
+        }
+        document.getElementById("demo").innerText = "lalala";
+}
+
+function focusoutFunction() {
+    var touchsurface = document.querySelectorAll("div.touchblockContentCover");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].parentNode.contentEditable = "true";
+    }
+    document.getElementById("demo").innerText = "lololo";
+    touchBlockFocused = false;
 }
 
 function mehtod_removeStart() {
