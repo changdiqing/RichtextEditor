@@ -75,7 +75,7 @@ div {
 .flex-row > div.touchblock {
     /* self layout setting */
     position: relative;
-    margin : 1%;
+    /*margin : 1%;*/
     height: 130px;
 }
 

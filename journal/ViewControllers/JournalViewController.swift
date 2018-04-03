@@ -221,9 +221,12 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             do {
                 let htmlStr = try String(contentsOfFile: path)
                 if isAppended {
+                    print("append1")
                     self.editorView.appendHTML(htmlStr)
                 } else {
-                    self.editorView.insertHTML(htmlStr)
+                    print("append2")
+                    //self.editorView.insertHTML(htmlStr)
+                    self.editorView.appendHTML(htmlStr)
                 }
                 
                 self.editorView.initTouchblockCovers()

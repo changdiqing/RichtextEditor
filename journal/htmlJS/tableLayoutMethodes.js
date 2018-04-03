@@ -7,19 +7,22 @@ var pressed = false,
 
 // test methods
 
-$('button').click(function(){
-                  $('pre').text($('div')[0].outerHTML)
-                  });
 
-$('div[contenteditable]').keydown(function(e) {
+/*$('div[contenteditable]').keydown(function(e) {
                                   // trap the return key being pressed
                                   if (e.keyCode === 13) {
                                   // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-                                  document.execCommand('insertHTML', false, '<br><br>');
+                                  //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
+                                  e.preventDefault();
+                                  //RE.insertHTML('\n');
+                                  //document.write('<br />');
+                                  document.execCommand('insertHTML', false, '<br></br>');
+                                  //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
                                   // prevent the default behaviour of return key pressed
                                   return false;
                                   }
-                                  });
+                                  
+                                  });*/
 
 // floatingTouchBlock Methods
 function method_initTouchblockCovers() {
@@ -36,6 +39,12 @@ function method_initTouchblockCovers() {
         touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
         touchsurface[i].addEventListener('touchend', method_touchEndFunction, false);
     }
+    
+    
+     var touchsurface = document.querySelectorAll("div.touchblock");
+     for (var i = 0; i < touchsurface.length ; i++) {
+     touchsurface[i].contentEditable = "false";
+     }
 }
 
 function method_enterLayoutMode() {
@@ -61,10 +70,11 @@ function method_enterContentMode() {
         touchsurface[i].style.display= "none";
     }
     
+    /*
     var touchsurface = document.querySelectorAll("div.touchblock");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].contentEditable = "false";
-    }
+    }*/
 }
 
 function method_touchStartFunction(e){
@@ -157,6 +167,7 @@ function mehtod_setStartTextOrientationHorizon() {
 function myFunction() {
         var touchsurface = document.querySelectorAll("div.touchblockContentCover");
         for (var i = 0; i < touchsurface.length ; i++) {
+            touchsurface[i].contentEditable = "true";
             touchsurface[i].parentNode.contentEditable = "false";
         }
         document.getElementById("demo").innerText = "lalala";
@@ -165,7 +176,8 @@ function myFunction() {
 function focusoutFunction() {
     var touchsurface = document.querySelectorAll("div.touchblockContentCover");
     for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].parentNode.contentEditable = "true";
+        touchsurface[i].contentEditable = "false";
+        touchsurface[i].parentNode.contentEditable = "false";
     }
     document.getElementById("demo").innerText = "lololo";
     touchBlockFocused = false;

@@ -177,12 +177,10 @@ extension RichEditorView{
     
     func floatLeftImageAction() {
         self.floatLeftImage()
-        print(self.html)
     }
     
     func floatRightImageAction() {
         self.floatRightImage()
-        print(self.html)
     }
     
     func centerImageAction() {
