@@ -100,7 +100,9 @@ class JournalCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {return 1}
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return journals.count
@@ -219,5 +221,17 @@ class JournalCollectionViewController: UICollectionViewController {
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
         self.saveJournals()
         //self.collectionView?.reloadData()
+    }
+}
+
+extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = UIScreen.main.bounds
+        let journalWidth = 0.23 * screenSize.width
+        let journalHeight = 0.23 * screenSize.height
+        return CGSize(width: journalWidth, height: journalHeight)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
     }
 }
