@@ -54,7 +54,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
-        } else {
+        } else {//empty, add new journal
             if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
                 let url = URL(fileURLWithPath: filePath, isDirectory: false)
                 let request = URLRequest(url: url)
@@ -126,8 +126,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 photo = UIImage(named: "layoutMode")
             }
             let html = self.editorView.getDocElementHtml()
+            let date = Date()
+            journal = Journal(html: html, photo: photo, month: date)
             
-            journal = Journal(html: html, photo: photo)
         }
     }
     
