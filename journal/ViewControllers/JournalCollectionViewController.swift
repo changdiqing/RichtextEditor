@@ -117,6 +117,8 @@ class JournalCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.photo.image = journals[indexPath.item].photo
         cell.checkboxImageView.isHidden = !self.editingMode
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
         return cell
      
     }
