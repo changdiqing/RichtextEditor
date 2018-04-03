@@ -258,6 +258,13 @@ RE.setLineHeight = function(height) {
 // Methods added by Diqing Chang, 07.11.2017
 
 RE.insertImage = function(url, alt) {
+    
+    var touchsurface = document.querySelectorAll("div.touchblockContentCover");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = "true";
+        touchsurface[i].parentNode.contentEditable = "false";
+    }
+    
     RE.restorerange();
     var parentElement = getSelectionBoundaryElement("start");
     var img = document.createElement('img');

@@ -21,6 +21,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     var journal: Journal?
     var touchBlockClicked: Bool = false
+    var touchBlockClickedCopy: Bool = false
     
     private var isContentMode: Bool = true
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
@@ -91,10 +92,10 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         {
             try data?.write(to: filepath, options: Data.WritingOptions.atomic)
             let myUrl = filepath.absoluteString
-            if !touchBlockClicked {
+            if !touchBlockClickedCopy {
+                print("here")
                 editorView.insertImage(myUrl, alt: myUrl)
             } else {
-                touchBlockClicked = false
                 editorView.setTouchBlockBackgroundImage(myUrl, alt: myUrl)
             }
         }
@@ -103,7 +104,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             print("failed to save image")
             // Catch exception here and act accordingly
         }
-        
+        touchBlockClickedCopy = false
         // Set photoImageView to display the selected image.
         //photoImageView.image = selectedImage
         
@@ -178,6 +179,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 } else if fillingEffect.type == "No Filling" {
                     self.editorView.setTouchBlockBackgroundColor("transparent")
                 } else if fillingEffect.type == "Photo" {
+                    touchBlockClickedCopy = true // raise a second flag for image picker (multithread..)
                     let imagePickerController = UIImagePickerController()
                     // Only allow photos to be picked, not taken.
                     imagePickerController.sourceType = .photoLibrary
@@ -207,7 +209,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else {
                 fatalError("Unexpected segue identifier: \(sender.identifier)")
             }
-            
+            touchBlockClicked = false // reset touchBlockClicked
         } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
             if let layout = sourceViewController.selectedLayout {
                 insertHTML(filename: layout.htmlFileName, isAppended: layout.append)
