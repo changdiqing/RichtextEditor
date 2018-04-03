@@ -18,20 +18,22 @@ class Journal: NSObject, NSCoding {
     
     var html: String
     var photo: UIImage?
-    
+    var month: Date?
     static var DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL: URL = DocumentsDirectory.appendingPathComponent("journals")
     
     struct PropertyKey {
         static let html = "html"
         static let photo = "photo"
+        static let month = "month"
     }
     
     //MARK: Initialization
     
-    init(html: String, photo: UIImage?) {
+    init(html: String, photo: UIImage?, month: Date?) {
         self.html = html
         self.photo = photo
+        self.month = month
     }
     
     //MARK: NSCoding
@@ -39,6 +41,7 @@ class Journal: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(html, forKey: PropertyKey.html)
         aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(month, forKey: PropertyKey.month)
     }
     
     required convenience init ?(coder aDecoder: NSCoder) {
@@ -49,8 +52,9 @@ class Journal: NSObject, NSCoding {
         
         // Because photo is an optional property of Journal, just use conditional cast
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
-        
-        self.init(html: html, photo: photo)
+        let month = aDecoder.decodeObject(forKey: PropertyKey.month) as? Date
+        // Month
+        self.init(html: html, photo: photo, month: month)
     }
     
 }
