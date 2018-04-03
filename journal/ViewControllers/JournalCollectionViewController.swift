@@ -14,6 +14,7 @@ private let reuseIdentifier = "Cell"
 class JournalCollectionViewController: UICollectionViewController {
     //MARK: Properties
     fileprivate let reuseIdentifier = "journalCell"
+    //fileprivate let sectionHeaderView = "sectionHeaderView"
     fileprivate var journals = [Journal]()
     fileprivate let journalLayoutList = JournalLayout.journalLayoutList
     fileprivate var editingMode: Bool = false
@@ -159,6 +160,20 @@ class JournalCollectionViewController: UICollectionViewController {
         }
         //let cell: JournalCollectionViewCell? = self.collectionView(collectionView, cellForItemAt: indexPath as IndexPath) as? JournalCollectionViewCell
         //cell?.checkboxImageView.image = UIImage(named: "checked")
+    }
+    
+    // Section Header View
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
+        let now = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now as Date)
+        sectionHeaderView.monthTitle = nameOfMonth
+        
+        return sectionHeaderView
+        
     }
     
     //MARK: Actions

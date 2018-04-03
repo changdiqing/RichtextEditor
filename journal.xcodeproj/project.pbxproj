@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E22392073F76100E8CE47 /* sectionHeaderView.swift */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
 		996936CBE89DE8D455EF4441 /* Pods_journalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */; };
 		9B0CF0CA204AA666007203CB /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0C9204AA666007203CB /* KeyboardViewController.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		125E22392073F76100E8CE47 /* sectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionHeaderView.swift; sourceTree = "<group>"; };
 		335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		403E999531786B1C070B69F5 /* Pods-journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journal/Pods-journal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */,
 				9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */,
 				9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */,
+				125E22392073F76100E8CE47 /* sectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
 				9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */,
+				125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */,
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
 				9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */,
 				9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */,
