@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1255A58220754F1600D401FD /* index3.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A57F20754F1600D401FD /* index3.html */; };
+		1255A58320754F1600D401FD /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58020754F1600D401FD /* index2.html */; };
+		1255A58420754F1600D401FD /* index1.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58120754F1600D401FD /* index1.html */; };
+		1255A586207555A000D401FD /* TemplateLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255A585207555A000D401FD /* TemplateLayout.swift */; };
 		125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E22392073F76100E8CE47 /* sectionHeaderView.swift */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
 		996936CBE89DE8D455EF4441 /* Pods_journalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */; };
@@ -92,6 +96,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1255A57F20754F1600D401FD /* index3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index3.html; sourceTree = "<group>"; };
+		1255A58020754F1600D401FD /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
+		1255A58120754F1600D401FD /* index1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index1.html; sourceTree = "<group>"; };
+		1255A585207555A000D401FD /* TemplateLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLayout.swift; sourceTree = "<group>"; };
 		125E22392073F76100E8CE47 /* sectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionHeaderView.swift; sourceTree = "<group>"; };
 		335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +222,9 @@
 				9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */,
 				9B53BFCF20153F4800648A32 /* rich_editor.js */,
 				9B8684BF200BA01800A82C7E /* style.css */,
+				1255A58120754F1600D401FD /* index1.html */,
+				1255A58020754F1600D401FD /* index2.html */,
+				1255A57F20754F1600D401FD /* index3.html */,
 				9B8684C1200BA05500A82C7E /* normalize.css */,
 				9B3B86051FDC98210019B943 /* index.html */,
 				9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */,
@@ -231,6 +242,7 @@
 			children = (
 				9B999C8D2038461F00F14891 /* divFilter.swift */,
 				9B3B860B1FE319870019B943 /* JournalLayout.swift */,
+				1255A585207555A000D401FD /* TemplateLayout.swift */,
 				9B88F60B206592C50047ED2C /* FilliingEffects.swift */,
 				9B2C6D7B204BF6E500123AD5 /* Journal.swift */,
 			);
@@ -492,6 +504,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B999C8A202CF61500F14891 /* Lora in Resources */,
@@ -501,12 +514,14 @@
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
 				9B53BFD420153F4900648A32 /* index.js in Resources */,
+				1255A58220754F1600D401FD /* index3.html in Resources */,
 				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
 				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
+				1255A58420754F1600D401FD /* index1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +725,7 @@
 				9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */,
 				9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */,
 				9B88F60C206592C50047ED2C /* FilliingEffects.swift in Sources */,
+				1255A586207555A000D401FD /* TemplateLayout.swift in Sources */,
 				9B999C8E2038461F00F14891 /* divFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
