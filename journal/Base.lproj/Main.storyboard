@@ -59,7 +59,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jf3-cV-nY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Hzb-KV-Yx5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="850" y="-917"/>
+            <point key="canvasLocation" x="-95" y="448"/>
+        </scene>
+        <!--Template Layouts-->
+        <scene sceneID="Nva-it-iNh">
+            <objects>
+                <collectionViewController title="Template Layouts" id="NFC-oc-CGb" customClass="TemplateLayoutCollectionViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Eg6-Tr-kxe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VrU-xg-cqu">
+                            <size key="itemSize" width="94" height="109"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="templateLayoutCell" id="Zrn-We-f9S" customClass="TemplateLayoutCollectionViewCell" customModule="journal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="94" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="109"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XhI-rP-N9F">
+                                            <rect key="frame" x="10" y="10" width="76" height="89"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="XhI-rP-N9F" secondAttribute="trailing" id="719-Zt-UGS"/>
+                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="top" secondItem="Zrn-We-f9S" secondAttribute="topMargin" constant="2" id="hyj-am-p2g"/>
+                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="leading" secondItem="Zrn-We-f9S" secondAttribute="leadingMargin" constant="2" id="mht-oj-sDh"/>
+                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="centerY" secondItem="Zrn-We-f9S" secondAttribute="centerY" id="vmc-Ne-Se3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="templateImage" destination="XhI-rP-N9F" id="bts-r6-UOH"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="AyB-3O-nBm"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="NFC-oc-CGb" id="0ok-A1-bn6"/>
+                            <outlet property="delegate" destination="NFC-oc-CGb" id="lXv-Oz-vqO"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="76u-K3-9mm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1119" y="-362"/>
         </scene>
         <!--Journal Collection View Controller-->
         <scene sceneID="qqZ-3C-Hny">
@@ -138,12 +187,11 @@
                     <navigationItem key="navigationItem" id="psV-iv-xjy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OWp-Af-9Xa">
                             <connections>
-                                <segue destination="BOD-Hw-5GI" kind="presentation" identifier="addJournal" id="qni-eV-rNt"/>
+                                <segue destination="NFC-oc-CGb" kind="show" identifier="addJournal" id="trA-Ap-rDF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="journalAddButton" destination="OWp-Af-9Xa" id="rZg-jN-c3S"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="editJournal" id="wel-zr-kdp"/>
                     </connections>
                 </collectionViewController>
@@ -412,7 +460,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVa-Dq-HFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dRk-0K-Zh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-951.20000000000005" y="-36.431784107946029"/>
+            <point key="canvasLocation" x="-2183" y="450"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Wzw-P1-D5p">
@@ -445,7 +493,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkA-Ec-Tlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rNA-fU-oc1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="-36"/>
+            <point key="canvasLocation" x="-1119" y="449"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="59v-an-tOA">
@@ -491,6 +539,6 @@
         <image name="unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wel-zr-kdp"/>
+        <segue reference="AyB-3O-nBm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,6 +27,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
     private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
     
+    private var indexFile: String = "index2add "
     
     /*
     // Here instantiate a toolbar instance, loaded only when accessed
@@ -39,6 +40,10 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Get selected template
+        
+
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
@@ -56,7 +61,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
         } else {//empty, add new journal
-            if let filePath = Bundle.main.path(forResource: "index", ofType: "html"){
+            
+            
+            if let filePath = Bundle.main.path(forResource: self.indexFile, ofType: "html"){
                 let url = URL(fileURLWithPath: filePath, isDirectory: false)
                 let request = URLRequest(url: url)
                 editorView.webView.loadRequest(request)
@@ -131,13 +138,17 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             journal = Journal(html: html, photo: photo, month: date)
             
         }
+        
     }
+    
     
     func presentJournalLayouts() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let journalLayoutsViewController = storyBoard.instantiateViewController(withIdentifier: "JournalLayoutsViewController") as! JournalLayoutCollectionViewController
         self.present(journalLayoutsViewController, animated:true, completion:nil)
     }
+    
+
     
     // MARK: Actions
     
@@ -216,6 +227,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 insertHTML(filename: layout.htmlFileName, isAppended: layout.append)
             }
         }
+    
     }
     
     //MARK: Private Methods

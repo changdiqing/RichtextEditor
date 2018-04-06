@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */; };
+		1248ACF92077EB6A000C1881 /* TemplateLayoutCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248ACF82077EB6A000C1881 /* TemplateLayoutCollectionViewController.swift */; };
 		1255A58220754F1600D401FD /* index3.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A57F20754F1600D401FD /* index3.html */; };
 		1255A58320754F1600D401FD /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58020754F1600D401FD /* index2.html */; };
 		1255A58420754F1600D401FD /* index1.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58120754F1600D401FD /* index1.html */; };
@@ -96,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		1248ACF82077EB6A000C1881 /* TemplateLayoutCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLayoutCollectionViewController.swift; sourceTree = "<group>"; };
 		1255A57F20754F1600D401FD /* index3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index3.html; sourceTree = "<group>"; };
 		1255A58020754F1600D401FD /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		1255A58120754F1600D401FD /* index1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index1.html; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */,
+				1248ACF82077EB6A000C1881 /* TemplateLayoutCollectionViewController.swift */,
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
 				9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
@@ -340,6 +345,7 @@
 				9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */,
 				9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */,
 				125E22392073F76100E8CE47 /* sectionHeaderView.swift */,
+				1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1248ACF92077EB6A000C1881 /* TemplateLayoutCollectionViewController.swift in Sources */,
 				9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */,
 				9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */,
 				9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */,
@@ -714,6 +721,7 @@
 				9B636A2A1FCA0603003AFF26 /* UIColorExtensions.swift in Sources */,
 				9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */,
 				9B4A78531FAA1519000F39FC /* JournalViewController.swift in Sources */,
+				1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */,
 				9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
 				9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */,
