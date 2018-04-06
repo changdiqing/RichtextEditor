@@ -154,10 +154,18 @@ extension RichEditorView{
         //doneToolbar.sizeToFit()
         self.toolbarScroll!.contentSize.width = self.doneToolbar!.frame.width
         
-        self.inputAccessoryView = self.toolbarScroll
+        self.attachKeyboardToolbar()
     }
     
     //MARK: ToolbarItemActions
+    
+    func attachKeyboardToolbar() {
+        self.inputAccessoryView = self.toolbarScroll
+    }
+    
+    func removeKeyboardToolbar() {
+        self.inputAccessoryView = nil
+    }
     
     func doneButtonAction()
     {

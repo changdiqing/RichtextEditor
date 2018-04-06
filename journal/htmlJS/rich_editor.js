@@ -428,6 +428,7 @@ RE.setBlockquote = function() {
 };
 
 // new method added by Diqing 27.03.2018
+
 RE.appendHTML = function(html) {
     RE.editor.insertAdjacentHTML( 'beforeend', html);
 };

@@ -7,7 +7,6 @@ var pressed = false,
 
 // test methods
 
-
 /*$('div[contenteditable]').keydown(function(e) {
                                   // trap the return key being pressed
                                   if (e.keyCode === 13) {
@@ -69,12 +68,6 @@ function method_enterContentMode() {
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].style.display= "none";
     }
-    
-    /*
-    var touchsurface = document.querySelectorAll("div.touchblock");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].contentEditable = "false";
-    }*/
 }
 
 function method_touchStartFunction(e){
