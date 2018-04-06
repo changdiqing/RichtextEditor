@@ -83,6 +83,8 @@ class JournalCollectionViewController: UICollectionViewController {
             switch(segue.identifier ?? "") {
             case "addJournal":
                 os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+                //guard let templateLayoutCollectionVC = segue.destination as? TemplateLayoutCollectionViewController else {fatalError("Unexpected destination: \(segue.destination)")}
+                print("Segue1 activated")
             case "editJournal":
                 print("Segeue2 activated")
                 guard let journalViewController = segue.destination as? JournalViewController else {
