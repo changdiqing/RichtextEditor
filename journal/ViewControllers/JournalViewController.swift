@@ -27,7 +27,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
     private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
     
-    private var indexFile: String = "index2 "
+    private var indexFile: String = "index2"
     
     /*
     // Here instantiate a toolbar instance, loaded only when accessed
