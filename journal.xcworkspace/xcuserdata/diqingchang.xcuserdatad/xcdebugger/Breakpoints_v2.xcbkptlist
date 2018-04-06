@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "journal/Views/RichEditorView+Extensions.swift"
-            timestampString = "543968095.190187"
+            timestampString = "544739849.828552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "journal/ViewControllers/JournalViewController.swift"
-            timestampString = "544482731.694375"
+            timestampString = "544739849.831143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "unwindToRichtextEditor(sender:)"
             landmarkType = "7">
          </BreakpointContent>

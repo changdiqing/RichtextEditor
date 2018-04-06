@@ -594,6 +594,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     /// Called by the UITapGestureRecognizer when the user taps the view.
     /// If we are not already the first responder, focus the editor.
     @objc private func viewWasTapped() {
+        if !isContentEditable {return}  // Do nothing if not in content mode
         if !webView.containsFirstResponder {
             //let point = tapRecognizer.location(in: webView)  // commented by Diqing, 07.02.2017
             //focus(at: point)   // commented by Diqing, 07.02.2017
@@ -601,7 +602,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             runJS("setEndOfContenteditable()")
         } else {
             let point = tapRecognizer.location(in: webView)
-            //focus(at: point)
+            focus(at: point)
         }
     }
     

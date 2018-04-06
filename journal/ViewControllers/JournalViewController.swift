@@ -145,9 +145,13 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         if self.isContentMode {
             self.changeModeButton.image = self.contentModeIcon
             self.editorView.enterContentMode()
+            self.editorView.isEditingEnabled = true
+            self.editorView.attachKeyboardToolbar()
         } else {
             self.changeModeButton.image = self.layoutModeIcon
             self.editorView.enterLayoutMode()
+            self.editorView.isEditingEnabled = false
+            self.editorView.removeKeyboardToolbar()
         }
     }
     
