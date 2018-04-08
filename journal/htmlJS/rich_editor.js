@@ -259,12 +259,6 @@ RE.setLineHeight = function(height) {
 
 RE.insertImage = function(url, alt) {
     
-    var touchsurface = document.querySelectorAll("div.touchblockContentCover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].contentEditable = "true";
-        touchsurface[i].parentNode.contentEditable = "false";
-    }
-    
     RE.restorerange();
     var parentElement = getSelectionBoundaryElement("start");
     var img = document.createElement('img');
@@ -274,6 +268,7 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("style","float:left")
     img.setAttribute("class","block")
     img.onload = RE.updateHeight;
+    
     if (parentElement.id == "editor") {
         var wrapper = document.createElement('div');
         wrapper.Child(img);
@@ -283,12 +278,12 @@ RE.insertImage = function(url, alt) {
     }
     
     RE.callback("input");
-    
     var sel = document.getSelection();
     var range = document.createRange();
     range.setEnd(img, 1);
     sel.removeAllRanges();
     sel.addRange(range);
+    
 };
 
 

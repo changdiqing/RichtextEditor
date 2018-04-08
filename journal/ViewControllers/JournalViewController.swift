@@ -105,8 +105,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             // Catch exception here and act accordingly
         }
         touchBlockClickedCopy = false
-        // Set photoImageView to display the selected image.
-        //photoImageView.image = selectedImage
+        self.editorView.initTouchblockCovers()
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
