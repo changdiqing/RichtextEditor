@@ -39,11 +39,19 @@ function method_initTouchblockCovers() {
         touchsurface[i].addEventListener('touchend', method_touchEndFunction, false);
     }
     
+    var touchsurface = document.querySelectorAll("img");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].addEventListener('touchstart', method_touchStartSimple, false);
+        touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
+        touchsurface[i].addEventListener('touchend', method_touchEndSimple, false);
+    }
     
      var touchsurface = document.querySelectorAll("div.touchblock");
      for (var i = 0; i < touchsurface.length ; i++) {
      touchsurface[i].contentEditable = "false";
      }
+    
+    
 }
 
 function method_enterLayoutMode() {
@@ -81,6 +89,18 @@ function method_touchStartFunction(e){
     startHeight = $(start).height();
     startLeft = $(start).position().left;
     startTop = $(start).position().top;
+    e.preventDefault();
+}
+
+function method_touchStartSimple(e){
+    
+    e.stopPropagation();
+    start = $(this);
+    pressed = true;
+    startX = e.pageX;
+    startY = e.pageY;
+    startWidth = $(start).width();
+    startHeight = $(start).height();
     e.preventDefault();
 }
 
@@ -131,6 +151,14 @@ function method_touchEndFunction(e){
     }
     e.preventDefault();
 }
+
+function method_touchEndSimple(e){
+    if(pressed) {
+        pressed = false;
+    }
+    e.preventDefault();
+}
+
 
 function method_cloneTouchblock() {
     var $clone = $(start).clone();
