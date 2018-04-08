@@ -602,7 +602,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             runJS("setEndOfContenteditable()")
         } else {
             let point = tapRecognizer.location(in: webView)
-            focus(at: point)
+            //focus(at: point)
         }
     }
     

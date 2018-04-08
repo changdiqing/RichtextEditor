@@ -236,7 +236,7 @@
                                     <segue destination="aZm-Ck-CrT" kind="unwind" identifier="saveJournal" unwindAction="unwindToJournalListWithSender:" id="BG7-VR-keh"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="layoutMode" style="plain" id="YO5-iB-QUx">
+                            <barButtonItem title="Item" image="editMode" style="plain" id="YO5-iB-QUx">
                                 <connections>
                                     <action selector="changeModeAction:" destination="BYZ-38-t0r" id="aW9-lH-4Rq"/>
                                 </connections>
@@ -533,12 +533,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="layoutMode" width="37" height="37"/>
+        <image name="editMode" width="36" height="36"/>
         <image name="textDirectionHorizontal" width="75" height="75"/>
         <image name="textDirectionVertical" width="75" height="75"/>
         <image name="unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wel-zr-kdp"/>
+        <segue reference="aKC-kQ-gwu"/>
     </inferredMetricsTieBreakers>
 </document>
