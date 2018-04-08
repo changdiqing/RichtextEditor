@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Syd-cE-43q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Syd-cE-43q">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -64,7 +64,7 @@
         <!--Template Layouts-->
         <scene sceneID="Nva-it-iNh">
             <objects>
-                <collectionViewController title="Template Layouts" id="NFC-oc-CGb" customClass="TemplateLayoutCollectionViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Template Layouts" id="NFC-oc-CGb" customClass="TemplateCollectionViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Eg6-Tr-kxe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +96,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="templateImage" destination="XhI-rP-N9F" id="bts-r6-UOH"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="AyB-3O-nBm"/>
+                                    <segue destination="BOD-Hw-5GI" kind="presentation" identifier="createJournal" id="khG-ne-xm8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -252,7 +252,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="aZm-Ck-CrT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-95.200000000000003" y="-917.09145427286364"/>
+            <point key="canvasLocation" x="607" y="-917"/>
         </scene>
         <!--Color Card Table View Controller-->
         <scene sceneID="SE3-cT-0aD">
@@ -529,7 +529,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXi-8l-JTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1118" y="-1347"/>
+            <point key="canvasLocation" x="-265" y="-362"/>
         </scene>
     </scenes>
     <resources>
@@ -539,6 +539,6 @@
         <image name="unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AyB-3O-nBm"/>
+        <segue reference="aKC-kQ-gwu"/>
     </inferredMetricsTieBreakers>
 </document>

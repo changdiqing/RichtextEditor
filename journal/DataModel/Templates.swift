@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct TemplateLayoutItem{
+struct TemplateItem{
     var htmlFileName: String = "wrong name"
     var templateImage: UIImage = UIImage(named: "Aqua")!
     var append: Bool = false
@@ -23,10 +23,10 @@ struct TemplateLayoutItem{
     }
 }
 
-class TemplateLayout {
-    static let templateLayoutList:[TemplateLayoutItem] = [
-        TemplateLayoutItem(htmlFileName: "index1", templateImage: UIImage(named: "Aqua"),isAppended: false),
-        TemplateLayoutItem(htmlFileName: "index2", templateImage: UIImage(named: "Darkgreen"),isAppended: false),
-        TemplateLayoutItem(htmlFileName: "index3", templateImage: UIImage(named: "Mediumpurple"), isAppended: false)
+class Templates {
+    static let templateList:[TemplateItem] = [
+        TemplateItem(htmlFileName: "index1", templateImage: UIImage(named: "Aqua"),isAppended: false),
+        TemplateItem(htmlFileName: "index2", templateImage: UIImage(named: "Darkgreen"),isAppended: false),
+        TemplateItem(htmlFileName: "index3", templateImage: UIImage(named: "Mediumpurple"), isAppended: false)
     ]
 }
