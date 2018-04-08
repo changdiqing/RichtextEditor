@@ -84,15 +84,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XhI-rP-N9F">
-                                            <rect key="frame" x="10" y="10" width="76" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="109"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="XhI-rP-N9F" secondAttribute="trailing" id="719-Zt-UGS"/>
-                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="top" secondItem="Zrn-We-f9S" secondAttribute="topMargin" constant="2" id="hyj-am-p2g"/>
-                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="leading" secondItem="Zrn-We-f9S" secondAttribute="leadingMargin" constant="2" id="mht-oj-sDh"/>
-                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="centerY" secondItem="Zrn-We-f9S" secondAttribute="centerY" id="vmc-Ne-Se3"/>
+                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="top" secondItem="Zrn-We-f9S" secondAttribute="top" id="11P-bY-rQF"/>
+                                    <constraint firstItem="XhI-rP-N9F" firstAttribute="leading" secondItem="Zrn-We-f9S" secondAttribute="leading" id="3fi-zc-g2B"/>
+                                    <constraint firstAttribute="bottom" secondItem="XhI-rP-N9F" secondAttribute="bottom" id="TRU-eo-0Ct"/>
+                                    <constraint firstAttribute="trailing" secondItem="XhI-rP-N9F" secondAttribute="trailing" id="mvp-rG-nrG"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="templateImage" destination="XhI-rP-N9F" id="bts-r6-UOH"/>
@@ -108,7 +108,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76u-K3-9mm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1119" y="-362"/>
+            <point key="canvasLocation" x="-1119.2" y="-362.06896551724139"/>
         </scene>
         <!--Journal Collection View Controller-->
         <scene sceneID="qqZ-3C-Hny">
@@ -539,6 +539,6 @@
         <image name="unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aKC-kQ-gwu"/>
+        <segue reference="wel-zr-kdp"/>
     </inferredMetricsTieBreakers>
 </document>

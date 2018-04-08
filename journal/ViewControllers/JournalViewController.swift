@@ -27,17 +27,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     private var isContentMode: Bool = true
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
     private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
-    
-
-    
-    /*
-    // Here instantiate a toolbar instance, loaded only when accessed
-    lazy var toolbar: RichEditorToolbar = {
-        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0,width: self.view.bounds.width, height: 44))
-        toolbar.editor = self.editorView
-        //toolbar.options = RichEditorDefaultOption.all
-        return toolbar
-    }()*/
 
     override func viewDidLoad() {
         super.viewDidLoad()

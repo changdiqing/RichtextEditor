@@ -76,8 +76,10 @@ class TemplateCollectionViewController: UICollectionViewController {
 extension TemplateCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: 100, height: 200)
+        let screenSize = UIScreen.main.bounds
+        let journalWidth = 0.23 * screenSize.width
+        let journalHeight = 0.23 * screenSize.height
+        return CGSize(width: journalWidth, height: journalHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -87,5 +89,5 @@ extension TemplateCollectionViewController : UICollectionViewDelegateFlowLayout 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
 }
+
