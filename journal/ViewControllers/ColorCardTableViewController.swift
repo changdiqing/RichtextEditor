@@ -9,7 +9,7 @@
 import UIKit
 import RichEditorView
 
-class ColorCardTableViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
+class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     
     @IBOutlet weak var colorCardTable: UITableView!
     @IBOutlet weak var filterWidth: NSLayoutConstraint!
@@ -137,7 +137,7 @@ extension ColorCardTableViewController: UITableViewDelegate{
     }
 }
 
-extension ColorCardTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
+extension ColorCardTableViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -159,7 +159,6 @@ extension ColorCardTableViewController: UICollectionViewDelegateFlowLayout, UICo
         
         return cell
     }
-    
 }
 
 extension ColorCardTableViewController:  UITabBarDelegate {
