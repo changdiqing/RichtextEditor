@@ -210,8 +210,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
          //= currentKeyboardFrame.height - 50
         keyboardFrame.size.height = currentKeyboardFrame.height - 50
-        print(keyboardFrame)
-        
     }
 
     // MARK: - Rich Text Editing

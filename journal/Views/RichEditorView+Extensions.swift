@@ -206,7 +206,6 @@ extension RichEditorView{
     }
 
     func colorAction() {
-        print(keyboardFrame.height)
         self.attachTextView.inputView?.frame = keyboardFrame
         self.attachTextView.becomeFirstResponder()
     }
