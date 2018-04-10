@@ -53,15 +53,17 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     //MARK: Public Properties added by Diqing Chang, 02.02.2018
     public var toolbarScroll: UIScrollView?
     public var doneToolbar: UIToolbar?
+    public var attachTextView: UITextView!
     public var itemsForLayoutMode = [UIBarButtonItem]()
     public var itemsForEditMode = [UIBarButtonItem]()
+    public var keyboardFrame = CGRect(x: 0, y: 0, width: 0, height: 271)
     
     // MARK: Public Properties
 
     /// The delegate that will receive callbacks when certain actions are completed.
     open weak var delegate: RichEditorDelegate?
 
-    /// Input accessory view to display over they keyboard.
+    /// Input accessory view to display over the keyboard.
     /// Defaults to nil
     open override var inputAccessoryView: UIView? {
         get { return webView.cjw_inputAccessoryView }
@@ -171,6 +173,15 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         webView.cjw_inputAccessoryView = nil
         self.addSubview(webView)
         
+        // puppetTextView added by Diqing Chang, 09.04.2018
+        attachTextView = UITextView(frame: CGRect.zero)
+        attachTextView.alpha = 0.0
+        self.addSubview(attachTextView)
+        
+        // Oberserver added by Diqing Chang at 10.04.2018
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        
         /*
         if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
@@ -191,6 +202,16 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
         tapRecognizer.delegate = self
         addGestureRecognizer(tapRecognizer)
+    }
+    
+    // observer function added by Diqing at 10.04.2018
+    func keyboardShown(notification: NSNotification) {
+        let info = notification.userInfo!
+        let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+         //= currentKeyboardFrame.height - 50
+        keyboardFrame.size.height = currentKeyboardFrame.height - 50
+        print(keyboardFrame)
+        
     }
 
     // MARK: - Rich Text Editing

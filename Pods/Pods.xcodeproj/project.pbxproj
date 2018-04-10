@@ -18,6 +18,7 @@
 		7A791E770877E870C4541A17D469167E /* Pods-journal-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B38C1B37752EB4F4D2EC17F5D15E57F /* Pods-journal-dummy.m */; };
 		8652A3D315561BFD255175AA1792CACE /* RichEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354A4589D9EC73AA5E5B05996E51CBBC /* RichEditorView.swift */; };
 		8DE8AF79B8CD6EAF7E45DE882489A937 /* RichEditorView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D630CB96C16BF1E840D3D183F886E93 /* RichEditorView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B224F17207D4819003D4A0A /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F16207D4819003D4A0A /* defaultParameters.swift */; };
 		9B659D779766B228145418D97634205A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D261FA927DAB20DEF3C64CF03C2C3F23 /* String+Extensions.swift */; };
 		A5E6E8C4F0AEBD62C951F1595F2FD45B /* CJWWebView+HackishAccessoryHiding.h in Headers */ = {isa = PBXBuildFile; fileRef = DC78400EA6C59F3313B29B0EC25D9B88 /* CJWWebView+HackishAccessoryHiding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB8E53E87BF64DCFD132E484E2D19A39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -66,6 +67,7 @@
 		96A428145979194102E7E6D142AFF6AA /* RichEditorView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RichEditorView.modulemap; sourceTree = "<group>"; };
 		9A14FA762EDC7C73551A1545B953BCB1 /* Pods-journalUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-journalUITests-frameworks.sh"; sourceTree = "<group>"; };
 		9A38CB87930EDAADEFBD6665D5FDFDF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B224F16207D4819003D4A0A /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		9F36ABCE914B43D8A993D54E480FDBFE /* Pods-journalTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-journalTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9FBA5BA8216E81C8A3BE4C19756553E8 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5951C795A45E1A12B2C261F464FFC91 /* Pods-journalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-journalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				DC78400EA6C59F3313B29B0EC25D9B88 /* CJWWebView+HackishAccessoryHiding.h */,
 				F7C6C9CAA68D647F65777BF0A44E4F08 /* CJWWebView+HackishAccessoryHiding.m */,
+				9B224F16207D4819003D4A0A /* defaultParameters.swift */,
 				354A4589D9EC73AA5E5B05996E51CBBC /* RichEditorView.swift */,
 				D261FA927DAB20DEF3C64CF03C2C3F23 /* String+Extensions.swift */,
 				F8C693DAF26DF62BE1B2F51FE8DF073D /* UIView+Responder.swift */,
@@ -378,7 +381,7 @@
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
 					79CB24C642BE8FE5D39AEC1F4C227C5E = {
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -446,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A791E770877E870C4541A17D469167E /* Pods-journal-dummy.m in Sources */,
+				9B224F17207D4819003D4A0A /* defaultParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

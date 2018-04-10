@@ -155,6 +155,12 @@ extension RichEditorView{
         self.toolbarScroll!.contentSize.width = self.doneToolbar!.frame.width
         
         self.attachKeyboardToolbar()
+        
+        // initialize custom keyboard. Diqing 09.04.2018
+        let keyboardView = Keyboard(frame: CGRect(x: 0, y: 0, width: 0, height: 271))
+        keyboardView.delegate = self
+        self.attachTextView.inputView = keyboardView
+        //keyboardView.delegate = self // the view controller will be notified by the keyboard whenever a key is tapped
     }
     
     //MARK: ToolbarItemActions
@@ -172,7 +178,6 @@ extension RichEditorView{
         self.resignFirstResponder()
         self.endEditing(true)
         self.delegate?.richEditorSaveHTML!()
-        print(self.html)
     }
     
     func insertImageAction() {
@@ -201,6 +206,16 @@ extension RichEditorView{
     }
 
     func colorAction() {
-        delegate?.richEditorChangeColor!()
+        print(keyboardFrame.height)
+        self.attachTextView.inputView?.frame = keyboardFrame
+        self.attachTextView.becomeFirstResponder()
     }
+}
+
+extension RichEditorView: KeyboardDelegate {
+    func keyWasTapped(color: UIColor) {
+        self.restoreSelectionRange()
+        self.setTextColor(color.htmlRGBA)
+    }
+
 }

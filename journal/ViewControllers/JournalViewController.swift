@@ -178,8 +178,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                         touchBlockClicked = false
                         self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
                     } else {  // else update selected text color
-                        self.editorView.restoreSelectionRange()
-                        self.editorView.setTextColor(selectedColor.htmlRGBA)
+                       
                     }
                 } else if fillingEffect.type == "No Filling" {
                     self.editorView.setTouchBlockBackgroundColor("transparent")
@@ -229,10 +228,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             do {
                 let htmlStr = try String(contentsOfFile: path)
                 if isAppended {
-                    print("append1")
                     self.editorView.appendHTML(htmlStr)
                 } else {
-                    print("append2")
                     //self.editorView.insertHTML(htmlStr)
                     self.editorView.appendHTML(htmlStr)
                 }
@@ -297,13 +294,6 @@ extension JournalViewController: RichEditorDelegate {
     
     func richEditorInsertlayout() {
         self.presentJournalLayouts()
-    }
-    
-    func richEditorChangeColor() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
-        colorCardViewController.buttonHeight = 0.00
-        self.present(colorCardViewController, animated:true, completion:nil)
     }
     
     func richEditorSaveHTML() {

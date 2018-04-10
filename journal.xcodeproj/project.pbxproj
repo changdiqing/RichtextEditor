@@ -20,6 +20,11 @@
 		9B0CF0CE204AA666007203CB /* RichtextEditor.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B0CF0C7204AA666007203CB /* RichtextEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */; };
 		9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */; };
+		9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */; };
+		9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */; };
+		9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0E207BE895003D4A0A /* defaultColors.swift */; };
+		9B224F14207BE895003D4A0A /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0F207BE895003D4A0A /* Keyboard.swift */; };
+		9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F10207BE895003D4A0A /* Keyboard.xib */; };
 		9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7B204BF6E500123AD5 /* Journal.swift */; };
 		9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
@@ -115,6 +120,11 @@
 		9B0CF0CB204AA666007203CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewController.swift; sourceTree = "<group>"; };
+		9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorKeyboardCell.xib; sourceTree = "<group>"; };
+		9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboardCell.swift; sourceTree = "<group>"; };
+		9B224F0E207BE895003D4A0A /* defaultColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultColors.swift; sourceTree = "<group>"; };
+		9B224F0F207BE895003D4A0A /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		9B224F10207BE895003D4A0A /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
 		9B2C6D7B204BF6E500123AD5 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RichEditorView+Extensions.swift"; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 		9B4349881FD1FA7F0009E899 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				9B224F0E207BE895003D4A0A /* defaultColors.swift */,
 				9B999C8D2038461F00F14891 /* divFilter.swift */,
 				9B3B860B1FE319870019B943 /* JournalLayout.swift */,
 				1255A585207555A000D401FD /* Templates.swift */,
@@ -297,8 +308,10 @@
 				9BD4D2751FD1F688007620F4 /* Views */,
 				9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */,
 				9B4A78541FAA1519000F39FC /* Main.storyboard */,
-				9B4A785A1FAA1519000F39FC /* Assets.xcassets */,
+				9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */,
+				9B224F10207BE895003D4A0A /* Keyboard.xib */,
 				9B4A785C1FAA1519000F39FC /* LaunchScreen.storyboard */,
+				9B4A785A1FAA1519000F39FC /* Assets.xcassets */,
 				9B4A785F1FAA1519000F39FC /* Info.plist */,
 			);
 			path = journal;
@@ -337,6 +350,8 @@
 		9BD4D2751FD1F688007620F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */,
+				9B224F0F207BE895003D4A0A /* Keyboard.swift */,
 				9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */,
 				9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */,
 				9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */,
@@ -512,6 +527,7 @@
 			files = (
 				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
+				9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B999C8A202CF61500F14891 /* Lora in Resources */,
 				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
@@ -522,6 +538,7 @@
 				9B53BFD420153F4900648A32 /* index.js in Resources */,
 				1255A58220754F1600D401FD /* index3.html in Resources */,
 				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
+				9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */,
 				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
@@ -710,7 +727,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */,
 				1248ACF92077EB6A000C1881 /* TemplateCollectionViewController.swift in Sources */,
+				9B224F14207BE895003D4A0A /* Keyboard.swift in Sources */,
 				9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */,
 				9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */,
 				9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */,
@@ -729,6 +748,7 @@
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
 				9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */,
 				9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */,
+				9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */,
 				9B3B860C1FE319870019B943 /* JournalLayout.swift in Sources */,
 				9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */,
 				9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */,
