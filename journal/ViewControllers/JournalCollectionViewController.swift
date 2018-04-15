@@ -41,6 +41,7 @@ class JournalCollectionViewController: UICollectionViewController {
         // Load any saved journals
         if let savedJournals = loadJournals() {
             journals += savedJournals
+            
         }
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -102,27 +103,30 @@ class JournalCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        var allMonth = [String]()
-        var thisMonth: String
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        for i in (0 ..< self.journals.count) {
-            thisMonth = dateFormatter.string(from: ((journals[i].month))!)
-            if allMonth.contains(thisMonth) == false {
-                allMonth.append(thisMonth)
-            }
-        }
-        return allMonth.count
+        let allSections = self.getSectionAmount()
+        return allSections
         //return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        
+        
+        let indexPaths: [NSIndexPath] = self.collectionView!.indexPathsForVisibleItems as [NSIndexPath]
+        for indexPath in indexPaths {
+            let cell = self.collectionView!.cellForItem(at: indexPath as IndexPath)
+            indexPath.section
+            
+            
+        }
 //        if section == 0{
 //          return journals.count - 3
 //        }
 //        else{
 //            return 3
 //        }
+        
     return journals.count
         
     }
@@ -198,24 +202,10 @@ class JournalCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
-        var nameOfMonth:String = "Month"
-        switch (indexPath[0]) {
-        case 0:
-            nameOfMonth = "April"
-        case 1:
-            nameOfMonth = "March"
-        default:
-            print("HHHH")
-        }
-        print(indexPath[0])
-        //let cell = self.collectionView(collectionView, cellForItemAt: indexPath)
-        //let journal = self.journals(indexPath)
-        //let now = NSDate()
-        //let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "LLLL"
-        //let nameOfMonth = dateFormatter.string(from: now as Date)
-        sectionHeaderView.monthTitle = nameOfMonth
-        print(indexPath)
+        let myMonth = journals[(indexPath as NSIndexPath).section].month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM yyyy"
+        sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth!)
         return sectionHeaderView
         
     }
@@ -267,6 +257,22 @@ class JournalCollectionViewController: UICollectionViewController {
         let journalIndex: Int  = sumSections + indexPath.item
         return journalIndex
     }
+    
+    private func getSectionAmount() -> Int{
+        var allMonth = [String]()
+        var thisMonth: String
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        for i in (0 ..< self.journals.count) {
+            thisMonth = dateFormatter.string(from: ((journals[i].month))!)
+            if allMonth.contains(thisMonth) == false {
+                allMonth.append(thisMonth)
+            }
+        }
+        return allMonth.count
+    }
+    
+    
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         print("Delete")
