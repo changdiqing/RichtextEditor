@@ -123,7 +123,10 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 photo = UIImage(named: "layoutMode")
             }
             let html = self.editorView.getDocElementHtml()
-            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            var date = formatter.date(from: "2018/05/02")
+            //date = Date()
             journal = Journal(html: html, photo: photo, month: date)
             
         }
