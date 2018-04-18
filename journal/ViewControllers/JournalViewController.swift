@@ -126,7 +126,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"
             var date = formatter.date(from: "2018/05/02")
-            //date = Date()
+            date = Date()
             journal = Journal(html: html, photo: photo, month: date)
             
         }

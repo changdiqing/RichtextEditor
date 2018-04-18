@@ -173,11 +173,13 @@ class JournalCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
         //print(myJournals.capacity)
-        var myMonth = Date()
+        var myMonth:Date
         if myJournals[indexPath.section].count > 0 {
-            let thisJournal = myJournals[indexPath.section][0]
-            var myMonth = thisJournal.month
+            myMonth = myJournals[indexPath.section][0].month!
+        } else{
+            myMonth = Date()
         }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM yyyy"
         sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth)
@@ -217,23 +219,6 @@ class JournalCollectionViewController: UICollectionViewController {
                     }
                     myJournals[0].insert(journal, at: 0)
                     collectionView?.insertItems(at: [newIndexPath])
-                    print("H")
-//                    if (collectionView?.numberOfSections)! < 1 {
-//                        collectionView?.insertSections([0])
-//                    }
-//                    let dateFormatter = DateFormatter()
-//                    dateFormatter.dateFormat = "MMM yyyy"
-//                    var month1 = dateFormatter.string(from: journal.month!)
-//                    var month2 = dateFormatter.string(from: journals[0].month!)
-//                    var isEqual = (month1 == month2)
-//                    if isEqual == false {
-////                        let ins = NSIndexSet(index: 0)
-//                        collectionView?.insertSections([0])
-//
-//                    }
-//                    journals.insert(journal, at: 0)
-                    
-                    //collectionView?.reloadData()
                 }
                 self.saveJournals()
                 //collectionView?.reloadData()
@@ -270,86 +255,6 @@ class JournalCollectionViewController: UICollectionViewController {
     private func getSectionAmount() -> Int{
         return myJournals.count
     }
-    
-//    private func sortJournals() ->  [[Journal]] {
-//        //let journals = self.journals
-//        let mySections: Int = self.getSectionAmount()
-//        var myJournalList = [[Journal]]()
-//        var myItems = [Int] ()
-//        var thisItem: Int = 1
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMM yyyy"
-//        for i in (1 ..< journals.count) {
-//
-//            var month1 = dateFormatter.string(from: journals[i].month!)
-//            var month2 = dateFormatter.string(from: journals[i - 1].month!)
-//            var isEqual = (month1 == month2)
-//            if isEqual {
-//                thisItem = thisItem + 1
-//                if i == journals.count - 1 {
-//                    myItems.append(thisItem)
-//                }
-//            } else {
-//                myItems.append(thisItem)
-//                thisItem = 1
-//            }
-//        }
-//        var k = 0
-//        for i in (0 ..< mySections) {
-//            myJournalList.append([])
-//
-//            for j in ( 0 ..< myItems[i]) {
-//                let thisJournal: Journal = journals[k + j]
-//
-//                myJournalList[i].append(thisJournal)
-//            }
-//
-//            k = k + myItems[i]
-//        }
-//
-//
-//
-////        for i in (1 ..< journals.count) {
-////            for j in (0 ..< mySections) {
-////
-////            var month1 = dateFormatter.string(from: journals[i].month!)
-////            var month2 = dateFormatter.string(from: journals[i - 1].month!)
-////
-////            var isEqual = (month1 == month2)
-////            if isEqual {
-////                thisItem = thisItem + 1
-////                if i == journals.count - 1 {
-////                    myItems.append(thisItem)
-////                }
-////            } else {
-////                myItems.append(thisItem)
-////                thisItem = 1
-////            }
-////            }
-////        }
-////
-////
-////
-////        if journals.count > 1 {
-////            var month1 = dateFormatter.string(from: journals[1].month!)
-////            var month2 = dateFormatter.string(from: journals[0].month!)
-////            var isEqual = (month1 == month2)
-////            if isEqual == false {
-////                let ins = NSIndexSet(index: 0)
-////                self.collectionView?.insertSections(ins as IndexSet)
-////                self.collectionView?.reloadData()
-////            }
-////        }
-////
-////        //var j: Int = 0
-////
-////
-//
-//
-//
-//        self.collectionView?.reloadData()
-//        return myJournalList
-//    }
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         print("Delete")
