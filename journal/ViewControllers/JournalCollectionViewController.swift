@@ -38,10 +38,10 @@ class JournalCollectionViewController: UICollectionViewController {
         // Register cell classes
         //self.collectionView!.register(JournalCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        // Load any saved journals
+         //Load any saved journals
         if let savedJournals = loadJournals() {
             myJournals += savedJournals
-            
+
         }
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -103,13 +103,10 @@ class JournalCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //let myJournalList: [[Journal]] = self.sortJournals()
         return myJournals.count
-        //return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //let myJournalList: [[Journal]] = self.sortJournals()
         return myJournals[section].count
     }
 
@@ -118,7 +115,6 @@ class JournalCollectionViewController: UICollectionViewController {
             fatalError("The dequeued cell is not an instance of JournalCollectionViewCell.")
         }
     
-        //let journalIndex: Int = self.getJournalIndex(indexPath: indexPath)
         // Configure the cell
         cell.photo.image = myJournals[indexPath.section][indexPath.item].photo
         cell.checkboxImageView.isHidden = !self.editingMode
@@ -173,16 +169,17 @@ class JournalCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
         //print(myJournals.capacity)
-        var myMonth:Date
         if myJournals[indexPath.section].count > 0 {
-            myMonth = myJournals[indexPath.section][0].month!
-        } else{
-            myMonth = Date()
+            let myMonth = myJournals[indexPath.section][0].month!
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM yyyy"
+            //sectionHeaderView.monthLabel.isHidden = false
+            sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth)
+        } else {
+            sectionHeaderView.monthTitle = "Empty section"
+            //sectionHeaderView.monthLabel.isHidden = true
         }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM yyyy"
-        sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth)
+       
         return sectionHeaderView
         
     }
@@ -209,9 +206,12 @@ class JournalCollectionViewController: UICollectionViewController {
                     } else {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "MMM yyyy"
-                        var month1 = dateFormatter.string(from: myJournals[0][0].month!)
-                        var month2 = dateFormatter.string(from: journal.month!)
-                        var isEqual = (month1 == month2)
+                        var isEqual: Bool = true
+                        if myJournals[0].count > 0 {
+                            let month1 = dateFormatter.string(from: myJournals[0][0].month!)
+                            let month2 = dateFormatter.string(from: journal.month!)
+                            isEqual = (month1 == month2)
+                        }
                         if isEqual == false {
                             myJournals.insert([], at: 0)
                             collectionView?.insertSections([0])
@@ -221,9 +221,11 @@ class JournalCollectionViewController: UICollectionViewController {
                     collectionView?.insertItems(at: [newIndexPath])
                 }
                 self.saveJournals()
-                //collectionView?.reloadData()
             }
         
+        let sectionToReload = 0
+        let indexSet: IndexSet = [sectionToReload]
+        self.collectionView?.reloadSections(indexSet)
     }
     
     //MARK: Private Methods
@@ -261,27 +263,44 @@ class JournalCollectionViewController: UICollectionViewController {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
         
         var newJournalList = [[Journal]] ()
-        
+        var k: Int = 0
         for i in (0 ..< self.myJournals.count) {
-            newJournalList.append([])
-            for j in (0 ..< myJournals[i].count) {
-                var found: Bool = false
-                for indexPath in selectedIndexPaths {
-                    if (indexPath.section == i) && (indexPath.item == j) {
-                        found = true
-                        break
+            if myJournals[i].count > 0 {
+                newJournalList.append([])
+                for j in (0 ..< myJournals[i].count) {
+                    var found: Bool = false
+                    for indexPath in selectedIndexPaths {
+                        if (indexPath.section == i) && (indexPath.item == j) {
+                            found = true
+                            break
+                        }
+                    }
+                    if found == false {
+                        newJournalList[k].append(myJournals[i][j])
                     }
                 }
-                if found == false {
-                    newJournalList[i].append(myJournals[i][j])
-                }
+                k = k + 1
             }
         }
         
         self.myJournals = newJournalList
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
+        let mySections: Int = (self.collectionView?.numberOfSections)!
+        var indexSections = [Int]()
+        for i in(0 ..< mySections) {
+            if collectionView?.numberOfItems(inSection: i) == 0 {
+                indexSections.append(i)
+            }
+        }
+        self.myJournals.remove(at: indexSections)
+        let indexSet = NSMutableIndexSet()
+        for index in indexSections {
+            indexSet.add(index)
+        }
+        
+        self.collectionView?.deleteSections(indexSet as IndexSet)
         self.saveJournals()
-        //self.collectionView?.reloadData()
+
     }
 }
 
@@ -294,5 +313,13 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
+    }
+}
+
+extension Array {
+    mutating func remove(at indexes: [Int]) {
+        for index in indexes.sorted(by: >) {
+            remove(at: index)
+        }
     }
 }
