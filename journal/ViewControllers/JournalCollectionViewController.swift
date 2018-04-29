@@ -16,7 +16,6 @@ class JournalCollectionViewController: UICollectionViewController {
     fileprivate let reuseIdentifier = "journalCell"
     //fileprivate var journals = [Journal]()
     fileprivate var myJournals = [[Journal]]()
-    fileprivate let journalLayoutList = JournalLayout.journalLayoutList
     fileprivate var editingMode: Bool = false
     @IBOutlet weak var journalAddButton: UIBarButtonItem!
     
