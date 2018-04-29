@@ -16,7 +16,6 @@ class JournalCollectionViewController: UICollectionViewController {
     fileprivate let reuseIdentifier = "journalCell"
     //fileprivate let sectionHeaderView = "sectionHeaderView"
     fileprivate var journals = [Journal]()
-    fileprivate let journalLayoutList = JournalLayout.journalLayoutList
     fileprivate var editingMode: Bool = false
     @IBOutlet weak var journalAddButton: UIBarButtonItem!
     
@@ -74,9 +73,7 @@ class JournalCollectionViewController: UICollectionViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Segeue activated")
         if !editingMode {
-            
             super.prepare(for: segue, sender: sender)
             // Get the new view controller using [segue destinationViewController].
             // Pass the selected object to the new view controller.

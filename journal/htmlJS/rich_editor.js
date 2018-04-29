@@ -201,13 +201,6 @@ RE.setTextColor = function(color) {
     document.execCommand("styleWithCSS", null, false);
 };
 
-RE.setTextColor = function(color) {
-    RE.restorerange();
-    document.execCommand("styleWithCSS", null, true);
-    document.execCommand('foreColor', false, color);
-    document.execCommand("styleWithCSS", null, false);
-};
-
 RE.setTextBackgroundColor = function(color) {
     RE.restorerange();
     document.execCommand("styleWithCSS", null, true);
@@ -425,7 +418,7 @@ RE.setBlockquote = function() {
 // new method added by Diqing 27.03.2018
 
 RE.appendHTML = function(html) {
-    RE.editor.insertAdjacentHTML( 'beforeend', html);
+    RE.editor.insertAdjacentHTML( 'afterbegin', html);
 };
 
 RE.insertHTML = function(html) {

@@ -12,7 +12,6 @@
 		1255A58220754F1600D401FD /* index3.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A57F20754F1600D401FD /* index3.html */; };
 		1255A58320754F1600D401FD /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58020754F1600D401FD /* index2.html */; };
 		1255A58420754F1600D401FD /* index1.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58120754F1600D401FD /* index1.html */; };
-		1255A586207555A000D401FD /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255A585207555A000D401FD /* Templates.swift */; };
 		125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E22392073F76100E8CE47 /* sectionHeaderView.swift */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
 		996936CBE89DE8D455EF4441 /* Pods_journalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */; };
@@ -23,15 +22,25 @@
 		9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */; };
 		9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */; };
 		9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0E207BE895003D4A0A /* defaultColors.swift */; };
-		9B224F14207BE895003D4A0A /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0F207BE895003D4A0A /* Keyboard.swift */; };
+		9B224F14207BE895003D4A0A /* ColorKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */; };
 		9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F10207BE895003D4A0A /* Keyboard.xib */; };
+		9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */; };
+		9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */; };
+		9B224F1D207EA59F003D4A0A /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */; };
+		9B224F2320814CD0003D4A0A /* KeyboardKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */; };
+		9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */; };
+		9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */; };
+		9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */; };
+		9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */; };
+		9B224F2E20816707003D4A0A /* CustomKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */; };
+		9B224F2F20816707003D4A0A /* CustomKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */; };
+		9B224F3120827886003D4A0A /* CustomRichEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F3020827886003D4A0A /* CustomRichEditorView.swift */; };
 		9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7B204BF6E500123AD5 /* Journal.swift */; };
-		9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */; };
+		9B2D70D81FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
 		9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */; };
 		9B3B86061FDC98220019B943 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B86051FDC98210019B943 /* index.html */; };
-		9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */; };
-		9B3B860C1FE319870019B943 /* JournalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B860B1FE319870019B943 /* JournalLayout.swift */; };
+		9B3B860C1FE319870019B943 /* TemplateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B860B1FE319870019B943 /* TemplateList.swift */; };
 		9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4349891FD1FAF00009E899 /* CoreDataHandler.swift */; };
 		9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B43498B1FD1FAF30009E899 /* ImageHandler.swift */; };
 		9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78501FAA1519000F39FC /* AppDelegate.swift */; };
@@ -45,7 +54,11 @@
 		9B53BFD320153F4900648A32 /* rich_editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCF20153F4800648A32 /* rich_editor.js */; };
 		9B53BFD420153F4900648A32 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD020153F4800648A32 /* index.js */; };
 		9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD82015424A00648A32 /* touchsurfaceTable.html */; };
-		9B636A2A1FCA0603003AFF26 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */; };
+		9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */; };
+		9B604E4D208FB8AF00406A61 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */; };
+		9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4C208FB8AF00406A61 /* CropAreaView.swift */; };
+		9B604E552092613800406A61 /* 5003.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9B604E542092613700406A61 /* 5003.JPG */; };
+		9B636A2A1FCA0603003AFF26 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */; };
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
 		9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlock2x2.html */; };
@@ -59,7 +72,7 @@
 		9B999C8A202CF61500F14891 /* Lora in Resources */ = {isa = PBXBuildFile; fileRef = 9B999C89202CF61500F14891 /* Lora */; };
 		9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */; };
 		9B999C8E2038461F00F14891 /* divFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* divFilter.swift */; };
-		9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */; };
+		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		D2F23CD52B49B225965D13B8 /* Pods_journalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */; };
 /* End PBXBuildFile section */
@@ -108,7 +121,6 @@
 		1255A57F20754F1600D401FD /* index3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index3.html; sourceTree = "<group>"; };
 		1255A58020754F1600D401FD /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		1255A58120754F1600D401FD /* index1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index1.html; sourceTree = "<group>"; };
-		1255A585207555A000D401FD /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
 		125E22392073F76100E8CE47 /* sectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionHeaderView.swift; sourceTree = "<group>"; };
 		335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,15 +135,25 @@
 		9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorKeyboardCell.xib; sourceTree = "<group>"; };
 		9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboardCell.swift; sourceTree = "<group>"; };
 		9B224F0E207BE895003D4A0A /* defaultColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultColors.swift; sourceTree = "<group>"; };
-		9B224F0F207BE895003D4A0A /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboard.swift; sourceTree = "<group>"; };
 		9B224F10207BE895003D4A0A /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
+		9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchblockKeyboard.xib; sourceTree = "<group>"; };
+		9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareKeyboard.swift; sourceTree = "<group>"; };
+		9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKeys.swift; sourceTree = "<group>"; };
+		9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesettingKeyboard.swift; sourceTree = "<group>"; };
+		9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypesettingKeyboard.xib; sourceTree = "<group>"; };
+		9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSettingKeyboardCell.swift; sourceTree = "<group>"; };
+		9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSettingKeyboardCell.xib; sourceTree = "<group>"; };
+		9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardCell.swift; sourceTree = "<group>"; };
+		9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomKeyboardCell.xib; sourceTree = "<group>"; };
+		9B224F3020827886003D4A0A /* CustomRichEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRichEditorView.swift; sourceTree = "<group>"; };
 		9B2C6D7B204BF6E500123AD5 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
-		9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RichEditorView+Extensions.swift"; sourceTree = "<group>"; };
+		9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomRichEditorView+Extensions.swift"; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
 		9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFunc.swift; sourceTree = "<group>"; };
 		9B3B86051FDC98210019B943 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewController.swift; sourceTree = "<group>"; };
-		9B3B860B1FE319870019B943 /* JournalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayout.swift; sourceTree = "<group>"; };
+		9B3B860B1FE319870019B943 /* TemplateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateList.swift; sourceTree = "<group>"; };
 		9B4349891FD1FAF00009E899 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		9B43498B1FD1FAF30009E899 /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		9B4A784D1FAA1519000F39FC /* journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +173,11 @@
 		9B53BFCF20153F4800648A32 /* rich_editor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = rich_editor.js; sourceTree = "<group>"; };
 		9B53BFD020153F4800648A32 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		9B53BFD82015424A00648A32 /* touchsurfaceTable.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchsurfaceTable.html; sourceTree = "<group>"; };
-		9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropperViewController.swift; sourceTree = "<group>"; };
+		9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		9B604E4C208FB8AF00406A61 /* CropAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropAreaView.swift; sourceTree = "<group>"; };
+		9B604E542092613700406A61 /* 5003.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5003.JPG; sourceTree = "<group>"; };
+		9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCardTableViewController.swift; sourceTree = "<group>"; };
 		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
 		9B8099642024EC4100F0121B /* touchBlock2x2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock2x2.html; sourceTree = "<group>"; };
@@ -165,7 +191,7 @@
 		9B999C89202CF61500F14891 /* Lora */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lora; sourceTree = "<group>"; };
 		9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C8D2038461F00F14891 /* divFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = divFilter.swift; sourceTree = "<group>"; };
-		9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		A35E0D1EC862D7DD2028825A /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B20229757500FC110A38C161 /* Pods-journalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journalTests/Pods-journalTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,8 +282,8 @@
 			children = (
 				9B224F0E207BE895003D4A0A /* defaultColors.swift */,
 				9B999C8D2038461F00F14891 /* divFilter.swift */,
-				9B3B860B1FE319870019B943 /* JournalLayout.swift */,
-				1255A585207555A000D401FD /* Templates.swift */,
+				9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */,
+				9B3B860B1FE319870019B943 /* TemplateList.swift */,
 				9B88F60B206592C50047ED2C /* FilliingEffects.swift */,
 				9B2C6D7B204BF6E500123AD5 /* Journal.swift */,
 			);
@@ -300,14 +326,19 @@
 		9B4A784F1FAA1519000F39FC /* journal */ = {
 			isa = PBXGroup;
 			children = (
+				9B4A78501FAA1519000F39FC /* AppDelegate.swift */,
 				9B3B86001FDB49D40019B943 /* htmlJS */,
 				9B43498D1FD1FAFB0009E899 /* Handlers */,
 				9B4349881FD1FA7F0009E899 /* DataModel */,
-				9B4A78501FAA1519000F39FC /* AppDelegate.swift */,
 				9BD4D2741FD1F667007620F4 /* ViewControllers */,
 				9BD4D2751FD1F688007620F4 /* Views */,
 				9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */,
+				9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */,
 				9B4A78541FAA1519000F39FC /* Main.storyboard */,
+				9B604E542092613700406A61 /* 5003.JPG */,
+				9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */,
+				9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */,
+				9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */,
 				9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */,
 				9B224F10207BE895003D4A0A /* Keyboard.xib */,
 				9B4A785C1FAA1519000F39FC /* LaunchScreen.storyboard */,
@@ -338,10 +369,10 @@
 		9BD4D2741FD1F667007620F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */,
 				9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */,
 				1248ACF82077EB6A000C1881 /* TemplateCollectionViewController.swift */,
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
-				9B3B86091FE312040019B943 /* JournalLayoutCollectionViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
 			);
 			path = ViewControllers;
@@ -350,13 +381,21 @@
 		9BD4D2751FD1F688007620F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B604E4C208FB8AF00406A61 /* CropAreaView.swift */,
+				9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */,
 				9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */,
-				9B224F0F207BE895003D4A0A /* Keyboard.swift */,
-				9B636A291FCA0603003AFF26 /* UIColorExtensions.swift */,
+				9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */,
+				9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */,
+				9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */,
+				9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */,
+				9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */,
+				9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */,
+				9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */,
 				9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */,
 				9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */,
-				9B2D70D71FAB52EB009BD89A /* RichEditorView+Extensions.swift */,
-				9BD4D26C1FCCBAFA007620F4 /* UIImageExtensions.swift */,
+				9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */,
+				9B224F3020827886003D4A0A /* CustomRichEditorView.swift */,
+				9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */,
 				9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */,
 				9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */,
 				125E22392073F76100E8CE47 /* sectionHeaderView.swift */,
@@ -528,19 +567,24 @@
 				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */,
+				9B604E552092613800406A61 /* 5003.JPG in Resources */,
+				9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
+				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
 				9B999C8A202CF61500F14891 /* Lora in Resources */,
 				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
+				9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */,
 				9B53BFD420153F4900648A32 /* index.js in Resources */,
 				1255A58220754F1600D401FD /* index3.html in Resources */,
 				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
 				9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */,
 				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
+				9B224F2F20816707003D4A0A /* CustomKeyboardCell.xib in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
@@ -729,32 +773,40 @@
 			files = (
 				9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */,
 				1248ACF92077EB6A000C1881 /* TemplateCollectionViewController.swift in Sources */,
-				9B224F14207BE895003D4A0A /* Keyboard.swift in Sources */,
+				9B224F14207BE895003D4A0A /* ColorKeyboard.swift in Sources */,
+				9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */,
 				9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */,
 				9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */,
-				9BD4D26D1FCCBAFA007620F4 /* UIImageExtensions.swift in Sources */,
+				9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */,
 				9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */,
 				9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */,
+				9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */,
 				9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */,
 				9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */,
-				9B636A2A1FCA0603003AFF26 /* UIColorExtensions.swift in Sources */,
+				9B636A2A1FCA0603003AFF26 /* UIColor+Extensions.swift in Sources */,
 				9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */,
 				9B4A78531FAA1519000F39FC /* JournalViewController.swift in Sources */,
+				9B604E4D208FB8AF00406A61 /* UIImageView+Extensions.swift in Sources */,
+				9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */,
+				9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */,
+				9B224F2320814CD0003D4A0A /* KeyboardKeys.swift in Sources */,
 				1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */,
-				9B2D70D81FAB52EB009BD89A /* RichEditorView+Extensions.swift in Sources */,
+				9B2D70D81FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
-				9B3B860A1FE312040019B943 /* JournalLayoutCollectionViewController.swift in Sources */,
 				125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */,
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
 				9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */,
+				9B224F3120827886003D4A0A /* CustomRichEditorView.swift in Sources */,
 				9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */,
 				9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */,
-				9B3B860C1FE319870019B943 /* JournalLayout.swift in Sources */,
+				9B224F1D207EA59F003D4A0A /* KeyboardDelegate.swift in Sources */,
+				9B3B860C1FE319870019B943 /* TemplateList.swift in Sources */,
 				9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */,
 				9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */,
+				9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */,
 				9B88F60C206592C50047ED2C /* FilliingEffects.swift in Sources */,
-				1255A586207555A000D401FD /* Templates.swift in Sources */,
 				9B999C8E2038461F00F14891 /* divFilter.swift in Sources */,
+				9B224F2E20816707003D4A0A /* CustomKeyboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +1014,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Diqing-Chang.journal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_COMPILATION_MODE[arch=*]" = singlefile;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -978,6 +1033,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Diqing-Chang.journal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
