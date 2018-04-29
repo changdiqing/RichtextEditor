@@ -38,8 +38,6 @@ var AssociatedObjectHandle: UInt8 = 0
     // new delegate method added by Diqing Chang, 04.11.2017
     @objc optional func richEditorInsertImage()
     
-    @objc optional func richEditorInsertlayout()
-    
     @objc optional func richEditorChangeColor()
     
     @objc optional func richEditorSaveHTML()
@@ -48,15 +46,6 @@ var AssociatedObjectHandle: UInt8 = 0
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
 open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate {
-
-    
-    //MARK: Public Properties added by Diqing Chang, 02.02.2018
-    public var toolbarScroll: UIScrollView?
-    public var doneToolbar: UIToolbar?
-    public var attachTextView: UITextView!
-    public var itemsForLayoutMode = [UIBarButtonItem]()
-    public var itemsForEditMode = [UIBarButtonItem]()
-    public var keyboardFrame = CGRect(x: 0, y: 0, width: 0, height: 271)
     
     // MARK: Public Properties
 
@@ -156,7 +145,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     
     private func setup() {
         backgroundColor = .red
-        
+        webView = UIWebView()
         webView.frame = bounds
         webView.delegate = self
         webView.keyboardDisplayRequiresUserAction = false
@@ -172,44 +161,10 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         
         webView.cjw_inputAccessoryView = nil
         self.addSubview(webView)
-        
-        // puppetTextView added by Diqing Chang, 09.04.2018
-        attachTextView = UITextView(frame: CGRect.zero)
-        attachTextView.alpha = 0.0
-        self.addSubview(attachTextView)
-        
-        // Oberserver added by Diqing Chang at 10.04.2018
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
-        
-        /*
-        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
-            let url = URL(fileURLWithPath: filePath, isDirectory: false)
-            let request = URLRequest(url: url)
-            webView.loadRequest(request)
-        }*/
-        
-        /*
-        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "index/index", ofType: "html") {
-            let url = URL(fileURLWithPath: filePath, isDirectory: false)
-            let request = URLRequest(url: url)
-            webView.loadRequest(request)
-            print("found")
-        }*/
-        
-        
-        //commented by Diqing Chang, just for debug purpose
+
         tapRecognizer.addTarget(self, action: #selector(viewWasTapped))
         tapRecognizer.delegate = self
         addGestureRecognizer(tapRecognizer)
-    }
-    
-    // observer function added by Diqing at 10.04.2018
-    func keyboardShown(notification: NSNotification) {
-        let info = notification.userInfo!
-        let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-         //= currentKeyboardFrame.height - 50
-        keyboardFrame.size.height = currentKeyboardFrame.height - 50
     }
 
     // MARK: - Rich Text Editing
@@ -529,7 +484,12 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
 
     private func updateHeight() {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
+        let offsetHeight = runJS("document.getElementById('editor').offsetHeight;")
+        let scrollHeight = runJS("document.getElementById('editor').scrollHeight;")
         let height = Int(heightString) ?? 0
+        print("my height is \(height)")
+        print("offset height is \(offsetHeight)")
+        print("scroll height is \(scrollHeight)")
         if editorHeight != height {
             editorHeight = height
         }

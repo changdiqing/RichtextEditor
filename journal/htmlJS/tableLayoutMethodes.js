@@ -46,6 +46,11 @@ function method_initTouchblockCovers() {
         touchsurface[i].addEventListener('touchend', method_touchEndSimple, false);
     }
     
+    var touchsurface = document.querySelectorAll("div.flex-row");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = "false";
+    }
+    
      var touchsurface = document.querySelectorAll("div.touchblock");
      for (var i = 0; i < touchsurface.length ; i++) {
      touchsurface[i].contentEditable = "false";
@@ -191,7 +196,6 @@ function myFunction() {
             touchsurface[i].contentEditable = "true";
             touchsurface[i].parentNode.contentEditable = "false";
         }
-        document.getElementById("demo").innerText = "lalala";
 }
 
 function focusoutFunction() {
@@ -200,7 +204,7 @@ function focusoutFunction() {
         touchsurface[i].contentEditable = "false";
         touchsurface[i].parentNode.contentEditable = "false";
     }
-    document.getElementById("demo").innerText = "lololo";
+    
     touchBlockFocused = false;
 }
 

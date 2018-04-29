@@ -19,7 +19,7 @@ class TemplateCollectionViewController: UICollectionViewController {
     fileprivate let itemsPerRow: CGFloat = 3
     
     // Values to be passed to other classes
-    var selectedLayout: TemplateItem?
+    var selectedLayout: htmlFile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class TemplateCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TemplateLayoutCollectionViewCell
-        cell.templateImage?.image = templateList[indexPath.row].templateImage
+        cell.templateImage?.image = templateList[indexPath.row].image
         return cell
     }
     

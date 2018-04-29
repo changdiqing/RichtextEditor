@@ -14,8 +14,14 @@ private let reuseIdentifier = "Cell"
 class JournalCollectionViewController: UICollectionViewController {
     //MARK: Properties
     fileprivate let reuseIdentifier = "journalCell"
-    fileprivate var journals = [Journal]()
+<<<<<<< HEAD
+    //fileprivate var journals = [Journal]()
+    fileprivate var myJournals = [[Journal]]()
     fileprivate let journalLayoutList = JournalLayout.journalLayoutList
+=======
+    //fileprivate let sectionHeaderView = "sectionHeaderView"
+    fileprivate var journals = [Journal]()
+>>>>>>> journal_chang
     fileprivate var editingMode: Bool = false
     @IBOutlet weak var journalAddButton: UIBarButtonItem!
     
@@ -37,9 +43,10 @@ class JournalCollectionViewController: UICollectionViewController {
         // Register cell classes
         //self.collectionView!.register(JournalCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        // Load any saved journals
+         //Load any saved journals
         if let savedJournals = loadJournals() {
-            journals += savedJournals
+            myJournals += savedJournals
+
         }
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -73,24 +80,22 @@ class JournalCollectionViewController: UICollectionViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Segeue activated")
         if !editingMode {
-            
             super.prepare(for: segue, sender: sender)
             // Get the new view controller using [segue destinationViewController].
             // Pass the selected object to the new view controller.
             switch(segue.identifier ?? "") {
             case "addJournal":
                 os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+                //guard let templateLayoutCollectionVC = segue.destination as? TemplateLayoutCollectionViewController else {fatalError("Unexpected destination: \(segue.destination)")}
             case "editJournal":
-                print("Segeue2 activated")
                 guard let journalViewController = segue.destination as? JournalViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
                 }
                 guard let cellIndex = self.collectionView?.indexPathsForSelectedItems?.first! else {
                     fatalError("No cell selected")
                 }
-                let selectedJournal = journals[cellIndex.item]
+                let selectedJournal = myJournals[cellIndex.section][cellIndex.item]
                 journalViewController.journal = selectedJournal
             default:
                 fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
@@ -100,20 +105,24 @@ class JournalCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {return 1}
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return myJournals.count
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journals.count
+        return myJournals[section].count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? JournalCollectionViewCell else {
             fatalError("The dequeued cell is not an instance of JournalCollectionViewCell.")
         }
-        
+    
         // Configure the cell
-        cell.photo.image = journals[indexPath.item].photo
+        cell.photo.image = myJournals[indexPath.section][indexPath.item].photo
         cell.checkboxImageView.isHidden = !self.editingMode
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
         return cell
      
     }
@@ -155,9 +164,30 @@ class JournalCollectionViewController: UICollectionViewController {
         } else {
             return
         }
-        //let cell: JournalCollectionViewCell? = self.collectionView(collectionView, cellForItemAt: indexPath as IndexPath) as? JournalCollectionViewCell
-        //cell?.checkboxImageView.image = UIImage(named: "checked")
+        
     }
+    
+    // Section Header View
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
+        //print(myJournals.capacity)
+        if myJournals[indexPath.section].count > 0 {
+            let myMonth = myJournals[indexPath.section][0].month!
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM yyyy"
+            //sectionHeaderView.monthLabel.isHidden = false
+            sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth)
+        } else {
+            sectionHeaderView.monthTitle = "Empty section"
+            //sectionHeaderView.monthLabel.isHidden = true
+        }
+       
+        return sectionHeaderView
+        
+    }
+    
+   
     
     //MARK: Actions
     
@@ -167,23 +197,44 @@ class JournalCollectionViewController: UICollectionViewController {
                 
                 if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
                     // Update an existing journal
-                    journals[selectedIndexPath.item] = journal
+                    myJournals[selectedIndexPath.section][selectedIndexPath.item] = journal
                     collectionView?.reloadItems(at: [selectedIndexPath])
                 } else {
                     // Add a new journal
-                    let newIndexPath = IndexPath(item: journals.count, section: 0)
-                    journals.append(journal)
+                    //let cellItem = self.collectionView?.numberOfItems(inSection: 0)
+                    let newIndexPath = IndexPath(item: 0, section: 0)
+                    if myJournals.count < 1 {
+                        myJournals.insert([], at: 0)
+                        collectionView?.insertSections([0])
+                    } else {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MMM yyyy"
+                        var isEqual: Bool = true
+                        if myJournals[0].count > 0 {
+                            let month1 = dateFormatter.string(from: myJournals[0][0].month!)
+                            let month2 = dateFormatter.string(from: journal.month!)
+                            isEqual = (month1 == month2)
+                        }
+                        if isEqual == false {
+                            myJournals.insert([], at: 0)
+                            collectionView?.insertSections([0])
+                        }
+                    }
+                    myJournals[0].insert(journal, at: 0)
                     collectionView?.insertItems(at: [newIndexPath])
                 }
-                saveJournals()
+                self.saveJournals()
             }
         
+        let sectionToReload = 0
+        let indexSet: IndexSet = [sectionToReload]
+        self.collectionView?.reloadSections(indexSet)
     }
     
     //MARK: Private Methods
     
     private func saveJournals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(journals, toFile: Journal.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(myJournals, toFile: Journal.ArchiveURL.path)
     
         if isSuccessfulSave {
             os_log("Journals succesfully saved.", log: OSLog.default, type: .debug)
@@ -192,37 +243,87 @@ class JournalCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func loadJournals() -> [Journal]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Journal.ArchiveURL.path) as? [Journal]
+    private func loadJournals() -> [[Journal]]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Journal.ArchiveURL.path) as? [[Journal]]
+    }
+    
+    private func getJournalIndex(indexPath: IndexPath) -> Int {
+        var sumSections: Int = 0
+        for i in (0 ..< indexPath.section) {
+            let itemsInSection = self.collectionView?.numberOfItems(inSection: i)
+            sumSections = sumSections + itemsInSection!
+        }
+        let journalIndex: Int  = sumSections + indexPath.item
+        return journalIndex
+    }
+    
+    private func getSectionAmount() -> Int{
+        return myJournals.count
     }
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
-        print("Delete")
-        let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems as! [NSIndexPath]
+        let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
+
+        print("this is selectedIndexPaths: \(selectedIndexPaths)")
         
-        var newJournalList: [Journal] = []
-        
-        for i in (0 ..< self.journals.count) {
-            var found: Bool = false
-            for indexPath in selectedIndexPaths {
-                if indexPath.item == i {
-                    found = true
-                    break
+        var newJournalList = [[Journal]] ()
+        var k: Int = 0
+        for i in (0 ..< self.myJournals.count) {
+            if myJournals[i].count > 0 {
+                newJournalList.append([])
+                for j in (0 ..< myJournals[i].count) {
+                    var found: Bool = false
+                    for indexPath in selectedIndexPaths {
+                        if (indexPath.section == i) && (indexPath.item == j) {
+                            found = true
+                            break
+                        }
+                    }
+                    if found == false {
+                        newJournalList[k].append(myJournals[i][j])
+                    }
                 }
-            }
-            if found == false {
-                newJournalList.append(self.journals[i])
+                k = k + 1
             }
         }
-        
-        self.journals = newJournalList
+
+        self.myJournals = newJournalList
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
-<<<<<<< HEAD
- 
-=======
-        self.saveJournals()
+        let mySections: Int = (self.collectionView?.numberOfSections)!
+        var indexSections = [Int]()
+        for i in(0 ..< mySections) {
+            if collectionView?.numberOfItems(inSection: i) == 0 {
+                indexSections.append(i)
+            }
+        }
+        self.myJournals.remove(at: indexSections)
+        let indexSet = NSMutableIndexSet()
+        for index in indexSections {
+            indexSet.add(index)
+        }
         
->>>>>>> 733756eb4a2e8b46f8f0b7fac602b3acf7af8d39
-        //self.collectionView?.reloadData()
+        self.collectionView?.deleteSections(indexSet as IndexSet)
+        self.saveJournals()
+
+    }
+}
+
+extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = UIScreen.main.bounds
+        let journalWidth = 0.23 * screenSize.width
+        let journalHeight = 0.23 * screenSize.height
+        return CGSize(width: journalWidth, height: journalHeight)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+}
+
+extension Array {
+    mutating func remove(at indexes: [Int]) {
+        for index in indexes.sorted(by: >) {
+            remove(at: index)
+        }
     }
 }

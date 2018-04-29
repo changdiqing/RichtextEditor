@@ -11,23 +11,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorKeyboardCell" id="gTV-IL-0wX" customClass="ColorKeyboardCell" customModule="journal" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeSettingKeyboardCell" id="gTV-IL-0wX" customClass="TypeSettingKeyboardCell" customModule="journal" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a34-je-8Hj">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qyF-JK-N0V">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qyF-JK-N0V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A2e-rW-blL"/>
+                <constraint firstAttribute="bottom" secondItem="qyF-JK-N0V" secondAttribute="bottom" id="Gf5-Qa-juN"/>
+                <constraint firstAttribute="trailing" secondItem="qyF-JK-N0V" secondAttribute="trailing" id="IIb-Ux-QJL"/>
+                <constraint firstItem="qyF-JK-N0V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IyB-0E-ali"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="image" destination="a34-je-8Hj" id="b7A-Vp-3za"/>
+                <outlet property="image" destination="qyF-JK-N0V" id="FAY-cb-1Wc"/>
             </connections>
         </collectionViewCell>
     </objects>

@@ -1,4 +1,13 @@
 //
+//  TypesettingKeyboard.swift
+//  journal
+//
+//  Created by Diqing Chang on 13.04.18.
+//  Copyright © 2018 Diqing Chang. All rights reserved.
+//
+
+import Foundation
+//
 //  KeyBoard.swift
 //  Custom Keyboard
 //
@@ -10,19 +19,17 @@ import UIKit
 
 // The view controller will adopt this protocol (delegate)
 // and thus must contain the keyWasTapped method
-protocol KeyboardDelegate: class {
-    func keyWasTapped(color: UIColor)
-}
 
-class Keyboard: UIView,UICollectionViewDataSource{
+class TypesettingKeyboard: UIView,UICollectionViewDataSource{
     
-    fileprivate let colorList = defaultColors.defaultColorList
+    
+    let keyList = KeyboardKeys.list
     
     // This variable will be set as the view controller so that
     // the keyboard can send messages to the view controller.
     weak var delegate: KeyboardDelegate?
     
-    @IBOutlet weak var colorKeyboardCollectionView: UICollectionView!
+    @IBOutlet weak var myCollectionView: UICollectionView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,40 +42,34 @@ class Keyboard: UIView,UICollectionViewDataSource{
     }
     
     func initializeSubviews() {
-        let xibFileName = "Keyboard" // xib extention not included
+        let xibFileName = "TypesettingKeyboard" // xib extention not included
         let view = Bundle.main.loadNibNamed(xibFileName, owner: self, options: nil)![0] as! UIView
         self.addSubview(view)
         view.frame = self.bounds
-        self.colorKeyboardCollectionView.dataSource = self
-        self.colorKeyboardCollectionView.delegate = self
-        //self.colorKeyboardCollectionView.register(UINib(nibName: "ColorKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "colorKeyboardCell")
-        self.colorKeyboardCollectionView.register(ColorKeyboardCell.self, forCellWithReuseIdentifier: "colorKeyboardCell")
+        self.myCollectionView.dataSource = self
+        self.myCollectionView.delegate = self
+        self.myCollectionView.register(UINib(nibName: "TypeSettingKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "TypeSettingKeyboardCell")
     }
 }
 
-extension Keyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension TypesettingKeyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     // MARK:- UICollectionViewDataSource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colorList.count
+        return keyList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedColor: UIColor = colorList[indexPath.item]
-        delegate?.keyWasTapped(color: selectedColor)
+        //self.delegate?.typesettingKeyTapped(keyIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorKeyboardCell", for: indexPath)
         
-        let color = colorList[indexPath.row]
-        
-        cell.backgroundColor = color
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeSettingKeyboardCell", for: indexPath) as! TypeSettingKeyboardCell
+        cell.image?.image = keyList[indexPath.row].image
         
         return cell
     }
-    
     
     //MARK:- UICollectionViewDelegate Methods
     func collectionView(_ collectionView: UICollectionView,
@@ -77,3 +78,5 @@ extension Keyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate
         return CGSize(width: 50, height: 50);
     }
 }
+
+

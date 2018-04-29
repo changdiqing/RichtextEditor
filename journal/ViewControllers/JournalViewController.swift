@@ -14,7 +14,7 @@ import os.log
 class JournalViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var editorView: RichEditorView!
+    @IBOutlet weak var editorView: CustomRichEditorView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var changeModeButton: UIBarButtonItem!
@@ -46,7 +46,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         editorView.delegate = self // Diqing Debug 13.03.2017
         
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
-        jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)!)
+        jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)?)
         
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
@@ -117,7 +117,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
             var photo: UIImage!
-            if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView) {
+            if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView, isFullSize: false) {
                 photo = screenshot
             } else {
                 photo = UIImage(named: "layoutMode")
@@ -128,16 +128,22 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             var date = formatter.date(from: "2018/06/02")
             date = Date()
             journal = Journal(html: html, photo: photo, month: date)
-            
+            print(self.editorView.editorHeight)
+            return
         }
         
-    }
-    
-    
-    func presentJournalLayouts() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let journalLayoutsViewController = storyBoard.instantiateViewController(withIdentifier: "JournalLayoutsViewController") as! JournalLayoutCollectionViewController
-        self.present(journalLayoutsViewController, animated:true, completion:nil)
+        switch(segue.identifier ?? "") {
+        case "cropImage":
+            guard let imageCropperViewController = segue.destination as? ImageCropperViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView, isFullSize: true) {
+                imageCropperViewController.image = screenshot
+            }
+            
+        default:
+            fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
+        }
     }
     
 
@@ -180,8 +186,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                     if touchBlockClicked {  // if triggered by touchblock then update touchblock color
                         touchBlockClicked = false
                         self.editorView.setTouchBlockBackgroundColor(selectedColor.htmlRGBA)
-                    } else {  // else update selected text color
-                       
                     }
                 } else if fillingEffect.type == "No Filling" {
                     self.editorView.setTouchBlockBackgroundColor("transparent")
@@ -217,44 +221,36 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 fatalError("Unexpected segue identifier: \(sender.identifier)")
             }
             touchBlockClicked = false // reset touchBlockClicked
-        } else if let sourceViewController = sender.source as? JournalLayoutCollectionViewController {
-            if let layout = sourceViewController.selectedLayout {
-                insertHTML(filename: layout.htmlFileName, isAppended: layout.append)
-            }
         }
     
     }
-    
-    //MARK: Private Methods
-    func insertHTML(filename: String, isAppended: Bool) {
-        if let path = Bundle.main.path(forResource: filename, ofType: "html") {
-            do {
-                let htmlStr = try String(contentsOfFile: path)
-                if isAppended {
-                    self.editorView.appendHTML(htmlStr)
-                } else {
-                    //self.editorView.insertHTML(htmlStr)
-                    self.editorView.appendHTML(htmlStr)
-                }
-                
-                self.editorView.initTouchblockCovers()
-                self.editorView.enterContentMode()
-                print(self.editorView.html)
-            }
-            catch {"error: file not found"}
+    func takeUIWebViewScreenShot(webView: UIWebView, isFullSize: Bool)->UIImage?{
+        let webViewFrame = webView.frame
+        
+        var imageHeight: CGFloat?
+        
+        if isFullSize {
+            let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
+            imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
+            let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
+            webView.frame = myFrame
+        } else {
+            imageHeight = webViewFrame.height
         }
-    }
-    func takeUIWebViewScreenShot(webView: UIWebView)->UIImage?{
-        //Create the UIImage
-        UIGraphicsBeginImageContextWithOptions(webView.frame.size, true, 0)
+        
+        //UIGraphicsBeginImageContextWithOptions(webView.scrollView.contentSize, false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: webView.scrollView.contentSize.width, height: imageHeight!), false, 0)
         guard let context = UIGraphicsGetCurrentContext() else { return nil}
-        webView.layer.render(in: context)
+        webView.scrollView.layer.render(in: context)
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil}
         UIGraphicsEndImageContext()
-        
-        //Save it to the camera roll
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        webView.frame = webViewFrame
         return image
+    }
+    
+    func runJS(_ js: String) -> String {
+        let string = self.editorView.webView.stringByEvaluatingJavaScript(from: js) ?? ""
+        return string
     }
 }
 
@@ -293,10 +289,6 @@ extension JournalViewController: RichEditorDelegate {
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func richEditorInsertlayout() {
-        self.presentJournalLayouts()
     }
     
     func richEditorSaveHTML() {
