@@ -259,8 +259,9 @@ class JournalCollectionViewController: UICollectionViewController {
     }
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
-        print("Delete")
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
+
+        print("this is selectedIndexPaths: \(selectedIndexPaths)")
         
         var newJournalList = [[Journal]] ()
         var k: Int = 0
@@ -282,7 +283,7 @@ class JournalCollectionViewController: UICollectionViewController {
                 k = k + 1
             }
         }
-        
+
         self.myJournals = newJournalList
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
         let mySections: Int = (self.collectionView?.numberOfSections)!
