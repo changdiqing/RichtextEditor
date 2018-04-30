@@ -26,6 +26,11 @@ var pressed = false,
 
 // floatingTouchBlock Methods
 
+function f(){
+    var r = document.getElementById('touchblockMoveCover').getBoundingClientRect();
+    return '{{'+r.left+','+r.top+'},{'+r.width+','+r.height+'}}';
+}
+
 function resetPosOffset(newPosOffset) {
     posOffset = newPosOffset;
 }
@@ -100,6 +105,9 @@ function method_touchStartFunction(e){
     startHeight = $(start).height();
     startLeft = $(start).position().left;
     startTop = $(start).position().top;
+    startOffset = $(start).offset().top;
+    document.getElementById("demo").innerHTML = startTop + startOffset;
+    
     e.preventDefault();
 }
 

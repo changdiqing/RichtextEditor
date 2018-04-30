@@ -397,6 +397,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // We use this to keep the scroll view from changing its offset when the keyboard comes up
         if !isScrollEnabled {
+            print("called")
             scrollView.bounds = webView.bounds
         }
     }
@@ -494,10 +495,14 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     /// Called repeatedly to make sure the caret is always visible when inputting text.
     /// Works only if the `lineHeight` of the editor is available.
     private func scrollCaretToVisible() {
+        print("#########################called!")
         let scrollView = self.webView.scrollView
         
         let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
+        
+        print("contentHeight: \(contentHeight)")
+        print("scrollview.contentSize: \(scrollView.contentSize)")
         
         // XXX: Maybe find a better way to get the cursor height
         let lineHeight = CGFloat(self.lineHeight)

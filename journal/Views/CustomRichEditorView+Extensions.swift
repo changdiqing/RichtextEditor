@@ -57,6 +57,8 @@ extension CustomRichEditorView{
     }
     
     public func enterLayoutMode() {
+        print(self.webView.scrollView.contentOffset.y)
+        print(runJS("f();"))
         runJS("method_enterLayoutMode();")
     }
     
@@ -229,6 +231,14 @@ extension CustomRichEditorView{
         self.resignFirstResponder()
         self.endEditing(true)
         print(self.html)
+        print(runJS("$(window).scrollTop()"))
+        print(runJS("document.getElementById('editor').offset()"))
+        print(runJS("document.documentElement.scrollTop"))
+        print(runJS("window.pageYOffset"))
+        print(runJS("window.scrollY"))
+        print(runJS("doc.scrollTop"))
+        print(runJS("doc.clientTop"))
+        print(self.webView.scrollView.contentOffset.y)
         self.delegate?.richEditorSaveHTML!()
     }
     
