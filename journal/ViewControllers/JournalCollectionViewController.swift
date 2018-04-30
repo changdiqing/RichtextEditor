@@ -259,7 +259,7 @@ class JournalCollectionViewController: UICollectionViewController {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
 
         print("this is selectedIndexPaths: \(selectedIndexPaths)")
-        
+        /*
         var newJournalList = [[Journal]] ()
         var k: Int = 0
         for i in (0 ..< self.myJournals.count) {
@@ -297,8 +297,27 @@ class JournalCollectionViewController: UICollectionViewController {
         }
         
         self.collectionView?.deleteSections(indexSet as IndexSet)
+        */
+        
+        let reversedIndexes = selectedIndexPaths.sorted(by: { $0.row > $1.row })
+        for index in reversedIndexes {self.myJournals[index.section].remove(at: index.row)}
+        self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
+        
+        let indexSet = NSMutableIndexSet()
+        for month in self.myJournals.reversed() {
+            if month.isEmpty {
+                let myIndex = self.myJournals.index(of: month)!
+                self.myJournals.remove(at: myIndex)
+                indexSet.add(myIndex)
+            }
+        }
+        self.collectionView?.deleteSections(indexSet as IndexSet)
         self.saveJournals()
 
+    }
+    
+    private func indexPathIsValid(indexPath1: NSIndexPath, indexPath2: NSIndexPath) -> Bool {
+        return indexPath1.section < indexPath2.section && indexPath1.row < indexPath2.row
     }
 }
 
