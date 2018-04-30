@@ -260,45 +260,24 @@ class JournalCollectionViewController: UICollectionViewController {
 
         print("this is selectedIndexPaths: \(selectedIndexPaths)")
         
-        var newJournalList = [[Journal]] ()
-        var k: Int = 0
-        for i in (0 ..< self.myJournals.count) {
-            if myJournals[i].count > 0 {
-                newJournalList.append([])
-                for j in (0 ..< myJournals[i].count) {
-                    var found: Bool = false
-                    for indexPath in selectedIndexPaths {
-                        if (indexPath.section == i) && (indexPath.item == j) {
-                            found = true
-                            break
-                        }
-                    }
-                    if found == false {
-                        newJournalList[k].append(myJournals[i][j])
-                    }
-                }
-                k = k + 1
-            }
-        }
-
-        self.myJournals = newJournalList
+        let reversedIndexes = selectedIndexPaths.sorted(by: { $0.row > $1.row })
+        for index in reversedIndexes {self.myJournals[index.section].remove(at: index.row)}
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
-        let mySections: Int = (self.collectionView?.numberOfSections)!
-        var indexSections = [Int]()
-        for i in(0 ..< mySections) {
-            if collectionView?.numberOfItems(inSection: i) == 0 {
-                indexSections.append(i)
+        
+        let indexSet = NSMutableIndexSet()
+        for month in self.myJournals.reversed() {
+            if month.isEmpty {
+                let myIndex = self.myJournals.index(of: month)!
+                self.myJournals.remove(at: myIndex)
+                indexSet.add(myIndex)
             }
         }
-        self.myJournals.remove(at: indexSections)
-        let indexSet = NSMutableIndexSet()
-        for index in indexSections {
-            indexSet.add(index)
-        }
-        
         self.collectionView?.deleteSections(indexSet as IndexSet)
         self.saveJournals()
-
+    }
+    
+    private func indexPathIsValid(indexPath1: NSIndexPath, indexPath2: NSIndexPath) -> Bool {
+        return indexPath1.section < indexPath2.section && indexPath1.row < indexPath2.row
     }
 }
 
