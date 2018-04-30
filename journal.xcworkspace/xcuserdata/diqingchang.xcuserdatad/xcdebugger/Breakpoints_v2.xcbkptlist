@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "journal/ViewControllers/JournalViewController.swift"
-            timestampString = "546682885.998973"
+            timestampString = "546769415.917143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "unwindToRichtextEditor(sender:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -495,14 +495,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-Es-zcb">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-Es-zcb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5003.JPG" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xk0-m0-wtt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Xk0-m0-wtt" secondAttribute="bottom" id="34i-8i-cAp"/>
                                     <constraint firstItem="Xk0-m0-wtt" firstAttribute="top" secondItem="rUA-Es-zcb" secondAttribute="top" id="8VR-Lw-ggY"/>
@@ -512,9 +512,8 @@
                                     <constraint firstItem="Xk0-m0-wtt" firstAttribute="centerX" secondItem="rUA-Es-zcb" secondAttribute="centerX" id="fvg-lx-z4T"/>
                                 </constraints>
                             </scrollView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I89-0z-rsJ" customClass="CropAreaView" customModule="journal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="275" height="245"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I89-0z-rsJ" customClass="CropAreaView" customModule="journal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="243" width="275" height="66"/>
                             </view>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qka-L8-SVm">
                                 <rect key="frame" x="275" y="64" width="100" height="245"/>

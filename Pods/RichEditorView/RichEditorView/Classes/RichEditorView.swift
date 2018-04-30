@@ -484,12 +484,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
 
     private func updateHeight() {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
-        let offsetHeight = runJS("document.getElementById('editor').offsetHeight;")
-        let scrollHeight = runJS("document.getElementById('editor').scrollHeight;")
         let height = Int(heightString) ?? 0
-        print("my height is \(height)")
-        print("offset height is \(offsetHeight)")
-        print("scroll height is \(scrollHeight)")
         if editorHeight != height {
             editorHeight = height
         }

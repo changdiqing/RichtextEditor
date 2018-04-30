@@ -3,6 +3,7 @@ var pressed = false,
     start = undefined,
     resizeStepWidth = 15,
     startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
+    posOffset = 0,
     touchBlockFocused = false;
 
 // test methods
@@ -24,6 +25,11 @@ var pressed = false,
                                   });*/
 
 // floatingTouchBlock Methods
+
+function resetPosOffset(newPosOffset) {
+    posOffset = newPosOffset;
+}
+
 function method_initTouchblockCovers() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -145,8 +151,9 @@ function method_touchEndFunction(e){
     
     if(isResized){
         isResized = false;
-        
-        newWidth = round($(start).width(), resizeStepWidth)
+        undivisibleR = startLeft + $(start).width() - posOffset
+        devisibleR = round(undivisibleR, resizeStepWidth)
+        newWidth = devisibleR + posOffset - startLeft
         newHeight = round($(start).height(), resizeStepWidth)
         
         $(start).width(newWidth);
@@ -213,7 +220,7 @@ function mehtod_removeStart() {
 }
 
 var round = function (x, to) {
-    return Math.round(x / to) * to;
+    return Math.ceil(x / to) * to;
 };
 
 

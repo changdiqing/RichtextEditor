@@ -90,7 +90,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             try data?.write(to: filepath, options: Data.WritingOptions.atomic)
             let myUrl = filepath.absoluteString
             if !touchBlockClickedCopy {
-                print("here")
                 editorView.insertImage(myUrl, alt: myUrl)
             } else {
                 editorView.setTouchBlockBackgroundImage(myUrl, alt: myUrl)
@@ -128,7 +127,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             var date = formatter.date(from: "2018/06/02")
             date = Date()
             journal = Journal(html: html, photo: photo, month: date)
-            print(self.editorView.editorHeight)
             return
         }
         
@@ -272,12 +270,7 @@ extension JournalViewController: JavaScriptFuncProtocol {
 extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
         // for testing, always load the same demo
-        print("view did load")
         self.editorView.initTouchblockCovers()
-        //self.editorView.insertHTML(htmlStr)
-        //self.editorView.webView.reload()
-        //print(self.editorView.runJS("document.documentElement.outerHTML"))
-        //self.editorView.html = self.journal?.html ??
     }
     
     func richEditorInsertImage() {
@@ -297,11 +290,9 @@ extension JournalViewController: RichEditorDelegate {
         } else {  // if there is content then save to core data
             if self.journal != nil {
                 self.journal?.html = self.editorView.html
-                print("existing journal saved!")
             } else {
                 //self.journal = CoreDataHandler.createNewDiary(testDate)
                 self.journal?.html = self.editorView.html
-                print("new journal created!")
             }
             //CoreDataHandler.saveDiary()
         }
