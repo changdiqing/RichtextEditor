@@ -495,11 +495,14 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     /// Called repeatedly to make sure the caret is always visible when inputting text.
     /// Works only if the `lineHeight` of the editor is available.
     private func scrollCaretToVisible() {
+        
         print("#########################called!")
         let scrollView = self.webView.scrollView
         
+        print("contentSize before: \(scrollView.contentSize)")
+        
         let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
+        //scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)  // commented by Diqing for test
         
         print("contentHeight: \(contentHeight)")
         print("scrollview.contentSize: \(scrollView.contentSize)")
@@ -509,6 +512,18 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let cursorHeight = lineHeight - 4
         let visiblePosition = CGFloat(relativeCaretYPosition)
         var offset: CGPoint?
+        let heightString = runJS("document.getElementById('editor').scrollHeight;")
+        print("scrollHeight: \(heightString)")
+        print("visiblePosition: \(visiblePosition)")
+        print("cursorHeight: \(cursorHeight)")
+        print("scrollView.bounds.size.height: \(scrollView.bounds.size.height)")
+        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
+        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
+        
+        let testResults = runJS("testGetCaretData()")
+        let testResults2 = runJS("testGetCaretData2()")
+        print("testresults: \(testResults)")
+        print("testResult2: \(testResults2)")
 
         if visiblePosition + cursorHeight > scrollView.bounds.size.height {
             // Visible caret position goes further than our bounds
@@ -519,10 +534,10 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             var amount = scrollView.contentOffset.y + visiblePosition
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
-
         }
 
         if let offset = offset {
+            print(offset)
             scrollView.setContentOffset(offset, animated: true)
         }
     }
@@ -543,7 +558,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             updateHeight()
         }
         else if method.hasPrefix("input") {
-            scrollCaretToVisible()
+            //scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
             let content = runJS("RE.getHtml()")
             contentHTML = content
             updateHeight()

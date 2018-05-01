@@ -26,6 +26,60 @@ var pressed = false,
 
 // floatingTouchBlock Methods
 
+
+
+function testGetCaretData() {
+    var y = 0;
+    var sel = window.getSelection();
+    var needsWorkAround = false;
+    var pageYOffset = 0;
+    if (sel.rangeCount) {
+        var range = sel.getRangeAt(0);
+        needsWorkAround = (range.startOffset == 0)
+        /* Removing fixes bug when node name other than 'div' */
+        // && range.startContainer.nodeName.toLowerCase() == 'div');
+        if (needsWorkAround) {
+            y = range.startContainer.offsetTop - window.pageYOffset;
+            pageYOffset = window.pageYOffset;
+        } else {
+            if (range.getClientRects) {
+                var rects=range.getClientRects();
+                if (rects.length > 0) {
+                    y = rects[0].top;
+                }
+            }
+        }
+    }
+    
+    return pageYOffset;
+}
+
+function testGetCaretData2() {
+    var y = 0;
+    var sel = window.getSelection();
+    var needsWorkAround = false;
+    var clientRectTop = 0;
+    if (sel.rangeCount) {
+        var range = sel.getRangeAt(0);
+        needsWorkAround = (range.startOffset == 0)
+        /* Removing fixes bug when node name other than 'div' */
+        // && range.startContainer.nodeName.toLowerCase() == 'div');
+        if (needsWorkAround) {
+            y = range.startContainer.offsetTop - window.pageYOffset;
+            clientRectTop = range.startContainer.offsetTop;
+        } else {
+            if (range.getClientRects) {
+                var rects=range.getClientRects();
+                if (rects.length > 0) {
+                    y = rects[0].top;
+                }
+            }
+        }
+    }
+    
+    return clientRectTop;
+}
+
 function f(){
     var r = document.getElementById('touchblockMoveCover').getBoundingClientRect();
     return '{{'+r.left+','+r.top+'},{'+r.width+','+r.height+'}}';
