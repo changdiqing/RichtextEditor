@@ -19,6 +19,8 @@ class JournalCollectionViewController: UICollectionViewController {
     fileprivate var editingMode: Bool = false
     @IBOutlet weak var journalAddButton: UIBarButtonItem!
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     //fileprivate var editing: Bool = false
     var testDate:Date {
         get {
@@ -44,6 +46,11 @@ class JournalCollectionViewController: UICollectionViewController {
         }
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.flowLayout.minimumLineSpacing = 10
+        self.flowLayout.minimumInteritemSpacing = 5
+        self.flowLayout.headerReferenceSize = CGSize(width: 0, height: 40)
+        self.flowLayout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        //self.flowLayout.autoContentAccessingProxy
     }
 
     override func didReceiveMemoryWarning() {
@@ -135,6 +142,20 @@ class JournalCollectionViewController: UICollectionViewController {
         return true
     }
     
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        //let screenSize = UIScreen.main.bounds
+//        let layout = UICollectionViewFlowLayout()
+////        let itemWidth = 100
+////        let itemHeight = 100
+////        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//        layout.minimumInteritemSpacing = 3
+//        layout.minimumLineSpacing = 20
+//        layout.headerReferenceSize = CGSize(width: 0, height: 10)
+//        layout.sectionInset = UIEdgeInsetsMake(3, 3, 3, 33)
+//        self.flowLayout = layout
+//        //collectionView?.reloadData()
+//    }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -283,14 +304,15 @@ class JournalCollectionViewController: UICollectionViewController {
 
 extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = UIScreen.main.bounds
-        let journalWidth = 0.23 * screenSize.width
-        let journalHeight = 0.23 * screenSize.height
-        return CGSize(width: journalWidth, height: journalHeight)
+        let myItem = self.myJournals[indexPath.section][indexPath.item]
+        //let screenSize = UIScreen.main.bounds
+        let itemWidth = (myItem.photo?.size.width)! / 4.8;
+        let itemHeight = (myItem.photo?.size.height)! / 4.8;
+        return CGSize(width: itemWidth, height: itemHeight)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 5.0
+//    }
 }
 
 extension Array {

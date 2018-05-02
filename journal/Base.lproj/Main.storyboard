@@ -142,6 +142,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="flowLayout" destination="V3j-0p-Xps" id="eKY-yt-XSI"/>
                         <outlet property="journalAddButton" destination="OWp-Af-9Xa" id="Fxk-vu-pQT"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="editJournal" id="wel-zr-kdp"/>
                     </connections>

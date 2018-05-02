@@ -57,7 +57,6 @@
 		9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */; };
 		9B604E4D208FB8AF00406A61 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */; };
 		9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4C208FB8AF00406A61 /* CropAreaView.swift */; };
-		9B604E552092613800406A61 /* 5003.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9B604E542092613700406A61 /* 5003.JPG */; };
 		9B636A2A1FCA0603003AFF26 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */; };
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
@@ -176,7 +175,6 @@
 		9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropperViewController.swift; sourceTree = "<group>"; };
 		9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		9B604E4C208FB8AF00406A61 /* CropAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropAreaView.swift; sourceTree = "<group>"; };
-		9B604E542092613700406A61 /* 5003.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5003.JPG; sourceTree = "<group>"; };
 		9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCardTableViewController.swift; sourceTree = "<group>"; };
 		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */,
 				9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */,
 				9B4A78541FAA1519000F39FC /* Main.storyboard */,
-				9B604E542092613700406A61 /* 5003.JPG */,
 				9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */,
 				9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */,
 				9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */,
@@ -567,7 +564,6 @@
 				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */,
-				9B604E552092613800406A61 /* 5003.JPG in Resources */,
 				9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
