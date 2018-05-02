@@ -55,29 +55,15 @@ function testGetCaretData() {
 }
 
 function testGetCaretData2() {
-    var y = 0;
-    var sel = window.getSelection();
-    var needsWorkAround = false;
-    var clientRectTop = 0;
-    if (sel.rangeCount) {
-        var range = sel.getRangeAt(0);
-        needsWorkAround = (range.startOffset == 0)
-        /* Removing fixes bug when node name other than 'div' */
-        // && range.startContainer.nodeName.toLowerCase() == 'div');
-        if (needsWorkAround) {
-            y = range.startContainer.offsetTop - window.pageYOffset;
-            clientRectTop = range.startContainer.offsetTop;
-        } else {
-            if (range.getClientRects) {
-                var rects=range.getClientRects();
-                if (rects.length > 0) {
-                    y = rects[0].top;
-                }
-            }
-        }
-    }
     
-    return clientRectTop;
+    var touchsurface = document.querySelectorAll("div.floatingTouchblock");
+    var result = touchsurface[0].offsetTop;
+    
+    //result = $("#floatingTouchblock").offset().top;
+    var start = $(this).parent();
+    var offsetTop = $(start).offset().top;
+    
+    return offsetTop;
 }
 
 function f(){
@@ -149,18 +135,32 @@ function method_enterContentMode() {
 }
 
 function method_touchStartFunction(e){
-
+    /*
     e.stopPropagation();
     start = $(this).parent();
+    var rect = this.parentElement.getBoundingClientRect();
+    //console.log(rect.top, rect.right, rect.bottom, rect.left);
     pressed = true;
     startX = e.pageX;
     startY = e.pageY;
     startWidth = $(start).width();
     startHeight = $(start).height();
-    startLeft = $(start).position().left;
-    startTop = $(start).position().top;
-    startOffset = $(start).offset().top;
-    document.getElementById("demo").innerHTML = startTop + startOffset;
+    startLeft = this.parentElement.offsetLeft;
+    startTop = this.parentElement.offsetTop;
+    document.getElementById("demo").innerHTML = rect.bottom;*/
+    
+    e.stopPropagation();
+    start = this.parentElement;
+    var rect = start.getBoundingClientRect();
+    //console.log(rect.top, rect.right, rect.bottom, rect.left);
+    pressed = true;
+    startX = e.pageX;
+    startY = e.pageY;
+    startLeft = start.offsetLeft;
+    startTop = start.offsetTop;
+    startWidth = $(start).width(); //.style.width;
+    startHeight = $(start).height(); //.style.height;
+    document.getElementById("demo").innerHTML = rect.top;
     
     e.preventDefault();
 }
@@ -213,13 +213,15 @@ function method_touchEndFunction(e){
     
     if(isResized){
         isResized = false;
-        undivisibleR = startLeft + $(start).width() - posOffset
+        leftOffset = start.offsetLeft;
+        topOffset = start.offsetTop;
+        undivisibleR = leftOffset + $(start).width()- posOffset
         devisibleR = round(undivisibleR, resizeStepWidth)
-        newWidth = devisibleR + posOffset - startLeft
+        newWidth = devisibleR + posOffset - leftOffset
         newHeight = round($(start).height(), resizeStepWidth)
         
-        $(start).width(newWidth);
-        $(start).height(newHeight);
+        start.style.width = newWidth + "px"
+        start.style.height = newHeight + "px"
     } else {
         javaScriptCallToSwift.test();
     }

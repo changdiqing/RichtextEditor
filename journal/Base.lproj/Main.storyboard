@@ -502,7 +502,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Xk0-m0-wtt" secondAttribute="bottom" id="34i-8i-cAp"/>
                                     <constraint firstItem="Xk0-m0-wtt" firstAttribute="top" secondItem="rUA-Es-zcb" secondAttribute="top" id="8VR-Lw-ggY"/>
