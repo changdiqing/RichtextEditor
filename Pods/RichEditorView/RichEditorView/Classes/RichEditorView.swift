@@ -502,7 +502,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         print("contentSize before: \(scrollView.contentSize)")
         
         let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
-        //scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)  // commented by Diqing for test
+        //scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
         
         print("contentHeight: \(contentHeight)")
         print("scrollview.contentSize: \(scrollView.contentSize)")
@@ -517,7 +517,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         print("visiblePosition: \(visiblePosition)")
         print("cursorHeight: \(cursorHeight)")
         print("scrollView.bounds.size.height: \(scrollView.bounds.size.height)")
-        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
         print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
         
         let testResults = runJS("testGetCaretData()")
@@ -540,6 +539,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             print(offset)
             scrollView.setContentOffset(offset, animated: true)
         }
+        print("contentOffset: \(scrollView.contentOffset)")
     }
     
     /// Called when actions are received from JavaScript
@@ -558,7 +558,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             updateHeight()
         }
         else if method.hasPrefix("input") {
-            //scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
+            scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
             let content = runJS("RE.getHtml()")
             contentHTML = content
             updateHeight()

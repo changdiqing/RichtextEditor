@@ -254,11 +254,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
 
 extension JournalViewController: JavaScriptFuncProtocol {
     func test() {
+        let testResults2 = runJS("testGetCaretData2()")
+        print("testResult2: \(testResults2)")
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
         colorCardViewController.buttonHeight = colorCardViewController.defaultButtonHeight
         self.present(colorCardViewController, animated:true, completion:nil)
+        
     }
     
     func test2(_ value: String, _ num: Int) {

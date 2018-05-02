@@ -61,9 +61,9 @@ class ImageCropperViewController: UIViewController{
         let sidePanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.rightViewDidDragged(_:)))
         rightPanBar.addGestureRecognizer(sidePanGesture)
         
-        // Uncomment to draw a border on crop area view programmatically
-        //self.cropAreaView.layer.borderWidth = 10
-        //self.cropAreaView.layer.borderColor = UIColor.black.cgColor
+        // Uncomment to draw a border on image view programmatically
+        //self.imageView.image.layer.borderWidth = 1
+        //self.imageView.image.layer.borderColor = UIColor.black.cgColor
         
         initKeyboardView()
         resetCropViews()

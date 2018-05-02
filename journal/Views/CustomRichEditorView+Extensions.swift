@@ -41,12 +41,12 @@ extension CustomRichEditorView{
         runJS("method_changeStartBackgroundImage('\(url)', '\(alt)');")
     }
     
-    public func increaseTextSize() {
+    @objc public func increaseTextSize() {
         runJS("RE.prepareInsert();")
         runJS("RE.increaseTextSize();")
     }
     
-    public func decreaseTextSize() {
+    @objc public func decreaseTextSize() {
         
         runJS("RE.prepareInsert();")
         runJS("RE.decreaseTextSize();")
@@ -57,8 +57,8 @@ extension CustomRichEditorView{
     }
     
     public func enterLayoutMode() {
-        print(self.webView.scrollView.contentOffset.y)
-        print(runJS("f();"))
+        let testResults2 = runJS("testGetCaretData2()")
+        print("testResult2: \(testResults2)")
         runJS("method_enterLayoutMode();")
     }
     
@@ -194,7 +194,7 @@ extension CustomRichEditorView{
     
     //MARK: ToolbarItemActions
     
-    func undoAction() {
+    @objc func undoAction() {
         self.undo()
     }
     
@@ -204,12 +204,12 @@ extension CustomRichEditorView{
         self.endEditing(true)
     }
     
-    func setColorAction(sender: UIBarButtonItem) {
+    @objc func setColorAction(sender: UIBarButtonItem) {
         //self.setTextColor(UIColor.red.htmlRGBA)
         self.setTextColor((sender.tintColor?.htmlRGBA)!)
     }
     
-    func backButtonAction() {
+    @objc func backButtonAction() {
         let height = defaultParameters.UIToobarHeight
         let width = UIScreen.main.bounds.width
         
@@ -226,33 +226,24 @@ extension CustomRichEditorView{
         self.inputAccessoryView = nil
     }
     
-    func doneButtonAction()
+    @objc func doneButtonAction()
     {
         self.resignFirstResponder()
         self.endEditing(true)
-        print(self.html)
-        print(runJS("$(window).scrollTop()"))
-        print(runJS("document.getElementById('editor').offset()"))
-        print(runJS("document.documentElement.scrollTop"))
-        print(runJS("window.pageYOffset"))
-        print(runJS("window.scrollY"))
-        print(runJS("doc.scrollTop"))
-        print(runJS("doc.clientTop"))
-        print(self.webView.scrollView.contentOffset.y)
         self.delegate?.richEditorSaveHTML!()
     }
     
-    func insertImageAction() {
+    @objc func insertImageAction() {
         self.delegate?.richEditorInsertImage!()
     }
     
-    func insertInlineTouchblockAction(sender: UIBarButtonItem) {
+    @objc func insertInlineTouchblockAction(sender: UIBarButtonItem) {
         let index = 0
         let selectedTouchblock = touchblockList[index]
         self.insertTouchblock(touchblock: selectedTouchblock)
     }
     
-    func insertFloatTouchblockAction(sender: UIBarButtonItem) {
+    @objc func insertFloatTouchblockAction(sender: UIBarButtonItem) {
         let index = 1
         let selectedTouchblock = touchblockList[index]
         self.insertTouchblock(touchblock: selectedTouchblock)
@@ -266,31 +257,30 @@ extension CustomRichEditorView{
         self.floatRightImage()
     }
     
-    func centerImageAction() {
+    @objc func centerImageAction() {
         self.centerImage()
         print(self.html)
     }
     
-    func clear() {
+    @objc func clear() {
         self.removeFormat()
     }
     
-    func showTypeSettingKeyboard() {
+    @objc func showTypeSettingKeyboard() {
         // initiaate and attach TypesettingKeyboard custom keyboard. Diqing 09.04.2018
         self.customToolbar?.items = self.textEditingMenu
     }
 
-    func showColorKeyboard() {
+    @objc func showColorKeyboard() {
         let height = defaultParameters.UIToobarHeight
         let width = max (CGFloat(colorMenu.count) * height, UIScreen.main.bounds.width)
         
         self.customToolbar!.items = self.colorMenu
         self.toolbarScroll!.contentSize.width = width
         self.customToolbar?.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        
     }
     
-    func showTouchblockKeyboard() {
+    @objc func showTouchblockKeyboard() {
         reloadToolbar(toolbarItems: self.touchblockMenu)
         
         /*
@@ -301,7 +291,6 @@ extension CustomRichEditorView{
         if !self.attachTextView.isFirstResponder {
             self.attachTextView.becomeFirstResponder()
         }*/
-        
     }
     
     private func insertTouchblock(touchblock: htmlFile) {
