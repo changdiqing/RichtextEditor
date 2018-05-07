@@ -68,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V3j-0p-Xps">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="V3j-0p-Xps">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -88,14 +88,15 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="Ph2-Pm-BZU">
                                             <rect key="frame" x="0.0" y="0.0" width="18" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <viewLayoutGuide key="safeArea" id="EN1-ae-PhN"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="jxr-R9-djM" firstAttribute="leading" secondItem="3Cw-Ee-H2m" secondAttribute="leading" id="PIR-aD-CM4"/>
+                                    <constraint firstAttribute="leading" secondItem="jxr-R9-djM" secondAttribute="leading" id="PIR-aD-CM4"/>
                                     <constraint firstAttribute="trailing" secondItem="jxr-R9-djM" secondAttribute="trailing" id="Wkn-dD-XIA"/>
                                     <constraint firstAttribute="bottom" secondItem="jxr-R9-djM" secondAttribute="bottom" id="XtI-nO-9hV"/>
-                                    <constraint firstItem="jxr-R9-djM" firstAttribute="top" secondItem="3Cw-Ee-H2m" secondAttribute="top" id="tV5-HI-Hv7"/>
+                                    <constraint firstAttribute="top" secondItem="jxr-R9-djM" secondAttribute="top" id="tV5-HI-Hv7"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <viewLayoutGuide key="safeArea" id="5rC-Ue-oVI"/>
@@ -111,7 +112,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Do-EW-Ji4">
-                                    <rect key="frame" x="0.0" y="8" width="105" height="27"/>
+                                    <rect key="frame" x="2" y="8" width="105" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="105" id="KG6-6K-A5V"/>
                                     </constraints>
@@ -121,10 +122,11 @@
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottomMargin" secondItem="4Do-EW-Ji4" secondAttribute="bottom" constant="7" id="60a-rh-IrP"/>
-                                <constraint firstItem="4Do-EW-Ji4" firstAttribute="leading" secondItem="AAo-R4-Ani" secondAttribute="leading" id="iyU-Bj-OYQ"/>
-                                <constraint firstItem="4Do-EW-Ji4" firstAttribute="top" secondItem="AAo-R4-Ani" secondAttribute="topMargin" id="qed-gf-KWD"/>
+                                <constraint firstItem="4Do-EW-Ji4" firstAttribute="bottom" secondItem="Q4j-hk-HXr" secondAttribute="bottom" constant="-15" id="60a-rh-IrP"/>
+                                <constraint firstItem="4Do-EW-Ji4" firstAttribute="leading" secondItem="Q4j-hk-HXr" secondAttribute="leading" constant="2" id="iyU-Bj-OYQ"/>
+                                <constraint firstItem="4Do-EW-Ji4" firstAttribute="top" secondItem="Q4j-hk-HXr" secondAttribute="top" constant="8" id="qed-gf-KWD"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="Q4j-hk-HXr"/>
                             <connections>
                                 <outlet property="monthLabel" destination="4Do-EW-Ji4" id="3jv-5y-ncG"/>
                             </connections>
