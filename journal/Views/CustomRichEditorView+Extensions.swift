@@ -142,9 +142,9 @@ extension CustomRichEditorView{
         let textBigger: UIBarButtonItem = UIBarButtonItem(image: textBiggerImg, style: .done, target: self, action: #selector(self.increaseTextSize))
         let textSmaller: UIBarButtonItem = UIBarButtonItem(image: textSmallerImg, style: .done, target: self, action: #selector(self.decreaseTextSize))
         let inlineTouchblock = UIBarButtonItem(image: inlineImg, style: .done, target: self, action: #selector(insertInlineTouchblockAction))
-        //inlineTouchblock.tintColor = UIColor.darkestAlice()
+        inlineTouchblock.tintColor = UIColor.darkestAlice()
         let floatingTouchblock = UIBarButtonItem(image: floatingImg, style: .done, target: self, action: #selector(self.insertFloatTouchblockAction))
-        //floatingTouchblock.tintColor = UIColor.lighterRuby()
+        floatingTouchblock.tintColor = UIColor.lighterRuby()
         
         self.colorMenu.append(backButton)
         for ele in colorList {
