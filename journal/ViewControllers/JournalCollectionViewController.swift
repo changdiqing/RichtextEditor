@@ -302,8 +302,8 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let myItem = self.myJournals[indexPath.section][indexPath.item]
         //let screenSize = UIScreen.main.bounds
-        let itemWidth = (myItem.photo?.size.width)! / 4.8;
-        let itemHeight = (myItem.photo?.size.height)! / 4.8;
+        let itemWidth = (myItem.photo?.size.width)! / 4.4;
+        let itemHeight = (myItem.photo?.size.height)! / 4.4;
         return CGSize(width: itemWidth, height: itemHeight)
     }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
