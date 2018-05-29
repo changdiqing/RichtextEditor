@@ -151,7 +151,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8P-dP-ZOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2183.1999999999998" y="-917.09145427286364"/>
+            <point key="canvasLocation" x="-2303" y="-929"/>
         </scene>
         <!--Journal View Controller-->
         <scene sceneID="tne-QT-ifu">
