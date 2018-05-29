@@ -116,7 +116,9 @@ extension CustomRichEditorView{
         let italicImg = UIImage(named: "italic")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let textBiggerImg = UIImage(named: "textBigger")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let textSmallerImg = UIImage(named: "textSmaller")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let touchblockImg = UIImage(named: "touchblock")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let touchblockImg = UIImage(named: "touchBlockIcon")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let inlineImg = UIImage(named: "touchBlockIcon")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let floatingImg = UIImage(named: "touchBlockIcon")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         
         let undo: UIBarButtonItem = UIBarButtonItem(image: iconUndo, style: .done, target: self, action: #selector(self.undoAction))
         let typeSetting: UIBarButtonItem = UIBarButtonItem(image: iconTypeSetting, style: .done, target: self, action: #selector(self.showTypeSettingKeyboard))
@@ -139,9 +141,9 @@ extension CustomRichEditorView{
         let italic: UIBarButtonItem = UIBarButtonItem(image: italicImg, style: .done, target: self, action: #selector(self.italic))
         let textBigger: UIBarButtonItem = UIBarButtonItem(image: textBiggerImg, style: .done, target: self, action: #selector(self.increaseTextSize))
         let textSmaller: UIBarButtonItem = UIBarButtonItem(image: textSmallerImg, style: .done, target: self, action: #selector(self.decreaseTextSize))
-        let inlineTouchblock = UIBarButtonItem(image: touchblockImg, style: .done, target: self, action: #selector(insertInlineTouchblockAction))
+        let inlineTouchblock = UIBarButtonItem(image: inlineImg, style: .done, target: self, action: #selector(insertInlineTouchblockAction))
         inlineTouchblock.tintColor = UIColor.darkestAlice()
-        let floatingTouchblock = UIBarButtonItem(image: touchblockImg, style: .done, target: self, action: #selector(self.insertFloatTouchblockAction))
+        let floatingTouchblock = UIBarButtonItem(image: floatingImg, style: .done, target: self, action: #selector(self.insertFloatTouchblockAction))
         floatingTouchblock.tintColor = UIColor.lighterRuby()
         
         self.colorMenu.append(backButton)

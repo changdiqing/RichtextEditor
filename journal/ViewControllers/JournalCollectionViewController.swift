@@ -144,17 +144,7 @@ class JournalCollectionViewController: UICollectionViewController {
     
 //    override func viewDidLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
-//        //let screenSize = UIScreen.main.bounds
-//        let layout = UICollectionViewFlowLayout()
-////        let itemWidth = 100
-////        let itemHeight = 100
-////        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-//        layout.minimumInteritemSpacing = 3
-//        layout.minimumLineSpacing = 20
-//        layout.headerReferenceSize = CGSize(width: 0, height: 10)
-//        layout.sectionInset = UIEdgeInsetsMake(3, 3, 3, 33)
-//        self.flowLayout = layout
-//        //collectionView?.reloadData()
+//        collectionView?.collectionViewLayout.invalidateLayout()
 //    }
 
     /*
@@ -180,6 +170,12 @@ class JournalCollectionViewController: UICollectionViewController {
             return
         }
         
+    }
+    
+    
+    // reloadData to fix the bug by safe area of iPhone X
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.reloadData()
     }
     
     // Section Header View
@@ -306,8 +302,8 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let myItem = self.myJournals[indexPath.section][indexPath.item]
         //let screenSize = UIScreen.main.bounds
-        let itemWidth = (myItem.photo?.size.width)! / 4.8;
-        let itemHeight = (myItem.photo?.size.height)! / 4.8;
+        let itemWidth = (myItem.photo?.size.width)! / 4.4;
+        let itemHeight = (myItem.photo?.size.height)! / 4.4;
         return CGSize(width: itemWidth, height: itemHeight)
     }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
