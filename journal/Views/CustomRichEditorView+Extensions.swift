@@ -95,7 +95,7 @@ extension CustomRichEditorView{
         //let doneToolbar: UIToolbar = UIToolbar()
         self.customToolbar!.barStyle = .default
         self.toolbarScroll!.addSubview(self.customToolbar!)
-        self.toolbarScroll!.contentSize.width = UIScreen.main.bounds.width
+        //self.toolbarScroll!.contentSize.width = UIScreen.main.bounds.width
         
         //let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let iconUndo = UIImage(named: "undo")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -188,9 +188,8 @@ extension CustomRichEditorView{
             item.tintColor = UIColor.ruby()
         }
         
-        self.customToolbar!.items = self.mainMenu
-        //doneToolbar.sizeToFit()
-        self.toolbarScroll!.contentSize.width = self.customToolbar!.frame.width
+        
+        reloadToolbar(toolbarItems: self.mainMenu)
         self.attachKeyboardToolbar()
     }
     
@@ -212,12 +211,7 @@ extension CustomRichEditorView{
     }
     
     @objc func backButtonAction() {
-        let height = defaultParameters.UIToobarHeight
-        let width = UIScreen.main.bounds.width
-        
-        self.customToolbar!.items = self.mainMenu
-        self.toolbarScroll!.contentSize.width = width
-        self.customToolbar?.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        reloadToolbar(toolbarItems: self.mainMenu)
     }
     
     func attachKeyboardToolbar() {
@@ -274,25 +268,11 @@ extension CustomRichEditorView{
     }
 
     @objc func showColorKeyboard() {
-        let height = defaultParameters.UIToobarHeight
-        let width = max (CGFloat(colorMenu.count) * height, UIScreen.main.bounds.width)
-        
-        self.customToolbar!.items = self.colorMenu
-        self.toolbarScroll!.contentSize.width = width
-        self.customToolbar?.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        reloadToolbar(toolbarItems: self.colorMenu)
     }
     
     @objc func showTouchblockKeyboard() {
         reloadToolbar(toolbarItems: self.touchblockMenu)
-        
-        /*
-        let keyboardView = TouchblockKeyboard(frame: keyboardFrame)
-        keyboardView.delegate = self
-        self.attachTextView.inputView = keyboardView
-        self.attachTextView.reloadInputViews()
-        if !self.attachTextView.isFirstResponder {
-            self.attachTextView.becomeFirstResponder()
-        }*/
     }
     
     private func insertTouchblock(touchblock: htmlFile) {
