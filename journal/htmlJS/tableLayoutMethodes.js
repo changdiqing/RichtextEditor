@@ -242,23 +242,27 @@ function method_cloneTouchblock() {
 }
 
 function method_setTouchblockFilter(filterType){
-    $(start).find('.touchblockBGICover').css("filter",filterType);
+    $(start).find('.touchblockBGICover').css('filter',filterType);
+}
+
+function method_setTouchblockBorder(borderType){
+    $(start).find('.touchblockBGICover').css('border', borderType);
 }
 
 function method_changeStartBackgroundColor(color){
-    $(start).find('.touchblockBGICover').css("background-color",color);
+    $(start).find('.touchblockBGICover').css('background-color",color);
 }
 
 function method_changeStartBackgroundImage(url, alt) {
-    $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
+    $(start).find('.touchblockBGICover').css('background-image', 'url(' + url + ')');
 };
 
 function mehtod_setStartTextOrientationVertical() {
-    $(start).find('.touchblockContentCover').css("writing-mode", "vertical-lr");
+    $(start).find('.touchblockContentCover').css('writing-mode', 'vertical-lr');
 }
 
 function mehtod_setStartTextOrientationHorizon() {
-    $(start).find('.touchblockContentCover').css("writing-mode", "horizontal-tb");
+    $(start).find('.touchblockContentCover').css('writing-mode', 'horizontal-tb');
 }
 
 function myFunction() {
@@ -291,7 +295,7 @@ var round = function (x, to) {
 function setEndOfContenteditable()
 {
     var range,selection;
-    var contentEditableElement = document.getElementById('editor');
+    var contentEditableElement = document.getElementById("editor");
     if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
     {
         range = document.createRange();//Create a range (a range is a like the selection but invisible)

@@ -15,7 +15,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     
     @IBOutlet weak var editorView: CustomRichEditorView!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var changeModeButton: UIBarButtonItem!
     
@@ -212,6 +211,10 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else if sender.identifier == "setFilter"{
                 if let selectedFilter = sourceViewController.selectedFilter{
                     self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
+                }
+            } else if sender.identifier == "setBorder"{
+                if let selectedBorder = sourceViewController.selectedBorder{
+                    self.editorView.setTouchblockBorder(selectedBorder.jsCommand)
                 }
             } else if sender.identifier == "cancel"{
                 print("Canceled")

@@ -33,6 +33,10 @@ extension CustomRichEditorView{
         runJS("method_setTouchblockFilter('\(filterType)');")
     }
     
+    public func setTouchblockBorder(_ borderType: String) {
+        runJS("method_setTouchblockBorder('\(borderType)');")
+    }
+    
     public func setTouchBlockBackgroundColor(_ colorInHex: String) {
         runJS("method_changeStartBackgroundColor('\(colorInHex)');")
     }
@@ -122,7 +126,7 @@ extension CustomRichEditorView{
         
         let undo: UIBarButtonItem = UIBarButtonItem(image: iconUndo, style: .done, target: self, action: #selector(self.undoAction))
         let typeSetting: UIBarButtonItem = UIBarButtonItem(image: iconTypeSetting, style: .done, target: self, action: #selector(self.showTypeSettingKeyboard))
-        let testButton: UIBarButtonItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(self.testButtonAction(sender:)))
+        let _: UIBarButtonItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(self.testButtonAction(sender:)))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
         let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: iconleftImage, style: .done, target: self, action: #selector(self.floatLeftImage))
         let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: iconrightImage, style: .done, target: self, action: #selector(self.floatRightImage))
@@ -199,7 +203,7 @@ extension CustomRichEditorView{
         self.undo()
     }
     
-    func testButtonAction(sender: UIBarButtonItem) {
+    @objc func testButtonAction(sender: UIBarButtonItem) {
         //self.setTextColor(UIColor.red.htmlRGBA)
         self.setTextColor((sender.tintColor?.htmlRGBA)!)
         self.endEditing(true)
@@ -214,11 +218,11 @@ extension CustomRichEditorView{
         reloadToolbar(toolbarItems: self.mainMenu)
     }
     
-    func attachKeyboardToolbar() {
+    @objc func attachKeyboardToolbar() {
         self.inputAccessoryView = self.toolbarScroll
     }
     
-    func removeKeyboardToolbar() {
+    @objc func removeKeyboardToolbar() {
         self.inputAccessoryView = nil
     }
     
@@ -245,11 +249,11 @@ extension CustomRichEditorView{
         self.insertTouchblock(touchblock: selectedTouchblock)
     }
     
-    func floatLeftImageAction() {
+    @objc func floatLeftImageAction() {
         self.floatLeftImage()
     }
     
-    func floatRightImageAction() {
+    @objc func floatRightImageAction() {
         self.floatRightImage()
     }
     

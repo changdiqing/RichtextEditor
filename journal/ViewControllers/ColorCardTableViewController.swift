@@ -13,10 +13,13 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     
     @IBOutlet weak var colorCardTable: UITableView!
     @IBOutlet weak var filterWidth: NSLayoutConstraint!
+    @IBOutlet weak var borderCollectionWidth: NSLayoutConstraint!
     @IBOutlet weak var touchBlockDashTabbar: UITabBar!
-    @IBOutlet weak var filterCollectionView: UICollectionView!
+    @IBOutlet public weak var filterCollectionView: UICollectionView!
+    @IBOutlet weak var borderCollectionView: UICollectionView!
     
-    fileprivate let filterList = DivFilters.divFilterList
+    fileprivate let filterList = DivMokupSets.divFilterList
+    fileprivate let borderList = DivMokupSets.divBorderList
     fileprivate let fillingEffectList = FillingEffects.FillingEffectList
     
     let defaultButtonHeight: CGFloat = 100
@@ -24,7 +27,8 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     var filterCellWidth: CGFloat?
     var buttonHeight: CGFloat = 0.00
     var selectedFillingEffect:FillingEffect?
-    var selectedFilter:divFilter?
+    var selectedFilter:mokupItem?
+    var selectedBorder: mokupItem?
     
 
     
@@ -32,9 +36,11 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         super.viewDidLoad()
         colorCardTable.delegate = self
         colorCardTable.dataSource = self as UITableViewDataSource
-        touchBlockDashTabbar.delegate = self
+        touchBlockDashTabbar.delegate = self as UITabBarDelegate
         filterCollectionView.dataSource = self
         filterCollectionView.delegate = self as UICollectionViewDelegate
+        borderCollectionView.dataSource = self
+        borderCollectionView.delegate = self as UICollectionViewDelegate
         filterWidth.constant = 0
         filterCellWidth = screenWidth/4
         // Uncomment the following line to preserve selection between presentations
@@ -98,7 +104,11 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
             if let indexPath = self.filterCollectionView!.indexPath(for: cell){
                 selectedFilter = filterList[indexPath.row]
             }
-            
+        } else if segue.identifier == "setBorder" {
+            let cell = sender as! CustomCollectionViewCell
+            if let indexPath = self.borderCollectionView!.indexPath(for: cell){
+                selectedBorder = borderList[indexPath.row]
+            }
         }
         
     }
@@ -151,12 +161,19 @@ extension ColorCardTableViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+        var cell: CustomCollectionViewCell!
         
-        let filter = filterList[indexPath.row]
-        
-        cell.displayContent(image: filter.coverImage, title: filter.name)
-        
+        if collectionView.tag == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+            
+            let filter = filterList[indexPath.row]
+            cell.displayContent(image: filter.coverImage, title: filter.name)
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+            
+            let border = borderList[indexPath.row]
+            cell.displayContent(image: border.coverImage, title: border.name)
+        }
         return cell
     }
 }
@@ -166,9 +183,14 @@ extension ColorCardTableViewController:  UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if(item.tag == 0) {
             filterWidth.constant = screenWidth
+            borderCollectionWidth.constant = 0
             //filterCollectionView.layoutIfNeeded()
         } else if(item.tag == 1) {
             filterWidth.constant = 0
+            borderCollectionWidth.constant = screenWidth
+        } else {
+            filterWidth.constant = 0
+            borderCollectionWidth.constant = 0
         }
     }
 }
