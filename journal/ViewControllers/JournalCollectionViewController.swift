@@ -175,7 +175,7 @@ class JournalCollectionViewController: UICollectionViewController {
     
     // reloadData to fix the bug by safe area of iPhone X
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.reloadData()
+        //collectionView?.reloadData()
     }
     
     // Section Header View
@@ -205,7 +205,6 @@ class JournalCollectionViewController: UICollectionViewController {
     @IBAction func unwindToJournalList(sender: UIStoryboardSegue){
         
             if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
-                
                 if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
                     // Update an existing journal
                     myJournals[selectedIndexPath.section][selectedIndexPath.item] = journal
