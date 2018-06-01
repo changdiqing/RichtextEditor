@@ -9,26 +9,17 @@
 import UIKit
 import os.log
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class JournalCollectionViewController: UICollectionViewController {
+
     //MARK: Properties
+    
     fileprivate let reuseIdentifier = "journalCell"
-    //fileprivate var journals = [Journal]()
     fileprivate var myJournals = [[Journal]]()
     fileprivate var editingMode: Bool = false
     @IBOutlet weak var journalAddButton: UIBarButtonItem!
-    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    
-    //fileprivate var editing: Bool = false
-    var testDate:Date {
-        get {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-            return formatter.date(from: "2016/10/08 22:31")!
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +33,23 @@ class JournalCollectionViewController: UICollectionViewController {
          //Load any saved journals
         if let savedJournals = loadJournals() {
             myJournals += savedJournals
-
         }
-
+        if  #available(iOS 11, *) {
+            collectionView?.contentInsetAdjustmentBehavior = .always
+        }
+        // Navigation bar
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Flowlayout insets
         self.flowLayout.minimumLineSpacing = 10
         self.flowLayout.minimumInteritemSpacing = 5
         self.flowLayout.headerReferenceSize = CGSize(width: 0, height: 40)
         self.flowLayout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-        //self.flowLayout.autoContentAccessingProxy
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -142,10 +139,6 @@ class JournalCollectionViewController: UICollectionViewController {
         return true
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        collectionView?.collectionViewLayout.invalidateLayout()
-//    }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -162,16 +155,13 @@ class JournalCollectionViewController: UICollectionViewController {
     }
     */
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !self.editingMode {
             performSegue(withIdentifier: "editJournal", sender: nil)
         } else {
             return
         }
-        
     }
-    
     
     // reloadData to fix the bug by safe area of iPhone X
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -182,7 +172,6 @@ class JournalCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! sectionHeaderView
-        //print(myJournals.capacity)
         if myJournals[indexPath.section].count > 0 {
             let myMonth = myJournals[indexPath.section][0].month!
             let dateFormatter = DateFormatter()
@@ -193,12 +182,11 @@ class JournalCollectionViewController: UICollectionViewController {
             sectionHeaderView.monthTitle = "Empty section"
             //sectionHeaderView.monthLabel.isHidden = true
         }
-       
         return sectionHeaderView
+        
         
     }
     
-   
     
     //MARK: Actions
     
@@ -235,7 +223,6 @@ class JournalCollectionViewController: UICollectionViewController {
                 }
                 self.saveJournals()
             }
-        
         let sectionToReload = 0
         let indexSet: IndexSet = [sectionToReload]
         self.collectionView?.reloadSections(indexSet)
@@ -257,19 +244,15 @@ class JournalCollectionViewController: UICollectionViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Journal.ArchiveURL.path) as? [[Journal]]
     }
     
-    private func getJournalIndex(indexPath: IndexPath) -> Int {
-        var sumSections: Int = 0
-        for i in (0 ..< indexPath.section) {
-            let itemsInSection = self.collectionView?.numberOfItems(inSection: i)
-            sumSections = sumSections + itemsInSection!
-        }
-        let journalIndex: Int  = sumSections + indexPath.item
-        return journalIndex
-    }
-    
-    private func getSectionAmount() -> Int{
-        return myJournals.count
-    }
+//    private func getJournalIndex(indexPath: IndexPath) -> Int {
+//        var sumSections: Int = 0
+//        for i in (0 ..< indexPath.section) {
+//            let itemsInSection = self.collectionView?.numberOfItems(inSection: i)
+//            sumSections = sumSections + itemsInSection!
+//        }
+//        let journalIndex: Int  = sumSections + indexPath.item
+//        return journalIndex
+//    }
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
@@ -292,22 +275,23 @@ class JournalCollectionViewController: UICollectionViewController {
         self.saveJournals()
     }
     
-    private func indexPathIsValid(indexPath1: NSIndexPath, indexPath2: NSIndexPath) -> Bool {
-        return indexPath1.section < indexPath2.section && indexPath1.row < indexPath2.row
-    }
 }
 
+    // Extension
+
 extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    // Define cell size displayed in collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let myItem = self.myJournals[indexPath.section][indexPath.item]
-        //let screenSize = UIScreen.main.bounds
-        let itemWidth = (myItem.photo?.size.width)! / 4.4;
-        let itemHeight = (myItem.photo?.size.height)! / 4.4;
+        var itemSize = collectionView.sa_safeAreaFrame.width
+        if itemSize > collectionView.sa_safeAreaFrame.height {
+            itemSize = collectionView.sa_safeAreaFrame.height
+        }
+        let itemWidth = itemSize / 4.4
+        let itemHeight = itemSize / 4.4
         return CGSize(width: itemWidth, height: itemHeight)
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5.0
-//    }
+    
 }
 
 extension Array {

@@ -71,7 +71,7 @@ class CustomRichEditorView: RichEditorView {
     }
     
     // observer function added by Diqing at 10.04.2018
-    func keyboardShown(notification: NSNotification) {
+    @objc func keyboardShown(notification: NSNotification) {
         let info = notification.userInfo!
         let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //= currentKeyboardFrame.height - 50

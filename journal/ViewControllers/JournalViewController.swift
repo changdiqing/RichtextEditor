@@ -123,7 +123,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             let html = self.editorView.getDocElementHtml()
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"
-            var date = formatter.date(from: "2018/06/02")
+            var date = formatter.date(from: "2018/05/02")
             date = Date()
             journal = Journal(html: html, photo: photo, month: date)
             return
@@ -250,7 +250,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         }
         
         //UIGraphicsBeginImageContextWithOptions(webView.scrollView.contentSize, false, 0)
-         guard let context = UIGraphicsGetCurrentContext() else { return nil}
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil}
         webView.scrollView.layer.render(in: context)
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil}
         UIGraphicsEndImageContext()
