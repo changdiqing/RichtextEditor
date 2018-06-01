@@ -6,6 +6,15 @@
 //  Copyright © 2018 Diqing Chang. All rights reserved.
 //
 import RichEditorView
+
+@objc protocol CustomRichEditorDelegate : RichEditorDelegate {
+    
+    @objc optional func richEditorInsertImage()
+    
+    @objc optional func richEditorChangeColor()
+    
+    @objc optional func richEditorSaveHTML()
+}
 class CustomRichEditorView: RichEditorView {
     
     //var colorKeyboard: ColorKeyboard?
@@ -34,6 +43,9 @@ class CustomRichEditorView: RichEditorView {
     }
     
     func setup() {
+        //self.delegate is CustomRichEditorDelegate
+        //var delegate: CustomRichEditorDelegate?
+        
         // Used to initialize color keyboard, Problem: original keyboard of  uiwebview can neither be replaced nor hidden. So this subview as custom keyboard can not be displayed. Current solution: inputAccessaryView
         /*        colorKeyboard = ColorKeyboard(frame: keyboardFrame)
         self.addSubview(colorKeyboard!) // you can omit 'self' here

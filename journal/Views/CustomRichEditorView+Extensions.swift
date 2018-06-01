@@ -37,6 +37,10 @@ extension CustomRichEditorView{
         runJS("method_setTouchblockBorder('\(borderType)');")
     }
     
+    public func setTouchblockBorderColor(_ colorInHex: String) {
+        runJS("method_setTouchblockBorderColor('\(colorInHex)');")
+    }
+    
     public func setTouchBlockBackgroundColor(_ colorInHex: String) {
         runJS("method_changeStartBackgroundColor('\(colorInHex)');")
     }
@@ -62,7 +66,6 @@ extension CustomRichEditorView{
     
     public func enterLayoutMode() {
         let testResults2 = runJS("testGetCaretData2()")
-        print("testResult2: \(testResults2)")
         runJS("method_enterLayoutMode();")
     }
     

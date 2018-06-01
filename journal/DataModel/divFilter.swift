@@ -34,15 +34,15 @@ class DivMokupSets {
     ]
     
     static let divBorderList:[mokupItem] = [
-        mokupItem(name: "No Border", coverImage: UIImage(named: "border")!, jsCommand: "3px none black"),
-        mokupItem(name: "Black Solid", coverImage: UIImage(named: "border")!, jsCommand: "3px solid black"),
-        mokupItem(name: "Black Dotted", coverImage: UIImage(named: "border")!, jsCommand: "3px dotted black"),
-        mokupItem(name: "Black Dashed", coverImage: UIImage(named: "border")!, jsCommand: "3px dashed black"),
-        mokupItem(name: "Black Double", coverImage: UIImage(named: "border")!, jsCommand: "5px double black"),
-        mokupItem(name: "DarkKhaki Groove", coverImage: UIImage(named: "border")!, jsCommand: "5px groove DarkKhaki"),
-        mokupItem(name: "DarkSlateGray Ridge", coverImage: UIImage(named: "border")!, jsCommand: "5px ridge DarkSlateGray"),
-        mokupItem(name: "Tan Inset", coverImage: UIImage(named: "border")!, jsCommand: "5px inset Tan"),
-        mokupItem(name: "DarkRed Outset", coverImage: UIImage(named: "border")!, jsCommand: "5px outset DarkRed")
+        mokupItem(name: "No Border", coverImage: UIImage(named: "border")!, jsCommand: "3px none"),
+        mokupItem(name: "Black Solid", coverImage: UIImage(named: "border")!, jsCommand: "3px solid"),
+        mokupItem(name: "Black Dotted", coverImage: UIImage(named: "border")!, jsCommand: "3px dotted"),
+        mokupItem(name: "Black Dashed", coverImage: UIImage(named: "border")!, jsCommand: "3px dashed"),
+        mokupItem(name: "Black Double", coverImage: UIImage(named: "border")!, jsCommand: "5px double"),
+        mokupItem(name: "DarkKhaki Groove", coverImage: UIImage(named: "border")!, jsCommand: "5px groove"),
+        mokupItem(name: "DarkSlateGray Ridge", coverImage: UIImage(named: "border")!, jsCommand: "5px ridge"),
+        mokupItem(name: "Tan Inset", coverImage: UIImage(named: "border")!, jsCommand: "5px inset"),
+        mokupItem(name: "DarkRed Outset", coverImage: UIImage(named: "border")!, jsCommand: "5px outset")
 
     ]
 }

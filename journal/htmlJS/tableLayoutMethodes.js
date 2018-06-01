@@ -249,6 +249,10 @@ function method_setTouchblockBorder(borderType){
     $(start).find('.touchblockBGICover').css('border', borderType);
 }
 
+function method_setTouchblockBorderColor(colorInHex){
+    $(start).find('.touchblockBGICover').css('border-color', colorInHex);
+}
+
 function method_changeStartBackgroundColor(color){
     $(start).find('.touchblockBGICover').css("background-color",color);
 }

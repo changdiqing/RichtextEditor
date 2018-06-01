@@ -17,18 +17,21 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     @IBOutlet weak var touchBlockDashTabbar: UITabBar!
     @IBOutlet public weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var borderCollectionView: UICollectionView!
+    @IBOutlet weak var borderColorButton: UIButton!
     
     fileprivate let filterList = DivMokupSets.divFilterList
     fileprivate let borderList = DivMokupSets.divBorderList
     fileprivate let fillingEffectList = FillingEffects.FillingEffectList
     
     let defaultButtonHeight: CGFloat = 100
+    var pappetTextView: UITextView?
     var screenWidth: CGFloat = UIScreen.main.bounds.width
     var filterCellWidth: CGFloat?
     var buttonHeight: CGFloat = 0.00
     var selectedFillingEffect:FillingEffect?
     var selectedFilter:mokupItem?
     var selectedBorder: mokupItem?
+    var selectedBorderColor: UIColor?
     
 
     
@@ -43,6 +46,17 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         borderCollectionView.delegate = self as UICollectionViewDelegate
         filterWidth.constant = 0
         filterCellWidth = screenWidth/4
+        
+        // add pappetTextView and color keyboard (custom input view)
+        pappetTextView = UITextView(frame: CGRect.zero)
+        pappetTextView?.alpha = 0.0
+        let colorKeyboard = ColorKeyboard(frame: CGRect(x: 0, y: 0, width: 0, height: 300))
+        colorKeyboard.delegate = self
+        pappetTextView?.inputView = colorKeyboard
+        pappetTextView?.reloadInputViews()
+        self.view.addSubview(pappetTextView!)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -114,6 +128,11 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     }
     
     // MARK: - Actions
+    @IBAction func showColorKeyboard(_ sender: UIButton) {
+        self.pappetTextView?.becomeFirstResponder()
+    }
+    
+    
 }
 
 // MARK: - Table view delegate
@@ -200,4 +219,18 @@ extension ColorCardTableViewController:  UITabBarDelegate {
             borderCollectionWidth.constant = 0
         }
     }
+}
+
+extension ColorCardTableViewController: KeyboardDelegate {
+    func keyWasTapped(color: UIColor) {
+        self.selectedBorderColor = color
+        self.borderColorButton.backgroundColor = color
+        self.pappetTextView?.resignFirstResponder()
+    }
+    
+    func cutomKeyTapped(keyId: String) {
+        print("customKeyTapped")
+    }
+    
+    
 }

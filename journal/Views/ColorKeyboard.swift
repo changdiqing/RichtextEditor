@@ -48,7 +48,7 @@ extension ColorKeyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedColor: UIColor = colorList[indexPath.item]
-        //delegate?.keyWasTapped(color: selectedColor)
+        delegate?.keyWasTapped(color: selectedColor)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

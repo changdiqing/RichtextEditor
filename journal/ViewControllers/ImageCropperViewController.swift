@@ -155,6 +155,10 @@ extension ImageCropperViewController: UIScrollViewDelegate {
 }
 
 extension ImageCropperViewController: KeyboardDelegate {
+    func keyWasTapped(color: UIColor) {
+        print("key was tapped")
+    }
+    
     func cutomKeyTapped(keyId: String) {
         switch keyId {
         case "iosphoto":

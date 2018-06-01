@@ -216,6 +216,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 if let selectedBorder = sourceViewController.selectedBorder{
                     self.editorView.setTouchblockBorder(selectedBorder.jsCommand)
                 }
+                if let selectedBorderColor = sourceViewController.selectedBorderColor {
+                    self.editorView.setTouchblockBorderColor(selectedBorderColor.htmlRGBA)
+                }
             } else if sender.identifier == "cancel"{
                 print("Canceled")
             } else {

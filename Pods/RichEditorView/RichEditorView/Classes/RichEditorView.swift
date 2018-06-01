@@ -35,6 +35,7 @@ var AssociatedObjectHandle: UInt8 = 0
     /// By default, this method is not used unless called by some custom JS that you add
     @objc optional func richEditor(_ editor: RichEditorView, handle action: String)
     
+    
     // new delegate method added by Diqing Chang, 04.11.2017
     @objc optional func richEditorInsertImage()
     
@@ -168,8 +169,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     }
 
     // MARK: - Rich Text Editing
-    
-    // MARK: Properties added by Diqing
 
     // MARK: Properties
 
@@ -350,16 +349,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.blurFocus()")
     }
     
-    //MARK: New Methods added by Diqing 07.11.2017
-    /* obsolete
-    public func enlargeImage() {
-        runJS("RE.increaseImageSizeOfSelectedDiv();")
-    }
-    
-    public func lessenImage() {
-        runJS("RE.decreaseImageSizeOfSelectedDiv();")
-    }*/
-    
     //MARK: New Methods added by Diqing 22.11.2017
     
     public func floatLeftImage() {
@@ -495,34 +484,16 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     /// Called repeatedly to make sure the caret is always visible when inputting text.
     /// Works only if the `lineHeight` of the editor is available.
     private func scrollCaretToVisible() {
-        
-        print("#########################called!")
+
         let scrollView = self.webView.scrollView
         
-        print("contentSize before: \(scrollView.contentSize)")
-        
-        let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
-        //scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
-        
-        print("contentHeight: \(contentHeight)")
-        print("scrollview.contentSize: \(scrollView.contentSize)")
+        //let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
         
         // XXX: Maybe find a better way to get the cursor height
         let lineHeight = CGFloat(self.lineHeight)
         let cursorHeight = lineHeight - 4
         let visiblePosition = CGFloat(relativeCaretYPosition)
         var offset: CGPoint?
-        let heightString = runJS("document.getElementById('editor').scrollHeight;")
-        print("scrollHeight: \(heightString)")
-        print("visiblePosition: \(visiblePosition)")
-        print("cursorHeight: \(cursorHeight)")
-        print("scrollView.bounds.size.height: \(scrollView.bounds.size.height)")
-        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
-        
-        let testResults = runJS("testGetCaretData()")
-        let testResults2 = runJS("testGetCaretData2()")
-        print("testresults: \(testResults)")
-        print("testResult2: \(testResults2)")
 
         if visiblePosition + cursorHeight > scrollView.bounds.size.height {
             // Visible caret position goes further than our bounds
@@ -539,7 +510,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             print(offset)
             scrollView.setContentOffset(offset, animated: true)
         }
-        print("contentOffset: \(scrollView.contentOffset)")
     }
     
     /// Called when actions are received from JavaScript

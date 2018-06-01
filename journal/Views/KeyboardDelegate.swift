@@ -10,7 +10,7 @@ import UIKit
 // The view controller will adopt this protocol (delegate)
 // and thus must contain the keyWasTapped method
 protocol KeyboardDelegate: class {
-    //func keyWasTapped(color: UIColor)
+    func keyWasTapped(color: UIColor)
     
     //func touchblockKeyTapped(fileName: String, isAppended: Bool)
     
