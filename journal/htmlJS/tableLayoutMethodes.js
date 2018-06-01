@@ -1,28 +1,28 @@
 var pressed = false,
-    isResized = false,
-    start = undefined,
-    resizeStepWidth = 15,
-    startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
-    posOffset = 0,
-    touchBlockFocused = false;
+isResized = false,
+start = undefined,
+resizeStepWidth = 15,
+startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
+posOffset = 0,
+touchBlockFocused = false;
 
 // test methods
 
 /*$('div[contenteditable]').keydown(function(e) {
-                                  // trap the return key being pressed
-                                  if (e.keyCode === 13) {
-                                  // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-                                  //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
-                                  e.preventDefault();
-                                  //RE.insertHTML('\n');
-                                  //document.write('<br />');
-                                  document.execCommand('insertHTML', false, '<br></br>');
-                                  //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
-                                  // prevent the default behaviour of return key pressed
-                                  return false;
-                                  }
-                                  
-                                  });*/
+ // trap the return key being pressed
+ if (e.keyCode === 13) {
+ // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+ //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
+ e.preventDefault();
+ //RE.insertHTML('\n');
+ //document.write('<br />');
+ document.execCommand('insertHTML', false, '<br></br>');
+ //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
+ // prevent the default behaviour of return key pressed
+ return false;
+ }
+ 
+ });*/
 
 // floatingTouchBlock Methods
 
@@ -102,10 +102,10 @@ function method_initTouchblockCovers() {
         touchsurface[i].contentEditable = "false";
     }
     
-     var touchsurface = document.querySelectorAll("div.touchblock");
-     for (var i = 0; i < touchsurface.length ; i++) {
-     touchsurface[i].contentEditable = "false";
-     }
+    var touchsurface = document.querySelectorAll("div.touchblock");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = "false";
+    }
     
     
 }
@@ -136,18 +136,18 @@ function method_enterContentMode() {
 
 function method_touchStartFunction(e){
     /*
-    e.stopPropagation();
-    start = $(this).parent();
-    var rect = this.parentElement.getBoundingClientRect();
-    //console.log(rect.top, rect.right, rect.bottom, rect.left);
-    pressed = true;
-    startX = e.pageX;
-    startY = e.pageY;
-    startWidth = $(start).width();
-    startHeight = $(start).height();
-    startLeft = this.parentElement.offsetLeft;
-    startTop = this.parentElement.offsetTop;
-    document.getElementById("demo").innerHTML = rect.bottom;*/
+     e.stopPropagation();
+     start = $(this).parent();
+     var rect = this.parentElement.getBoundingClientRect();
+     //console.log(rect.top, rect.right, rect.bottom, rect.left);
+     pressed = true;
+     startX = e.pageX;
+     startY = e.pageY;
+     startWidth = $(start).width();
+     startHeight = $(start).height();
+     startLeft = this.parentElement.offsetLeft;
+     startTop = this.parentElement.offsetTop;
+     document.getElementById("demo").innerHTML = rect.bottom;*/
     
     e.stopPropagation();
     start = this.parentElement;
@@ -242,7 +242,7 @@ function method_cloneTouchblock() {
 }
 
 function method_setTouchblockFilter(filterType){
-    $(start).find('.touchblockBGICover').css('filter',filterType);
+    $(start).find('.touchblockBGICover').css("filter",filterType);
 }
 
 function method_setTouchblockBorder(borderType){
@@ -250,27 +250,27 @@ function method_setTouchblockBorder(borderType){
 }
 
 function method_changeStartBackgroundColor(color){
-    $(start).find('.touchblockBGICover').css('background-color",color);
+    $(start).find('.touchblockBGICover').css("background-color",color);
 }
 
 function method_changeStartBackgroundImage(url, alt) {
-    $(start).find('.touchblockBGICover').css('background-image', 'url(' + url + ')');
+    $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
 };
 
 function mehtod_setStartTextOrientationVertical() {
-    $(start).find('.touchblockContentCover').css('writing-mode', 'vertical-lr');
+    $(start).find('.touchblockContentCover').css("writing-mode", "vertical-lr");
 }
 
 function mehtod_setStartTextOrientationHorizon() {
-    $(start).find('.touchblockContentCover').css('writing-mode', 'horizontal-tb');
+    $(start).find('.touchblockContentCover').css("writing-mode", "horizontal-tb");
 }
 
 function myFunction() {
-        var touchsurface = document.querySelectorAll("div.touchblockContentCover");
-        for (var i = 0; i < touchsurface.length ; i++) {
-            touchsurface[i].contentEditable = "true";
-            touchsurface[i].parentNode.contentEditable = "false";
-        }
+    var touchsurface = document.querySelectorAll("div.touchblockContentCover");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        touchsurface[i].contentEditable = "true";
+        touchsurface[i].parentNode.contentEditable = "false";
+    }
 }
 
 function focusoutFunction() {
@@ -295,7 +295,7 @@ var round = function (x, to) {
 function setEndOfContenteditable()
 {
     var range,selection;
-    var contentEditableElement = document.getElementById("editor");
+    var contentEditableElement = document.getElementById('editor');
     if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
     {
         range = document.createRange();//Create a range (a range is a like the selection but invisible)
@@ -313,6 +313,10 @@ function setEndOfContenteditable()
         range.select();//Select the range (make it the visible selection
     }
 }
+//document.getElementById("demo").innerText = getDocElementHtml();
+function getDocElementHtml() {
+    return document.documentElement.outerHTML;
+};
 //document.getElementById("demo").innerText = getDocElementHtml();
 function getDocElementHtml() {
     return document.documentElement.outerHTML;

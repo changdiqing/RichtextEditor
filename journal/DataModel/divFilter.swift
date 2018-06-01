@@ -30,10 +30,19 @@ class DivMokupSets {
         mokupItem(name: "Saturate", coverImage: UIImage(named: "layouts")!, jsCommand: "saturate(5)"),
         mokupItem(name: "Transluzent", coverImage: UIImage(named: "layouts")!, jsCommand: "opacity(30%)"),
         mokupItem(name: "Hue Rotate", coverImage: UIImage(named: "layouts")!, jsCommand: "hue-rotate(90deg)"),
-        mokupItem(name: "Invert", coverImage: UIImage(named: "layouts")!, jsCommand: "invert(100%)"),
+        mokupItem(name: "Invert", coverImage: UIImage(named: "layouts")!, jsCommand: "invert(100%)")
     ]
     
     static let divBorderList:[mokupItem] = [
-        mokupItem(name: "Black Thin", coverImage: UIImage(named: "Border")!, jsCommand: "3px solid black"),
-        ]
+        mokupItem(name: "No Border", coverImage: UIImage(named: "border")!, jsCommand: "3px none black"),
+        mokupItem(name: "Black Solid", coverImage: UIImage(named: "border")!, jsCommand: "3px solid black"),
+        mokupItem(name: "Black Dotted", coverImage: UIImage(named: "border")!, jsCommand: "3px dotted black"),
+        mokupItem(name: "Black Dashed", coverImage: UIImage(named: "border")!, jsCommand: "3px dashed black"),
+        mokupItem(name: "Black Double", coverImage: UIImage(named: "border")!, jsCommand: "5px double black"),
+        mokupItem(name: "DarkKhaki Groove", coverImage: UIImage(named: "border")!, jsCommand: "5px groove DarkKhaki"),
+        mokupItem(name: "DarkSlateGray Ridge", coverImage: UIImage(named: "border")!, jsCommand: "5px ridge DarkSlateGray"),
+        mokupItem(name: "Tan Inset", coverImage: UIImage(named: "border")!, jsCommand: "5px inset Tan"),
+        mokupItem(name: "DarkRed Outset", coverImage: UIImage(named: "border")!, jsCommand: "5px outset DarkRed")
+
+    ]
 }

@@ -156,25 +156,32 @@ extension ColorCardTableViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterList.count
+        if collectionView.tag == 0 {
+            return filterList.count
+        } else {
+            return borderList.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        var cell: CustomCollectionViewCell!
+        print("collectionView tag is \(collectionView.tag)")
+        print("indexpath is \(indexPath.row)")
         
         if collectionView.tag == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
             
             let filter = filterList[indexPath.row]
             cell.displayContent(image: filter.coverImage, title: filter.name)
+            return cell
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "borderCollectionCell", for: indexPath) as! CustomCollectionViewCell
             
             let border = borderList[indexPath.row]
             cell.displayContent(image: border.coverImage, title: border.name)
+            return cell
         }
-        return cell
+        
     }
 }
 
