@@ -246,11 +246,11 @@ function method_setTouchblockFilter(filterType){
 }
 
 function method_setTouchblockBorder(borderType){
-    $(start).find('.touchblockBGICover').css('border', borderType);
+    $(start).find('.touchblockContentCover').css('border', borderType);
 }
 
 function method_setTouchblockBorderColor(colorInHex){
-    $(start).find('.touchblockBGICover').css('border-color', colorInHex);
+    $(start).find('.touchblockContentCover').css('border-color', colorInHex);
 }
 
 function method_changeStartBackgroundColor(color){
