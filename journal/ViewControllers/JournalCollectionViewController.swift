@@ -226,6 +226,7 @@ class JournalCollectionViewController: UICollectionViewController {
         let sectionToReload = 0
         let indexSet: IndexSet = [sectionToReload]
         self.collectionView?.reloadSections(indexSet)
+        self.collectionView?.reloadData()
     }
     
     //MARK: Private Methods
