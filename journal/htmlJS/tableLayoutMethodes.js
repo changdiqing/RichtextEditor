@@ -25,6 +25,21 @@ touchBlockFocused = false;
  });*/
 
 // floatingTouchBlock Methods
+function updateImgSrcs(docDirectory) {
+    var allImg=document.getElementsByTagName("img"), i=0, img;
+
+    //var pattern = /^http\:\/\/aff\.kooora\.com\/(.*)$/;
+    
+    while (img = allImg[i++])
+    {
+        //if (img.src.match(pattern)) {
+        //*    img.src = img.src.replace(pattern, 'http://example.com/aff.kooora.com/$1');
+        //}
+        var pathArray = img.src.split('/');
+        img.src = docDirectory.concat(pathArray[pathArray.length-1]);
+    }
+    
+};
 
 
 

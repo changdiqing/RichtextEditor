@@ -49,6 +49,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
+
         } else {//empty, add new journal
             
             
@@ -289,6 +290,8 @@ extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
         // for testing, always load the same demo
         self.editorView.initTouchblockCovers()
+        let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
+        self.editorView.updateImgSrcs(docDirectory)
     }
     
     func richEditorInsertImage() {

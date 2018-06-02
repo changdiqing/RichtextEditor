@@ -19,6 +19,10 @@ extension CustomRichEditorView{
     public func getDocElementHtml()-> String {
         return runJS("getDocElementHtml();")
     }
+    
+    public func updateImgSrcs(_ docDirectory: String) {
+        runJS("updateImgSrcs('\(docDirectory)');")
+    }
 
     
     //MARK: Touchblock Methods
