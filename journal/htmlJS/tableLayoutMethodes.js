@@ -254,7 +254,8 @@ function method_setTouchblockBorderColor(colorInHex){
 }
 
 function method_changeStartBackgroundColor(color){
-    $(start).find('.touchblockBGICover').css("background-color",color);
+    $(start).find('.touchblockBGICover').css('background-image', 'none');
+    $(start).find('.touchblockBGICover').css('background-color',color);
 }
 
 function method_changeStartBackgroundImage(url, alt) {

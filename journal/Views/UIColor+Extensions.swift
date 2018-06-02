@@ -64,7 +64,7 @@ extension UIColor
     
     class func darkerAlice() -> UIColor
     {
-        return UIColor(red: 13/255.0, green: 62/255.0, blue: 86/255.0, alpha:1.0)
+        return UIColor(red: 18/255.0, green: 135/255.0, blue: 168/255.0, alpha:1.0)
     }
     
     class func alice() -> UIColor
@@ -102,7 +102,7 @@ extension UIColor
         return UIColor(red: 188/255.0, green: 161/255.0, blue: 54/255.0, alpha:1.0)
     }
     
-    class func darkerDaiasy() -> UIColor
+    class func darkerDaisy() -> UIColor
     {
         return UIColor(red: 211/255.0, green: 181/255.0, blue: 61/255.0, alpha:1.0)
     }
@@ -132,7 +132,7 @@ extension UIColor
         return UIColor(red: 242/255.0, green: 109/255.0, blue: 33/255.0, alpha:1.0)
     }
     
-    class func ligherCoral() -> UIColor
+    class func lighterCoral() -> UIColor
     {
         return UIColor(red: 245/255.0, green: 139/255.0, blue: 76/255.0, alpha:1.0)
     }

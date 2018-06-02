@@ -114,6 +114,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Configure the destination view controller only when the save button is pressed.
         if let button = sender as? UIBarButtonItem, button === saveButton {
+            // before save make sure editor is in content mode
+            self.editorView.enterContentMode()
             var photo: UIImage!
             if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView, isFullSize: false) {
                 photo = screenshot

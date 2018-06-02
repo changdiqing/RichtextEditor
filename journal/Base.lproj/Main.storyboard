@@ -341,7 +341,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djg-DY-ISH">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                        <state key="normal" title="Color"/>
+                                        <state key="normal" title="Color">
+                                            <color key="titleShadowColor" red="0.070588235294117646" green="0.52941176470588236" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="showColorKeyboard:" destination="dtH-aW-vV8" eventType="touchUpInside" id="cps-GZ-iT9"/>
                                         </connections>
