@@ -262,13 +262,15 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("class","block")
     img.onload = RE.updateHeight;
     
+    RE.insertHTML(img.outerHTML);
+    /*
     if (parentElement.id == "editor") {
         var wrapper = document.createElement('div');
         wrapper.Child(img);
         RE.insertHTML(wrapper.outerHTML);
     } else {
         RE.insertHTML(img.outerHTML);
-    }
+    }*/
     
     RE.callback("input");
     var sel = document.getSelection();

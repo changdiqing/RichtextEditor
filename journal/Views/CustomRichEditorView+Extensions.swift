@@ -231,6 +231,7 @@ extension CustomRichEditorView{
     
     @objc func doneButtonAction()
     {
+        print(self.html)
         self.resignFirstResponder()
         self.endEditing(true)
         self.delegate?.richEditorSaveHTML!()
