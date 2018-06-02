@@ -34,8 +34,8 @@ class ImageCropperViewController: UIViewController{
     var cropArea:CGRect{
         get{
             
-            let factor = max(imageView.image!.size.width/view.frame.width,
-                                     imageView.image!.size.height/view.frame.height)
+            let factor = max(imageView.image!.size.width/imageView.frame.width,
+                                     imageView.image!.size.height/imageView.frame.height)
             let scale = 1/scrollView.zoomScale
             let scale2 = imageView.image!.scale
             let imageFrame = imageView.imageFrame()
@@ -45,7 +45,7 @@ class ImageCropperViewController: UIViewController{
             
             let width = cropAreaView.frame.size.width * scale * factor * scale2
             let height = cropAreaView.frame.size.height * scale * factor * scale2
-            //print("croparea: \(CGRect(x: x, y: y, width: width, height: height))")
+
             return CGRect(x: x, y: y, width: width, height: height)
         }
     }
@@ -78,10 +78,9 @@ class ImageCropperViewController: UIViewController{
     }
     
     @IBAction func crop(_ sender: UIButton) {
-        print("image frame: \(imageView.imageFrame())")
-        print("croparea: \(cropArea)")
+        let myHeight = imageView.image?.size.height
+        let myScale = imageView.image?.scale
         if let croppedCGImage = imageView.image?.cgImage?.cropping(to: cropArea) {
-            print(imageView.image?.cgImage?.height)
             let croppedImage = UIImage(cgImage: croppedCGImage)
             imageView.image = croppedImage
         }

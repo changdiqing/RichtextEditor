@@ -45,6 +45,7 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         borderCollectionView.dataSource = self
         borderCollectionView.delegate = self as UICollectionViewDelegate
         filterWidth.constant = 0
+        borderCollectionWidth.constant = 0
         filterCellWidth = screenWidth/4
         
         // add pappetTextView and color keyboard (custom input view)
@@ -184,8 +185,6 @@ extension ColorCardTableViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("collectionView tag is \(collectionView.tag)")
-        print("indexpath is \(indexPath.row)")
         
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCollectionCell", for: indexPath) as! CustomCollectionViewCell
