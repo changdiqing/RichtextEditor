@@ -70,6 +70,8 @@ div {
 .flex-row {
     display: inline-flex;
     /*flex-basis: 100%;*/
+    float: right;
+    padding: 25px;
     overflow: auto;
 }
 
