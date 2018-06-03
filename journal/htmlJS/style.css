@@ -70,11 +70,22 @@ div {
 .flex-row {
     display: inline-flex;
     /*flex-basis: 100%;*/
+    float:left;
+    /*margin:10px;*/
+    /*padding: 25px;*/
     overflow: auto;
 }
 
-.flex-row > div.touchblock {
+/*.flex-row > div.touchblock {
+    /* self layout setting 
+    position: relative;
+    /*margin : 1%;
+    height: 130px;
+}*/
+
+div.touchblock {
     /* self layout setting */
+    display: inline-block;
     position: relative;
     /*margin : 1%;*/
     height: 130px;
