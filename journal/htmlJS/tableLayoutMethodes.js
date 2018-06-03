@@ -39,6 +39,18 @@ function updateImgSrcs(docDirectory) {
         img.src = docDirectory.concat(pathArray[pathArray.length-1]);
     }
     
+    var touchsurface = document.querySelectorAll("div.touchblockBGICover");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        var imgurl = touchsurface[i].style.backgroundImage;
+        var bi = imgurl.slice(4, -1).replace(/"/g, "");
+        var pathArray = bi.split('/');
+        imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
+        touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
+    }
+    
+    
+    
+    
 };
 
 
@@ -112,10 +124,11 @@ function method_initTouchblockCovers() {
         touchsurface[i].addEventListener('touchend', method_touchEndSimple, false);
     }
     
+    /* obsolete, flex-row no longer used, old touchblock: touchblockObsolete.html
     var touchsurface = document.querySelectorAll("div.flex-row");
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].contentEditable = "false";
-    }
+    }*/
     
     var touchsurface = document.querySelectorAll("div.touchblock");
     for (var i = 0; i < touchsurface.length ; i++) {
