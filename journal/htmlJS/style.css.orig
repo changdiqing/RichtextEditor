@@ -1,0 +1,241 @@
+@charset "UTF-8";
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui;
+    font-size: 20px;
+    min-height: 100%;
+    overflow: auto;
+}
+
+body, h1, p {
+    margin: 0;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+div {
+    display: block;
+    position: static;
+}
+
+#editor {
+    -webkit-user-select: auto !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#editor:focus {
+    outline: 0px solid transparent;
+}
+
+.placeholder[placeholder]:after {
+    content: attr(placeholder);
+    position: absolute;
+    top: 0px;
+    color: #cccccc;
+}
+
+#mydiv{
+    width : 50px;
+    height:50px;
+    border : 1px solid red;
+}
+
+#editor {
+    position:fixed;
+    /*position: relative;*/
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: block;
+    /*font-family: 'HelveticaNeue';*/
+    font-family: 'Lora', serif;
+    color:#666666;
+    font-size: 12pt;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: unwrap;
+    width: 100%;
+}
+
+.flex-row {
+    display: inline-flex;
+    /*flex-basis: 100%;*/
+<<<<<<< HEAD
+    float: right;
+    padding: 25px;
+=======
+    float:left;
+    /*margin:10px;*/
+    /*padding: 25px;*/
+>>>>>>> journal_chang
+    overflow: auto;
+}
+
+/*.flex-row > div.touchblock {
+    /* self layout setting 
+    position: relative;
+    /*margin : 1%;
+    height: 130px;
+}*/
+
+div.touchblock {
+    /* self layout setting */
+    display: inline-block;
+    position: relative;
+    /*margin : 1%;*/
+    height: 130px;
+}
+
+.floatingTouchblock {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    height: 100px;
+    width: 100px;
+    z-index: 90;
+    
+}
+
+.touchblock > div.touchblockResizeCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    opacity: 0.5;
+    background-color: white;
+}
+
+.touchblock > div.touchblockBGICover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: block;
+    /* background image display setting */
+    background-color: DodgerBlue;
+    background-size: cover;
+    background-position: center center;
+}
+
+.touchblock > div.touchblockContentCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: block;
+}
+
+.floatingTouchblock > div.touchblockBGICover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: block;
+    /* background image display setting */
+    background-color: red;
+    background-size: cover;
+    background-position: center center;
+}
+
+.floatingTouchblock > div.touchblockContentCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: block;
+    /* background image display setting */
+}
+
+.floatingTouchblock > div.touchblockResizeCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    opacity: 0.5;
+    background-color: white;
+}
+
+
+
+
+.touchblockMoveCover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    z-index: 99;
+    opacity: 0.5;
+    background-color: black;
+}
+
+div.children {
+    /* self layout setting */
+    height:100%;
+    background-color: red;
+    
+}
+
+.flex-colomn {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    height: 800px;
+}
+.flex-colomn > div {
+    display: flex;
+    flex-basis: 100%;
+    margin : 2%;
+    background-color: DodgerBlue;
+    writing-mode: vertical-lr;
+}
+
+font[size='1'] {
+    font-size: 10px;
+}
+
+font[size='2'] {
+    font-size: 20px;
+}
+
+font[size='3'] {
+    font-size: 40px;
+}
+
+font[size='4'] {
+    font-size: 60px;
+}
+
+font[size='5'] {
+    font-size: 80px;
+}
+
+font[size='6'] {
+    font-size: 100px;
+}
+
+font[size='7'] {
+    font-size: 520px;
+}

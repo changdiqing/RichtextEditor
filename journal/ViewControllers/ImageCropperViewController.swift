@@ -12,10 +12,17 @@ class ImageCropperViewController: UIViewController{
 
     @IBOutlet weak var bottomPanBar: UIView!
     @IBOutlet weak var rightPanBar: UIView!
+    @IBOutlet weak var topPanBar: UIView!
+    @IBOutlet weak var leftPanBar: UIView!
     @IBOutlet weak var bottomPanToBottom: NSLayoutConstraint!
     @IBOutlet weak var sidePanToRight: NSLayoutConstraint!
+    @IBOutlet weak var sidePanToLeft: NSLayoutConstraint!
+    @IBOutlet weak var topPanToTop: NSLayoutConstraint!
     @IBOutlet weak var cropAreaToBottom: NSLayoutConstraint!
     @IBOutlet weak var cropAreaToRight: NSLayoutConstraint!
+    @IBOutlet weak var cropAreaToTop: NSLayoutConstraint!
+    @IBOutlet weak var cropAreaToLeft: NSLayoutConstraint!
+    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet{
             scrollView.delegate = self
@@ -33,18 +40,24 @@ class ImageCropperViewController: UIViewController{
     
     var cropArea:CGRect{
         get{
-            
-            let factor = max(imageView.image!.size.width/imageView.frame.width,
-                                     imageView.image!.size.height/imageView.frame.height)
+            let factor = max(imageView.image!.size.width/imageView.frame.width, imageView.image!.size.height/imageView.frame.height)
             let scale = 1/scrollView.zoomScale
             let scale2 = imageView.image!.scale
             let imageFrame = imageView.imageFrame()
             //print("imageFrame: \(imageFrame)")
-            let x = (scrollView.contentOffset.x /*+ cropAreaView.frame.origin.x*/ - imageFrame.origin.x) * scale * factor * scale2
-            let y = (scrollView.contentOffset.y /*+ cropAreaView.frame.origin.y*/ - imageFrame.origin.y) * scale * factor * scale2
+            print("factor: \(factor)")
+            print("scroll scale: \(scale)")
+            print("image scale: \(scale2)")
+            print(scrollView.contentOffset.x)
+            print(cropAreaView.frame.origin.x)
+            print(scrollView.frame.origin.y)
+            print(imageFrame.origin.x)
             
-            let width = cropAreaView.frame.size.width * scale * factor * scale2
-            let height = cropAreaView.frame.size.height * scale * factor * scale2
+            let x = (scrollView.contentOffset.x + cropAreaView.frame.origin.x - scrollView.frame.origin.x - imageFrame.origin.x) * factor * scale2
+            let y = (scrollView.contentOffset.y + cropAreaView.frame.origin.y - scrollView.frame.origin.y - imageFrame.origin.y) * factor * scale2
+            
+            let width = cropAreaView.frame.size.width  * factor * scale2
+            let height = cropAreaView.frame.size.height * factor * scale2
 
             return CGRect(x: x, y: y, width: width, height: height)
         }
@@ -60,13 +73,17 @@ class ImageCropperViewController: UIViewController{
         bottomPanBar.addGestureRecognizer(panGesture)
         let sidePanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.rightViewDidDragged(_:)))
         rightPanBar.addGestureRecognizer(sidePanGesture)
+        let leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.leftViewDidDragged(_:)))
+        leftPanBar.addGestureRecognizer(leftPanGesture)
+        let topPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.topViewDidDragged(_:)))
+        topPanBar.addGestureRecognizer(topPanGesture)
         
         // Uncomment to draw a border on image view programmatically
         //self.imageView.image.layer.borderWidth = 1
         //self.imageView.image.layer.borderColor = UIColor.black.cgColor
-        
         initKeyboardView()
         resetCropViews()
+
         if image != nil {
             self.imageView.image = image
         }
@@ -80,6 +97,14 @@ class ImageCropperViewController: UIViewController{
     @IBAction func crop(_ sender: UIButton) {
         let myHeight = imageView.image?.size.height
         let myScale = imageView.image?.scale
+        
+        print("initial crop frame: \(cropAreaView.frame)")
+        print("initial contentoffset: \(scrollView.contentOffset)")
+        print("initial image frame: \(imageView.imageFrame().origin)")
+        print("initial scrollview frame: \(scrollView.frame.origin)")
+        
+        print("image size: \(imageView.image?.size)")
+        print("cropArea: \(cropArea)")
         if let croppedCGImage = imageView.image?.cgImage?.cropping(to: cropArea) {
             let croppedImage = UIImage(cgImage: croppedCGImage)
             imageView.image = croppedImage
@@ -104,6 +129,22 @@ class ImageCropperViewController: UIViewController{
         cropAreaToRight.constant = cropAreaToRight.constant - translation.x
     }
     
+    @objc func topViewDidDragged(_ sender: UIPanGestureRecognizer) {
+        translation = sender.translation(in: self.view)
+        sender.setTranslation(CGPoint(x: 0.0, y: 0.0), in: self.view)
+        
+        topPanToTop.constant = topPanToTop.constant + translation.y
+        cropAreaToTop.constant = cropAreaToTop.constant + translation.y
+    }
+    
+    @objc func leftViewDidDragged(_ sender: UIPanGestureRecognizer) {
+        translation = sender.translation(in: self.view)
+        sender.setTranslation(CGPoint(x: 0.0, y: 0.0), in: self.view)
+        
+        sidePanToLeft.constant = sidePanToLeft.constant + translation.x
+        cropAreaToLeft.constant = cropAreaToLeft.constant + translation.x
+    }
+    
     // MARK: Actions
     
     @IBAction func shareAction(_ sender: Any) {
@@ -113,9 +154,14 @@ class ImageCropperViewController: UIViewController{
     // MARK: Private Methods
     private func resetCropViews(){
         bottomPanToBottom.constant = 0
+        sidePanToRight.constant = 0
+        sidePanToLeft.constant = 0
+        topPanToTop.constant = 0
         cropAreaToBottom.constant = 0
         cropAreaToRight.constant = 0
-        sidePanToRight.constant = 0
+        cropAreaToLeft.constant = 0
+        cropAreaToTop.constant = 0
+        
     }
     
     private func initKeyboardView() {
