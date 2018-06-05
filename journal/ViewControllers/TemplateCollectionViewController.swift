@@ -17,12 +17,25 @@ class TemplateCollectionViewController: UICollectionViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let templateList = Templates.templateList
     fileprivate let itemsPerRow: CGFloat = 3
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     // Values to be passed to other classes
     var selectedLayout: htmlFile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 11, *) {
+            collectionView?.contentInsetAdjustmentBehavior = .always
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Flowlayout insets
+        self.flowLayout.minimumLineSpacing = 10
+        self.flowLayout.minimumInteritemSpacing = 5
+        //self.flowLayout.headerReferenceSize = CGSize(width: 0, height: 40)
+        self.flowLayout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,10 +89,13 @@ class TemplateCollectionViewController: UICollectionViewController {
 extension TemplateCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = UIScreen.main.bounds
-        let journalWidth = 0.23 * screenSize.width
-        let journalHeight = 0.23 * screenSize.height
-        return CGSize(width: journalWidth, height: journalHeight)
+        var itemSize = collectionView.sa_safeAreaFrame.width
+        if itemSize > collectionView.sa_safeAreaFrame.height {
+            itemSize = collectionView.sa_safeAreaFrame.height
+        }
+        let itemWidth = itemSize / 2.3
+        let itemHeight = itemSize / 2.3
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

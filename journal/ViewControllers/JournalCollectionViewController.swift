@@ -175,11 +175,11 @@ class JournalCollectionViewController: UICollectionViewController {
             let myMonth = myJournals[indexPath.section][0].month!
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM yyyy"
-            //sectionHeaderView.monthLabel.isHidden = false
+            sectionHeaderView.monthLabel.isHidden = false
             sectionHeaderView.monthTitle = dateFormatter.string(from: myMonth)
         } else {
             sectionHeaderView.monthTitle = "Empty section"
-            //sectionHeaderView.monthLabel.isHidden = true
+            sectionHeaderView.monthLabel.isHidden = true
         }
         return sectionHeaderView
         
@@ -190,41 +190,23 @@ class JournalCollectionViewController: UICollectionViewController {
     //MARK: Actions
     
     @IBAction func unwindToJournalList(sender: UIStoryboardSegue){
-        
-            if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
-                if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
-                    // Update an existing journal
-                    myJournals[selectedIndexPath.section][selectedIndexPath.item] = journal
-                    collectionView?.reloadItems(at: [selectedIndexPath])
-                } else {
-                    // Add a new journal
-                    //let cellItem = self.collectionView?.numberOfItems(inSection: 0)
-                    let newIndexPath = IndexPath(item: 0, section: 0)
-                    if myJournals.count < 1 {
-                        myJournals.insert([], at: 0)
-                        collectionView?.insertSections([0])
-                    } else {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MMM yyyy"
-                        var isEqual: Bool = true
-                        if myJournals[0].count > 0 {
-                            let month1 = dateFormatter.string(from: myJournals[0][0].month!)
-                            let month2 = dateFormatter.string(from: journal.month!)
-                            isEqual = (month1 == month2)
-                        }
-                        if isEqual == false {
-                            myJournals.insert([], at: 0)
-                            collectionView?.insertSections([0])
-                        }
-                    }
-                    myJournals[0].insert(journal, at: 0)
-                    collectionView?.insertItems(at: [newIndexPath])
-                }
-                self.saveJournals()
+        if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
+            var sectionToReload = 0
+            if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
+                // Delete existed journal
+                myJournals[selectedIndexPath.section].remove(at: selectedIndexPath.item)
+                collectionView?.deleteItems(at: [selectedIndexPath])
+                sectionToReload = selectedIndexPath.section
             }
-        let sectionToReload = 0
-        let indexSet: IndexSet = [sectionToReload]
-        self.collectionView?.reloadSections(indexSet)
+            self.addToJournals(myJournal: journal)
+            let indexSet1: IndexSet = [sectionToReload]
+            let indexSet2: IndexSet = [0]
+//        let sectionToReload = 0
+//        let indexSet: IndexSet = [sectionToReload]
+            self.collectionView?.reloadSections(indexSet1)
+            self.collectionView?.reloadSections(indexSet2)
+        
+        }
         self.collectionView?.reloadData()
     }
     
@@ -244,6 +226,30 @@ class JournalCollectionViewController: UICollectionViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Journal.ArchiveURL.path) as? [[Journal]]
     }
     
+    private func addToJournals(myJournal:Journal) {
+        let newIndexPath = IndexPath(item: 0, section: 0)
+        if myJournals.count < 1 {
+            myJournals.insert([], at: 0)
+            collectionView?.insertSections([0])
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM yyyy"
+            var isEqual: Bool = true
+            if myJournals[0].count > 0 {
+                let month1 = dateFormatter.string(from: myJournals[0][0].month!)
+                let month2 = dateFormatter.string(from: myJournal.month!)
+                isEqual = (month1 == month2)
+            }
+            if isEqual == false {
+                myJournals.insert([], at: 0)
+                collectionView?.insertSections([0])
+            }
+        }
+        myJournals[0].insert(myJournal, at: 0)
+        collectionView?.insertItems(at: [newIndexPath])
+        self.saveJournals()
+        //collectionView?.reloadData()
+    }
 //    private func getJournalIndex(indexPath: IndexPath) -> Int {
 //        var sumSections: Int = 0
 //        for i in (0 ..< indexPath.section) {
@@ -257,7 +263,7 @@ class JournalCollectionViewController: UICollectionViewController {
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
 
-        print("this is selectedIndexPaths: \(selectedIndexPaths)")
+        //print("this is selectedIndexPaths: \(selectedIndexPaths)")
         
         let reversedIndexes = selectedIndexPaths.sorted(by: { $0.row > $1.row })
         for index in reversedIndexes {self.myJournals[index.section].remove(at: index.row)}
