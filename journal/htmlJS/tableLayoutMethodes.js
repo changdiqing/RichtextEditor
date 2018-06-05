@@ -119,9 +119,9 @@ function method_initTouchblockCovers() {
     
     var touchsurface = document.querySelectorAll("img");
     for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].addEventListener('touchstart', method_touchStartSimple, false);
+        touchsurface[i].addEventListener('touchstart', method_touchStartImg, false);
         touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
-        touchsurface[i].addEventListener('touchend', method_touchEndSimple, false);
+        touchsurface[i].addEventListener('touchend', method_touchEndImg, false);
     }
     
     /* obsolete, flex-row no longer used, old touchblock: touchblockObsolete.html
@@ -188,12 +188,11 @@ function method_touchStartFunction(e){
     startTop = start.offsetTop;
     startWidth = $(start).width(); //.style.width;
     startHeight = $(start).height(); //.style.height;
-    document.getElementById("demo").innerHTML = rect.top;
     
     e.preventDefault();
 }
 
-function method_touchStartSimple(e){
+function method_touchStartImg(e){
     
     e.stopPropagation();
     start = $(this);
@@ -251,16 +250,33 @@ function method_touchEndFunction(e){
         start.style.width = newWidth + "px"
         start.style.height = newHeight + "px"
     } else {
-        javaScriptCallToSwift.test();
+        javaScriptCallToSwift.showTouchblockMenu();
     }
     e.preventDefault();
 }
 
-function method_touchEndSimple(e){
+function method_touchEndImg(e){
     if(pressed) {
         pressed = false;
     }
-    e.preventDefault();
+
+    if(isResized){
+        isResized = false;
+        leftOffset = start.offsetLeft;
+        topOffset = start.offsetTop;
+        document.getElementById('demo').innerHTML = "1"
+        undivisibleR = leftOffset + $(start).width()- posOffset;
+        devisibleR = round(undivisibleR, resizeStepWidth);
+        newWidth = devisibleR + posOffset - leftOffset;
+        newHeight = round($(start).height(), resizeStepWidth);
+        document.getElementById('demo').innerHTML = "2"
+        $(start).width(newWidth);
+        $(start).height(newHeight);
+        document.getElementById('demo').innerHTML = "3"
+    } else {
+        javaScriptCallToSwift.showImgMenu();
+    }
+        e.preventDefault();
 }
 
 
@@ -272,10 +288,26 @@ function method_cloneTouchblock() {
 function method_setTouchblockFilter(filterType){
     $(start).find('.touchblockBGICover').css("filter",filterType);
 }
-
-function method_setTouchblockBorder(borderType){
-    $(start).find('.touchblockContentCover').css('border', borderType);
+                                             
+function method_setImgFilter(filterType){
+    $(start).css('filter',filterType);
 }
+                                             
+function method_setImgFloat(floatType){
+    $(start).css('float',floatType);
+}
+
+function method_setImgFloatMiddle(){
+    start.style = "float:middle";
+}
+                                             
+
+
+function method_setImgBorder(borderType){
+    $(start).css('border', borderType);
+}
+                                             
+
 
 function method_setTouchblockBorderColor(colorInHex){
     $(start).find('.touchblockContentCover').css('border-color', colorInHex);

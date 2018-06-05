@@ -231,6 +231,49 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         }
     
     }
+    
+    @IBAction func unwindImgMenuToRichtextEditor(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? ImageEditMenuController {
+            if sender.identifier == "Photo" {
+                    touchBlockClickedCopy = true // raise a second flag for image picker (multithread..)
+                    let imagePickerController = UIImagePickerController()
+                    // Only allow photos to be picked, not taken.
+                    imagePickerController.sourceType = .photoLibrary
+                    
+                    // Make sure ViewController is notified when the user picks an image.
+                    imagePickerController.delegate = self
+                    DispatchQueue.main.async {
+                        self.present(imagePickerController, animated: true, completion: nil)
+                    }
+            } else if sender.identifier == "setBorder"{
+                if let selectedBorder = sourceViewController.selectedBorder{
+                    self.editorView.setImgBorder(selectedBorder.jsCommand)
+                }
+                if let selectedBorderColor = sourceViewController.selectedBorderColor {
+                    self.editorView.setTouchblockBorderColor(selectedBorderColor.htmlRGBA)
+                }
+            } else if sender.identifier == "floatLeft" {
+                self.editorView.setImgFloat("left")
+            }  else if sender.identifier == "floatMid" {
+                print("####################")
+                self.editorView.setImgFloatMiddle()
+            }  else if sender.identifier == "floatRight" {
+                self.editorView.setImgFloat("right")
+            }else if sender.identifier == "cancel"{
+                print("Canceled")
+            } else if sender.identifier == "setFilter" {
+                if let selectedFilter = sourceViewController.selectedFilter{
+                    self.editorView.setImgFilter(selectedFilter.jsCommand)
+                }
+            } else {
+                fatalError("Unexpected segue identifier: \(sender.identifier)")
+            }
+            touchBlockClicked = false // reset touchBlockClicked
+        }
+        
+    }
+    
     func takeUIWebViewScreenShot(webView: UIWebView, isFullSize: Bool)->UIImage?{
         let webViewFrame = webView.frame
         
@@ -269,20 +312,20 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
 }
 
 extension JournalViewController: JavaScriptFuncProtocol {
-    func test() {
-        let testResults2 = runJS("testGetCaretData2()")
-        print("testResult2: \(testResults2)")
+    func showTouchblockMenu() {
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
-        colorCardViewController.buttonHeight = colorCardViewController.defaultButtonHeight
         self.present(colorCardViewController, animated:true, completion:nil)
-        
     }
     
-    func test2(_ value: String, _ num: Int) {
-        print("value: \(value), num: \(num)")
+    func showImgMenu(_ value: String, _ num: Int) {
+        touchBlockClicked = true
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let imgEditMenuController = storyBoard.instantiateViewController(withIdentifier: "imageEditMenuController") as! ImageEditMenuController
+        self.present(imgEditMenuController, animated:true, completion:nil)
     }
+    
 }
 
 
