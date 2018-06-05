@@ -10,10 +10,9 @@ import UIKit
 import JavaScriptCore
 
 class JavaScriptFunc : NSObject, JavaScriptFuncProtocol {
-    func test() {
+    func showTouchblockMenu() {
     }
     
-    func test2(_ value: String, _ num: Int) {
-        print("value: \(value), num: \(num)")
+    func showImgMenu(_ value: String, _ num: Int) {
     }
 }

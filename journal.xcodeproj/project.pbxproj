@@ -74,6 +74,7 @@
 		9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */; };
 		9B999C8E2038461F00F14891 /* divFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* divFilter.swift */; };
 		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
+		9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		D2F23CD52B49B225965D13B8 /* Pods_journalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */; };
@@ -195,6 +196,7 @@
 		9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C8D2038461F00F14891 /* divFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = divFilter.swift; sourceTree = "<group>"; };
 		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
+		9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		A35E0D1EC862D7DD2028825A /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */,
 				9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */,
+				9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */,
 				1248ACF82077EB6A000C1881 /* TemplateCollectionViewController.swift */,
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
@@ -787,6 +790,7 @@
 				9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */,
 				9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */,
 				9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */,
+				9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */,
 				9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */,
 				9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */,
 				9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */,

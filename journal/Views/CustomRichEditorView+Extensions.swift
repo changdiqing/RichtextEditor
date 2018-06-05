@@ -37,8 +37,25 @@ extension CustomRichEditorView{
         runJS("method_setTouchblockFilter('\(filterType)');")
     }
     
+    public func setImgFilter(_ filterType: String) {
+        runJS("method_setImgFilter('\(filterType)');")
+    }
+    
+    public func setImgFloat(_ floatType: String) {
+        runJS("method_setImgFloat('\(floatType)');")
+    }
+    
+    public func setImgFloatMiddle() {
+        runJS("method_setImgFloatMiddle();")
+        print("+++++++++++")
+    }
+    
     public func setTouchblockBorder(_ borderType: String) {
         runJS("method_setTouchblockBorder('\(borderType)');")
+    }
+    
+    public func setImgBorder(_ borderType: String) {
+        runJS("method_setImgBorder('\(borderType)');")
     }
     
     public func setTouchblockBorderColor(_ colorInHex: String) {
@@ -112,9 +129,6 @@ extension CustomRichEditorView{
         let iconUndo = UIImage(named: "undo")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconTypeSetting = UIImage(named: "typeSetting")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconleftImage = UIImage(named: "leftImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconrightImage = UIImage(named: "rightImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconcenterImage = UIImage(named: "centerImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconclear = UIImage(named: "clear")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -135,9 +149,6 @@ extension CustomRichEditorView{
         let typeSetting: UIBarButtonItem = UIBarButtonItem(image: iconTypeSetting, style: .done, target: self, action: #selector(self.showTypeSettingKeyboard))
         let _: UIBarButtonItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(self.testButtonAction(sender:)))
         let insertImage: UIBarButtonItem = UIBarButtonItem(image: icontoolbarInsertImage, style: .done, target: self, action: #selector(self.insertImageAction))
-        let floatLeftImage: UIBarButtonItem = UIBarButtonItem(image: iconleftImage, style: .done, target: self, action: #selector(self.floatLeftImage))
-        let floatRightImage: UIBarButtonItem = UIBarButtonItem(image: iconrightImage, style: .done, target: self, action: #selector(self.floatRightImage))
-        let centerImage: UIBarButtonItem = UIBarButtonItem(image: iconcenterImage, style: .done, target: self, action: #selector(self.centerImageAction))
         let clear: UIBarButtonItem = UIBarButtonItem(image: iconclear, style: .done, target: self, action: #selector(self.clear))
         let color: UIBarButtonItem = UIBarButtonItem(image: iconpallete?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showColorKeyboard))
         let touchblock: UIBarButtonItem = UIBarButtonItem(image: touchblockImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showTouchblockKeyboard))
@@ -170,9 +181,6 @@ extension CustomRichEditorView{
             touchblock,
             color,
             insertImage,
-            floatLeftImage,
-            floatRightImage,
-            centerImage,
             clear,
             done]
         
@@ -255,19 +263,6 @@ extension CustomRichEditorView{
         let index = 1
         let selectedTouchblock = touchblockList[index]
         self.insertTouchblock(touchblock: selectedTouchblock)
-    }
-    
-    @objc func floatLeftImageAction() {
-        self.floatLeftImage()
-    }
-    
-    @objc func floatRightImageAction() {
-        self.floatRightImage()
-    }
-    
-    @objc func centerImageAction() {
-        self.centerImage()
-        print(self.html)
     }
     
     @objc func clear() {

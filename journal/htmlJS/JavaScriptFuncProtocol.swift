@@ -10,6 +10,6 @@ import UIKit
 import JavaScriptCore
 
 @objc protocol JavaScriptFuncProtocol: JSExport {
-    func test()
-    func test2(_ value: String, _ num: Int)
+    func showTouchblockMenu()
+    func showImgMenu(_ value: String, _ num: Int)
 }
