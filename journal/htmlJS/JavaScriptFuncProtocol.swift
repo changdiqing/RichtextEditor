@@ -11,5 +11,5 @@ import JavaScriptCore
 
 @objc protocol JavaScriptFuncProtocol: JSExport {
     func showTouchblockMenu()
-    func showImgMenu(_ value: String, _ num: Int)
+    func showImgMenu()
 }

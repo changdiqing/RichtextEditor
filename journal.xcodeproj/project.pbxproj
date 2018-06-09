@@ -251,6 +251,9 @@
 		12F6A09E20C9C547006F2FB9 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
+				12F6A09820C9C53B006F2FB9 /* Chiemsee3.jpg */,
+				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -277,9 +280,6 @@
 		9B3B86001FDB49D40019B943 /* htmlJS */ = {
 			isa = PBXGroup;
 			children = (
-				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
-				12F6A09820C9C53B006F2FB9 /* Chiemsee3.jpg */,
-				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
 				12F6A09E20C9C547006F2FB9 /* Photos */,
 				9B999C89202CF61500F14891 /* Lora */,
 				9B53BFD020153F4800648A32 /* index.js */,

@@ -9,20 +9,20 @@ touchBlockFocused = false;
 // test methods
 
 /*$('div[contenteditable]').keydown(function(e) {
- // trap the return key being pressed
- if (e.keyCode === 13) {
- // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
- //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
- e.preventDefault();
- //RE.insertHTML('\n');
- //document.write('<br />');
- document.execCommand('insertHTML', false, '<br></br>');
- //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
- // prevent the default behaviour of return key pressed
- return false;
- }
- 
- });*/
+// trap the return key being pressed
+if (e.keyCode === 13) {
+// insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+//document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
+e.preventDefault();
+//RE.insertHTML('\n');
+//document.write('<br />');
+document.execCommand('insertHTML', false, '<br></br>');
+//document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
+// prevent the default behaviour of return key pressed
+return false;
+}
+
+});*/
 
 // floatingTouchBlock Methods
 function updateImgSrcs(docDirectory) {
@@ -119,7 +119,7 @@ function method_initTouchblockCovers() {
     
     var touchsurface = document.querySelectorAll("img");
     for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].addEventListener('touchstart', method_touchStartImg, false);
+        /*touchsurface[i].addEventListener('touchstart', method_touchStartImg, false);*/
         touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
         touchsurface[i].addEventListener('touchend', method_touchEndImg, false);
     }
@@ -139,27 +139,37 @@ function method_initTouchblockCovers() {
 }
 
 function method_enterLayoutMode() {
-    var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].style.display= "block";
+    var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover");
+    for (var i = 0; i < myMoveCovers.length ; i++) {
+        myMoveCovers[i].style.display= "block";
     }
     
-    var touchsurface = document.querySelectorAll("div.touchblockResizeCover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].style.display= "block";
+    var myResizeCovers = document.querySelectorAll("div.touchblockResizeCover");
+    for (var i = 0; i < myResizeCovers.length ; i++) {
+        myResizeCovers[i].style.display= "block";
     }
+                                             
+                                             var myImgs = document.querySelectorAll("img");
+                                             for (var i = 0; i < myImgs.length ; i++) {
+                                             myImgs[i].addEventListener('touchstart', method_touchStartImg, false);
+                                             }
 }
 
 function method_enterContentMode() {
-    var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].style.display= "none";
+    var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover");
+    for (var i = 0; i < myMoveCovers.length ; i++) {
+        myMoveCovers[i].style.display= "none";
     }
     
-    var touchsurface = document.querySelectorAll("div.touchblockResizeCover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].style.display= "none";
+    var myResizeCovers = document.querySelectorAll("div.touchblockResizeCover");
+    for (var i = 0; i < myResizeCovers.length ; i++) {
+        myResizeCovers[i].style.display= "none";
     }
+                                             
+                                             var myImgs = document.querySelectorAll("img");
+                                             for (var i = 0; i < myImgs.length ; i++) {
+                                             myImgs[i].removeEventListener('touchstart', method_touchStartImg, false);
+                                             }
 }
 
 function method_touchStartFunction(e){
@@ -236,57 +246,55 @@ function method_touchMoveFloating(e){
 function method_touchEndFunction(e){
     if(pressed) {
         pressed = false;
+                                             if(isResized){
+                                             isResized = false;
+                                             leftOffset = start.offsetLeft;
+                                             topOffset = start.offsetTop;
+                                             undivisibleR = leftOffset + $(start).width()- posOffset
+                                             devisibleR = round(undivisibleR, resizeStepWidth)
+                                             newWidth = devisibleR + posOffset - leftOffset
+                                             newHeight = round($(start).height(), resizeStepWidth)
+                                             
+                                             start.style.width = newWidth + "px"
+                                             start.style.height = newHeight + "px"
+                                             } else {
+                                             javaScriptCallToSwift.showTouchblockMenu();
+                                             }
     }
     
-    if(isResized){
-        isResized = false;
-        leftOffset = start.offsetLeft;
-        topOffset = start.offsetTop;
-        undivisibleR = leftOffset + $(start).width()- posOffset
-        devisibleR = round(undivisibleR, resizeStepWidth)
-        newWidth = devisibleR + posOffset - leftOffset
-        newHeight = round($(start).height(), resizeStepWidth)
-        
-        start.style.width = newWidth + "px"
-        start.style.height = newHeight + "px"
-    } else {
-        javaScriptCallToSwift.showTouchblockMenu();
-    }
+    
     e.preventDefault();
 }
 
 function method_touchEndImg(e){
     if(pressed) {
         pressed = false;
+                                             if(isResized){
+                                             isResized = false;
+                                             leftOffset = start.offsetLeft;
+                                             topOffset = start.offsetTop;
+                                             document.getElementById('demo').innerHTML = "1"
+                                             undivisibleR = leftOffset + $(start).width()- posOffset;
+                                             devisibleR = round(undivisibleR, resizeStepWidth);
+                                             newWidth = devisibleR + posOffset - leftOffset;
+                                             newHeight = round($(start).height(), resizeStepWidth);
+                                             document.getElementById('demo').innerHTML = "2"
+                                             $(start).width(newWidth);
+                                             $(start).height(newHeight);
+                                             document.getElementById('demo').innerHTML = "3"
+                                             } else {
+                                             javaScriptCallToSwift.showImgMenu();
+                                             }
     }
 
-    if(isResized){
-        isResized = false;
-        leftOffset = start.offsetLeft;
-        topOffset = start.offsetTop;
-        document.getElementById('demo').innerHTML = "1"
-        undivisibleR = leftOffset + $(start).width()- posOffset;
-        devisibleR = round(undivisibleR, resizeStepWidth);
-        newWidth = devisibleR + posOffset - leftOffset;
-        newHeight = round($(start).height(), resizeStepWidth);
-        document.getElementById('demo').innerHTML = "2"
-        $(start).width(newWidth);
-        $(start).height(newHeight);
-        document.getElementById('demo').innerHTML = "3"
-    } else {
-        javaScriptCallToSwift.showImgMenu();
-    }
-        e.preventDefault();
+    
+    e.preventDefault();
 }
 
 
 function method_cloneTouchblock() {
     var $clone = $(start).clone();
     $(start).parent().append($clone);
-}
-
-function method_setTouchblockFilter(filterType){
-    $(start).find('.touchblockBGICover').css("filter",filterType);
 }
                                              
 function method_setImgFilter(filterType){
@@ -307,7 +315,13 @@ function method_setImgBorder(borderType){
     $(start).css('border', borderType);
 }
                                              
+function method_setTouchblockFilter(filterType){
+    $(start).find('.touchblockBGICover').css("filter",filterType);
+}
 
+function method_setTouchblockBorder(borderType){
+    $(start).find('.touchblockContentCover').css('border', borderType);
+}
 
 function method_setTouchblockBorderColor(colorInHex){
     $(start).find('.touchblockContentCover').css('border-color', colorInHex);
@@ -319,16 +333,21 @@ function method_changeStartBackgroundColor(color){
 }
 
 function method_changeStartBackgroundImage(url, alt) {
-    $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
+    try {
+        $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
+    } finally {
+                   document.getElementById("demo").innerHTML = $(start).attr('src');
+                  $(start).attr('src',url);
+    }
 };
 
 function mehtod_setStartTextOrientationVertical() {
     $(start).find('.touchblockContentCover').css("writing-mode", "vertical-lr");
-}
+};
 
 function mehtod_setStartTextOrientationHorizon() {
     $(start).find('.touchblockContentCover').css("writing-mode", "horizontal-tb");
-}
+};
 
 function myFunction() {
     var touchsurface = document.querySelectorAll("div.touchblockContentCover");

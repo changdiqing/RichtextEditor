@@ -47,7 +47,6 @@ extension CustomRichEditorView{
     
     public func setImgFloatMiddle() {
         runJS("method_setImgFloatMiddle();")
-        print("+++++++++++")
     }
     
     public func setTouchblockBorder(_ borderType: String) {
@@ -67,6 +66,7 @@ extension CustomRichEditorView{
     }
     
     public func setTouchBlockBackgroundImage(_ url: String, alt: String) {
+        print("#################sddfdsfgsdc啊实打实的阿斯顿阿斯顿阿斯顿爱上大叔dasg")
         runJS("method_changeStartBackgroundImage('\(url)', '\(alt)');")
     }
     

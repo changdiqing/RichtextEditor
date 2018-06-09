@@ -13,6 +13,6 @@ class JavaScriptFunc : NSObject, JavaScriptFuncProtocol {
     func showTouchblockMenu() {
     }
     
-    func showImgMenu(_ value: String, _ num: Int) {
+    func showImgMenu() {
     }
 }

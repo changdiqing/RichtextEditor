@@ -216,7 +216,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                     self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
                 }
             } else if sender.identifier == "setBorder"{
+                print("################# identifier is setBorder")
                 if let selectedBorder = sourceViewController.selectedBorder{
+                    print("#################### call function")
                     self.editorView.setTouchblockBorder(selectedBorder.jsCommand)
                 }
                 if let selectedBorderColor = sourceViewController.selectedBorderColor {
@@ -235,7 +237,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     @IBAction func unwindImgMenuToRichtextEditor(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? ImageEditMenuController {
-            if sender.identifier == "Photo" {
+            if sender.identifier == "setImg" {
                     touchBlockClickedCopy = true // raise a second flag for image picker (multithread..)
                     let imagePickerController = UIImagePickerController()
                     // Only allow photos to be picked, not taken.
@@ -256,7 +258,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else if sender.identifier == "floatLeft" {
                 self.editorView.setImgFloat("left")
             }  else if sender.identifier == "floatMid" {
-                print("####################")
                 self.editorView.setImgFloatMiddle()
             }  else if sender.identifier == "floatRight" {
                 self.editorView.setImgFloat("right")
@@ -319,7 +320,7 @@ extension JournalViewController: JavaScriptFuncProtocol {
         self.present(colorCardViewController, animated:true, completion:nil)
     }
     
-    func showImgMenu(_ value: String, _ num: Int) {
+    func showImgMenu() {
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let imgEditMenuController = storyBoard.instantiateViewController(withIdentifier: "imageEditMenuController") as! ImageEditMenuController
