@@ -32,7 +32,6 @@
 		9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */; };
 		9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */; };
 		9B224F1D207EA59F003D4A0A /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */; };
-		9B224F2320814CD0003D4A0A /* KeyboardKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */; };
 		9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */; };
 		9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */; };
 		9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */; };
@@ -75,7 +74,7 @@
 		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
 		9B999C8A202CF61500F14891 /* Lora in Resources */ = {isa = PBXBuildFile; fileRef = 9B999C89202CF61500F14891 /* Lora */; };
 		9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */; };
-		9B999C8E2038461F00F14891 /* divFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* divFilter.swift */; };
+		9B999C8E2038461F00F14891 /* keyLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* keyLists.swift */; };
 		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
 		9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */; };
 		9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */; };
@@ -152,7 +151,6 @@
 		9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchblockKeyboard.xib; sourceTree = "<group>"; };
 		9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareKeyboard.swift; sourceTree = "<group>"; };
 		9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
-		9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKeys.swift; sourceTree = "<group>"; };
 		9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesettingKeyboard.swift; sourceTree = "<group>"; };
 		9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypesettingKeyboard.xib; sourceTree = "<group>"; };
 		9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSettingKeyboardCell.swift; sourceTree = "<group>"; };
@@ -201,7 +199,7 @@
 		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C89202CF61500F14891 /* Lora */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lora; sourceTree = "<group>"; };
 		9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		9B999C8D2038461F00F14891 /* divFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = divFilter.swift; sourceTree = "<group>"; };
+		9B999C8D2038461F00F14891 /* keyLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyLists.swift; sourceTree = "<group>"; };
 		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
 		9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
 		9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
@@ -308,8 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				9B224F0E207BE895003D4A0A /* defaultColors.swift */,
-				9B999C8D2038461F00F14891 /* divFilter.swift */,
-				9B224F2220814CD0003D4A0A /* KeyboardKeys.swift */,
+				9B999C8D2038461F00F14891 /* keyLists.swift */,
 				9B3B860B1FE319870019B943 /* TemplateList.swift */,
 				9B88F60B206592C50047ED2C /* FilliingEffects.swift */,
 				9B2C6D7B204BF6E500123AD5 /* Journal.swift */,
@@ -826,7 +823,6 @@
 				9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */,
 				9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */,
 				1207956820C1707200B215E9 /* UIViewController+SafeAreaInsets.swift in Sources */,
-				9B224F2320814CD0003D4A0A /* KeyboardKeys.swift in Sources */,
 				1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */,
 				9B2D70D81FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
@@ -842,7 +838,7 @@
 				9B4A78511FAA1519000F39FC /* AppDelegate.swift in Sources */,
 				9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */,
 				9B88F60C206592C50047ED2C /* FilliingEffects.swift in Sources */,
-				9B999C8E2038461F00F14891 /* divFilter.swift in Sources */,
+				9B999C8E2038461F00F14891 /* keyLists.swift in Sources */,
 				9B224F2E20816707003D4A0A /* CustomKeyboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

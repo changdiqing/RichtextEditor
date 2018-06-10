@@ -98,14 +98,6 @@ class ImageCropperViewController: UIViewController{
     @IBAction func crop(_ sender: UIButton) {
         let myHeight = imageView.image?.size.height
         let myScale = imageView.image?.scale
-        
-        print("initial crop frame: \(cropAreaView.frame)")
-        print("initial contentoffset: \(scrollView.contentOffset)")
-        print("initial image frame: \(imageView.imageFrame().origin)")
-        print("initial scrollview frame: \(scrollView.frame.origin)")
-        
-        print("image size: \(imageView.image?.size)")
-        print("cropArea: \(cropArea)")
         if let croppedCGImage = imageView.image?.cgImage?.cropping(to: cropArea) {
             let croppedImage = UIImage(cgImage: croppedCGImage)
             imageView.image = croppedImage

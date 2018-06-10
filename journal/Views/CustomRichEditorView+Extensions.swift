@@ -28,6 +28,12 @@ extension CustomRichEditorView{
     
     //MARK: Touchblock Methods
     
+    public func setOverallFonts(_ keyID: String) {
+        // This method sets the overall fonts of editor, but touchblocks not included
+        print("```??`?=D)=IHJOIHJ \(keyID)")
+        runJS("setEditorFonts('\(keyID)');")
+    }
+    
     public func cloneTouchblock() {
         runJS("method_cloneTouchblock();")
         self.initTouchblockCovers()
@@ -157,7 +163,9 @@ extension CustomRichEditorView{
         let clear: UIBarButtonItem = UIBarButtonItem(image: iconclear, style: .done, target: self, action: #selector(self.clear))
         let color: UIBarButtonItem = UIBarButtonItem(image: iconpallete?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showColorKeyboard))
         let touchblock: UIBarButtonItem = UIBarButtonItem(image: touchblockImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showTouchblockKeyboard))
+        let fonts: UIBarButtonItem = UIBarButtonItem(title: "Fonts", style: .done, target: self, action: #selector(self.fontsAction))
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
         
         let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.backButtonAction))
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: alignRightImg, style: .done, target: self, action: #selector(self.alignRight))
@@ -183,10 +191,12 @@ extension CustomRichEditorView{
         self.mainMenu = [
             undo,
             typeSetting,
+            
             touchblock,
             color,
             insertImage,
             clear,
+            fonts,
             done]
         
         self.textEditingMenu = [
@@ -272,6 +282,10 @@ extension CustomRichEditorView{
     
     @objc func clear() {
         self.removeFormat()
+    }
+    
+    @objc func fontsAction() {
+        self.attachTextView.becomeFirstResponder()
     }
     
     @objc func showTypeSettingKeyboard() {

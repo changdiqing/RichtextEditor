@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TypeSettingKeyboardCell: UICollectionViewCell {
-
-    @IBOutlet weak var image: UIImageView!
+class TypeSettingKeyboardCell: UITableViewCell {
+    
+    
+    @IBOutlet var myImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

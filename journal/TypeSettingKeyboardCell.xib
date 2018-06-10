@@ -5,34 +5,34 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeSettingKeyboardCell" id="gTV-IL-0wX" customClass="TypeSettingKeyboardCell" customModule="journal" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5Ed-zm-fhN" customClass="TypeSettingKeyboardCell" customModule="journal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ed-zm-fhN" id="AnB-Vy-f9Y">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qyF-JK-N0V">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QwN-44-bdX">
+                        <rect key="frame" x="16" y="11" width="343" height="22"/>
                     </imageView>
                 </subviews>
-            </view>
-            <constraints>
-                <constraint firstItem="qyF-JK-N0V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A2e-rW-blL"/>
-                <constraint firstAttribute="bottom" secondItem="qyF-JK-N0V" secondAttribute="bottom" id="Gf5-Qa-juN"/>
-                <constraint firstAttribute="trailing" secondItem="qyF-JK-N0V" secondAttribute="trailing" id="IIb-Ux-QJL"/>
-                <constraint firstItem="qyF-JK-N0V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IyB-0E-ali"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+                <constraints>
+                    <constraint firstItem="QwN-44-bdX" firstAttribute="top" secondItem="AnB-Vy-f9Y" secondAttribute="topMargin" id="Npd-5n-Ne6"/>
+                    <constraint firstItem="QwN-44-bdX" firstAttribute="bottom" secondItem="AnB-Vy-f9Y" secondAttribute="bottomMargin" id="bgI-T4-Yq1"/>
+                    <constraint firstItem="QwN-44-bdX" firstAttribute="leading" secondItem="AnB-Vy-f9Y" secondAttribute="leadingMargin" id="vbo-Yb-3Ib"/>
+                    <constraint firstItem="QwN-44-bdX" firstAttribute="trailing" secondItem="AnB-Vy-f9Y" secondAttribute="trailingMargin" id="w1z-4v-QBU"/>
+                </constraints>
+            </tableViewCellContentView>
             <connections>
-                <outlet property="image" destination="qyF-JK-N0V" id="FAY-cb-1Wc"/>
+                <outlet property="myImageView" destination="QwN-44-bdX" id="43E-jl-Hj1"/>
             </connections>
-        </collectionViewCell>
+            <point key="canvasLocation" x="172.5" y="132"/>
+        </tableViewCell>
     </objects>
 </document>

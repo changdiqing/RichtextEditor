@@ -13,7 +13,7 @@ import UIKit
 
 class ShareKeyboard: UIView,UICollectionViewDataSource{
     
-    let keyList = KeyboardKeys.shareOptions
+    let keyList = DivMokupSets.shareOptions
     
     // This variable will be set as the view controller so that
     // the keyboard can send messages to the view controller.
@@ -58,8 +58,7 @@ extension ShareKeyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomKeyboardCell", for: indexPath) as! CustomKeyboardCell
-        cell.image?.image = keyList[indexPath.row].image
-        
+        cell.image?.image = keyList[indexPath.row].coverImage
         return cell
     }
     

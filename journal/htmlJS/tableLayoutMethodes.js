@@ -24,6 +24,12 @@ return false;
 
 });*/
 
+function setEditorFonts(fontsType) {
+    RE.editor.style.fontFamily = fontsType;
+}
+
+
+
 function getImgSrcs() {
     var allImg=document.getElementsByTagName("img"), i=0, img;
     var imgSrcs = [];

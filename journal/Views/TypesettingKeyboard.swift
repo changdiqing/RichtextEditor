@@ -20,16 +20,16 @@ import UIKit
 // The view controller will adopt this protocol (delegate)
 // and thus must contain the keyWasTapped method
 
-class TypesettingKeyboard: UIView,UICollectionViewDataSource{
-    
-    
-    let keyList = KeyboardKeys.list
+class TypesettingKeyboard: UIView{
+
+    let keyList = DivMokupSets.divFontsList
     
     // This variable will be set as the view controller so that
     // the keyboard can send messages to the view controller.
     weak var delegate: KeyboardDelegate?
     
-    @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var fontsTableView: UITableView!
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -46,37 +46,29 @@ class TypesettingKeyboard: UIView,UICollectionViewDataSource{
         let view = Bundle.main.loadNibNamed(xibFileName, owner: self, options: nil)![0] as! UIView
         self.addSubview(view)
         view.frame = self.bounds
-        self.myCollectionView.dataSource = self
-        self.myCollectionView.delegate = self
-        self.myCollectionView.register(UINib(nibName: "TypeSettingKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "TypeSettingKeyboardCell")
+        self.fontsTableView.dataSource = self
+        self.fontsTableView.delegate = self
+        self.fontsTableView.register(UINib(nibName: "TypeSettingKeyboardCell", bundle: nil), forCellReuseIdentifier: "TypeSettingKeyboardCell")
     }
 }
 
-extension TypesettingKeyboard: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
-    
-    // MARK:- UICollectionViewDataSource Methods
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension TypesettingKeyboard: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return keyList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //self.delegate?.typesettingKeyTapped(keyIndex: indexPath.item)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeSettingKeyboardCell", for: indexPath) as! TypeSettingKeyboardCell
-        cell.image?.image = keyList[indexPath.row].image
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TypeSettingKeyboardCell", for: indexPath) as! TypeSettingKeyboardCell
+        cell.myImageView?.image = keyList[indexPath.row].coverImage
         
         return cell
     }
     
-    //MARK:- UICollectionViewDelegate Methods
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50);
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let keyID = keyList[indexPath.row].name
+        self.delegate?.cutomKeyTapped(keyId: keyID)
     }
+    
 }
 
 

@@ -67,20 +67,43 @@ class CustomRichEditorView: RichEditorView {
         //setup jscontext
         jsContext = self.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         
-        
-        // puppetTextView added by Diqing Chang, 09.04.2018
-        attachTextView = UITextView(frame: CGRect.zero)
-        attachTextView.alpha = 0.0
-        self.addSubview(attachTextView)
-        
+        initKeyboardView()
+
         // Oberserver added by Diqing Chang at 10.04.2018
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
-    
     // New method to evaluate javascript and return JsValue?
     func callJs(_ js: String) -> JSValue?{
         let jsValue = jsContext?.evaluateScript("getImgSrcs();");
         return jsValue
+    }
+    
+    // MARK: Private methods
+    private func initKeyboardView() {
+        
+        // instantiate a gesture recognizer to allow dismiss keyboard on tap
+        //Looks for single or multiple taps.
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        //self.addGestureRecognizer(tap)
+        
+        // init puppetTextView
+        attachTextView = UITextView(frame: CGRect.zero)
+        attachTextView.alpha = 0.0
+        self.addSubview(attachTextView)
+        
+        let keyboardFrame = CGRect(x: 0, y: 0, width: 300, height: 271)
+        let keyboardView = TypesettingKeyboard(frame: keyboardFrame)
+        keyboardView.delegate = self
+        self.attachTextView.inputView = keyboardView
+        self.attachTextView.reloadInputViews()
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc private func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.attachTextView.resignFirstResponder()
     }
     
     // observer function added by Diqing at 10.04.2018
@@ -90,4 +113,15 @@ class CustomRichEditorView: RichEditorView {
         //= currentKeyboardFrame.height - 50
         keyboardFrame.size.height = currentKeyboardFrame.height - 50
     }
+}
+extension CustomRichEditorView: KeyboardDelegate {
+    func keyWasTapped(color: UIColor) {
+        print("place holder")
+    }
+    
+    func cutomKeyTapped(keyId: String) {
+        self.setOverallFonts(keyId)
+    }
+    
+    
 }
