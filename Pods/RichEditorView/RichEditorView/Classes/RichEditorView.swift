@@ -376,7 +376,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let string = webView.stringByEvaluatingJavaScript(from: js) ?? ""
         return string
     }
-
+    
 
     // MARK: - Delegate Methods
 

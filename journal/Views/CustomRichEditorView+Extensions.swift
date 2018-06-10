@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import RichEditorView
+import JavaScriptCore
 
 extension CustomRichEditorView{
     
@@ -37,6 +38,11 @@ extension CustomRichEditorView{
         runJS("method_setTouchblockFilter('\(filterType)');")
     }
     
+    public func getImgSrcs() -> JSValue? {
+        let imgSrcs = callJs("getImgSrcs();");
+        return imgSrcs
+    }
+        
     public func setImgFilter(_ filterType: String) {
         runJS("method_setImgFilter('\(filterType)');")
     }
@@ -66,7 +72,6 @@ extension CustomRichEditorView{
     }
     
     public func setTouchBlockBackgroundImage(_ url: String, alt: String) {
-        print("#################sddfdsfgsdc啊实打实的阿斯顿阿斯顿阿斯顿爱上大叔dasg")
         runJS("method_changeStartBackgroundImage('\(url)', '\(alt)');")
     }
     

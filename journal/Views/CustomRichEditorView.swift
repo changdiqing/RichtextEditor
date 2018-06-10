@@ -6,6 +6,7 @@
 //  Copyright © 2018 Diqing Chang. All rights reserved.
 //
 import RichEditorView
+import JavaScriptCore
 
 @objc protocol CustomRichEditorDelegate : RichEditorDelegate {
     
@@ -29,6 +30,8 @@ class CustomRichEditorView: RichEditorView {
     public var colorMenu = [UIBarButtonItem]()
     public var touchblockMenu = [UIBarButtonItem]()
     public var keyboardFrame = CGRect(x: 0, y: 0, width: 300, height: 271)
+    
+    public var jsContext: JSContext?
     
     let touchblockList = Touchblocks.list
     
@@ -61,6 +64,10 @@ class CustomRichEditorView: RichEditorView {
         self.addConstraint(right)
         self.addConstraint(bottom)*/
         
+        //setup jscontext
+        jsContext = self.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
+        
+        
         // puppetTextView added by Diqing Chang, 09.04.2018
         attachTextView = UITextView(frame: CGRect.zero)
         attachTextView.alpha = 0.0
@@ -68,6 +75,12 @@ class CustomRichEditorView: RichEditorView {
         
         // Oberserver added by Diqing Chang at 10.04.2018
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    // New method to evaluate javascript and return JsValue?
+    func callJs(_ js: String) -> JSValue?{
+        let jsValue = jsContext?.evaluateScript("getImgSrcs();");
+        return jsValue
     }
     
     // observer function added by Diqing at 10.04.2018

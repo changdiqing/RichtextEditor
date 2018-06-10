@@ -16,7 +16,6 @@
 		1255A58420754F1600D401FD /* index1.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58120754F1600D401FD /* index1.html */; };
 		125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E22392073F76100E8CE47 /* sectionHeaderView.swift */; };
 		12F6A09520C9BF4D006F2FB9 /* template1.html in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09420C9BF4C006F2FB9 /* template1.html */; };
-		12F6A09B20C9C53C006F2FB9 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09820C9C53B006F2FB9 /* Chiemsee3.jpg */; };
 		12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */; };
 		12F6A09D20C9C53C006F2FB9 /* Chiemsee2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
@@ -79,6 +78,7 @@
 		9B999C8E2038461F00F14891 /* divFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* divFilter.swift */; };
 		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
 		9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */; };
+		9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		D2F23CD52B49B225965D13B8 /* Pods_journalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */; };
@@ -132,7 +132,6 @@
 		1255A58120754F1600D401FD /* index1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index1.html; sourceTree = "<group>"; };
 		125E22392073F76100E8CE47 /* sectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionHeaderView.swift; sourceTree = "<group>"; };
 		12F6A09420C9BF4C006F2FB9 /* template1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template1.html; sourceTree = "<group>"; };
-		12F6A09820C9C53B006F2FB9 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
 		12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee1.jpg; sourceTree = "<group>"; };
 		12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee2.jpg; sourceTree = "<group>"; };
 		335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +204,7 @@
 		9B999C8D2038461F00F14891 /* divFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = divFilter.swift; sourceTree = "<group>"; };
 		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
 		9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
+		9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		A35E0D1EC862D7DD2028825A /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,9 +251,6 @@
 		12F6A09E20C9C547006F2FB9 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
-				12F6A09820C9C53B006F2FB9 /* Chiemsee3.jpg */,
-				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -282,6 +279,9 @@
 			children = (
 				12F6A09E20C9C547006F2FB9 /* Photos */,
 				9B999C89202CF61500F14891 /* Lora */,
+				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
+				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
+				9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */,
 				9B53BFD020153F4800648A32 /* index.js */,
 				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
 				9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */,
@@ -621,7 +621,7 @@
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
 				12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
-				12F6A09B20C9C53C006F2FB9 /* Chiemsee3.jpg in Resources */,
+				9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */,
 				1255A58420754F1600D401FD /* index1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

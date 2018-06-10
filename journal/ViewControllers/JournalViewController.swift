@@ -79,27 +79,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
-        let imageName = "\(dateFormatter.string(from: Date())).png"
-        let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
-        let data = UIImagePNGRepresentation(selectedImage)
-        
-        do
-        {
-            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
-            let myUrl = filepath.absoluteString
+        if let myUrl = self.saveImageAndReturnUrl(image: selectedImage) {
             if !touchBlockClickedCopy {
                 editorView.insertImage(myUrl, alt: myUrl)
             } else {
                 editorView.setTouchBlockBackgroundImage(myUrl, alt: myUrl)
             }
         }
-        catch
-        {
-            print("failed to save image")
-            // Catch exception here and act accordingly
-        }
+        
         touchBlockClickedCopy = false
         self.editorView.initTouchblockCovers()
         
@@ -231,7 +218,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             }
             touchBlockClicked = false // reset touchBlockClicked
         }
-    
     }
     
     @IBAction func unwindImgMenuToRichtextEditor(sender: UIStoryboardSegue) {
@@ -275,7 +261,33 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
     }
     
-    func takeUIWebViewScreenShot(webView: UIWebView, isFullSize: Bool)->UIImage?{
+    // MARK: Private Methods
+    
+    private func saveImageAndReturnUrl(image: UIImage) -> String?{
+        
+        // get a unique name for the image file
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        let imageName = "\(dateFormatter.string(from: Date())).png"
+        
+        // get save path of image file
+        let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
+        let data = UIImagePNGRepresentation(image)
+        
+        do
+        {
+            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
+            return filepath.absoluteString  // if succeeds then return the url of saved image
+        }
+        catch
+        {
+            print("failed to save image")
+            // Catch exception here and act accordingly
+            return nil
+        }
+    }
+    
+    private func takeUIWebViewScreenShot(webView: UIWebView, isFullSize: Bool)->UIImage?{
         let webViewFrame = webView.frame
         
         var imageHeight: CGFloat?
@@ -310,6 +322,18 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         let string = self.editorView.webView.stringByEvaluatingJavaScript(from: js) ?? ""
         return string
     }
+    
+    // MATK: Obsolete
+    private func localizeImgsOfTemplate() {
+        if let imgSrcList = self.editorView.getImgSrcs(){
+            if let srcArray = imgSrcList.toArray() {
+                for imgSrc in srcArray {
+                    print(imgSrc)
+                }
+            }
+            
+        }
+    }
 }
 
 extension JournalViewController: JavaScriptFuncProtocol {
@@ -333,6 +357,7 @@ extension JournalViewController: JavaScriptFuncProtocol {
 extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
         // for testing, always load the same demo
+        //self.localizeImgsOfTemplate()
         self.editorView.initTouchblockCovers()
         let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
         self.editorView.updateImgSrcs(docDirectory)

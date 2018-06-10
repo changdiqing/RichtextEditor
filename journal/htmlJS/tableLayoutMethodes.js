@@ -24,19 +24,27 @@ return false;
 
 });*/
 
+function getImgSrcs() {
+    var allImg=document.getElementsByTagName("img"), i=0, img;
+    var imgSrcs = [];
+    while (img = allImg[i++])
+    {
+        imgSrcs[i-1]= img.src;
+    }
+    return imgSrcs;
+}
+
 // floatingTouchBlock Methods
 function updateImgSrcs(docDirectory) {
     var allImg=document.getElementsByTagName("img"), i=0, img;
-
-    //var pattern = /^http\:\/\/aff\.kooora\.com\/(.*)$/;
     
     while (img = allImg[i++])
     {
-        //if (img.src.match(pattern)) {
-        //*    img.src = img.src.replace(pattern, 'http://example.com/aff.kooora.com/$1');
-        //}
         var pathArray = img.src.split('/');
-        img.src = docDirectory.concat(pathArray[pathArray.length-1]);
+        if (pathArray[pathArray.length-2] == "Documents") {
+           img.src = docDirectory.concat(pathArray[pathArray.length-1]);
+        }
+        
     }
     
     var touchsurface = document.querySelectorAll("div.touchblockBGICover");
@@ -44,16 +52,13 @@ function updateImgSrcs(docDirectory) {
         var imgurl = touchsurface[i].style.backgroundImage;
         var bi = imgurl.slice(4, -1).replace(/"/g, "");
         var pathArray = bi.split('/');
-        imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
-        touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
+        if (pathArray[pathArray.length-2] == "Documents") {
+            imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
+            touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
+        }
+        
     }
-    
-    
-    
-    
 };
-
-
 
 function testGetCaretData() {
     var y = 0;
@@ -273,15 +278,12 @@ function method_touchEndImg(e){
                                              isResized = false;
                                              leftOffset = start.offsetLeft;
                                              topOffset = start.offsetTop;
-                                             document.getElementById('demo').innerHTML = "1"
                                              undivisibleR = leftOffset + $(start).width()- posOffset;
                                              devisibleR = round(undivisibleR, resizeStepWidth);
                                              newWidth = devisibleR + posOffset - leftOffset;
                                              newHeight = round($(start).height(), resizeStepWidth);
-                                             document.getElementById('demo').innerHTML = "2"
                                              $(start).width(newWidth);
                                              $(start).height(newHeight);
-                                             document.getElementById('demo').innerHTML = "3"
                                              } else {
                                              javaScriptCallToSwift.showImgMenu();
                                              }
