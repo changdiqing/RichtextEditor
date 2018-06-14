@@ -47,26 +47,34 @@ class DivMokupSets {
     ]
     
     static let divFontsList:[mokupItem] = [
-        mokupItem(name: "Georgia", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        
+        // following fonts do not support chinese characters!!
+        /*
+        mokupItem(name: "serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "American Typewriter", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Academy Engraved LET", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Hiragino Mincho ProN", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Palatino", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Book Antiqua", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        */
+        
+        // following support chinese characters
+        mokupItem(name: "Heiti SC, Heiti TC", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Times New Roman", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Arial", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Helvetica", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Arial Black", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Impact", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Lucida Sans Unicode", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Tahoma", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Verdana", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Courier New", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Lucida Console", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Impact,Charcoal,sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Lora", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Hiragino Kaku Gothic Pro", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "WenQuanYi Zen Hei", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "微軟正黑體", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "蘋果儷中黑", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Helvetica", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
+        mokupItem(name: "SentyChalk", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Roboto", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Courier New", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Arial", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Verdana", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Impact,Charcoal,sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Hiragino Kaku Gothic Pro", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Helvetica", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Lora", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
+        
+        
+        //mokupItem(name: "default fonts", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
     ]
     
     static let list:[mokupItem] = [

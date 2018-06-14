@@ -1,11 +1,26 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: "Roboto";
+    src: url("Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url("Lora/Lora-Regular.ttf");
+}
+
+
+@font-face {
+    font-family: "SentyChalk";
+    src: url("SentyChalk/SentyChalk-Regular.ttf");
+}
+
 html {
     height: 100%;
 }
 
 body {
-    font-family: system-ui;
     font-size: 20px;
     min-height: 100%;
     overflow: auto;
@@ -56,10 +71,7 @@ div {
     height: 100%;
     overflow: auto;
     display: block;
-    /*font-family: 'HelveticaNeue';*/
-    font-family: 'Lora', serif;
     color:#666666;
-    font-size: 12pt;
 }
 
 .flex-container {

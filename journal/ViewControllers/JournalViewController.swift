@@ -203,14 +203,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                     self.editorView.setTouchblockFilter(selectedFilter.jsCommand)
                 }
             } else if sender.identifier == "setBorder"{
-                print("################# identifier is setBorder")
-                if let selectedBorder = sourceViewController.selectedBorder{
-                    print("#################### call function")
-                    self.editorView.setTouchblockBorder(selectedBorder.jsCommand)
-                }
-                if let selectedBorderColor = sourceViewController.selectedBorderColor {
-                    self.editorView.setTouchblockBorderColor(selectedBorderColor.htmlRGBA)
-                }
+                let selectedBorder = sourceViewController.selectedBorder
+                let selectedBorderColor = sourceViewController.selectedBorderColor
+                
+                self.editorView.setTouchblockBorder(selectedBorder?.jsCommand ?? "")
+                self.editorView.setTouchblockBorderColor(selectedBorderColor?.htmlRGBA ?? "")
+            } else if sender.identifier == "setTouchblockFonts" {
+                let selectedFont = sourceViewController.selectedBorder
+                self.editorView.setTouchblockFonts(selectedFont?.name ?? "")
             } else if sender.identifier == "cancel"{
                 print("Canceled")
             } else {

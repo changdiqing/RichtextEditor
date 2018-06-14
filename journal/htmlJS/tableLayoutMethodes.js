@@ -330,6 +330,10 @@ function method_setTouchblockFilter(filterType){
 function method_setTouchblockBorder(borderType){
     $(start).find('.touchblockContentCover').css('border', borderType);
 }
+                                             
+function method_setTouchblockFonts(borderType){
+    $(start).find('.touchblockContentCover').css('font-family', borderType);
+}
 
 function method_setTouchblockBorderColor(colorInHex){
     $(start).find('.touchblockContentCover').css('border-color', colorInHex);

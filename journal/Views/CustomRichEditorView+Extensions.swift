@@ -30,8 +30,11 @@ extension CustomRichEditorView{
     
     public func setOverallFonts(_ keyID: String) {
         // This method sets the overall fonts of editor, but touchblocks not included
-        print("```??`?=D)=IHJOIHJ \(keyID)")
         runJS("setEditorFonts('\(keyID)');")
+    }
+    
+    public func setTouchblockFonts(_ keyID: String) {
+        runJS("method_setTouchblockFonts('\(keyID)');")
     }
     
     public func cloneTouchblock() {

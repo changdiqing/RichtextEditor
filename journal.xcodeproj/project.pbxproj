@@ -20,6 +20,8 @@
 		12F6A09D20C9C53C006F2FB9 /* Chiemsee2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
 		996936CBE89DE8D455EF4441 /* Pods_journalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */; };
+		9B03EA8420CEF41400D5B195 /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = 9B03EA8320CEF41400D5B195 /* Roboto */; };
+		9B03EA8620CF088600D5B195 /* SentyChalk in Resources */ = {isa = PBXBuildFile; fileRef = 9B03EA8520CF088600D5B195 /* SentyChalk */; };
 		9B0CF0CA204AA666007203CB /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0C9204AA666007203CB /* KeyboardViewController.swift */; };
 		9B0CF0CE204AA666007203CB /* RichtextEditor.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B0CF0C7204AA666007203CB /* RichtextEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */; };
@@ -54,6 +56,7 @@
 		9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4A785C1FAA1519000F39FC /* LaunchScreen.storyboard */; };
 		9B4A78691FAA151A000F39FC /* journalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78681FAA151A000F39FC /* journalTests.swift */; };
 		9B4A78741FAA151A000F39FC /* journalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78731FAA151A000F39FC /* journalUITests.swift */; };
+		9B4EBAA120D2FE8B00006E67 /* FontsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBAA020D2FE8B00006E67 /* FontsTableViewCell.swift */; };
 		9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */; };
 		9B53BFD320153F4900648A32 /* rich_editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCF20153F4800648A32 /* rich_editor.js */; };
 		9B53BFD420153F4900648A32 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD020153F4800648A32 /* index.js */; };
@@ -138,6 +141,8 @@
 		403E999531786B1C070B69F5 /* Pods-journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journal/Pods-journal.debug.xcconfig"; sourceTree = "<group>"; };
 		51CD431C62A8DD4A2A32B76B /* Pods-journalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80186DA33825C8F05259877B /* Pods-journalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalTests/Pods-journalTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B03EA8320CEF41400D5B195 /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Roboto; sourceTree = "<group>"; };
+		9B03EA8520CF088600D5B195 /* SentyChalk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SentyChalk; sourceTree = "<group>"; };
 		9B0CF0C7204AA666007203CB /* RichtextEditor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichtextEditor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0CF0C9204AA666007203CB /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		9B0CF0CB204AA666007203CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -179,6 +184,7 @@
 		9B4A786F1FAA151A000F39FC /* journalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = journalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4A78731FAA151A000F39FC /* journalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = journalUITests.swift; sourceTree = "<group>"; };
 		9B4A78751FAA151A000F39FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B4EBAA020D2FE8B00006E67 /* FontsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsTableViewCell.swift; sourceTree = "<group>"; };
 		9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-3.2.1.slim.min.js"; sourceTree = "<group>"; };
 		9B53BFCF20153F4800648A32 /* rich_editor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = rich_editor.js; sourceTree = "<group>"; };
 		9B53BFD020153F4800648A32 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
@@ -276,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				12F6A09E20C9C547006F2FB9 /* Photos */,
+				9B03EA8520CF088600D5B195 /* SentyChalk */,
+				9B03EA8320CEF41400D5B195 /* Roboto */,
 				9B999C89202CF61500F14891 /* Lora */,
 				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
 				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
@@ -417,6 +425,7 @@
 				9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */,
 				9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */,
 				9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */,
+				9B4EBAA020D2FE8B00006E67 /* FontsTableViewCell.swift */,
 				9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */,
 				9B224F3020827886003D4A0A /* CustomRichEditorView.swift */,
 				9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */,
@@ -602,6 +611,7 @@
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
+				9B03EA8420CEF41400D5B195 /* Roboto in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
 				12F6A09520C9BF4D006F2FB9 /* template1.html in Resources */,
 				9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */,
@@ -616,6 +626,7 @@
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
+				9B03EA8620CF088600D5B195 /* SentyChalk in Resources */,
 				12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
 				9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */,
@@ -830,6 +841,7 @@
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
 				9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */,
 				9B224F3120827886003D4A0A /* CustomRichEditorView.swift in Sources */,
+				9B4EBAA120D2FE8B00006E67 /* FontsTableViewCell.swift in Sources */,
 				9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */,
 				9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */,
 				9B224F1D207EA59F003D4A0A /* KeyboardDelegate.swift in Sources */,

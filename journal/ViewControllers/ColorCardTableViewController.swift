@@ -11,16 +11,20 @@ import RichEditorView
 
 class ColorCardTableViewController: UIViewController, UITableViewDataSource{
     
-    @IBOutlet weak var colorCardTable: UITableView!
+
     @IBOutlet weak var filterWidth: NSLayoutConstraint!
+    @IBOutlet weak var fontsWidth: NSLayoutConstraint!
     @IBOutlet weak var borderCollectionWidth: NSLayoutConstraint!
     @IBOutlet weak var touchBlockDashTabbar: UITabBar!
     @IBOutlet public weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var borderCollectionView: UICollectionView!
+    @IBOutlet weak var colorCardTable: UITableView!
+    @IBOutlet weak var fontsTable: UITableView!
     @IBOutlet weak var borderColorButton: UIButton!
     
     fileprivate let filterList = DivMokupSets.divFilterList
     fileprivate let borderList = DivMokupSets.divBorderList
+    fileprivate let fontsList = DivMokupSets.divFontsList
     fileprivate let fillingEffectList = FillingEffects.FillingEffectList
     
     let defaultButtonHeight: CGFloat = 100
@@ -39,6 +43,8 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         super.viewDidLoad()
         colorCardTable.delegate = self
         colorCardTable.dataSource = self as UITableViewDataSource
+        fontsTable.delegate = self
+        fontsTable.dataSource = self as UITableViewDataSource
         touchBlockDashTabbar.delegate = self as UITabBarDelegate
         filterCollectionView.dataSource = self
         filterCollectionView.delegate = self as UICollectionViewDelegate
@@ -46,6 +52,7 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         borderCollectionView.delegate = self as UICollectionViewDelegate
         filterWidth.constant = 0
         borderCollectionWidth.constant = 0
+        fontsWidth.constant = 0
         filterCellWidth = screenWidth/4
         
         // add pappetTextView and color keyboard (custom input view)
@@ -124,6 +131,12 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
             if let indexPath = self.borderCollectionView!.indexPath(for: cell){
                 selectedBorder = borderList[indexPath.row]
             }
+        } else if segue.identifier == "setTouchblockFonts" {
+            print("set fonts!!!!!######################")
+            if let indexPath = self.fontsTable!.indexPathForSelectedRow{
+                selectedBorder = fontsList[indexPath.row]
+            }
+            
         }
         
     }
@@ -152,18 +165,32 @@ extension ColorCardTableViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fillingEffectList.count
+        if tableView.tag == 0 {
+            return fontsList.count
+        } else {
+            return fillingEffectList.count
+        }
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath) as? colorCardTableViewCell else {
-            fatalError("The dequeued cell is not an instance of colorCardCollectionViewCell.")
+        
+        if tableView.tag == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "fontsTableViewCell", for: indexPath) as? FontsTableViewCell else {
+                fatalError("The dequeued cell is not an instance of FontsTableViewCell.")
+            }
+            cell.fontsImage?.image = fontsList[indexPath.row].coverImage
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath) as? colorCardTableViewCell else {
+                fatalError("The dequeued cell is not an instance of colorCardCollectionViewCell.")
+            }
+            // Configure the cell...
+            let thisFillingEffect = fillingEffectList[indexPath.row]
+            cell.displayContent(type: thisFillingEffect.type, selectedColor: thisFillingEffect.color)
+            return cell
         }
-        // Configure the cell...
-        let thisFillingEffect = fillingEffectList[indexPath.row]
-        cell.displayContent(type: thisFillingEffect.type, selectedColor: thisFillingEffect.color)
-        return cell
     }
 }
 
@@ -209,13 +236,20 @@ extension ColorCardTableViewController:  UITabBarDelegate {
         if(item.tag == 0) {
             filterWidth.constant = screenWidth
             borderCollectionWidth.constant = 0
+            fontsWidth.constant = 0
             //filterCollectionView.layoutIfNeeded()
         } else if(item.tag == 1) {
             filterWidth.constant = 0
             borderCollectionWidth.constant = screenWidth
-        } else {
+            fontsWidth.constant = 0
+        } else if(item.tag == 2) {
             filterWidth.constant = 0
             borderCollectionWidth.constant = 0
+            fontsWidth.constant = 0
+        } else if(item.tag == 3){
+            filterWidth.constant = 0
+            borderCollectionWidth.constant = 0
+            fontsWidth.constant = screenWidth
         }
     }
 }
