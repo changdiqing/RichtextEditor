@@ -1,6 +1,7 @@
 var pressed = false,
 isResized = false,
 start = undefined,
+start2 = undefined,
 resizeStepWidth = 15,
 startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
 posOffset = 0,
@@ -164,10 +165,10 @@ function method_enterLayoutMode() {
         myResizeCovers[i].style.display= "block";
     }
                                              
-                                             var myImgs = document.querySelectorAll("img");
-                                             for (var i = 0; i < myImgs.length ; i++) {
-                                             myImgs[i].addEventListener('touchstart', method_touchStartImg, false);
-                                             }
+    var myImgs = document.querySelectorAll("img");
+    for (var i = 0; i < myImgs.length ; i++) {
+    myImgs[i].addEventListener('touchstart', method_touchStartImg, false);
+    }
 }
 
 function method_enterContentMode() {
@@ -181,27 +182,13 @@ function method_enterContentMode() {
         myResizeCovers[i].style.display= "none";
     }
                                              
-                                             var myImgs = document.querySelectorAll("img");
-                                             for (var i = 0; i < myImgs.length ; i++) {
-                                             myImgs[i].removeEventListener('touchstart', method_touchStartImg, false);
-                                             }
+    var myImgs = document.querySelectorAll("img");
+    for (var i = 0; i < myImgs.length ; i++) {
+        myImgs[i].removeEventListener('touchstart', method_touchStartImg, false);
+    }
 }
 
 function method_touchStartFunction(e){
-    /*
-     e.stopPropagation();
-     start = $(this).parent();
-     var rect = this.parentElement.getBoundingClientRect();
-     //console.log(rect.top, rect.right, rect.bottom, rect.left);
-     pressed = true;
-     startX = e.pageX;
-     startY = e.pageY;
-     startWidth = $(start).width();
-     startHeight = $(start).height();
-     startLeft = this.parentElement.offsetLeft;
-     startTop = this.parentElement.offsetTop;
-     document.getElementById("demo").innerHTML = rect.bottom;*/
-    
     e.stopPropagation();
     start = this.parentElement;
     var rect = start.getBoundingClientRect();
@@ -213,13 +200,13 @@ function method_touchStartFunction(e){
     startTop = start.offsetTop;
     startWidth = $(start).width(); //.style.width;
     startHeight = $(start).height(); //.style.height;
-    
     e.preventDefault();
 }
 
 function method_touchStartImg(e){
     
     e.stopPropagation();
+    start2 = this
     start = $(this);
     pressed = true;
     startX = e.pageX;
@@ -318,7 +305,9 @@ function method_setImgFloat(floatType){
 }
 
 function method_setImgFloatMiddle(){
-    start.style = "float:middle";
+    //$(start).css('float',"right");
+    start2.style = "float:middle";
+    document.getElementById('demo').innerHTML = start2
 }
                                              
 

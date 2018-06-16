@@ -59,7 +59,9 @@ extension TypesettingKeyboard: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TypeSettingKeyboardCell", for: indexPath) as! TypeSettingKeyboardCell
-        cell.myImageView?.image = keyList[indexPath.row].coverImage
+        let fontName = keyList[indexPath.row].name
+        cell.textLabel?.text = fontName
+        cell.textLabel?.font = UIFont(name: fontName, size: 20.0)
         
         return cell
     }

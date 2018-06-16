@@ -18,19 +18,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QwN-44-bdX">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8GC-Hh-ixT">
                         <rect key="frame" x="16" y="11" width="343" height="22"/>
-                    </imageView>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QwN-44-bdX" firstAttribute="top" secondItem="AnB-Vy-f9Y" secondAttribute="topMargin" id="Npd-5n-Ne6"/>
-                    <constraint firstItem="QwN-44-bdX" firstAttribute="bottom" secondItem="AnB-Vy-f9Y" secondAttribute="bottomMargin" id="bgI-T4-Yq1"/>
-                    <constraint firstItem="QwN-44-bdX" firstAttribute="leading" secondItem="AnB-Vy-f9Y" secondAttribute="leadingMargin" id="vbo-Yb-3Ib"/>
-                    <constraint firstItem="QwN-44-bdX" firstAttribute="trailing" secondItem="AnB-Vy-f9Y" secondAttribute="trailingMargin" id="w1z-4v-QBU"/>
+                    <constraint firstItem="8GC-Hh-ixT" firstAttribute="leading" secondItem="AnB-Vy-f9Y" secondAttribute="leadingMargin" id="Etl-SD-mgl"/>
+                    <constraint firstItem="8GC-Hh-ixT" firstAttribute="trailing" secondItem="AnB-Vy-f9Y" secondAttribute="trailingMargin" id="kkW-oi-fEe"/>
+                    <constraint firstItem="8GC-Hh-ixT" firstAttribute="top" secondItem="AnB-Vy-f9Y" secondAttribute="topMargin" id="lT9-Kq-EEH"/>
+                    <constraint firstItem="8GC-Hh-ixT" firstAttribute="bottom" secondItem="AnB-Vy-f9Y" secondAttribute="bottomMargin" id="qtm-MD-84O"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="myImageView" destination="QwN-44-bdX" id="43E-jl-Hj1"/>
+                <outlet property="textLabel" destination="8GC-Hh-ixT" id="7bg-C7-d88"/>
             </connections>
             <point key="canvasLocation" x="172.5" y="132"/>
         </tableViewCell>

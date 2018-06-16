@@ -11,8 +11,6 @@ import UIKit
 class TypeSettingKeyboardCell: UITableViewCell {
     
     
-    @IBOutlet var myImageView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -44,15 +44,6 @@ class ImageCropperViewController: UIViewController{
             let scale = 1/scrollView.zoomScale
             let scale2 = imageView.image!.scale
             let imageFrame = imageView.imageFrame()
-            //print("imageFrame: \(imageFrame)")
-            /*
-            print("factor: \(factor)")
-            print("scroll scale: \(scale)")
-            print("image scale: \(scale2)")
-            print(scrollView.contentOffset.x)
-            print(cropAreaView.frame.origin.x)
-            print(scrollView.frame.origin.y)
-            print(imageFrame.origin.x)*/
             
             let x = (scrollView.contentOffset.x + cropAreaView.frame.origin.x - scrollView.frame.origin.x - imageFrame.origin.x) * factor * scale2
             let y = (scrollView.contentOffset.y + cropAreaView.frame.origin.y - scrollView.frame.origin.y - imageFrame.origin.y) * factor * scale2
@@ -79,9 +70,6 @@ class ImageCropperViewController: UIViewController{
         let topPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.topViewDidDragged(_:)))
         topPanBar.addGestureRecognizer(topPanGesture)
         
-        // Uncomment to draw a border on image view programmatically
-        //self.imageView.image.layer.borderWidth = 1
-        //self.imageView.image.layer.borderColor = UIColor.black.cgColor
         initKeyboardView()
         resetCropViews()
 

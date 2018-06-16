@@ -258,7 +258,7 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
     img.setAttribute("height", defaultImageHeight)
-    img.setAttribute("style","float:left")
+    img.setAttribute("style","float:middle")
     img.setAttribute("class","block")
     img.onload = RE.updateHeight;
     
