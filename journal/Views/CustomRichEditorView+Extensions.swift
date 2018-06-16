@@ -25,7 +25,9 @@ extension CustomRichEditorView{
         runJS("updateImgSrcs('\(docDirectory)');")
     }
 
-    
+    @objc public func setJustifyFull() {
+        runJS("setJustifyFull();")
+    }
     //MARK: Touchblock Methods
     
     public func setOverallFonts(_ keyID: String) {
@@ -146,10 +148,10 @@ extension CustomRichEditorView{
         let iconclear = UIImage(named: "clear")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        
         let alignRightImg = UIImage(named: "alignRight")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let alignLeftImg = UIImage(named: "alignLeft")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let alignMiddleImg = UIImage(named: "alignMiddle")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
+        let alignFullImg = UIImage(named: "alignFull")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let underlineImg = UIImage(named: "underline")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let strikethroughImg = UIImage(named: "strikethrough")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let italicImg = UIImage(named: "italic")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -174,6 +176,7 @@ extension CustomRichEditorView{
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: alignRightImg, style: .done, target: self, action: #selector(self.alignRight))
         let alignLeft: UIBarButtonItem = UIBarButtonItem(image: alignLeftImg, style: .done, target: self, action: #selector(self.alignLeft))
         let alignMiddle: UIBarButtonItem = UIBarButtonItem(image: alignMiddleImg, style: .done, target: self, action: #selector(self.alignCenter))
+        let alignFull: UIBarButtonItem = UIBarButtonItem(image: alignFullImg, style: .done, target: self, action: #selector(self.setJustifyFull))
         let underline: UIBarButtonItem = UIBarButtonItem(image: underlineImg, style: .done, target: self, action: #selector(self.underline))
         let strikethrough: UIBarButtonItem = UIBarButtonItem(image: strikethroughImg, style: .done, target: self, action: #selector(self.strikethrough))
         let italic: UIBarButtonItem = UIBarButtonItem(image: italicImg, style: .done, target: self, action: #selector(self.italic))
@@ -194,7 +197,6 @@ extension CustomRichEditorView{
         self.mainMenu = [
             undo,
             typeSetting,
-            
             touchblock,
             color,
             insertImage,
@@ -207,6 +209,7 @@ extension CustomRichEditorView{
             alignLeft,
             alignRight,
             alignMiddle,
+            alignFull,
             underline,
             strikethrough,
             italic,

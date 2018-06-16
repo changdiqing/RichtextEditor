@@ -24,6 +24,10 @@ return false;
 
 });*/
 
+function setJustifyFull() {
+    document.execCommand('justifyFull', false, null);
+};
+
 function setEditorFonts(fontsType) {
     RE.editor.style.fontFamily = fontsType;
 }

@@ -44,10 +44,10 @@ div {
     -webkit-user-select: auto !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     padding: 20px;
-    
+    text-align: justify;
     position:fixed;
     min-height: 100%;
-    width: 92%;
+    width: 91%;
     height: 700px;
     overflow: auto;
     display: block;
