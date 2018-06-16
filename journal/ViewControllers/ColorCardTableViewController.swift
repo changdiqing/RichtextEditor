@@ -132,11 +132,9 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
                 selectedBorder = borderList[indexPath.row]
             }
         } else if segue.identifier == "setTouchblockFonts" {
-            print("set fonts!!!!!######################")
             if let indexPath = self.fontsTable!.indexPathForSelectedRow{
                 selectedBorder = fontsList[indexPath.row]
             }
-            
         }
         
     }
@@ -180,7 +178,9 @@ extension ColorCardTableViewController: UITableViewDelegate{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "fontsTableViewCell", for: indexPath) as? FontsTableViewCell else {
                 fatalError("The dequeued cell is not an instance of FontsTableViewCell.")
             }
-            cell.fontsImage?.image = fontsList[indexPath.row].coverImage
+            let fontName = fontsList[indexPath.row].name
+            cell.label.text = fontName
+            cell.label.font = UIFont(name: fontName, size: 20.0)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath) as? colorCardTableViewCell else {

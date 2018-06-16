@@ -20,8 +20,6 @@
 		12F6A09D20C9C53C006F2FB9 /* Chiemsee2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
 		996936CBE89DE8D455EF4441 /* Pods_journalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40314A34E48A43941E66B8C4 /* Pods_journalUITests.framework */; };
-		9B03EA8420CEF41400D5B195 /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = 9B03EA8320CEF41400D5B195 /* Roboto */; };
-		9B03EA8620CF088600D5B195 /* SentyChalk in Resources */ = {isa = PBXBuildFile; fileRef = 9B03EA8520CF088600D5B195 /* SentyChalk */; };
 		9B0CF0CA204AA666007203CB /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0C9204AA666007203CB /* KeyboardViewController.swift */; };
 		9B0CF0CE204AA666007203CB /* RichtextEditor.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B0CF0C7204AA666007203CB /* RichtextEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */; };
@@ -75,7 +73,6 @@
 		9B88F60C206592C50047ED2C /* FilliingEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88F60B206592C50047ED2C /* FilliingEffects.swift */; };
 		9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */; };
 		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
-		9B999C8A202CF61500F14891 /* Lora in Resources */ = {isa = PBXBuildFile; fileRef = 9B999C89202CF61500F14891 /* Lora */; };
 		9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */; };
 		9B999C8E2038461F00F14891 /* keyLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* keyLists.swift */; };
 		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
@@ -141,8 +138,6 @@
 		403E999531786B1C070B69F5 /* Pods-journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journal/Pods-journal.debug.xcconfig"; sourceTree = "<group>"; };
 		51CD431C62A8DD4A2A32B76B /* Pods-journalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80186DA33825C8F05259877B /* Pods-journalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalTests/Pods-journalTests.release.xcconfig"; sourceTree = "<group>"; };
-		9B03EA8320CEF41400D5B195 /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Roboto; sourceTree = "<group>"; };
-		9B03EA8520CF088600D5B195 /* SentyChalk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SentyChalk; sourceTree = "<group>"; };
 		9B0CF0C7204AA666007203CB /* RichtextEditor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichtextEditor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0CF0C9204AA666007203CB /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		9B0CF0CB204AA666007203CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,7 +198,6 @@
 		9B88F60B206592C50047ED2C /* FilliingEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilliingEffects.swift; sourceTree = "<group>"; };
 		9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorCardTableViewCell.swift; sourceTree = "<group>"; };
 		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
-		9B999C89202CF61500F14891 /* Lora */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lora; sourceTree = "<group>"; };
 		9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C8D2038461F00F14891 /* keyLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyLists.swift; sourceTree = "<group>"; };
 		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
@@ -282,9 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				12F6A09E20C9C547006F2FB9 /* Photos */,
-				9B03EA8520CF088600D5B195 /* SentyChalk */,
-				9B03EA8320CEF41400D5B195 /* Roboto */,
-				9B999C89202CF61500F14891 /* Lora */,
 				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
 				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
 				9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */,
@@ -606,12 +597,10 @@
 				9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
-				9B999C8A202CF61500F14891 /* Lora in Resources */,
 				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
-				9B03EA8420CEF41400D5B195 /* Roboto in Resources */,
 				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
 				12F6A09520C9BF4D006F2FB9 /* template1.html in Resources */,
 				9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */,
@@ -626,7 +615,6 @@
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
-				9B03EA8620CF088600D5B195 /* SentyChalk in Resources */,
 				12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
 				9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */,

@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIText.ttf">
+            <string>.SFUIText</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Template Layouts-->
         <scene sceneID="Nva-it-iNh">
@@ -958,19 +963,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7w7-fu-k60">
-                                                    <rect key="frame" x="0.0" y="8" width="100" height="36"/>
-                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lora" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ars-xV-zjB">
+                                                    <rect key="frame" x="15" y="11" width="70" height="22"/>
+                                                    <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7w7-fu-k60" firstAttribute="leading" secondItem="okY-Xb-6bQ" secondAttribute="leading" id="Ahp-Dg-hOE"/>
-                                                <constraint firstAttribute="trailing" secondItem="7w7-fu-k60" secondAttribute="trailing" id="CFK-Il-JVa"/>
-                                                <constraint firstAttribute="bottom" secondItem="7w7-fu-k60" secondAttribute="bottom" id="Jrj-Ak-eEg"/>
-                                                <constraint firstItem="7w7-fu-k60" firstAttribute="top" secondItem="okY-Xb-6bQ" secondAttribute="top" constant="8" id="RHl-nG-wzW"/>
+                                                <constraint firstItem="ars-xV-zjB" firstAttribute="trailing" secondItem="okY-Xb-6bQ" secondAttribute="trailingMargin" id="3uW-bU-tpF"/>
+                                                <constraint firstItem="ars-xV-zjB" firstAttribute="leading" secondItem="okY-Xb-6bQ" secondAttribute="leadingMargin" id="64t-jQ-fWb"/>
+                                                <constraint firstItem="ars-xV-zjB" firstAttribute="top" secondItem="okY-Xb-6bQ" secondAttribute="topMargin" id="egh-kB-b7g"/>
+                                                <constraint firstItem="ars-xV-zjB" firstAttribute="bottom" secondItem="okY-Xb-6bQ" secondAttribute="bottomMargin" id="n2j-sk-zhs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="fontsImage" destination="7w7-fu-k60" id="w7z-nf-MYg"/>
+                                            <outlet property="label" destination="ars-xV-zjB" id="zfu-jL-yIK"/>
                                             <segue destination="cPd-Do-ADi" kind="unwind" identifier="setTouchblockFonts" unwindAction="unwindToRichtextEditorWithSender:" id="TmH-rw-gbk"/>
                                         </connections>
                                     </tableViewCell>

@@ -38,6 +38,11 @@ class JournalCollectionViewController: UICollectionViewController {
         }
         // Navigation bar
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        UIFont.familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(familyName, fontNames)
+        })
     }
     
     override func viewDidLayoutSubviews() {

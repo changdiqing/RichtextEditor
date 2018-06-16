@@ -10,7 +10,8 @@ import UIKit
 
 class FontsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var fontsImage: UIImageView!
+
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

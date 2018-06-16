@@ -59,19 +59,20 @@ class DivMokupSets {
         */
         
         // following support chinese characters
-        mokupItem(name: "Heiti SC, Heiti TC", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Times New Roman", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "微軟正黑體", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "SentyChalk", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Roboto", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Academy Engraved LET", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Baskerville", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Heiti SC, Heiti TC", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "微软正黑体", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Chalkboard SE", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Chalkduster", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Courier New", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Arial", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Verdana", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "Cochin", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Impact,Charcoal,sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Hiragino Kaku Gothic Pro", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Helvetica", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Lora", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
+        mokupItem(name: "Hiragino Kaku Gothic ProN", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+        mokupItem(name: "sans-serif", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
+        
         
         
         //mokupItem(name: "default fonts", coverImage: UIImage(named: "border")!, jsCommand: "4px none")
