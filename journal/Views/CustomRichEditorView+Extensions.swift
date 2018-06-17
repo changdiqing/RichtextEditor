@@ -62,10 +62,6 @@ extension CustomRichEditorView{
         runJS("method_setImgFloat('\(floatType)');")
     }
     
-    public func setImgFloatMiddle() {
-        runJS("method_setImgFloatMiddle();")
-    }
-    
     public func setTouchblockBorder(_ borderType: String) {
         runJS("method_setTouchblockBorder('\(borderType)');")
     }

@@ -206,8 +206,7 @@ function method_touchStartFunction(e){
 function method_touchStartImg(e){
     
     e.stopPropagation();
-    start2 = this
-    start = $(this);
+    start = this;
     pressed = true;
     startX = e.pageX;
     startY = e.pageY;
@@ -297,27 +296,20 @@ function method_cloneTouchblock() {
 }
                                              
 function method_setImgFilter(filterType){
+                                             
     $(start).css('filter',filterType);
 }
                                              
 function method_setImgFloat(floatType){
-    $(start).css('float',floatType);
+    start.style = "float:" + floatType;
 }
-
-function method_setImgFloatMiddle(){
-    //$(start).css('float',"right");
-    start2.style = "float:middle";
-    document.getElementById('demo').innerHTML = start2
-}
-                                             
-
 
 function method_setImgBorder(borderType){
     $(start).css('border', borderType);
 }
                                              
 function method_setTouchblockFilter(filterType){
-    $(start).find('.touchblockBGICover').css("filter",filterType);
+    $(start).find('.touchblockBGICover').css('filter',filterType);
 }
 
 function method_setTouchblockBorder(borderType){
