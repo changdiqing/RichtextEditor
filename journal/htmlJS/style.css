@@ -62,7 +62,7 @@ div.vLine {
     z-index: 99;
     background-color: orange;
     opacity: 0.3;
-    /*display: none;*/
+    display: none;
 }
 
 #editor {
