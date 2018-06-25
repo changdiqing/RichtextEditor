@@ -272,11 +272,13 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // get save path of image file
         let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
-        let data = UIImagePNGRepresentation(image)
+        
+        let data = image.mediumQualityJPEGNSData
+//        let data = UIImagePNGRepresentation(image)
         
         do
         {
-            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
+            try data.write(to: filepath, options: Data.WritingOptions.atomic)
             return filepath.absoluteString  // if succeeds then return the url of saved image
         }
         catch
@@ -387,4 +389,13 @@ extension JournalViewController: RichEditorDelegate {
             //CoreDataHandler.saveDiary()
         }
     }
+}
+
+extension UIImage {
+    var uncompressedPNGData: NSData {return UIImagePNGRepresentation(self)! as NSData}
+    var highestQualityJPEGNSData: NSData {return UIImageJPEGRepresentation(self,1.0)! as NSData}
+    var highQualityJPEGNSData: NSData {return UIImageJPEGRepresentation(self, 0.75)! as NSData}
+    var mediumQualityJPEGNSData: NSData {return UIImageJPEGRepresentation(self, 0.5)! as NSData}
+    var lowQualityJPEGNSData: NSData {return UIImageJPEGRepresentation(self, 0.25)! as NSData}
+    var lowestQualityJPEGNSData: NSData {return UIImageJPEGRepresentation(self, 0.0)! as NSData}
 }
