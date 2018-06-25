@@ -112,7 +112,7 @@ function method_initTouchblockCovers() {
     for (var i = 0; i < touchsurface.length ; i++) {
         /*touchsurface[i].addEventListener('touchstart', method_imgtouchStart, false);*/
         touchsurface[i].addEventListener('touchmove', method_imgMoveFunction, false);
-        touchsurface[i].addEventListener('touchend', method_imgtouchEnd, false);
+        touchsurface[i].addEventListener('touchend', method_imgTouchEnd, false);
     }
     
     /* obsolete, flex-row no longer used, old touchblock: touchblockObsolete.html
