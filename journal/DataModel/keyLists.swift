@@ -63,7 +63,6 @@ class DivMokupSets {
         mokupItem(name: "Academy Engraved LET", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Baskerville", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Heiti SC", coverImage: UIImage(named: "border")!, jsCommand: "Heiti SC"),
-        mokupItem(name: "微软正黑体", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Chalkboard SE", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Chalkduster", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
         mokupItem(name: "Courier New", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),

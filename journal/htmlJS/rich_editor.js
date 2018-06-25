@@ -257,9 +257,13 @@ RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
-    img.setAttribute("height", defaultImageHeight)
-    img.setAttribute("style","float:middle")
-    img.setAttribute("class","block")
+    img.setAttribute("width", defaultImageHeight);
+    img.setAttribute("style","float:middle");
+    img.setAttribute("class","block");
+    img.setAttribute("height","auto");
+    //img.setAttribute("style", "margin: 10px 10px 10px 10px")
+    //img.style.margin = "10px 10px 10px 10px";
+    
     img.onload = RE.updateHeight;
     
     RE.insertHTML(img.outerHTML);

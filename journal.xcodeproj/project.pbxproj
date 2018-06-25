@@ -80,6 +80,7 @@
 		9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
+		9BDF12CE20E01F44009D89E3 /* jquery-3.3.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */; };
 		D2F23CD52B49B225965D13B8 /* Pods_journalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +206,7 @@
 		9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
+		9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.3.1.min.js"; sourceTree = "<group>"; };
 		A35E0D1EC862D7DD2028825A /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B20229757500FC110A38C161 /* Pods-journalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journalTests/Pods-journalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB4031F574B13F76690400BB /* Pods-journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journal.release.xcconfig"; path = "Pods/Target Support Files/Pods-journal/Pods-journal.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				9B53BFD020153F4800648A32 /* index.js */,
 				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
 				9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */,
+				9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */,
 				9B53BFCF20153F4800648A32 /* rich_editor.js */,
 				9B8684BF200BA01800A82C7E /* style.css */,
 				1255A58120754F1600D401FD /* index1.html */,
@@ -594,6 +597,7 @@
 				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
 				9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */,
+				9BDF12CE20E01F44009D89E3 /* jquery-3.3.1.min.js in Resources */,
 				9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
