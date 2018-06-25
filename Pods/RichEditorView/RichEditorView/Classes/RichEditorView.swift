@@ -349,20 +349,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.blurFocus()")
     }
     
-    //MARK: New Methods added by Diqing 22.11.2017
-    
-    public func floatLeftImage() {
-        runJS("RE.floatLeftImage();")
-    }
-    
-    public func floatRightImage() {
-        runJS("RE.floatRightImage();")
-    }
-    
-    public func centerImage() {
-        runJS("RE.centerImage();")
-    }
-    
     public func restoreSelectionRange() {
         runJS("RE.restorerange();")
     }
@@ -528,7 +514,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             updateHeight()
         }
         else if method.hasPrefix("input") {
-            scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
+            //scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
             let content = runJS("RE.getHtml()")
             contentHTML = content
             updateHeight()

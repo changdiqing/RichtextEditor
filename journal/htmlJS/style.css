@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    font-size: 20px;
+    font-size: 16px;
     min-height: 100%;
     overflow: auto;
 }
@@ -31,6 +31,7 @@ body, h1, p {
 }
 
 img {
+    max-width: 100%;
     display: block;
     margin: auto;
 }
@@ -40,6 +41,30 @@ div {
     position: static;
 }
 
+div.hLine {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    height: 5px;
+    width:  110%;
+    z-index: 99;
+    background-color: orange;
+    opacity: 0.3;
+    display: none;
+}
+
+div.vLine {
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    height: 110%;
+    width:  5px;
+    z-index: 99;
+    background-color: orange;
+    opacity: 0.3;
+    /*display: none;*/
+}
+
 #editor {
     -webkit-user-select: auto !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -47,7 +72,7 @@ div {
     text-align: justify;
     position:fixed;
     min-height: 100%;
-    width: 90%;
+    width: 89%;
     height: 700px;
     overflow: auto;
     display: block;
@@ -80,14 +105,11 @@ div {
 .flex-row {
     display: inline-flex;
     /*flex-basis: 100%;*/
-<<<<<<< HEAD
     float: right;
     padding: 25px;
-=======
     float:left;
     /*margin:10px;*/
     /*padding: 25px;*/
->>>>>>> journal_chang
     overflow: auto;
 }
 
@@ -102,6 +124,8 @@ div.touchblock {
     /* self layout setting */
     display: inline-block;
     position: relative;
+    max-width: 100%;
+    max-height: 400px;
     /*margin : 1%;*/
     height: 130px;
 }

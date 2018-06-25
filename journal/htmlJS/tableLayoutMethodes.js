@@ -3,27 +3,29 @@ isResized = false,
 start = undefined,
 start2 = undefined,
 resizeStepWidth = 15,
-startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY, newWidth, newHeight,
+startX, startY, startTop, startLeft, startWidth, startHeight, offsetX, offsetY,
 posOffset = 0,
 touchBlockFocused = false;
+var hLine = document.getElementById("hLine");
+var vLine = document.getElementById("vLine");
 
 // test methods
 
 /*$('div[contenteditable]').keydown(function(e) {
-// trap the return key being pressed
-if (e.keyCode === 13) {
-// insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-//document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
-e.preventDefault();
-//RE.insertHTML('\n');
-//document.write('<br />');
-document.execCommand('insertHTML', false, '<br></br>');
-//document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
-// prevent the default behaviour of return key pressed
-return false;
-}
-
-});*/
+ // trap the return key being pressed
+ if (e.keyCode === 13) {
+ // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+ //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
+ e.preventDefault();
+ //RE.insertHTML('\n');
+ //document.write('<br />');
+ document.execCommand('insertHTML', false, '<br></br>');
+ //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
+ // prevent the default behaviour of return key pressed
+ return false;
+ }
+ 
+ });*/
 
 function setJustifyFull() {
     document.execCommand('justifyFull', false, null);
@@ -44,32 +46,6 @@ function getImgSrcs() {
     }
     return imgSrcs;
 }
-
-// floatingTouchBlock Methods
-function updateImgSrcs(docDirectory) {
-    var allImg=document.getElementsByTagName("img"), i=0, img;
-    
-    while (img = allImg[i++])
-    {
-        var pathArray = img.src.split('/');
-        if (pathArray[pathArray.length-2] == "Documents") {
-           img.src = docDirectory.concat(pathArray[pathArray.length-1]);
-        }
-        
-    }
-    
-    var touchsurface = document.querySelectorAll("div.touchblockBGICover");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        var imgurl = touchsurface[i].style.backgroundImage;
-        var bi = imgurl.slice(4, -1).replace(/"/g, "");
-        var pathArray = bi.split('/');
-        if (pathArray[pathArray.length-2] == "Documents") {
-            imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
-            touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
-        }
-        
-    }
-};
 
 function testGetCaretData() {
     var y = 0;
@@ -93,7 +69,6 @@ function testGetCaretData() {
             }
         }
     }
-    
     return pageYOffset;
 }
 
@@ -135,16 +110,16 @@ function method_initTouchblockCovers() {
     
     var touchsurface = document.querySelectorAll("img");
     for (var i = 0; i < touchsurface.length ; i++) {
-        /*touchsurface[i].addEventListener('touchstart', method_touchStartImg, false);*/
-        touchsurface[i].addEventListener('touchmove', method_touchMoveFunction, false);
-        touchsurface[i].addEventListener('touchend', method_touchEndImg, false);
+        /*touchsurface[i].addEventListener('touchstart', method_imgtouchStart, false);*/
+        touchsurface[i].addEventListener('touchmove', method_imgMoveFunction, false);
+        touchsurface[i].addEventListener('touchend', method_imgtouchEnd, false);
     }
     
     /* obsolete, flex-row no longer used, old touchblock: touchblockObsolete.html
-    var touchsurface = document.querySelectorAll("div.flex-row");
-    for (var i = 0; i < touchsurface.length ; i++) {
-        touchsurface[i].contentEditable = "false";
-    }*/
+     var touchsurface = document.querySelectorAll("div.flex-row");
+     for (var i = 0; i < touchsurface.length ; i++) {
+     touchsurface[i].contentEditable = "false";
+     }*/
     
     var touchsurface = document.querySelectorAll("div.touchblock");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -164,10 +139,10 @@ function method_enterLayoutMode() {
     for (var i = 0; i < myResizeCovers.length ; i++) {
         myResizeCovers[i].style.display= "block";
     }
-                                             
+    
     var myImgs = document.querySelectorAll("img");
     for (var i = 0; i < myImgs.length ; i++) {
-    myImgs[i].addEventListener('touchstart', method_touchStartImg, false);
+        myImgs[i].addEventListener('touchstart', method_imgTouchStart, false);
     }
 }
 
@@ -181,10 +156,10 @@ function method_enterContentMode() {
     for (var i = 0; i < myResizeCovers.length ; i++) {
         myResizeCovers[i].style.display= "none";
     }
-                                             
+    
     var myImgs = document.querySelectorAll("img");
     for (var i = 0; i < myImgs.length ; i++) {
-        myImgs[i].removeEventListener('touchstart', method_touchStartImg, false);
+        myImgs[i].removeEventListener('touchstart', method_imgTouchStart, false);
     }
 }
 
@@ -203,7 +178,7 @@ function method_touchStartFunction(e){
     e.preventDefault();
 }
 
-function method_touchStartImg(e){
+function method_imgTouchStart(e){
     
     e.stopPropagation();
     start = this;
@@ -230,6 +205,21 @@ function method_touchMoveFunction(e){
     e.preventDefault();
 }
 
+function method_imgMoveFunction(e){
+    offsetX = e.pageX-startX;
+    //offsetY = e.pageY-startY;
+    
+    if (!isResized) {
+        if ((Math.abs(offsetX) > resizeStepWidth) || (Math.abs(offsetY) > resizeStepWidth)) {isResized = true;}
+    }
+    
+    if(pressed && isResized) {
+        $(start).width(startWidth+offsetX);
+        //$(start).height(startHeight+offsetY);
+    }
+    e.preventDefault();
+}
+
 function method_touchMoveFloating(e){
     offsetX = e.pageX-startX;
     offsetY = e.pageY-startY;
@@ -247,44 +237,48 @@ function method_touchMoveFloating(e){
 function method_touchEndFunction(e){
     if(pressed) {
         pressed = false;
-                                             if(isResized){
-                                             isResized = false;
-                                             leftOffset = start.offsetLeft;
-                                             topOffset = start.offsetTop;
-                                             undivisibleR = leftOffset + $(start).width()- posOffset
-                                             devisibleR = round(undivisibleR, resizeStepWidth)
-                                             newWidth = devisibleR + posOffset - leftOffset
-                                             newHeight = round($(start).height(), resizeStepWidth)
-                                             
-                                             start.style.width = newWidth + "px"
-                                             start.style.height = newHeight + "px"
-                                             } else {
-                                             javaScriptCallToSwift.showTouchblockMenu();
-                                             }
+        if(isResized){
+            isResized = false;
+            leftOffset = start.offsetLeft;
+            topOffset = start.offsetTop;
+            undivisibleR = leftOffset + $(start).width()- posOffset;
+            devisibleR = round(undivisibleR, resizeStepWidth);
+            
+            var rightEnd = devisibleR + posOffset;
+            var newWidth = rightEnd - leftOffset;
+            var newHeight = round($(start).height(), resizeStepWidth);
+            var bottomEnd = newHeight + topOffset;
+            
+            start.style.width = newWidth + "px";
+            start.style.height = newHeight + "px";
+            blink(rightEnd,bottomEnd)
+        } else {
+            javaScriptCallToSwift.showTouchblockMenu();
+        }
     }
     
     
     e.preventDefault();
 }
 
-function method_touchEndImg(e){
+function method_imgTouchEnd(e){
     if(pressed) {
         pressed = false;
-                                             if(isResized){
-                                             isResized = false;
-                                             leftOffset = start.offsetLeft;
-                                             topOffset = start.offsetTop;
-                                             undivisibleR = leftOffset + $(start).width()- posOffset;
-                                             devisibleR = round(undivisibleR, resizeStepWidth);
-                                             newWidth = devisibleR + posOffset - leftOffset;
-                                             newHeight = round($(start).height(), resizeStepWidth);
-                                             $(start).width(newWidth);
-                                             $(start).height(newHeight);
-                                             } else {
-                                             javaScriptCallToSwift.showImgMenu();
-                                             }
+        if(isResized){
+            isResized = false;
+            leftOffset = start.offsetLeft;
+            //topOffset = start.offsetTop;
+            undivisibleR = leftOffset + $(start).width()- posOffset;
+            devisibleR = round(undivisibleR, resizeStepWidth);
+            var newWidth = devisibleR + posOffset - leftOffset;
+            //newHeight = round($(start).height(), resizeStepWidth);
+            start.style.width = newWidth + "px"
+            //start.style.height = newHeight + "px"
+        } else {
+            javaScriptCallToSwift.showImgMenu();
+        }
     }
-
+    
     
     e.preventDefault();
 }
@@ -294,20 +288,26 @@ function method_cloneTouchblock() {
     var $clone = $(start).clone();
     $(start).parent().append($clone);
 }
-                                             
+
 function method_setImgFilter(filterType){
-                                             
+    
     $(start).css('filter',filterType);
 }
-                                             
+
 function method_setImgFloat(floatType){
     start.style = "float:" + floatType;
+    if (floatType == "left") {
+        start.style.margin = "5px 10px 10px 5px";
+    } else if (floatType == "right") {
+        start.style.margin = "5px 5px 10px 10px";
+    }
+    
 }
 
 function method_setImgBorder(borderType){
     $(start).css('border', borderType);
 }
-                                             
+
 function method_setTouchblockFilter(filterType){
     $(start).find('.touchblockBGICover').css('filter',filterType);
 }
@@ -315,7 +315,7 @@ function method_setTouchblockFilter(filterType){
 function method_setTouchblockBorder(borderType){
     $(start).find('.touchblockContentCover').css('border', borderType);
 }
-                                             
+
 function method_setTouchblockFonts(borderType){
     $(start).find('.touchblockContentCover').css('font-family', borderType);
 }
@@ -331,10 +331,10 @@ function method_changeStartBackgroundColor(color){
 
 function method_changeStartBackgroundImage(url, alt) {
     try {
-        $(start).find('.touchblockBGICover').css("background-image", "url(" + url + ")");
+        $(start).find('.touchblockBGICover').css('background-image', "url(" + url + ")");
     } finally {
-                   document.getElementById("demo").innerHTML = $(start).attr('src');
-                  $(start).attr('src',url);
+        document.getElementById('demo').innerHTML = $(start).attr('src');
+        $(start).attr('src',url);
     }
 };
 
@@ -369,7 +369,7 @@ function mehtod_removeStart() {
 }
 
 var round = function (x, to) {
-    return Math.ceil(x / to) * to;
+    return Math.round(x / to) * to;
 };
 
 
@@ -394,11 +394,96 @@ function setEndOfContenteditable()
         range.select();//Select the range (make it the visible selection
     }
 }
+
+// return nearest div of selection
+
+function changeParentFontSizeBy(step) {
+    var parentNode = getSelectionParentElement();
+    //var parentDiv = upTo(parentNode, "div");
+    
+    //var fontSize = parentNode.style.fontSize;
+    var style = window.getComputedStyle(parentNode, null).getPropertyValue('font-size');
+    document.getElementById("demo").innerHTML = parentNode + "  " + style
+    //alert(fontSize);
+    var sizeInFloat = parseFloat(style);
+    sizeInFloat += step;
+    //if (fontSizeInt<7) {fontSizeInt += 1;}
+    parentNode.style.fontSize = sizeInFloat + "px";
+    parentNode.style.lineHeight = "1";
+}
+
+// return parent element of selection
+function getSelectionParentElement() {
+    var parentEl = null, sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            if (parentEl.nodeType != 1) {
+                parentEl = parentEl.parentNode;
+            }
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control") {
+        parentEl = sel.createRange().parentElement();
+    }
+    return parentEl;
+}
+
+// return the nearest parent div of el
+function upTo(el, tagName) {
+    tagName = tagName.toLowerCase();
+    
+    while (el && el.parentNode) {
+        if (el.tagName && el.tagName.toLowerCase() == tagName) {
+            return el;
+        }
+        el = el.parentNode;
+    }
+    
+    // Many DOM methods return null if they don't
+    // find the element they are searching for
+    // It would be OK to omit the following and just
+    // return undefined
+    return null;
+}
+
+//blink hLine and vLine once to indicate the right and left boundary
+function blink(x,y) {
+    hLine.style.top = y+'px';
+    vLine.style.left = x+'px';
+    $(vLine).fadeIn();
+    $(hLine).fadeIn();
+    $(hLine).fadeOut();
+    $(vLine).fadeOut();
+}
+
 //document.getElementById("demo").innerText = getDocElementHtml();
 function getDocElementHtml() {
     return document.documentElement.outerHTML;
 };
-//document.getElementById("demo").innerText = getDocElementHtml();
-function getDocElementHtml() {
-    return document.documentElement.outerHTML;
-};
+
+// update srcs of all images including background images of DIVs after software update
+function updateImgSrcs(docDirectory) {
+    var allImg=document.getElementsByTagName("img"), i=0, img;
+    
+    while (img = allImg[i++])
+    {
+        var pathArray = img.src.split('/');
+        if (pathArray[pathArray.length-2] == "Documents") {
+            img.src = docDirectory.concat(pathArray[pathArray.length-1]);
+        }
+        
+    }
+    
+    var touchsurface = document.querySelectorAll("div.touchblockBGICover");
+    for (var i = 0; i < touchsurface.length ; i++) {
+        var imgurl = touchsurface[i].style.backgroundImage;
+        var bi = imgurl.slice(4, -1).replace(/"/g, '');
+                                             var pathArray = bi.split('/');
+                                             if (pathArray[pathArray.length-2] == "Documents") {
+                                             imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
+                                             touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
+                                             }
+                                             
+                                             }
+                                             }

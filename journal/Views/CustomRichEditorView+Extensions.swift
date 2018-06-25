@@ -83,14 +83,14 @@ extension CustomRichEditorView{
     }
     
     @objc public func increaseTextSize() {
-        runJS("RE.prepareInsert();")
-        runJS("RE.increaseTextSize();")
+        //runJS("RE.prepareInsert();")
+        runJS("changeParentFontSizeBy(2);")
     }
     
     @objc public func decreaseTextSize() {
         
-        runJS("RE.prepareInsert();")
-        runJS("RE.decreaseTextSize();")
+        //runJS("RE.prepareInsert();")
+        runJS("changeParentFontSizeBy(-2);")
     }
     
     public func initTouchblockCovers() {
