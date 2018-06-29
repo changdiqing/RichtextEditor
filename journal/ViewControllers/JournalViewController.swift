@@ -273,12 +273,11 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // get save path of image file
         let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
         
-        let data = image.mediumQualityJPEGNSData
-//        let data = UIImagePNGRepresentation(image)
-        
+        //let data = image.mediumQualityJPEGNSData
+        let data = jpegImage(image: image, maxSize: 300000)
         do
         {
-            try data.write(to: filepath, options: Data.WritingOptions.atomic)
+            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
             return filepath.absoluteString  // if succeeds then return the url of saved image
         }
         catch
@@ -336,6 +335,26 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             
         }
     }
+    
+    func jpegImage(image: UIImage, maxSize: Int) -> Data? {
+        var maxQuality: CGFloat = 1.0
+        let interval: CGFloat = 0.1
+        var bestData: Data?
+        var thisQuality = maxQuality
+        for _ in 0...10 {
+            thisQuality = maxQuality -  interval
+            guard let data = UIImageJPEGRepresentation(image, thisQuality) else { return nil }
+            bestData = data
+            let thisSize = data.count
+            if thisSize > maxSize {
+                maxQuality = thisQuality
+            } else {
+                return bestData
+                }
+            }
+        return bestData
+    }
+    
 }
 
 extension JournalViewController: JavaScriptFuncProtocol {
