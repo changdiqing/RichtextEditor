@@ -287,7 +287,26 @@ extension CustomRichEditorView{
     }
     
     @objc func fontsAction() {
-        self.attachTextView.becomeFirstResponder()
+        print("############################################### \(self.webView.scrollView.contentOffset)")
+        let contentOffset = self.webView.scrollView.contentOffset
+        self.resignFirstResponder()
+        self.endEditing(true)
+        DispatchQueue.main.async {
+            self.attachTextView.becomeFirstResponder()
+        }
+        let myFrame = self.webView.scrollView.frame
+        let myHeight = self.webView.scrollView.contentSize.height
+        var contentInset:UIEdgeInsets = self.webView.scrollView.contentInset
+        contentInset.bottom = contentOffset.y
+        //self.webView.scrollView.contentInset = contentInset
+        //self.webView.scrollView.scrollIndicatorInsets = contentInset
+        //self.webView.scrollView.setContentOffset(contentOffset, animated: false)
+        //self.webView.scrollView.contentSize = CGSize(width: myFrame.size.width, height: myHeight)
+        print("##################################contentOffset \(self.webView.scrollView.contentOffset)")
+        print("####################################contentSize \(self.webView.scrollView.contentSize)")
+        print("##########################################frame \(self.webView.scrollView.frame)")
+        print("###################################contentInset \(self.webView.scrollView.contentInset)")
+        print("###########################adjustedContentInset \(self.webView.scrollView.adjustedContentInset)")
     }
     
     @objc func showTypeSettingKeyboard() {

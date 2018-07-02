@@ -27,6 +27,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
     private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
 
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +60,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 editorView.webView.loadRequest(request)
             }
         }
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
 
     override func didReceiveMemoryWarning() {

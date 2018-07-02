@@ -372,7 +372,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // We use this to keep the scroll view from changing its offset when the keyboard comes up
         if !isScrollEnabled {
-            print("called")
+            print("##########This is called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             scrollView.bounds = webView.bounds
         }
     }

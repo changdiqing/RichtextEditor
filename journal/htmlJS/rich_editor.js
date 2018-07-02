@@ -257,10 +257,14 @@ RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
-    img.setAttribute("width", defaultImageHeight);
-    img.setAttribute("style","float:middle");
     img.setAttribute("class","block");
-    img.setAttribute("height","auto");
+    img.style = "float:middle";
+    img.style.height = "auto";
+    img.style.width = "80%";
+    img.style.marginTop = "20px";
+    img.style.marginBottom = "10px";
+    img.style.marginLeft = "Auto";
+    img.style.marginRight = "Auto";
     //img.setAttribute("style", "margin: 10px 10px 10px 10px")
     //img.style.margin = "10px 10px 10px 10px";
     
