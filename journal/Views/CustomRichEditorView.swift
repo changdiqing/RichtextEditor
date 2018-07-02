@@ -24,14 +24,17 @@ class CustomRichEditorView: RichEditorView {
     //MARK: Public Properties added by Diqing Chang, 02.02.2018
     public var toolbarScroll: UIScrollView?
     public var customToolbar: UIToolbar?
-    public var attachTextView: UITextView!
+    public var attachTextView: UITextField!
     public var mainMenu = [UIBarButtonItem]()
     public var textEditingMenu = [UIBarButtonItem]()
     public var colorMenu = [UIBarButtonItem]()
     public var touchblockMenu = [UIBarButtonItem]()
     public var keyboardFrame = CGRect(x: 0, y: 0, width: 300, height: 271)
+    public var lastOffset: CGPoint?
     
     public var jsContext: JSContext?
+    
+    private var originalFrame: CGRect?
     
     let touchblockList = Touchblocks.list
     
@@ -89,13 +92,14 @@ class CustomRichEditorView: RichEditorView {
         //self.addGestureRecognizer(tap)
         
         // init puppetTextView
-        attachTextView = UITextView(frame: CGRect.zero)
+        attachTextView = UITextField(frame: CGRect.zero)
         attachTextView.alpha = 0.0
-        self.addSubview(attachTextView)
+        //attachTextView.delegate = self as! UITextViewDelegate
+        self.webView.addSubview(attachTextView)
         
         let keyboardFrame = CGRect(x: 0, y: 0, width: 300, height: 271)
         let keyboardView = TypesettingKeyboard(frame: keyboardFrame)
-        keyboardView.delegate = self
+        //keyboardView.delegate = self
         self.attachTextView.inputView = keyboardView
         self.attachTextView.reloadInputViews()
     }
@@ -109,9 +113,17 @@ class CustomRichEditorView: RichEditorView {
     // observer function added by Diqing at 10.04.2018
     @objc func keyboardShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        //= currentKeyboardFrame.height - 50
-        keyboardFrame.size.height = currentKeyboardFrame.height - 50
+        if let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = currentKeyboardFrame.height
+            //= currentKeyboardFrame.height - 50
+            keyboardFrame.size.height = keyboardHeight - 50
+
+            let offset = CGPoint(x:0, y: -400.0)
+            //self.webView.scrollView.contentOffset = CGPoint(x: 0, y:-400)
+            
+        }
+
+
     }
 }
 extension CustomRichEditorView: KeyboardDelegate {
@@ -122,6 +134,20 @@ extension CustomRichEditorView: KeyboardDelegate {
     func cutomKeyTapped(keyId: String) {
         self.setOverallFonts(keyId)
     }
-    
-    
+}
+
+extension CustomRichEditorView: UITextViewDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        lastOffset = self.webView.scrollView.contentOffset
+        //originalFrame = self.frame
+        //self.webView.scrollView.frame = CGRect(x: 0, y: 0, width: originalFrame!.width, height: originalFrame!.height - 400)
+        return true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.attachTextView?.resignFirstResponder()
+        //if let oFrame = originalFrame {
+        //    self.webView.scrollView.frame = oFrame
+        //}
+        return true
+    }
 }

@@ -93,6 +93,7 @@ function resetPosOffset(newPosOffset) {
     posOffset = newPosOffset;
 }
 
+// Initial dom element with event listeners
 function method_initTouchblockCovers() {
     var touchsurface = document.querySelectorAll("div.touchblockMoveCover");
     for (var i = 0; i < touchsurface.length ; i++) {
@@ -110,8 +111,8 @@ function method_initTouchblockCovers() {
     
     var touchsurface = document.querySelectorAll("img");
     for (var i = 0; i < touchsurface.length ; i++) {
-        /*touchsurface[i].addEventListener('touchstart', method_imgtouchStart, false);*/
-        touchsurface[i].addEventListener('touchmove', method_imgMoveFunction, false);
+        //touchsurface[i].addEventListener('touchstart', method_imgtouchStart, false);
+        //touchsurface[i].addEventListener('touchmove', method_imgMoveFunction, false);
         touchsurface[i].addEventListener('touchend', method_imgTouchEnd, false);
     }
     
@@ -143,6 +144,7 @@ function method_enterLayoutMode() {
     var myImgs = document.querySelectorAll("img");
     for (var i = 0; i < myImgs.length ; i++) {
         myImgs[i].addEventListener('touchstart', method_imgTouchStart, false);
+        myImgs[i].addEventListener('touchmove', method_imgMoveFunction, false);
     }
 }
 
@@ -160,6 +162,7 @@ function method_enterContentMode() {
     var myImgs = document.querySelectorAll("img");
     for (var i = 0; i < myImgs.length ; i++) {
         myImgs[i].removeEventListener('touchstart', method_imgTouchStart, false);
+        myImgs[i].removeEventListener('touchmove', method_imgMoveFunction, false);
     }
 }
 
@@ -272,17 +275,14 @@ function method_imgTouchEnd(e){
             devisibleR = round(undivisibleR, resizeStepWidth);
             var newWidth = devisibleR + posOffset - leftOffset;
             //newHeight = round($(start).height(), resizeStepWidth);
-            start.style.width = newWidth + "px"
-            //start.style.height = newHeight + "px"
+            start.style.width = newWidth + "px";
+            //start.style.height = newHeight + "px";
         } else {
             javaScriptCallToSwift.showImgMenu();
         }
     }
-    
-    
     e.preventDefault();
 }
-
 
 function method_cloneTouchblock() {
     var $clone = $(start).clone();
@@ -297,9 +297,17 @@ function method_setImgFilter(filterType){
 function method_setImgFloat(floatType){
     start.style = "float:" + floatType;
     if (floatType == "left") {
+        start.style.width = "25%";
         start.style.margin = "5px 10px 10px 5px";
     } else if (floatType == "right") {
+        start.style.width = "25%";
         start.style.margin = "5px 5px 10px 10px";
+    } else if (floatType == "middle") {
+        start.style.width = "80%";
+        start.style.marginTop = "20px";
+        start.style.marginBottom = "10px";
+        start.style.marginLeft = "Auto";
+        start.style.marginRight = "Auto";
     }
     
 }
