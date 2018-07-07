@@ -186,7 +186,6 @@ extension ColorCardTableViewController: UITableViewDelegate{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "colorCardTableCell", for: indexPath) as? colorCardTableViewCell else {
                 fatalError("The dequeued cell is not an instance of colorCardCollectionViewCell.")
             }
-            // Configure the cell...
             let thisFillingEffect = fillingEffectList[indexPath.row]
             cell.displayContent(type: thisFillingEffect.type, selectedColor: thisFillingEffect.color)
             return cell

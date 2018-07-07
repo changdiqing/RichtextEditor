@@ -43,7 +43,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        editorView.delegate = self // Diqing Debug 13.03.2017
+        editorView.delegate = self as? RichEditorDelegate // Diqing Debug 13.03.2017
+        editorView.customDelegate = self as? CustomRichEditorDelegate
         
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)?)
@@ -220,6 +221,15 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 fatalError("Unexpected segue identifier: \(sender.identifier)")
             }
             touchBlockClicked = false // reset touchBlockClicked
+        }
+    }
+    
+    @IBAction func unwindFontTableToRichtextEditor(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? FontsTableViewController {
+            if sender.identifier == "setFont" {
+                let selectedFont = sourceViewController.selectedFont
+                self.editorView.setFontOfThisDiv(selectedFont?.name ?? "")
+            }
         }
     }
     
@@ -410,6 +420,15 @@ extension JournalViewController: RichEditorDelegate {
             }
             //CoreDataHandler.saveDiary()
         }
+    }
+}
+
+extension JournalViewController: CustomRichEditorDelegate {
+    func richEditorSetFont() {
+        print("###################################")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let fontsTableNaviController = storyBoard.instantiateViewController(withIdentifier: "FontsTableNaviController") as! UINavigationController
+        self.present(fontsTableNaviController, animated:true, completion:nil)
     }
 }
 

@@ -29,10 +29,10 @@ extension CustomRichEditorView{
         runJS("setJustifyFull();")
     }
     //MARK: Touchblock Methods
-    
-    public func setOverallFonts(_ keyID: String) {
-        // This method sets the overall fonts of editor, but touchblocks not included
-        runJS("setEditorFonts('\(keyID)');")
+    // Methods set fonts
+    public func setFontOfThisDiv(_ keyID: String) {
+        //print("set font \(keyID) of this div")
+        runJS("changeParentFontBy('\(keyID)');")
     }
     
     public func setTouchblockFonts(_ keyID: String) {
@@ -164,7 +164,7 @@ extension CustomRichEditorView{
         let clear: UIBarButtonItem = UIBarButtonItem(image: iconclear, style: .done, target: self, action: #selector(self.clear))
         let color: UIBarButtonItem = UIBarButtonItem(image: iconpallete?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showColorKeyboard))
         let touchblock: UIBarButtonItem = UIBarButtonItem(image: touchblockImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showTouchblockKeyboard))
-        let fonts: UIBarButtonItem = UIBarButtonItem(title: "Fonts", style: .done, target: self, action: #selector(self.fontsAction))
+        let fonts: UIBarButtonItem = UIBarButtonItem(title: "Fonts", style: .done, target: self, action: #selector(self.setFontAction))
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
         
         
@@ -270,6 +270,10 @@ extension CustomRichEditorView{
         self.delegate?.richEditorInsertImage!()
     }
     
+    @objc func setFontAction() {
+        self.customDelegate?.richEditorSetFont!()
+    }
+    
     @objc func insertInlineTouchblockAction(sender: UIBarButtonItem) {
         let index = 0
         let selectedTouchblock = touchblockList[index]
@@ -287,7 +291,6 @@ extension CustomRichEditorView{
     }
     
     @objc func fontsAction() {
-        print("############################################### \(self.webView.scrollView.contentOffset)")
         let contentOffset = self.webView.scrollView.contentOffset
         self.resignFirstResponder()
         self.endEditing(true)
@@ -302,11 +305,11 @@ extension CustomRichEditorView{
         //self.webView.scrollView.scrollIndicatorInsets = contentInset
         //self.webView.scrollView.setContentOffset(contentOffset, animated: false)
         //self.webView.scrollView.contentSize = CGSize(width: myFrame.size.width, height: myHeight)
-        print("##################################contentOffset \(self.webView.scrollView.contentOffset)")
-        print("####################################contentSize \(self.webView.scrollView.contentSize)")
-        print("##########################################frame \(self.webView.scrollView.frame)")
-        print("###################################contentInset \(self.webView.scrollView.contentInset)")
-        print("###########################adjustedContentInset \(self.webView.scrollView.adjustedContentInset)")
+//        print("##################################contentOffset \(self.webView.scrollView.contentOffset)")
+//        print("####################################contentSize \(self.webView.scrollView.contentSize)")
+//        print("##########################################frame \(self.webView.scrollView.frame)")
+//        print("###################################contentInset \(self.webView.scrollView.contentInset)")
+//        print("###########################adjustedContentInset \(self.webView.scrollView.adjustedContentInset)")
     }
     
     @objc func showTypeSettingKeyboard() {

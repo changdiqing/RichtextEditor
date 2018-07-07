@@ -12,6 +12,8 @@ import JavaScriptCore
     
     @objc optional func richEditorInsertImage()
     
+    @objc optional func richEditorSetFont()
+    
     @objc optional func richEditorChangeColor()
     
     @objc optional func richEditorSaveHTML()
@@ -33,8 +35,10 @@ class CustomRichEditorView: RichEditorView {
     public var lastOffset: CGPoint?
     
     public var jsContext: JSContext?
-    
     private var originalFrame: CGRect?
+    
+    /// The delegate that will receive callbacks when certain actions are completed.
+    open weak var customDelegate: CustomRichEditorDelegate?
     
     let touchblockList = Touchblocks.list
     
@@ -132,7 +136,7 @@ extension CustomRichEditorView: KeyboardDelegate {
     }
     
     func cutomKeyTapped(keyId: String) {
-        self.setOverallFonts(keyId)
+        self.setFontOfThisDiv(keyId)
     }
 }
 

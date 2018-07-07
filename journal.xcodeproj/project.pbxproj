@@ -81,6 +81,8 @@
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		9BDF12CE20E01F44009D89E3 /* jquery-3.3.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */; };
+		9BF4E31220F00983004D598D /* FontsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF4E31120F00983004D598D /* FontsTableViewController.swift */; };
+		9BF4E31420F00A22004D598D /* FontsBigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF4E31320F00A22004D598D /* FontsBigTableViewCell.swift */; };
 		D2F23CD52B49B225965D13B8 /* Pods_journalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +209,8 @@
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.3.1.min.js"; sourceTree = "<group>"; };
+		9BF4E31120F00983004D598D /* FontsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsTableViewController.swift; sourceTree = "<group>"; };
+		9BF4E31320F00A22004D598D /* FontsBigTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsBigTableViewCell.swift; sourceTree = "<group>"; };
 		A35E0D1EC862D7DD2028825A /* Pods-journalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-journalUITests/Pods-journalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B20229757500FC110A38C161 /* Pods-journalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-journalTests/Pods-journalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB4031F574B13F76690400BB /* Pods-journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-journal.release.xcconfig"; path = "Pods/Target Support Files/Pods-journal/Pods-journal.release.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				1248ACF82077EB6A000C1881 /* TemplateCollectionViewController.swift */,
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
+				9BF4E31120F00983004D598D /* FontsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */,
 				1207956720C1707200B215E9 /* UIViewController+SafeAreaInsets.swift */,
 				1207956920C172E400B215E9 /* UIView+SafeAreaInsets.swift */,
+				9BF4E31320F00A22004D598D /* FontsBigTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -807,8 +813,10 @@
 			files = (
 				9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */,
 				1248ACF92077EB6A000C1881 /* TemplateCollectionViewController.swift in Sources */,
+				9BF4E31220F00983004D598D /* FontsTableViewController.swift in Sources */,
 				9B224F14207BE895003D4A0A /* ColorKeyboard.swift in Sources */,
 				9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */,
+				9BF4E31420F00A22004D598D /* FontsBigTableViewCell.swift in Sources */,
 				9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */,
 				9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */,
 				9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */,

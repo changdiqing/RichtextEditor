@@ -324,8 +324,8 @@ function method_setTouchblockBorder(borderType){
     $(start).find('.touchblockContentCover').css('border', borderType);
 }
 
-function method_setTouchblockFonts(borderType){
-    $(start).find('.touchblockContentCover').css('font-family', borderType);
+function method_setTouchblockFonts(fontType){
+    $(start).find('.touchblockContentCover').css('font-family', fontType);
 }
 
 function method_setTouchblockBorderColor(colorInHex){
@@ -341,7 +341,7 @@ function method_changeStartBackgroundImage(url, alt) {
     try {
         $(start).find('.touchblockBGICover').css('background-image', "url(" + url + ")");
     } finally {
-        document.getElementById('demo').innerHTML = $(start).attr('src');
+        //document.getElementById('demo').innerHTML = $(start).attr('src');
         $(start).attr('src',url);
     }
 };
@@ -404,6 +404,11 @@ function setEndOfContenteditable()
 }
 
 // return nearest div of selection
+function changeParentFontBy(fontType) {
+    var parentNode = getSelectionParentElement();
+    var style = window.getComputedStyle(parentNode, null).getPropertyValue('font-size');
+    parentNode.style.fontFamily = fontType;
+}
 
 function changeParentFontSizeBy(step) {
     var parentNode = getSelectionParentElement();
@@ -411,13 +416,13 @@ function changeParentFontSizeBy(step) {
     
     //var fontSize = parentNode.style.fontSize;
     var style = window.getComputedStyle(parentNode, null).getPropertyValue('font-size');
-    document.getElementById("demo").innerHTML = parentNode + "  " + style
+    //document.getElementById("demo").innerHTML = parentNode + "  " + style
     //alert(fontSize);
     var sizeInFloat = parseFloat(style);
     sizeInFloat += step;
     //if (fontSizeInt<7) {fontSizeInt += 1;}
     parentNode.style.fontSize = sizeInFloat + "px";
-    parentNode.style.lineHeight = "1";
+    parentNode.style.lineHeight = "1.7";
 }
 
 // return parent element of selection
