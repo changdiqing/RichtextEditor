@@ -42,7 +42,7 @@ class ImageEditMenuController: UIViewController{
         borderCollectionView.delegate = self as UICollectionViewDelegate
         filterWidth.constant = screenWidth
         borderCollectionWidth.constant = 0
-        filterCellWidth = screenWidth/4
+        filterCellWidth = screenWidth/3.5
         
         // add pappetTextView and color keyboard (custom input view)
         pappetTextView = UITextView(frame: CGRect.zero)
