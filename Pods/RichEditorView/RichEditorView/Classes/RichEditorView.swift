@@ -457,8 +457,9 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let string = runJS("RE.getRelativeCaretYPosition();")
         return Int(string) ?? 0
     }
-
-    private func updateHeight() {
+    
+    // used to be private, changed to private by Diqing
+    public func updateHeight() {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
         let height = Int(heightString) ?? 0
         if editorHeight != height {
@@ -480,21 +481,27 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let cursorHeight = lineHeight - 4
         let visiblePosition = CGFloat(relativeCaretYPosition)
         var offset: CGPoint?
+        
+        let upperHeight = 319
 
-        if visiblePosition + cursorHeight > scrollView.bounds.size.height {
+        //if visiblePosition + cursorHeight > scrollView.bounds.size.height {
+        if visiblePosition + cursorHeight > CGFloat(upperHeight) {
             // Visible caret position goes further than our bounds
-            offset = CGPoint(x: 0, y: (visiblePosition + lineHeight) - scrollView.bounds.height + scrollView.contentOffset.y)
-
+            //offset = CGPoint(x: 0, y: (visiblePosition + lineHeight) - scrollView.bounds.height + scrollView.contentOffset.y)
+            offset = CGPoint(x: 0, y: (visiblePosition-25/* + lineHeight*/) - CGFloat(upperHeight) + scrollView.contentOffset.y)
         } else if visiblePosition < 0 {
             // Visible caret position is above what is currently visible
             var amount = scrollView.contentOffset.y + visiblePosition
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
         }
-
+        print("###############visiblePosition: \(visiblePosition)")
+        print("######scrollView.bounds.height: \(scrollView.bounds.height)")
+        print("#################contentOffset: \(scrollView.contentOffset)")
+        print("#########scrollIndicatorInsets: \(scrollView.scrollIndicatorInsets)")
         if let offset = offset {
-            print(offset)
             scrollView.setContentOffset(offset, animated: true)
+            //self.webView.scrollView.scrollRectToVisible(CGRect(x: 0, y: 500, width: 300, height: 50), animated: true)
         }
     }
     
@@ -520,9 +527,11 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             updateHeight()
         }
         else if method.hasPrefix("updateHeight") {
+            print("###################### updateHeight")
             updateHeight()
         }
         else if method.hasPrefix("focus") {
+            print("###################### FOCUS")
             delegate?.richEditorTookFocus?(self)
         }
         else if method.hasPrefix("blur") {

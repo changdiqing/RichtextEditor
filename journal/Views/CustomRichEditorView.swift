@@ -124,10 +124,7 @@ class CustomRichEditorView: RichEditorView {
 
             let offset = CGPoint(x:0, y: -400.0)
             //self.webView.scrollView.contentOffset = CGPoint(x: 0, y:-400)
-            
         }
-
-
     }
 }
 extension CustomRichEditorView: KeyboardDelegate {

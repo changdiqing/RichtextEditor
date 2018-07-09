@@ -43,8 +43,8 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        editorView.delegate = self as? RichEditorDelegate // Diqing Debug 13.03.2017
-        editorView.customDelegate = self as? CustomRichEditorDelegate
+        editorView.delegate = self as RichEditorDelegate // Diqing Debug 13.03.2017
+        editorView.customDelegate = self as CustomRichEditorDelegate
         
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)?)
@@ -309,8 +309,11 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         if isFullSize {
             let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
             imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
+            print(webViewFrame.origin)
+            print(stringHeight)
             let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
             webView.frame = myFrame
+            print("myFrame  \(myFrame)")
             UIGraphicsBeginImageContextWithOptions(CGSize(width: webView.scrollView.contentSize.width, height: imageHeight!), false, 0)
             
         } else {
