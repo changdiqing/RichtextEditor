@@ -1,4 +1,5 @@
 var pressed = false,
+hasSelected = false,
 isResized = false,
 start = undefined,
 start2 = undefined,
@@ -9,23 +10,12 @@ touchBlockFocused = false;
 var hLine = document.getElementById("hLine");
 var vLine = document.getElementById("vLine");
 
-// test methods
-
-/*$('div[contenteditable]').keydown(function(e) {
- // trap the return key being pressed
- if (e.keyCode === 13) {
- // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
- //document.execCommand('insertHTML', false, '<br></br>'); // gives </div><br>
- e.preventDefault();
- //RE.insertHTML('\n');
- //document.write('<br />');
- document.execCommand('insertHTML', false, '<br></br>');
- //document.body.insertAdjacentHTML( 'afterbegin', '<br></br>' );
- // prevent the default behaviour of return key pressed
- return false;
- }
- 
- });*/
+function initNewDomPos() {
+    var newDom = document.getElementById("1");
+    var initTop = window.pageYOffset+200;
+    newDom.style.top = initTop + "px";
+    newDom.id = "0"
+}
 
 function setJustifyFull() {
     document.execCommand('justifyFull', false, null);
@@ -89,8 +79,6 @@ function method_initTouchblockCovers() {
     for (var i = 0; i < touchsurface.length ; i++) {
         touchsurface[i].contentEditable = "false";
     }
-    
-    
 }
 
 function method_enterLayoutMode() {
@@ -111,29 +99,57 @@ function method_enterLayoutMode() {
     }
 }
 
-function method_enterContentMode() {
-    var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover");
+function removeMasksButThis() {
+    var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover:not(#thisCover)");
     for (var i = 0; i < myMoveCovers.length ; i++) {
         myMoveCovers[i].style.display= "none";
     }
     
-    var myResizeCovers = document.querySelectorAll("div.touchblockResizeCover");
+    var myResizeCovers = document.querySelectorAll("div.touchblockResizeCover:not(#thisCover)");
     for (var i = 0; i < myResizeCovers.length ; i++) {
         myResizeCovers[i].style.display= "none";
     }
     
-    var myImgs = document.querySelectorAll("img");
+    var myImgs = document.querySelectorAll("img:not(#thisCover)");
     for (var i = 0; i < myImgs.length ; i++) {
         myImgs[i].removeEventListener('touchstart', method_imgTouchStart, false);
         myImgs[i].removeEventListener('touchmove', method_imgMoveFunction, false);
     }
 }
 
+function method_enterContentMode() {
+    
+    hasSelected = false;  // contentMode can not have any selected div
+    
+    var selCovers = document.querySelectorAll("#thisCover");
+    for (var i = 0; i < selCovers.length ; i++) {
+        selCovers[i].id = "";
+    }
+    
+    removeMasksButThis();
+}
+
 function method_touchStartFunction(e){
     e.stopPropagation();
     start = this.parentElement;
+    
+    if (start.id !== "thisCover") {  // if no div selected then should clean all but this div
+        start.id = "thisCover";
+        var moveCover = start.querySelector('.touchblockMoveCover');
+        var resizeCover = start.querySelector('.touchblockResizeCover');
+        if (moveCover !== null) {
+            moveCover.id = "thisCover";
+        }
+        if (resizeCover !== null) {
+            resizeCover.id = "thisCover";
+        }
+        removeMasksButThis();
+    }
+    
+    
     var rect = start.getBoundingClientRect();
     //console.log(rect.top, rect.right, rect.bottom, rect.left);
+    hasSelected = true;  // true: there is an only selected div
     pressed = true;
     startX = e.pageX;
     startY = e.pageY;
@@ -148,6 +164,13 @@ function method_imgTouchStart(e){
     
     e.stopPropagation();
     start = this;
+    
+    if (start.id !== "thisCover") {
+        start.id = "thisCover";
+        removeMasksButThis();
+    }
+    
+    
     pressed = true;
     startX = e.pageX;
     startY = e.pageY;
@@ -201,6 +224,7 @@ function method_touchMoveFloating(e){
 }
 
 function method_touchEndFunction(e){
+    
     if(pressed) {
         pressed = false;
         if(isResized){
@@ -458,8 +482,7 @@ function getAbsoluteCaretYPosition() {
         /* Removing fixes bug when node name other than 'div' */
         // && range.startContainer.nodeName.toLowerCase() == 'div');
     }
-    //var cursorPosition = $('#editor').prop("selectionStart");
-    
+    //var cursorPosition = $('#editor').prop("selectionStart")；
     return window.pageYOffset;
 };
 

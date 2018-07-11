@@ -29,9 +29,12 @@ extension CustomRichEditorView{
         runJS("setJustifyFull();")
     }
     //MARK: Touchblock Methods
-    // Methods set fonts
+    
+    public func initNewDomPos() {
+        runJS("initNewDomPos();")
+    }
+
     public func setFontOfThisDiv(_ keyID: String) {
-        //print("set font \(keyID) of this div")
         runJS("changeParentFontBy('\(keyID)');")
     }
     
@@ -346,6 +349,7 @@ extension CustomRichEditorView{
                 let htmlStr = try String(contentsOfFile: path)
                 if isAppended {
                     self.appendHTML(htmlStr)
+                    self.initNewDomPos()
                 } else {
                     self.insertHTML(htmlStr)
                     //self.appendHTML(htmlStr)
