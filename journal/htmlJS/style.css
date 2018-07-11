@@ -40,7 +40,7 @@ div {
     display: block;
     position: static;
     font-size: 16px;
-    font-family: Georgia, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif;
+    font-family: sans-serif;
 }
 
 div.hLine {
@@ -68,17 +68,24 @@ div.vLine {
 }
 
 #editor {
+    /*-webkit-user-select: auto !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+    text-align: justify;
+    width: 89%;
+     */
     -webkit-user-select: auto !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position:relative;
     padding: 20px;
-    text-align: justify;
-    position:fixed;
-    /*min-height: 100%;*/
+    min-height: 700px;
+    height: 100%;
     width: 89%;
-    height: 700px;
     overflow: auto;
     display: block;
+    font-family: 'HelveticaNeue';
     color:#666666;
+    font-size: 12pt;
 }
 
 #editor:focus {

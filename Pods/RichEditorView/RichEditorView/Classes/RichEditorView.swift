@@ -146,7 +146,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
     
     private func setup() {
         backgroundColor = .red
-        webView = UIWebView()
+
         webView.frame = bounds
         webView.delegate = self
         webView.keyboardDisplayRequiresUserAction = false
@@ -495,13 +495,9 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
         }
-        print("###############visiblePosition: \(visiblePosition)")
-        print("######scrollView.bounds.height: \(scrollView.bounds.height)")
-        print("#################contentOffset: \(scrollView.contentOffset)")
-        print("#########scrollIndicatorInsets: \(scrollView.scrollIndicatorInsets)")
+        
         if let offset = offset {
             scrollView.setContentOffset(offset, animated: true)
-            //self.webView.scrollView.scrollRectToVisible(CGRect(x: 0, y: 500, width: 300, height: 50), animated: true)
         }
     }
     
@@ -521,7 +517,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             updateHeight()
         }
         else if method.hasPrefix("input") {
-            //scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
+            scrollCaretToVisible()  // commented by Diqing, 01.05.2018 for test, this is clearly buggy, but I couldn't fully understand the algorithm and couldn't find out the problem.
             let content = runJS("RE.getHtml()")
             contentHTML = content
             updateHeight()
@@ -563,6 +559,20 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             let point = tapRecognizer.location(in: webView)
             //focus(at: point)
         }
+    }
+    
+    override open func becomeFirstResponder() -> Bool {
+        if !webView.containsFirstResponder {
+            focus()
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    open override func resignFirstResponder() -> Bool {
+        blur()
+        return true
     }
     
 }
