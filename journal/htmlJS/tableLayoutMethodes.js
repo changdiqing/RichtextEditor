@@ -282,14 +282,17 @@ function method_setImgFilter(filterType){
 }
 
 function method_setImgFloat(floatType){
-    start.style = "float:" + floatType;
+    //start.style = "float:" + floatType;
+    start.style.cssFloat = floatType;
+    
     if (floatType == "left") {
         start.style.width = "25%";
         start.style.margin = "5px 10px 10px 5px";
     } else if (floatType == "right") {
         start.style.width = "25%";
         start.style.margin = "5px 5px 10px 10px";
-    } else if (floatType == "middle") {
+    } else if (floatType == "none") {  // set float to none to middle the images
+        start.style.height = "auto";
         start.style.width = "80%";
         start.style.marginTop = "20px";
         start.style.marginBottom = "10px";
@@ -461,71 +464,6 @@ function blink(x,y) {
 function getDocElementHtml() {
     return document.documentElement.outerHTML;
 };
-
-//get caret position
-function getAbsoluteCaretYPosition() {
-    var y = 0;
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var range = sel.getRangeAt(0);
-        var needsWorkAround = (range.startOffset == 0);
-        if (needsWorkAround) {
-            y = range.startContainer.offsetTop;
-        } else {
-            if (range.getClientRects) {
-                var rects=range.getClientRects();
-                if (rects.length > 0) {
-                    y = rects[0].top; + window.pageYOffset;
-                }
-            }
-        }
-        /* Removing fixes bug when node name other than 'div' */
-        // && range.startContainer.nodeName.toLowerCase() == 'div');
-    }
-    //var cursorPosition = $('#editor').prop("selectionStart")；
-    return window.pageYOffset;
-};
-
-function getPageOffset() {
-    return window.pageYOffset;
-}
-
-function testGetCaretData() {
-    var y = 0;
-    var sel = window.getSelection();
-    var needsWorkAround = false;
-    var pageYOffset = 0;
-    if (sel.rangeCount) {
-        var range = sel.getRangeAt(0);
-        needsWorkAround = (range.startOffset == 0)
-        /* Removing fixes bug when node name other than 'div' */
-        // && range.startContainer.nodeName.toLowerCase() == 'div');
-        if (needsWorkAround) {
-            y = range.startContainer.offsetTop - window.pageYOffset;
-            pageYOffset = window.pageYOffset;
-        } else {
-            if (range.getClientRects) {
-                var rects=range.getClientRects();
-                if (rects.length > 0) {
-                    y = rects[0].top;
-                }
-            }
-        }
-    }
-    return pageYOffset;
-}
-
-function testGetCaretData2() {
-    
-    var touchsurface = document.querySelectorAll("div.floatingTouchblock");
-    var result = touchsurface[0].offsetTop;
-    
-    //result = $("#floatingTouchblock").offset().top;
-    var start = $(this).parent();
-    var offsetTop = $(start).offset().top;
-    
-    return offsetTop;
-}
 
 // update srcs of all images including background images of DIVs after software update
 function updateImgSrcs(docDirectory) {

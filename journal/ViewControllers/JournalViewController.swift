@@ -257,7 +257,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else if sender.identifier == "floatLeft" {
                 self.editorView.setImgFloat("left")
             }  else if sender.identifier == "floatMid" {
-                self.editorView.setImgFloat("middle")
+                self.editorView.setImgFloat("none")
             }  else if sender.identifier == "floatRight" {
                 self.editorView.setImgFloat("right")
             }else if sender.identifier == "cancel"{

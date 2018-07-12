@@ -258,15 +258,14 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
     img.setAttribute("class","block");
-    img.style = "float:middle";
+    //img.style = "float:middle";
+    img.style.cssFloat = "middle";
     img.style.height = "auto";
     img.style.width = "80%";
     img.style.marginTop = "20px";
     img.style.marginBottom = "10px";
     img.style.marginLeft = "Auto";
     img.style.marginRight = "Auto";
-    //img.setAttribute("style", "margin: 10px 10px 10px 10px")
-    //img.style.margin = "10px 10px 10px 10px";
     
     img.onload = RE.updateHeight;
     
