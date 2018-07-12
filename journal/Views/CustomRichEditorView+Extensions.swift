@@ -201,8 +201,7 @@ extension CustomRichEditorView{
             insertImage,
             clear,
             fonts,
-            done,
-            scrollUp]
+            done]
         
         self.textEditingMenu = [
             backButton,
@@ -267,11 +266,11 @@ extension CustomRichEditorView{
         print(self.html)
         self.resignFirstResponder()
         self.endEditing(true)
-        self.delegate?.richEditorSaveHTML!()
+        self.customDelegate?.richEditorSaveHTML!()
     }
     
     @objc func insertImageAction() {
-        self.delegate?.richEditorInsertImage!()
+        self.customDelegate?.richEditorInsertImage!()
     }
     
     @objc func setFontAction() {
@@ -290,15 +289,10 @@ extension CustomRichEditorView{
         self.insertTouchblock(touchblock: selectedTouchblock)
     }
     
-    @objc func scrollUpAction() {
+    @objc func scrollUpAction() {  // do scrolling when click button, just for test purpose
         let caretY = self.runJS("getAbsoluteCaretYPosition();")
         let pageOffset = self.runJS("getPageOffset();")
         let floatY = Float(caretY) ?? 0
-        print("#############pageOffset: \(caretY)")
-        print("contentInset \(self.webView.scrollView.contentInset)")
-        print("contentOffset \(self.webView.scrollView.contentOffset)")
-        print("contentSize \(self.webView.scrollView.contentSize)")
-        print("")
         //self.webView.scrollView.scrollRectToVisible(CGRect(x: 0, y: CGFloat(floatY), width: 200, height: 50), animated: false)
     }
     
