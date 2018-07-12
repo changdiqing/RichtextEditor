@@ -119,10 +119,11 @@ class CustomRichEditorView: RichEditorView {
         let info = notification.userInfo!
         if let currentKeyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = currentKeyboardFrame.height
+            let toolbarHeight = defaultParameters.UIToobarHeight
             //= currentKeyboardFrame.height - 50
-            keyboardFrame.size.height = keyboardHeight - 50
-
-            let offset = CGPoint(x:0, y: -400.0)
+            //keyboardFrame.size.height = keyboardHeight - 50
+            self.visibleHeight = self.webView.scrollView.frame.height - keyboardHeight - toolbarHeight
+            //let offset = CGPoint(x:0, y: -400.0)
             //self.webView.scrollView.contentOffset = CGPoint(x: 0, y:-400)
         }
     }
