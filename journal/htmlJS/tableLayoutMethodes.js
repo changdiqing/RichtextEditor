@@ -393,9 +393,13 @@ function setEndOfContenteditable()
 
 // return nearest div of selection
 function changeParentFontBy(fontType) {
+    //
     var parentNode = getSelectionParentElement();
-    var style = window.getComputedStyle(parentNode, null).getPropertyValue('font-size');
-    parentNode.style.fontFamily = fontType;
+    if (parentNode == null) {
+        document.execCommand("fontName", false, fontType);
+    } else {
+        parentNode.style.fontFamily = fontType;
+    }
 }
 
 function changeParentFontSizeBy(step) {
@@ -418,14 +422,16 @@ function getSelectionParentElement() {
     var parentEl = null, sel;
     if (window.getSelection) {
         sel = window.getSelection();
-        if (sel.rangeCount) {
+        if ((sel.toString().length == 0) && (sel.rangeCount)) {
             parentEl = sel.getRangeAt(0).commonAncestorContainer;
             if (parentEl.nodeType != 1) {
                 parentEl = parentEl.parentNode;
             }
         }
-    } else if ( (sel = document.selection) && sel.type != "Control") {
+    } else if ( (sel = document.selection) && sel.type != "Control" && sel.toString().length == 0) {
         parentEl = sel.createRange().parentElement();
+    } else {
+        return null  // if selection length longer than content then should edit the selected text not the parent node
     }
     return parentEl;
 }

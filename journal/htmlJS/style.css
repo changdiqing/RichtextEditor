@@ -172,7 +172,7 @@ div.steppingStone {
     z-index: 90;
     
 }
-
+/*
 .touchblockResizeCover {
     position:absolute;
     top: 0;
@@ -184,7 +184,8 @@ div.steppingStone {
     
     background-color: white;
 }
-/*
+ */
+
 .touchblock > div.touchblockResizeCover {
     position:absolute;
     top: 0;
@@ -208,7 +209,7 @@ div.steppingStone {
     min-height: 50px;
     background-color: white;
 }
-*/
+
 .touchblock > div.touchblockBGICover {
     position:absolute;
     top: 0;
@@ -218,7 +219,21 @@ div.steppingStone {
     z-index: 0;
     display: block;
     /* background image display setting */
-    background-color: DodgerBlue;
+    background-color: #6D7993;
+    background-size: cover;
+    background-position: center center;
+}
+
+.floatingTouchblock > div.touchblockBGICover {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: block;
+    /* background image display setting */
+    background-color: #DCB239;
     background-size: cover;
     background-position: center center;
 }
@@ -233,19 +248,7 @@ div.steppingStone {
     display: block;
 }
 
-.floatingTouchblock > div.touchblockBGICover {
-    position:absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    display: block;
-    /* background image display setting */
-    background-color: red;
-    background-size: cover;
-    background-position: center center;
-}
+
 
 .floatingTouchblock > div.touchblockContentCover {
     position:absolute;
