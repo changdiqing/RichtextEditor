@@ -489,7 +489,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         if visiblePosition + lineHeight > CGFloat(visibleHeight) {
             // Visible caret position goes further than our bounds
             //offset = CGPoint(x: 0, y: (visiblePosition + lineHeight) - scrollView.bounds.height + scrollView.contentOffset.y)
-            offset = CGPoint(x: 0, y: (visiblePosition + lineHeight) - CGFloat(visibleHeight) + scrollView.contentOffset.y)
+            offset = CGPoint(x: 0, y: visiblePosition - CGFloat(visibleHeight) + scrollView.contentOffset.y)
         } else if visiblePosition < 0 {
             // Visible caret position is above what is currently visible
             var amount = scrollView.contentOffset.y + visiblePosition

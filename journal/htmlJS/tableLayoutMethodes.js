@@ -246,8 +246,6 @@ function method_touchEndFunction(e){
             javaScriptCallToSwift.showTouchblockMenu();
         }
     }
-    
-    
     e.preventDefault();
 }
 
