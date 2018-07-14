@@ -15,6 +15,13 @@ extension CustomRichEditorView{
             }
         }
     }
+    
+    //MARK: private Methods
+    
+    public func hasHighlight()-> Bool{
+        return Bool(runJS("hasHightlight();"))!
+    }
+    
     //MARK: new document methods added to RichEditorView
 
     public func getDocElementHtml()-> String {
@@ -84,7 +91,6 @@ extension CustomRichEditorView{
     public func setTouchBlockBackgroundImage(_ url: String, alt: String) {
         runJS("method_changeStartBackgroundImage('\(url)', '\(alt)');")
     }
-    
     @objc public func increaseTextSize() {
         //runJS("RE.prepareInsert();")
         runJS("changeParentFontSizeBy(2);")
@@ -182,9 +188,11 @@ extension CustomRichEditorView{
         let textBigger: UIBarButtonItem = UIBarButtonItem(image: textBiggerImg, style: .done, target: self, action: #selector(self.increaseTextSize))
         let textSmaller: UIBarButtonItem = UIBarButtonItem(image: textSmallerImg, style: .done, target: self, action: #selector(self.decreaseTextSize))
         let inlineTouchblock = UIBarButtonItem(image: inlineImg, style: .done, target: self, action: #selector(insertInlineTouchblockAction))
-        inlineTouchblock.tintColor = UIColor.darkestAlice()
+        inlineTouchblock.tintColor = UIColor.darkerAlice()
+        print("################# darker alice!: \(UIColor.darkerAlice().htmlRGBA)")
         let floatingTouchblock = UIBarButtonItem(image: floatingImg, style: .done, target: self, action: #selector(self.insertFloatTouchblockAction))
-        floatingTouchblock.tintColor = UIColor.lighterRuby()
+        floatingTouchblock.tintColor = UIColor.darkerDaisy()
+        print("################# darker daisy: \(UIColor.darkerDaisy().htmlRGB)")
         
         self.colorMenu.append(backButton)
         for ele in colorList {
@@ -245,8 +253,12 @@ extension CustomRichEditorView{
     }
     
     @objc func setColorAction(sender: UIBarButtonItem) {
-        //self.setTextColor(UIColor.red.htmlRGBA)
-        self.setTextColor((sender.tintColor?.htmlRGBA)!)
+        if self.hasHighlight() {
+            self.setTextColor((sender.tintColor?.htmlRGBA)!)
+        } else {
+            self.setEditorBackgroundColor((sender.tintColor?.htmlRGBA)!)
+        }
+        
     }
     
     @objc func backButtonAction() {
@@ -311,15 +323,6 @@ extension CustomRichEditorView{
         let myHeight = self.webView.scrollView.contentSize.height
         var contentInset:UIEdgeInsets = self.webView.scrollView.contentInset
         contentInset.bottom = contentOffset.y
-        //self.webView.scrollView.contentInset = contentInset
-        //self.webView.scrollView.scrollIndicatorInsets = contentInset
-        //self.webView.scrollView.setContentOffset(contentOffset, animated: false)
-        //self.webView.scrollView.contentSize = CGSize(width: myFrame.size.width, height: myHeight)
-//        print("##################################contentOffset \(self.webView.scrollView.contentOffset)")
-//        print("####################################contentSize \(self.webView.scrollView.contentSize)")
-//        print("##########################################frame \(self.webView.scrollView.frame)")
-//        print("###################################contentInset \(self.webView.scrollView.contentInset)")
-//        print("###########################adjustedContentInset \(self.webView.scrollView.adjustedContentInset)")
     }
     
     @objc func showTypeSettingKeyboard() {

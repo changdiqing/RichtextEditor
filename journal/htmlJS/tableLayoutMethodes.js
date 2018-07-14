@@ -17,6 +17,19 @@ function initNewDomPos() {
     newDom.id = "0"
 }
 
+function hasHightlight() {
+    var sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.toString().length !== 0) {
+            return true
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control" && sel.toString().length !== 0) {
+        return true
+    }
+    return false  // if selection length longer than content then should edit the selected text not the parent node
+}
+
 function setJustifyFull() {
     document.execCommand('justifyFull', false, null);
 };
