@@ -78,6 +78,7 @@
 		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
 		9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */; };
 		9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */; };
+		9BC0B3D320FA8883000354A8 /* WechatIMG156.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9BC0B3D220FA8881000354A8 /* WechatIMG156.jpeg */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
 		9BDF12CE20E01F44009D89E3 /* jquery-3.3.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */; };
@@ -206,6 +207,7 @@
 		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
 		9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
 		9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
+		9BC0B3D220FA8881000354A8 /* WechatIMG156.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG156.jpeg; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
 		9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.3.1.min.js"; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				9BD4D2751FD1F688007620F4 /* Views */,
 				9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */,
 				9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */,
+				9BC0B3D220FA8881000354A8 /* WechatIMG156.jpeg */,
 				9B4A78541FAA1519000F39FC /* Main.storyboard */,
 				9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */,
 				9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */,
@@ -608,6 +611,7 @@
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
 				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
+				9BC0B3D320FA8883000354A8 /* WechatIMG156.jpeg in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,

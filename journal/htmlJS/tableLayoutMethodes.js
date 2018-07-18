@@ -489,8 +489,8 @@ function updateImgSrcs(docDirectory) {
     while (img = allImg[i++])
     {
         var pathArray = img.src.split('/');
-        if (pathArray[pathArray.length-2] == "Documents") {
-            img.src = docDirectory.concat(pathArray[pathArray.length-1]);
+        if (pathArray[pathArray.length-3] == "Documents") {
+            img.src = docDirectory.concat(pathArray[pathArray.length-2] + "/" + pathArray[pathArray.length-1]);
         }
         
     }
