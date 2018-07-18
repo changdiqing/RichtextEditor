@@ -34,17 +34,30 @@ class DivMokupSets {
     ]
     
     static let divBorderList:[mokupItem] = [
-        mokupItem(name: "No Border", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
-        mokupItem(name: "Black Solid", coverImage: UIImage(named: "border")!, jsCommand: "4px solid"),
-        mokupItem(name: "Black Dotted", coverImage: UIImage(named: "border")!, jsCommand: "4px dotted"),
-        mokupItem(name: "Black Dashed", coverImage: UIImage(named: "border")!, jsCommand: "4px dashed"),
-        mokupItem(name: "Black Double", coverImage: UIImage(named: "border")!, jsCommand: "6px double"),
-        mokupItem(name: "DarkKhaki Groove", coverImage: UIImage(named: "border")!, jsCommand: "6px groove"),
-        mokupItem(name: "DarkSlateGray Ridge", coverImage: UIImage(named: "border")!, jsCommand: "6px ridge"),
-        mokupItem(name: "Tan Inset", coverImage: UIImage(named: "border")!, jsCommand: "6px inset"),
-        mokupItem(name: "DarkRed Outset", coverImage: UIImage(named: "border")!, jsCommand: "6px outset")
+        mokupItem(name: "No Border", coverImage: UIImage(named: "Noborder")!, jsCommand: "4px none"),
+        mokupItem(name: "Solid", coverImage: UIImage(named: "border1")!, jsCommand: "4px solid"),
+        mokupItem(name: "Dotted", coverImage: UIImage(named: "border2")!, jsCommand: "4px dotted"),
+        mokupItem(name: "Dashed", coverImage: UIImage(named: "border3")!, jsCommand: "4px dashed"),
+        mokupItem(name: "Double", coverImage: UIImage(named: "border4")!, jsCommand: "6px double"),
+        mokupItem(name: "Groove", coverImage: UIImage(named: "border5")!, jsCommand: "6px groove"),
+        mokupItem(name: "Ridge", coverImage: UIImage(named: "border6")!, jsCommand: "6px ridge"),
+        mokupItem(name: "Inset", coverImage: UIImage(named: "border7")!, jsCommand: "6px inset"),
+        mokupItem(name: "Outset", coverImage: UIImage(named: "border8")!, jsCommand: "6px outset")
 
     ]
+
+//    static let divBorderList:[mokupItem] = [
+//        mokupItem(name: "No Border", coverImage: UIImage(named: "border")!, jsCommand: "4px none"),
+//        mokupItem(name: "Black Solid", coverImage: UIImage(named: "border")!, jsCommand: "4px solid"),
+//        mokupItem(name: "Black Dotted", coverImage: UIImage(named: "border")!, jsCommand: "4px dotted"),
+//        mokupItem(name: "Black Dashed", coverImage: UIImage(named: "border")!, jsCommand: "4px dashed"),
+//        mokupItem(name: "Black Double", coverImage: UIImage(named: "border")!, jsCommand: "6px double"),
+//        mokupItem(name: "DarkKhaki Groove", coverImage: UIImage(named: "border")!, jsCommand: "6px groove"),
+//        mokupItem(name: "DarkSlateGray Ridge", coverImage: UIImage(named: "border")!, jsCommand: "6px ridge"),
+//        mokupItem(name: "Tan Inset", coverImage: UIImage(named: "border")!, jsCommand: "6px inset"),
+//        mokupItem(name: "DarkRed Outset", coverImage: UIImage(named: "border")!, jsCommand: "6px outset")
+//
+//    ]
     
     static let divFontsList:[mokupItem] = [
         

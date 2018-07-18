@@ -287,7 +287,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
         
         //let data = image.mediumQualityJPEGNSData
-        let data = jpegImage(image: image, maxSize: 300000)
+        let data = jpegImage(image: image, maxSize: 600000)
         do
         {
             try data?.write(to: filepath, options: Data.WritingOptions.atomic)
