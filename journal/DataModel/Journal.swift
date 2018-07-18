@@ -19,6 +19,8 @@ class Journal: NSObject, NSCoding {
     var html: String
     var photo: UIImage?
     var month: Date?
+    var id: UUID?
+    
     static var DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL: URL = DocumentsDirectory.appendingPathComponent("journals")
     
@@ -26,14 +28,16 @@ class Journal: NSObject, NSCoding {
         static let html = "html"
         static let photo = "photo"
         static let month = "month"
+        static let id = "id"
     }
     
     //MARK: Initialization
     
-    init(html: String, photo: UIImage?, month: Date?) {
+    init(html: String, photo: UIImage?, month: Date?, id: UUID?) {
         self.html = html
         self.photo = photo
         self.month = month
+        self.id = id
     }
     
     //MARK: NSCoding
@@ -42,6 +46,7 @@ class Journal: NSObject, NSCoding {
         aCoder.encode(html, forKey: PropertyKey.html)
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(month, forKey: PropertyKey.month)
+        aCoder.encode(id, forKey: PropertyKey.id)
     }
     
     required convenience init ?(coder aDecoder: NSCoder) {
@@ -53,8 +58,9 @@ class Journal: NSObject, NSCoding {
         // Because photo is an optional property of Journal, just use conditional cast
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         let month = aDecoder.decodeObject(forKey: PropertyKey.month) as? Date
+        let id = aDecoder.decodeObject(forKey: PropertyKey.id) as? UUID
         // Month
-        self.init(html: html, photo: photo, month: month)
+        self.init(html: html, photo: photo, month: month, id: id)
     }
     
 }

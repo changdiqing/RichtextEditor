@@ -167,24 +167,13 @@ div.steppingStone {
     left: 20px;
     height: 100px;
     width: 100px;
+    max-width: 100%;
+    max-height: 400px;
     min-width: 100px;
     min-height: 50px;
     z-index: 90;
     
 }
-/*
-.touchblockResizeCover {
-    position:absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 95;
-    opacity: 0.5;
-    
-    background-color: white;
-}
- */
 
 .touchblock > div.touchblockResizeCover {
     position:absolute;
@@ -246,6 +235,7 @@ div.steppingStone {
     bottom: 0;
     z-index: 1;
     display: block;
+    padding: 4px;
 }
 
 
@@ -259,7 +249,6 @@ div.steppingStone {
     z-index: 1;
     display: block;
     padding: 4px;
-    /* background image display setting */
 }
 
 .touchblockMoveCover {

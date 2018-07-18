@@ -39,10 +39,10 @@ class JournalCollectionViewController: UICollectionViewController {
         // Navigation bar
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        UIFont.familyNames.forEach({ familyName in
-            let fontNames = UIFont.fontNames(forFamilyName: familyName)
-            print(familyName, fontNames)
-        })
+//        UIFont.familyNames.forEach({ familyName in
+//            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+//            print(familyName, fontNames)
+//        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -191,26 +191,21 @@ class JournalCollectionViewController: UICollectionViewController {
         
     }
     
-    
     //MARK: Actions
     
     @IBAction func unwindToJournalList(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? JournalViewController, let journal = sourceViewController.journal {
-            var sectionToReload = 0
+            var sectionToReload:Int = 0
             if let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first{
                 // Delete existed journal
+                sectionToReload = selectedIndexPath.section
                 myJournals[selectedIndexPath.section].remove(at: selectedIndexPath.item)
                 collectionView?.deleteItems(at: [selectedIndexPath])
-                sectionToReload = selectedIndexPath.section
+                
             }
             self.addToJournals(myJournal: journal)
-            let indexSet1: IndexSet = [sectionToReload]
-            let indexSet2: IndexSet = [0]
-//        let sectionToReload = 0
-//        let indexSet: IndexSet = [sectionToReload]
-            self.collectionView?.reloadSections(indexSet1)
-            self.collectionView?.reloadSections(indexSet2)
-        
+            let indexSet: IndexSet = [0,sectionToReload]  // 0 stands for header
+            self.collectionView?.reloadSections(indexSet)
         }
         self.collectionView?.reloadData()
     }
@@ -255,25 +250,50 @@ class JournalCollectionViewController: UICollectionViewController {
         self.saveJournals()
         //collectionView?.reloadData()
     }
-//    private func getJournalIndex(indexPath: IndexPath) -> Int {
-//        var sumSections: Int = 0
-//        for i in (0 ..< indexPath.section) {
-//            let itemsInSection = self.collectionView?.numberOfItems(inSection: i)
-//            sumSections = sumSections + itemsInSection!
-//        }
-//        let journalIndex: Int  = sumSections + indexPath.item
-//        return journalIndex
-//    }
+    
+    private func removeImagesByJournalIDs(IDs: [String]){
+        let fileManager = FileManager.default
+        let imgDir = ImageHandler.getDocumentsDirectory()
+        print(IDs)
+        
+        for id in IDs {
+            let filepath = imgDir.appendingPathComponent(id)
+            print(filepath)
+            do {
+                try fileManager.removeItem(at: filepath)
+                print("I think this is removed..... \(filepath)")
+            }
+            catch let error as NSError {
+                print("Ooops! Something went wrong: \(error)")
+            }
+        }
+        
+        do {
+            let fileURLs = try fileManager.contentsOfDirectory(at: imgDir, includingPropertiesForKeys: nil)
+            print(fileURLs.count)
+            // process files
+        } catch {
+            print("Error while enumerating files \(imgDir.path): \(error.localizedDescription)")
+        }
+        
+    }
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
-
-        //print("this is selectedIndexPaths: \(selectedIndexPaths)")
+        var IDs = [String]()
         
+        // Remove selected journals and their saved images
         let reversedIndexes = selectedIndexPaths.sorted(by: { $0.row > $1.row })
-        for index in reversedIndexes {self.myJournals[index.section].remove(at: index.row)}
+        for index in reversedIndexes {
+            if let id = self.myJournals[index.section][index.row].id {IDs.append(id.uuidString)}  // if this journal has id then add its id to id set
+            self.myJournals[index.section].remove(at: index.row)
+        }
+        self.removeImagesByJournalIDs(IDs: IDs)
+        
+        // Remove selected journals from collection view
         self.collectionView!.deleteItems(at: selectedIndexPaths as [IndexPath])
         
+        // Remove empty sections
         let indexSet = NSMutableIndexSet()
         for month in self.myJournals.reversed() {
             if month.isEmpty {
@@ -282,13 +302,15 @@ class JournalCollectionViewController: UICollectionViewController {
                 indexSet.add(myIndex)
             }
         }
-        self.collectionView?.deleteSections(indexSet as IndexSet)
+        self.collectionView?.deleteSections(indexSet as IndexSet)  // remove the empty sections
+        
+        // Update databank
         self.saveJournals()
     }
     
 }
 
-    // Extension
+// Extension
 
 extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
     
