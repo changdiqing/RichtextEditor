@@ -16,16 +16,6 @@ function initNewDomPos() {
     newDom.style.top = initTop + "px";
     newDom.id = "0"
 }
-function getWidth() {
-    document.getElementById('demo').innerHTML = "1234";
-    return Math.max(
-                    document.body.scrollWidth,
-                    document.documentElement.scrollWidth,
-                    document.body.offsetWidth,
-                    document.documentElement.offsetWidth,
-                    document.documentElement.clientWidth
-                    );
-}
 
 function hasHightlight() {
     var sel;
@@ -510,8 +500,8 @@ function updateImgSrcs(docDirectory) {
         var imgurl = touchsurface[i].style.backgroundImage;
         var bi = imgurl.slice(4, -1).replace(/"/g, '');
                                              var pathArray = bi.split('/');
-                                             if (pathArray[pathArray.length-2] == "Documents") {
-                                             imgurl = docDirectory.concat(pathArray[pathArray.length-1]);
+                                             if (pathArray[pathArray.length-3] == "Documents") {
+                                             imgurl = docDirectory.concat(pathArray[pathArray.length-2] + "/" + pathArray[pathArray.length-1]);
                                              touchsurface[i].style.backgroundImage = "url(" + imgurl + ")";
                                              }
                                              

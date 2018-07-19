@@ -139,12 +139,11 @@ div.vLine {
     left: 20px;
     height: 100px;
     width: 100px;
-    max-width: 100%;
+    max-width: 94%;
     max-height: 400px;
     min-width: 100px;
     min-height: 50px;
     z-index: 90;
-    
 }
 
 .touchblock > div.touchblockResizeCover {

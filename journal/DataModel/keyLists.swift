@@ -23,6 +23,7 @@ struct mokupItem {
 
 class DivMokupSets {
     static let divFilterList:[mokupItem] = [
+        mokupItem(name: "No Filter", coverImage: UIImage(named: "Nofilter")!, jsCommand: "none"),
         mokupItem(name: "Blur", coverImage: UIImage(named: "filter1")!, jsCommand: "blur(3px)"),
         mokupItem(name: "Black white", coverImage: UIImage(named: "filter2")!, jsCommand: "grayscale(100%)"),
         mokupItem(name: "Overexpose", coverImage: UIImage(named: "filter3")!, jsCommand: "contrast(200%) brightness(150%)"),

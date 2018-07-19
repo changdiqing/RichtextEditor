@@ -427,7 +427,8 @@ RE.setBlockquote = function() {
 // new method added by Diqing 27.03.2018
 
 RE.appendHTML = function(html) {
-    RE.editor.insertAdjacentHTML( 'beforeend', html);  // afterbegin
+    //RE.editor.insertAdjacentHTML( 'beforeend', html);  // afterbegin
+    document.getElementsByTagName("BODY")[0].insertAdjacentHTML( 'beforeend', html);  // Test, Diqing 19.07.2018
 };
 
 RE.insertHTML = function(html) {
