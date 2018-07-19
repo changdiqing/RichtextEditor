@@ -484,6 +484,11 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         let cursorHeight = lineHeight - 4
         let visiblePosition = CGFloat(relativeCaretYPosition)
         var offset: CGPoint?
+        
+        print("here starts monitoring")
+        print(visiblePosition)
+        print(visibleHeight)
+        print(scrollView.contentOffset.y)
 
         //if visiblePosition + cursorHeight > scrollView.bounds.size.height {
         if visiblePosition + lineHeight > CGFloat(visibleHeight) {
@@ -496,6 +501,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
         }
+        print(offset)
         
         if let offset = offset {
             scrollView.setContentOffset(offset, animated: true)

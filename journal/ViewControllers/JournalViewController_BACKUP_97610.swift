@@ -71,8 +71,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 editorView.webView.loadRequest(request)
             }
         }
-        print("webview width: \(self.editorView.webView.frame)")
-        print("scrollview width: \(self.editorView.webView.scrollView.frame)")
+        
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
 
@@ -329,7 +328,11 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         }
         
         //let data = image.mediumQualityJPEGNSData
-        let data = jpegImage(image: myImage!, maxSize: 600000)
+<<<<<<< HEAD
+        let data = jpegImage(image: image, maxSize: 600000)
+=======
+        let data = jpegImage(image: myImage!, maxSize: 300000)
+>>>>>>> journal_chang
         do
         {
             try data?.write(to: imgPath, options: Data.WritingOptions.atomic)
@@ -437,18 +440,6 @@ extension JournalViewController: RichEditorDelegate {
         self.editorView.initTouchblockCovers()
         let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
         self.editorView.updateImgSrcs(docDirectory)
-        let browserWidth = runJS("document.getElementById('editor').scrollWidth;")
-        print(browserWidth)
-        let bodyScrollWidth = runJS("document.body.scrollWidth;")
-        print(bodyScrollWidth)
-        let docScrollWidth = runJS("document.documentElement.scrollWidth;")
-        print(docScrollWidth)
-        let bodyOffsetWidth = runJS("document.body.offsetWidth;")
-        print(bodyOffsetWidth)
-        let docOffsetWidth = runJS("document.documentElement.offsetWidth;")
-        print(docOffsetWidth)
-        let docClientWidth = runJS("document.documentElement.clientWidth;")
-        print(docClientWidth)
     }
     
     func richEditorInsertImage() {

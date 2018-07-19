@@ -24,11 +24,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     var indexFile: String = "index2"
     
     private var isContentMode: Bool = true
-    private var isCreatingJournal: Bool = false
     private let contentModeIcon = #imageLiteral(resourceName: "editMode")
     private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
 
-    
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,26 +51,17 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
-            if journal.id == nil {
-                print("journal id is nil!!!!")
-                journal.id = NSUUID() as UUID  // in case of an old version journal with id==nil, create an id
-                print(journal.id)
-            }
-        } else {  //empty, add new journal and create a unique journal ID
-            isCreatingJournal = true
-            let newJournalID = NSUUID() as UUID
-            journal = Journal(html: "", photo: nil, month: nil, id: newJournalID)  // create an empty journal but with id, because we need this for saving temp images
-            print("my id is !!!!! \(journal?.id)")
+
+        } else {//empty, add new journal
             
-            // if self.journal == nil there must be a selected template, load the template.
+            
             if let filePath = Bundle.main.path(forResource: self.indexFile, ofType: "html"){
                 let url = URL(fileURLWithPath: filePath, isDirectory: false)
                 let request = URLRequest(url: url)
                 editorView.webView.loadRequest(request)
             }
         }
-        print("webview width: \(self.editorView.webView.frame)")
-        print("scrollview width: \(self.editorView.webView.scrollView.frame)")
+        
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
 
@@ -125,15 +114,12 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else {
                 photo = UIImage(named: "layoutMode")
             }
-            
-            //let formatter = DateFormatter()
-            //formatter.dateFormat = "yyyy/MM/dd"
-            //var date = formatter.date(from: "2018/05/02")
-            let date = Date()
             let html = self.editorView.getDocElementHtml()
-            journal?.html = html
-            journal?.photo = photo
-            journal?.month = date
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            var date = formatter.date(from: "2018/05/02")
+            date = Date()
+            journal = Journal(html: html, photo: photo, month: date)
             return
         }
         
@@ -171,19 +157,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        let fileManager = FileManager.default
-        let imgDir = ImageHandler.getDocumentsDirectory()
-        if isCreatingJournal {
-            let filepath = imgDir.appendingPathComponent((journal?.id?.uuidString)!)
-            print(filepath)
-            do {
-                try fileManager.removeItem(at: filepath)
-                print("I think this is removed..... \(filepath)")
-            }
-            catch let error as NSError {
-                print("Ooops! Something went wrong: \(error)")
-            }
-        }
         
         let isPresentingInAddJournalMode = presentingViewController is UINavigationController
         
@@ -309,31 +282,16 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
         let imageName = "\(dateFormatter.string(from: Date())).png"
-        var myImage: UIImage?
+        
         // get save path of image file
-        
-        let journalPath = ImageHandler.getDocumentsDirectory().appendingPathComponent((journal?.id?.uuidString)!)
-        print(journalPath)
-        do {
-            try FileManager.default.createDirectory(atPath: journalPath.path, withIntermediateDirectories: true, attributes: nil)
-        } catch let error as NSError {
-            NSLog("Unable to create directory \(error.debugDescription)")
-        }
-        
-        let imgPath = journalPath.appendingPathComponent(imageName)
-        print("this is my file path ############ \(imgPath)")
-        if image.updateImageOrientionUpSide() != nil {
-            myImage = image.updateImageOrientionUpSide()
-        } else {
-            myImage = image
-        }
+        let filepath = ImageHandler.getDocumentsDirectory().appendingPathComponent(imageName)
         
         //let data = image.mediumQualityJPEGNSData
-        let data = jpegImage(image: myImage!, maxSize: 600000)
+        let data = jpegImage(image: image, maxSize: 600000)
         do
         {
-            try data?.write(to: imgPath, options: Data.WritingOptions.atomic)
-            return imgPath.absoluteString  // if succeeds then return the url of saved image
+            try data?.write(to: filepath, options: Data.WritingOptions.atomic)
+            return filepath.absoluteString  // if succeeds then return the url of saved image
         }
         catch
         {
@@ -351,8 +309,11 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         if isFullSize {
             let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
             imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
+            print(webViewFrame.origin)
+            print(stringHeight)
             let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
             webView.frame = myFrame
+            print("myFrame  \(myFrame)")
             UIGraphicsBeginImageContextWithOptions(CGSize(width: webView.scrollView.contentSize.width, height: imageHeight!), false, 0)
             
         } else {
@@ -437,18 +398,6 @@ extension JournalViewController: RichEditorDelegate {
         self.editorView.initTouchblockCovers()
         let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
         self.editorView.updateImgSrcs(docDirectory)
-        let browserWidth = runJS("document.getElementById('editor').scrollWidth;")
-        print(browserWidth)
-        let bodyScrollWidth = runJS("document.body.scrollWidth;")
-        print(bodyScrollWidth)
-        let docScrollWidth = runJS("document.documentElement.scrollWidth;")
-        print(docScrollWidth)
-        let bodyOffsetWidth = runJS("document.body.offsetWidth;")
-        print(bodyOffsetWidth)
-        let docOffsetWidth = runJS("document.documentElement.offsetWidth;")
-        print(docOffsetWidth)
-        let docClientWidth = runJS("document.documentElement.clientWidth;")
-        print(docClientWidth)
     }
     
     func richEditorInsertImage() {
@@ -479,6 +428,7 @@ extension JournalViewController: RichEditorDelegate {
 
 extension JournalViewController: CustomRichEditorDelegate {
     func richEditorSetFont() {
+        print("###################################")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let fontsTableNaviController = storyBoard.instantiateViewController(withIdentifier: "FontsTableNaviController") as! UINavigationController
         self.present(fontsTableNaviController, animated:true, completion:nil)
