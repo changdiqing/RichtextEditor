@@ -53,7 +53,7 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
         filterWidth.constant = 0
         borderCollectionWidth.constant = 0
         fontsWidth.constant = 0
-        filterCellWidth = screenWidth/4
+        filterCellWidth = screenWidth/3.5
         
         // add pappetTextView and color keyboard (custom input view)
         pappetTextView = UITextView(frame: CGRect.zero)
