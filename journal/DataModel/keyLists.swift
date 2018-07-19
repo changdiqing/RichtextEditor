@@ -23,15 +23,26 @@ struct mokupItem {
 
 class DivMokupSets {
     static let divFilterList:[mokupItem] = [
-        mokupItem(name: "Blur", coverImage: UIImage(named: "layouts")!, jsCommand: "blur(3px)"),
-        mokupItem(name: "Black and white", coverImage: UIImage(named: "layouts")!, jsCommand: "grayscale(100%)"),
-        mokupItem(name: "Overexposed", coverImage: UIImage(named: "layouts")!, jsCommand: "contrast(200%) brightness(150%)"),
-        mokupItem(name: "Sepia", coverImage: UIImage(named: "layouts")!, jsCommand: "sepia(100%)"),
-        mokupItem(name: "Saturate", coverImage: UIImage(named: "layouts")!, jsCommand: "saturate(5)"),
-        mokupItem(name: "Transluzent", coverImage: UIImage(named: "layouts")!, jsCommand: "opacity(30%)"),
-        mokupItem(name: "Hue Rotate", coverImage: UIImage(named: "layouts")!, jsCommand: "hue-rotate(90deg)"),
-        mokupItem(name: "Invert", coverImage: UIImage(named: "layouts")!, jsCommand: "invert(100%)")
+        mokupItem(name: "Blur", coverImage: UIImage(named: "filter1")!, jsCommand: "blur(3px)"),
+        mokupItem(name: "Black white", coverImage: UIImage(named: "filter2")!, jsCommand: "grayscale(100%)"),
+        mokupItem(name: "Overexpose", coverImage: UIImage(named: "filter3")!, jsCommand: "contrast(200%) brightness(150%)"),
+        mokupItem(name: "Sepia", coverImage: UIImage(named: "filter4")!, jsCommand: "sepia(100%)"),
+        mokupItem(name: "Saturate", coverImage: UIImage(named: "filter5")!, jsCommand: "saturate(5)"),
+        mokupItem(name: "Transluzent", coverImage: UIImage(named: "filter6")!, jsCommand: "opacity(30%)"),
+        mokupItem(name: "Hue", coverImage: UIImage(named: "filter7")!, jsCommand: "hue-rotate(90deg)"),
+        mokupItem(name: "Invert", coverImage: UIImage(named: "filter8")!, jsCommand: "invert(100%)")
     ]
+    
+//    static let divFilterList:[mokupItem] = [
+//        mokupItem(name: "Blur", coverImage: UIImage(named: "layouts")!, jsCommand: "blur(3px)"),
+//        mokupItem(name: "Black and white", coverImage: UIImage(named: "layouts")!, jsCommand: "grayscale(100%)"),
+//        mokupItem(name: "Overexposed", coverImage: UIImage(named: "layouts")!, jsCommand: "contrast(200%) brightness(150%)"),
+//        mokupItem(name: "Sepia", coverImage: UIImage(named: "layouts")!, jsCommand: "sepia(100%)"),
+//        mokupItem(name: "Saturate", coverImage: UIImage(named: "layouts")!, jsCommand: "saturate(5)"),
+//        mokupItem(name: "Transluzent", coverImage: UIImage(named: "layouts")!, jsCommand: "opacity(30%)"),
+//        mokupItem(name: "Hue Rotate", coverImage: UIImage(named: "layouts")!, jsCommand: "hue-rotate(90deg)"),
+//        mokupItem(name: "Invert", coverImage: UIImage(named: "layouts")!, jsCommand: "invert(100%)")
+//    ]
     
     static let divBorderList:[mokupItem] = [
         mokupItem(name: "No Border", coverImage: UIImage(named: "Noborder")!, jsCommand: "4px none"),
