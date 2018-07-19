@@ -71,7 +71,10 @@ div.vLine {
     -webkit-user-select: auto !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position:relative;
-    padding: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 25px;
+    padding-bottom: 25px;
     min-height: 700px;
     height: 100%;
     width: 94%;
