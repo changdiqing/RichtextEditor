@@ -94,7 +94,7 @@ extension TemplateCollectionViewController : UICollectionViewDelegateFlowLayout 
             itemSize = collectionView.sa_safeAreaFrame.height
         }
         let itemWidth = itemSize / 2.3
-        let itemHeight = itemSize / 2.3
+        let itemHeight = itemWidth / 9 * 16
         return CGSize(width: itemWidth, height: itemHeight)
     }
     

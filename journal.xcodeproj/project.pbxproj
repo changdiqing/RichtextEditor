@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1204252D21063BA500B8A21C /* template2.html in Resources */ = {isa = PBXBuildFile; fileRef = 1204252C21063BA500B8A21C /* template2.html */; };
+		1204252F21063E6100B8A21C /* Bridge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1204252E21063E6100B8A21C /* Bridge.jpg */; };
 		1207956820C1707200B215E9 /* UIViewController+SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207956720C1707200B215E9 /* UIViewController+SafeAreaInsets.swift */; };
 		1207956A20C172E400B215E9 /* UIView+SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207956920C172E400B215E9 /* UIView+SafeAreaInsets.swift */; };
 		1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */; };
@@ -125,6 +127,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1204252C21063BA500B8A21C /* template2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template2.html; sourceTree = "<group>"; };
+		1204252E21063E6100B8A21C /* Bridge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bridge.jpg; sourceTree = "<group>"; };
 		1207956720C1707200B215E9 /* UIViewController+SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SafeAreaInsets.swift"; sourceTree = "<group>"; };
 		1207956920C172E400B215E9 /* UIView+SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SafeAreaInsets.swift"; sourceTree = "<group>"; };
 		1248ACF22077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				1255A58120754F1600D401FD /* index1.html */,
 				1255A58020754F1600D401FD /* index2.html */,
 				12F6A09420C9BF4C006F2FB9 /* template1.html */,
+				1204252C21063BA500B8A21C /* template2.html */,
+				1204252E21063E6100B8A21C /* Bridge.jpg */,
 				1255A57F20754F1600D401FD /* index3.html */,
 				9B8684C1200BA05500A82C7E /* normalize.css */,
 				9B3B86051FDC98210019B943 /* index.html */,
@@ -621,10 +627,12 @@
 				9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */,
 				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
+				1204252F21063E6100B8A21C /* Bridge.jpg in Resources */,
 				9B224F2F20816707003D4A0A /* CustomKeyboardCell.xib in Resources */,
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
 				9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
+				1204252D21063BA500B8A21C /* template2.html in Resources */,
 				12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
 				9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */,

@@ -34,7 +34,7 @@ class Templates {
     static let templateList:[htmlFile] = [
         htmlFile(htmlFileName: "index1", image: UIImage(named: "Aqua"),isAppended: false),
         htmlFile(htmlFileName: "index2", image: UIImage(named: "Darkgreen"),isAppended: false),
-        htmlFile(htmlFileName: "index3", image: UIImage(named: "Mediumpurple"), isAppended: false),
-        htmlFile(htmlFileName: "template1", image: UIImage(named: "Mediumpurple"), isAppended: false)
+        htmlFile(htmlFileName: "template2", image: UIImage(named: "template2"), isAppended: false),
+        htmlFile(htmlFileName: "template1", image: UIImage(named: "template1"), isAppended: false)
     ]
 }
