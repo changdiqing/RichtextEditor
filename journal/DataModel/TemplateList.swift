@@ -25,7 +25,7 @@ struct htmlFile{
 
 class Touchblocks {
     static let list:[htmlFile] = [
-        htmlFile(htmlFileName: "touchBlock2x2", image: UIImage(named: "layout2x2"), isAppended: false),
+        htmlFile(htmlFileName: "touchBlockInline", image: UIImage(named: "layout2x2"), isAppended: false),
         htmlFile(htmlFileName: "touchBlockFloating", image: UIImage(named: "layout2x2"), isAppended: true),
     ]
 }
@@ -35,6 +35,6 @@ class Templates {
         htmlFile(htmlFileName: "index1", image: UIImage(named: "Aqua"),isAppended: false),
         htmlFile(htmlFileName: "index2", image: UIImage(named: "Darkgreen"),isAppended: false),
         htmlFile(htmlFileName: "index3", image: UIImage(named: "Mediumpurple"), isAppended: false),
-        htmlFile(htmlFileName: "template1", image: UIImage(named: "Mediumpurple"), isAppended: false)
+        htmlFile(htmlFileName: "tpl_chiemsee", image: UIImage(named: "Mediumpurple"), isAppended: false)
     ]
 }

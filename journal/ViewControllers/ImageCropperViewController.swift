@@ -41,7 +41,6 @@ class ImageCropperViewController: UIViewController{
     var cropArea:CGRect{
         get{
             let factor = max(imageView.image!.size.width/imageView.frame.width, imageView.image!.size.height/imageView.frame.height)
-            let scale = 1/scrollView.zoomScale
             let scale2 = imageView.image!.scale
             let imageFrame = imageView.imageFrame()
             
@@ -54,9 +53,6 @@ class ImageCropperViewController: UIViewController{
             return CGRect(x: x, y: y, width: width, height: height)
         }
     }
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,17 +147,6 @@ class ImageCropperViewController: UIViewController{
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         //tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        
-        // init puppetTextView
-        attachTextView = UITextView(frame: CGRect.zero)
-        attachTextView.alpha = 0.0
-        self.view.addSubview(attachTextView)
-        
-        let keyboardFrame = CGRect(x: 0, y: 0, width: 300, height: 271)
-        let keyboardView = ShareKeyboard(frame: keyboardFrame)
-        keyboardView.delegate = self
-        self.attachTextView.inputView = keyboardView
-        self.attachTextView.reloadInputViews()
     }
     
     //Calls this function when the tap is recognized.
@@ -195,6 +180,4 @@ extension ImageCropperViewController: KeyboardDelegate {
         }
         self.dismissKeyboard()
     }
-    
-    
 }

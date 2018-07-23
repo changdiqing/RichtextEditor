@@ -54,15 +54,13 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
             if journal.id == nil {
-                print("journal id is nil!!!!")
                 journal.id = NSUUID() as UUID  // in case of an old version journal with id==nil, create an id
-                print(journal.id)
             }
         } else {  //empty, add new journal and create a unique journal ID
             isCreatingJournal = true
             let newJournalID = NSUUID() as UUID
             journal = Journal(html: "", photo: nil, month: nil, id: newJournalID)  // create an empty journal but with id, because we need this for saving temp images
-            print("my id is !!!!! \(journal?.id)")
+            print("my id is !!!!! \(String(describing: journal?.id))")
             
             // if self.journal == nil there must be a selected template, load the template.
             if let filePath = Bundle.main.path(forResource: self.indexFile, ofType: "html"){
@@ -245,7 +243,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             } else if sender.identifier == "cancel"{
                 print("Canceled")
             } else {
-                fatalError("Unexpected segue identifier: \(sender.identifier)")
+                fatalError("Unexpected segue identifier: \(String(describing: sender.identifier))")
             }
             touchBlockClicked = false // reset touchBlockClicked
         }
@@ -275,6 +273,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                         self.present(imagePickerController, animated: true, completion: nil)
                     }
             } else if sender.identifier == "setBorder"{
+                print("set border")
                 if let selectedBorder = sourceViewController.selectedBorder{
                     self.editorView.setImgBorder(selectedBorder.jsCommand)
                 }
@@ -294,7 +293,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                     self.editorView.setImgFilter(selectedFilter.jsCommand)
                 }
             } else {
-                fatalError("Unexpected segue identifier: \(sender.identifier)")
+                fatalError("Unexpected segue identifier: \(String(describing: sender.identifier))")
             }
             touchBlockClicked = false // reset touchBlockClicked
         }
@@ -432,23 +431,9 @@ extension JournalViewController: JavaScriptFuncProtocol {
 
 extension JournalViewController: RichEditorDelegate {
     func richEditorDidLoad(_ editor: RichEditorView) {
-        // for testing, always load the same demo
-        //self.localizeImgsOfTemplate()
         self.editorView.initTouchblockCovers()
         let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
         self.editorView.updateImgSrcs(docDirectory)
-        let browserWidth = runJS("document.getElementById('editor').scrollWidth;")
-        print(browserWidth)
-        let bodyScrollWidth = runJS("document.body.scrollWidth;")
-        print(bodyScrollWidth)
-        let docScrollWidth = runJS("document.documentElement.scrollWidth;")
-        print(docScrollWidth)
-        let bodyOffsetWidth = runJS("document.body.offsetWidth;")
-        print(bodyOffsetWidth)
-        let docOffsetWidth = runJS("document.documentElement.offsetWidth;")
-        print(docOffsetWidth)
-        let docClientWidth = runJS("document.documentElement.clientWidth;")
-        print(docClientWidth)
     }
     
     func richEditorInsertImage() {
