@@ -25,7 +25,7 @@ struct htmlFile{
 
 class Touchblocks {
     static let list:[htmlFile] = [
-        htmlFile(htmlFileName: "touchBlock2x2", image: UIImage(named: "layout2x2"), isAppended: false),
+        htmlFile(htmlFileName: "touchBlockInline", image: UIImage(named: "layout2x2"), isAppended: false),
         htmlFile(htmlFileName: "touchBlockFloating", image: UIImage(named: "layout2x2"), isAppended: true),
     ]
 }

@@ -37,6 +37,10 @@ extension CustomRichEditorView{
     }
     //MARK: Touchblock Methods
     
+    public func bodyAppendHtml(_ html: String) {
+        runJS("RE.appendHTML('\(html)');")
+    }
+    
     public func initNewDomPos() {
         runJS("initNewDomPos();")
     }
@@ -107,7 +111,6 @@ extension CustomRichEditorView{
     }
     
     public func enterLayoutMode() {
-        let testResults2 = runJS("testGetCaretData2()")
         runJS("method_enterLayoutMode();")
     }
     
@@ -152,7 +155,6 @@ extension CustomRichEditorView{
         let icontoolbarInsertImage = UIImage(named: "toolbarInsertImage")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconclear = UIImage(named: "clear")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let iconpallete = UIImage(named: "pallete")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
-        let iconLayout = UIImage(named: "layouts")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let alignRightImg = UIImage(named: "alignRight")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let alignLeftImg = UIImage(named: "alignLeft")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
         let alignMiddleImg = UIImage(named: "alignMiddle")?.imageResize(sizeChange: CGSize(width: buttonHeight, height: buttonHeight))
@@ -175,7 +177,6 @@ extension CustomRichEditorView{
         let touchblock: UIBarButtonItem = UIBarButtonItem(image: touchblockImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: .done, target: self, action: #selector(self.showTouchblockKeyboard))
         let fonts: UIBarButtonItem = UIBarButtonItem(title: "Fonts", style: .done, target: self, action: #selector(self.setFontAction))
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        let scrollUp: UIBarButtonItem = UIBarButtonItem(title: "scrollUp", style: .done, target: self, action: #selector(self.scrollUpAction))
         
         let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.backButtonAction))
         let alignRight: UIBarButtonItem = UIBarButtonItem(image: alignRightImg, style: .done, target: self, action: #selector(self.alignRight))
@@ -299,28 +300,15 @@ extension CustomRichEditorView{
         self.insertTouchblock(touchblock: selectedTouchblock)
     }
     
-    @objc func scrollUpAction() {  // do scrolling when click button, just for test purpose
-        let caretY = self.runJS("getAbsoluteCaretYPosition();")
-        let pageOffset = self.runJS("getPageOffset();")
-        let floatY = Float(caretY) ?? 0
-        //self.webView.scrollView.scrollRectToVisible(CGRect(x: 0, y: CGFloat(floatY), width: 200, height: 50), animated: false)
-    }
-    
     @objc func clear() {
         self.removeFormat()
     }
     
     @objc func fontsAction() {
-        let contentOffset = self.webView.scrollView.contentOffset
-        self.resignFirstResponder()
         self.endEditing(true)
         DispatchQueue.main.async {
             self.attachTextView.becomeFirstResponder()
         }
-        let myFrame = self.webView.scrollView.frame
-        let myHeight = self.webView.scrollView.contentSize.height
-        var contentInset:UIEdgeInsets = self.webView.scrollView.contentInset
-        contentInset.bottom = contentOffset.y
     }
     
     @objc func showTypeSettingKeyboard() {
@@ -343,6 +331,7 @@ extension CustomRichEditorView{
             do {
                 let htmlStr = try String(contentsOfFile: path)
                 if isAppended {
+                    //self.bodyAppendHtml(htmlStr)
                     self.appendHTML(htmlStr)
                     self.initNewDomPos()
                 } else {

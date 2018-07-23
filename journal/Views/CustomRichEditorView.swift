@@ -139,12 +139,6 @@ extension CustomRichEditorView: KeyboardDelegate {
 }
 
 extension CustomRichEditorView: UITextViewDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        lastOffset = self.webView.scrollView.contentOffset
-        //originalFrame = self.frame
-        //self.webView.scrollView.frame = CGRect(x: 0, y: 0, width: originalFrame!.width, height: originalFrame!.height - 400)
-        return true
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.attachTextView?.resignFirstResponder()
         //if let oFrame = originalFrame {

@@ -80,7 +80,7 @@ div.vLine {
     width: 94%;
     overflow: auto;
     display: block;
-    font-family: 'HelveticaNeue';
+    font-family: sans-serif;
     color:#666666;
     font-size: 12pt;
 }

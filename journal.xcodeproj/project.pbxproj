@@ -17,7 +17,7 @@
 		1255A58320754F1600D401FD /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58020754F1600D401FD /* index2.html */; };
 		1255A58420754F1600D401FD /* index1.html in Resources */ = {isa = PBXBuildFile; fileRef = 1255A58120754F1600D401FD /* index1.html */; };
 		125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E22392073F76100E8CE47 /* sectionHeaderView.swift */; };
-		12F6A09520C9BF4D006F2FB9 /* template1.html in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09420C9BF4C006F2FB9 /* template1.html */; };
+		12F6A09520C9BF4D006F2FB9 /* tpl_chiemsee.html in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09420C9BF4C006F2FB9 /* tpl_chiemsee.html */; };
 		12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */; };
 		12F6A09D20C9C53C006F2FB9 /* Chiemsee2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */; };
 		83F4BE43ACE49761C0AE569C /* Pods_journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CD1E60973C581D99BCDB32 /* Pods_journal.framework */; };
@@ -26,23 +26,20 @@
 		9B0CF0CE204AA666007203CB /* RichtextEditor.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B0CF0C7204AA666007203CB /* RichtextEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B0CF0D4204AB6C7007203CB /* JournalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */; };
 		9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */; };
-		9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */; };
-		9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */; };
 		9B224F13207BE895003D4A0A /* defaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0E207BE895003D4A0A /* defaultColors.swift */; };
-		9B224F14207BE895003D4A0A /* ColorKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */; };
-		9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F10207BE895003D4A0A /* Keyboard.xib */; };
-		9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */; };
-		9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */; };
 		9B224F1D207EA59F003D4A0A /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */; };
 		9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */; };
 		9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */; };
 		9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */; };
 		9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */; };
-		9B224F2E20816707003D4A0A /* CustomKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */; };
-		9B224F2F20816707003D4A0A /* CustomKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */; };
 		9B224F3120827886003D4A0A /* CustomRichEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B224F3020827886003D4A0A /* CustomRichEditorView.swift */; };
 		9B2C6D7C204BF6E500123AD5 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C6D7B204BF6E500123AD5 /* Journal.swift */; };
 		9B2D70D81FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */; };
+		9B329D2F210642BC0025EAEB /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B329D2E210642BB0025EAEB /* ImageEditMenuController.swift */; };
+		9B329D32210643010025EAEB /* ColorKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B329D30210643000025EAEB /* ColorKeyboardCell.xib */; };
+		9B329D33210643010025EAEB /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B329D31210643000025EAEB /* Keyboard.xib */; };
+		9B329D36210643190025EAEB /* ColorKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B329D34210643180025EAEB /* ColorKeyboard.swift */; };
+		9B329D37210643190025EAEB /* ColorKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B329D35210643180025EAEB /* ColorKeyboardCell.swift */; };
 		9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */; };
 		9B3B86041FDB4A290019B943 /* JavaScriptFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */; };
 		9B3B86061FDC98220019B943 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B86051FDC98210019B943 /* index.html */; };
@@ -57,18 +54,14 @@
 		9B4A78691FAA151A000F39FC /* journalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78681FAA151A000F39FC /* journalTests.swift */; };
 		9B4A78741FAA151A000F39FC /* journalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A78731FAA151A000F39FC /* journalUITests.swift */; };
 		9B4EBAA120D2FE8B00006E67 /* FontsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBAA020D2FE8B00006E67 /* FontsTableViewCell.swift */; };
-		9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */; };
 		9B53BFD320153F4900648A32 /* rich_editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFCF20153F4800648A32 /* rich_editor.js */; };
-		9B53BFD420153F4900648A32 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD020153F4800648A32 /* index.js */; };
-		9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B53BFD82015424A00648A32 /* touchsurfaceTable.html */; };
 		9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */; };
 		9B604E4D208FB8AF00406A61 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */; };
 		9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B604E4C208FB8AF00406A61 /* CropAreaView.swift */; };
 		9B636A2A1FCA0603003AFF26 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */; };
 		9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */; };
 		9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099622021122000F0121B /* tableLayoutMethodes.js */; };
-		9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlock2x2.html */; };
-		9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099662029C20B00F0121B /* touchBlock3x3.html */; };
+		9B8099652024EC4100F0121B /* touchBlockInline.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099642024EC4100F0121B /* touchBlockInline.html */; };
 		9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B8099682029C21E00F0121B /* touchBlockFloating.html */; };
 		9B8684C0200BA01800A82C7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684BF200BA01800A82C7E /* style.css */; };
 		9B8684C2200BA05500A82C7E /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B8684C1200BA05500A82C7E /* normalize.css */; };
@@ -77,8 +70,6 @@
 		9B8918F01FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */; };
 		9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */; };
 		9B999C8E2038461F00F14891 /* keyLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B999C8D2038461F00F14891 /* keyLists.swift */; };
-		9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */; };
-		9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */; };
 		9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */; };
 		9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */; };
 		9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */; };
@@ -137,7 +128,7 @@
 		1255A58020754F1600D401FD /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		1255A58120754F1600D401FD /* index1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index1.html; sourceTree = "<group>"; };
 		125E22392073F76100E8CE47 /* sectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionHeaderView.swift; sourceTree = "<group>"; };
-		12F6A09420C9BF4C006F2FB9 /* template1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template1.html; sourceTree = "<group>"; };
+		12F6A09420C9BF4C006F2FB9 /* tpl_chiemsee.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tpl_chiemsee.html; sourceTree = "<group>"; };
 		12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee1.jpg; sourceTree = "<group>"; };
 		12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee2.jpg; sourceTree = "<group>"; };
 		335716C33BD9CE5728DF9C55 /* Pods_journalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_journalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,23 +141,20 @@
 		9B0CF0CB204AA666007203CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B0CF0D3204AB6C7007203CB /* JournalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCollectionViewController.swift; sourceTree = "<group>"; };
-		9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorKeyboardCell.xib; sourceTree = "<group>"; };
-		9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboardCell.swift; sourceTree = "<group>"; };
 		9B224F0E207BE895003D4A0A /* defaultColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultColors.swift; sourceTree = "<group>"; };
-		9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboard.swift; sourceTree = "<group>"; };
-		9B224F10207BE895003D4A0A /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
-		9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchblockKeyboard.xib; sourceTree = "<group>"; };
-		9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareKeyboard.swift; sourceTree = "<group>"; };
 		9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesettingKeyboard.swift; sourceTree = "<group>"; };
 		9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypesettingKeyboard.xib; sourceTree = "<group>"; };
 		9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSettingKeyboardCell.swift; sourceTree = "<group>"; };
 		9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSettingKeyboardCell.xib; sourceTree = "<group>"; };
-		9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardCell.swift; sourceTree = "<group>"; };
-		9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomKeyboardCell.xib; sourceTree = "<group>"; };
 		9B224F3020827886003D4A0A /* CustomRichEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRichEditorView.swift; sourceTree = "<group>"; };
 		9B2C6D7B204BF6E500123AD5 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		9B2D70D71FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomRichEditorView+Extensions.swift"; sourceTree = "<group>"; };
+		9B329D2E210642BB0025EAEB /* ImageEditMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
+		9B329D30210643000025EAEB /* ColorKeyboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorKeyboardCell.xib; sourceTree = "<group>"; };
+		9B329D31210643000025EAEB /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
+		9B329D34210643180025EAEB /* ColorKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboard.swift; sourceTree = "<group>"; };
+		9B329D35210643180025EAEB /* ColorKeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKeyboardCell.swift; sourceTree = "<group>"; };
 		9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFuncProtocol.swift; sourceTree = "<group>"; };
 		9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptFunc.swift; sourceTree = "<group>"; };
 		9B3B86051FDC98210019B943 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -187,18 +175,14 @@
 		9B4A78731FAA151A000F39FC /* journalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = journalUITests.swift; sourceTree = "<group>"; };
 		9B4A78751FAA151A000F39FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B4EBAA020D2FE8B00006E67 /* FontsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsTableViewCell.swift; sourceTree = "<group>"; };
-		9B53BFCE20153F4800648A32 /* jquery-3.2.1.slim.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-3.2.1.slim.min.js"; sourceTree = "<group>"; };
 		9B53BFCF20153F4800648A32 /* rich_editor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = rich_editor.js; sourceTree = "<group>"; };
-		9B53BFD020153F4800648A32 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		9B53BFD82015424A00648A32 /* touchsurfaceTable.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchsurfaceTable.html; sourceTree = "<group>"; };
 		9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropperViewController.swift; sourceTree = "<group>"; };
 		9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		9B604E4C208FB8AF00406A61 /* CropAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropAreaView.swift; sourceTree = "<group>"; };
 		9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCardTableViewController.swift; sourceTree = "<group>"; };
 		9B8099622021122000F0121B /* tableLayoutMethodes.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tableLayoutMethodes.js; sourceTree = "<group>"; };
-		9B8099642024EC4100F0121B /* touchBlock2x2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock2x2.html; sourceTree = "<group>"; };
-		9B8099662029C20B00F0121B /* touchBlock3x3.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlock3x3.html; sourceTree = "<group>"; };
+		9B8099642024EC4100F0121B /* touchBlockInline.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlockInline.html; sourceTree = "<group>"; };
 		9B8099682029C21E00F0121B /* touchBlockFloating.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchBlockFloating.html; sourceTree = "<group>"; };
 		9B8684BF200BA01800A82C7E /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		9B8684C1200BA05500A82C7E /* normalize.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
@@ -207,8 +191,6 @@
 		9B8918EF1FE4618D0021B0C4 /* JournalLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B999C8D2038461F00F14891 /* keyLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyLists.swift; sourceTree = "<group>"; };
-		9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = touchblockObsolete.html; sourceTree = "<group>"; };
-		9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditMenuController.swift; sourceTree = "<group>"; };
 		9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Chiemsee3.jpg; sourceTree = "<group>"; };
 		9BD4D26C1FCCBAFA007620F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultParameters.swift; sourceTree = "<group>"; };
@@ -259,6 +241,9 @@
 		12F6A09E20C9C547006F2FB9 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
+				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
+				9BB9EFFF20CD77EF006A4732 /* Chiemsee3.jpg */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -285,6 +270,7 @@
 		9B3B86001FDB49D40019B943 /* htmlJS */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				12F6A09E20C9C547006F2FB9 /* Photos */,
 				12F6A09920C9C53C006F2FB9 /* Chiemsee1.jpg */,
 				12F6A09A20C9C53C006F2FB9 /* Chiemsee2.jpg */,
@@ -303,13 +289,13 @@
 				1255A57F20754F1600D401FD /* index3.html */,
 				9B8684C1200BA05500A82C7E /* normalize.css */,
 				9B3B86051FDC98210019B943 /* index.html */,
+=======
+				9B721D802104DB4200B70330 /* JS */,
+				9B721D7F2104DABA00B70330 /* CSS */,
+				9B721D7E2104D9EF00B70330 /* Templates */,
+>>>>>>> journal_chang
 				9B3B86011FDB4A090019B943 /* JavaScriptFuncProtocol.swift */,
 				9B3B86031FDB4A290019B943 /* JavaScriptFunc.swift */,
-				9B53BFD82015424A00648A32 /* touchsurfaceTable.html */,
-				9B8099642024EC4100F0121B /* touchBlock2x2.html */,
-				9BA2EBE920C4818E003A4CC9 /* touchblockObsolete.html */,
-				9B8099682029C21E00F0121B /* touchBlockFloating.html */,
-				9B8099662029C20B00F0121B /* touchBlock3x3.html */,
 			);
 			path = htmlJS;
 			sourceTree = "<group>";
@@ -369,13 +355,11 @@
 				9BD4D2741FD1F667007620F4 /* ViewControllers */,
 				9BD4D2751FD1F688007620F4 /* Views */,
 				9BD4D26E1FCCBBF5007620F4 /* defaultParameters.swift */,
-				9B224F2D20816707003D4A0A /* CustomKeyboardCell.xib */,
+				9B329D30210643000025EAEB /* ColorKeyboardCell.xib */,
+				9B329D31210643000025EAEB /* Keyboard.xib */,
 				9B4A78541FAA1519000F39FC /* Main.storyboard */,
 				9B224F29208165D1003D4A0A /* TypeSettingKeyboardCell.xib */,
-				9B224F18207EA48E003D4A0A /* TouchblockKeyboard.xib */,
 				9B224F2620815204003D4A0A /* TypesettingKeyboard.xib */,
-				9B224F0C207BE894003D4A0A /* ColorKeyboardCell.xib */,
-				9B224F10207BE895003D4A0A /* Keyboard.xib */,
 				9B4A785C1FAA1519000F39FC /* LaunchScreen.storyboard */,
 				9B4A785A1FAA1519000F39FC /* Assets.xcassets */,
 				9B4A785F1FAA1519000F39FC /* Info.plist */,
@@ -401,12 +385,46 @@
 			path = journalUITests;
 			sourceTree = "<group>";
 		};
+		9B721D7E2104D9EF00B70330 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				9B3B86051FDC98210019B943 /* index.html */,
+				1255A58020754F1600D401FD /* index2.html */,
+				1255A58120754F1600D401FD /* index1.html */,
+				1255A57F20754F1600D401FD /* index3.html */,
+				12F6A09420C9BF4C006F2FB9 /* tpl_chiemsee.html */,
+				9B8099642024EC4100F0121B /* touchBlockInline.html */,
+				9B8099682029C21E00F0121B /* touchBlockFloating.html */,
+				12F6A09E20C9C547006F2FB9 /* Photos */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		9B721D7F2104DABA00B70330 /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				9B8684C1200BA05500A82C7E /* normalize.css */,
+				9B8684BF200BA01800A82C7E /* style.css */,
+			);
+			path = CSS;
+			sourceTree = "<group>";
+		};
+		9B721D802104DB4200B70330 /* JS */ = {
+			isa = PBXGroup;
+			children = (
+				9B53BFCF20153F4800648A32 /* rich_editor.js */,
+				9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */,
+				9B8099622021122000F0121B /* tableLayoutMethodes.js */,
+			);
+			path = JS;
+			sourceTree = "<group>";
+		};
 		9BD4D2741FD1F667007620F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				9B604E49208FB8A000406A61 /* ImageCropperViewController.swift */,
+				9B329D2E210642BB0025EAEB /* ImageEditMenuController.swift */,
 				9B636A2B1FCA12E6003AFF26 /* ColorCardTableViewController.swift */,
-				9BA2EBEB20C6FBCB003A4CC9 /* ImageEditMenuController.swift */,
 				1248ACF82077EB6A000C1881 /* TemplateCollectionViewController.swift */,
 				9B4A78521FAA1519000F39FC /* JournalViewController.swift */,
 				9B0CF0D5204AB9F9007203CB /* JournalCollectionViewController.swift */,
@@ -420,13 +438,9 @@
 			children = (
 				9B604E4C208FB8AF00406A61 /* CropAreaView.swift */,
 				9B604E4B208FB8AF00406A61 /* UIImageView+Extensions.swift */,
-				9B224F0D207BE895003D4A0A /* ColorKeyboardCell.swift */,
-				9B224F2C20816707003D4A0A /* CustomKeyboardCell.swift */,
 				9B224F28208165D1003D4A0A /* TypeSettingKeyboardCell.swift */,
-				9B224F1A207EA4AD003D4A0A /* ShareKeyboard.swift */,
 				9B224F24208150A5003D4A0A /* TypesettingKeyboard.swift */,
 				9B224F1C207EA59F003D4A0A /* KeyboardDelegate.swift */,
-				9B224F0F207BE895003D4A0A /* ColorKeyboard.swift */,
 				9B636A291FCA0603003AFF26 /* UIColor+Extensions.swift */,
 				9B999C8B203844DD00F14891 /* CustomCollectionViewCell.swift */,
 				9B88F60D20663F3C0047ED2C /* colorCardTableViewCell.swift */,
@@ -441,6 +455,8 @@
 				1207956720C1707200B215E9 /* UIViewController+SafeAreaInsets.swift */,
 				1207956920C172E400B215E9 /* UIView+SafeAreaInsets.swift */,
 				9BF4E31320F00A22004D598D /* FontsBigTableViewCell.swift */,
+				9B329D34210643180025EAEB /* ColorKeyboard.swift */,
+				9B329D35210643180025EAEB /* ColorKeyboardCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -606,33 +622,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B329D33210643010025EAEB /* Keyboard.xib in Resources */,
 				1255A58320754F1600D401FD /* index2.html in Resources */,
 				9B8099632021122000F0121B /* tableLayoutMethodes.js in Resources */,
-				9B224F15207BE895003D4A0A /* Keyboard.xib in Resources */,
 				9BDF12CE20E01F44009D89E3 /* jquery-3.3.1.min.js in Resources */,
-				9B224F19207EA48E003D4A0A /* TouchblockKeyboard.xib in Resources */,
 				9B4A785E1FAA1519000F39FC /* LaunchScreen.storyboard in Resources */,
 				9B224F2B208165D1003D4A0A /* TypeSettingKeyboardCell.xib in Resources */,
-				9B8099652024EC4100F0121B /* touchBlock2x2.html in Resources */,
+				9B8099652024EC4100F0121B /* touchBlockInline.html in Resources */,
 				9B8684C0200BA01800A82C7E /* style.css in Resources */,
 				9B3B86061FDC98220019B943 /* index.html in Resources */,
 				9B53BFD320153F4900648A32 /* rich_editor.js in Resources */,
-				9B53BFD92015424A00648A32 /* touchsurfaceTable.html in Resources */,
-				12F6A09520C9BF4D006F2FB9 /* template1.html in Resources */,
+				12F6A09520C9BF4D006F2FB9 /* tpl_chiemsee.html in Resources */,
 				9B224F2720815204003D4A0A /* TypesettingKeyboard.xib in Resources */,
-				9B53BFD420153F4900648A32 /* index.js in Resources */,
 				12F6A09D20C9C53C006F2FB9 /* Chiemsee2.jpg in Resources */,
 				1255A58220754F1600D401FD /* index3.html in Resources */,
-				9B8099672029C20B00F0121B /* touchBlock3x3.html in Resources */,
-				9B224F11207BE895003D4A0A /* ColorKeyboardCell.xib in Resources */,
-				9B53BFD220153F4900648A32 /* jquery-3.2.1.slim.min.js in Resources */,
 				9B4A785B1FAA1519000F39FC /* Assets.xcassets in Resources */,
+<<<<<<< HEAD
 				1204252F21063E6100B8A21C /* Bridge.jpg in Resources */,
 				9B224F2F20816707003D4A0A /* CustomKeyboardCell.xib in Resources */,
+=======
+>>>>>>> journal_chang
 				9B4A78561FAA1519000F39FC /* Main.storyboard in Resources */,
-				9BA2EBEA20C4818E003A4CC9 /* touchblockObsolete.html in Resources */,
 				9B8684C2200BA05500A82C7E /* normalize.css in Resources */,
+<<<<<<< HEAD
 				1204252D21063BA500B8A21C /* template2.html in Resources */,
+=======
+				9B329D32210643010025EAEB /* ColorKeyboardCell.xib in Resources */,
+>>>>>>> journal_chang
 				12F6A09C20C9C53C006F2FB9 /* Chiemsee1.jpg in Resources */,
 				9B8099692029C21E00F0121B /* touchBlockFloating.html in Resources */,
 				9BB9F00020CD77F0006A4732 /* Chiemsee3.jpg in Resources */,
@@ -819,10 +835,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B224F12207BE895003D4A0A /* ColorKeyboardCell.swift in Sources */,
 				1248ACF92077EB6A000C1881 /* TemplateCollectionViewController.swift in Sources */,
 				9BF4E31220F00983004D598D /* FontsTableViewController.swift in Sources */,
-				9B224F14207BE895003D4A0A /* ColorKeyboard.swift in Sources */,
 				9B224F25208150A5003D4A0A /* TypesettingKeyboard.swift in Sources */,
 				9BF4E31420F00A22004D598D /* FontsBigTableViewCell.swift in Sources */,
 				9B88F60E20663F3C0047ED2C /* colorCardTableViewCell.swift in Sources */,
@@ -830,20 +844,21 @@
 				9BD4D26D1FCCBAFA007620F4 /* UIImage+Extensions.swift in Sources */,
 				9B0CF0D6204AB9F9007203CB /* JournalCollectionViewController.swift in Sources */,
 				9B43498A1FD1FAF00009E899 /* CoreDataHandler.swift in Sources */,
-				9BA2EBEC20C6FBCB003A4CC9 /* ImageEditMenuController.swift in Sources */,
 				9B224F2A208165D1003D4A0A /* TypeSettingKeyboardCell.swift in Sources */,
 				9B636A2C1FCA12E6003AFF26 /* ColorCardTableViewController.swift in Sources */,
 				9B3B86021FDB4A090019B943 /* JavaScriptFuncProtocol.swift in Sources */,
 				9B636A2A1FCA0603003AFF26 /* UIColor+Extensions.swift in Sources */,
+				9B329D37210643190025EAEB /* ColorKeyboardCell.swift in Sources */,
 				9B999C8C203844DD00F14891 /* CustomCollectionViewCell.swift in Sources */,
 				9B4A78531FAA1519000F39FC /* JournalViewController.swift in Sources */,
 				9B604E4D208FB8AF00406A61 /* UIImageView+Extensions.swift in Sources */,
 				1207956A20C172E400B215E9 /* UIView+SafeAreaInsets.swift in Sources */,
-				9B224F1B207EA4AD003D4A0A /* ShareKeyboard.swift in Sources */,
 				9B604E4E208FB8AF00406A61 /* CropAreaView.swift in Sources */,
+				9B329D2F210642BC0025EAEB /* ImageEditMenuController.swift in Sources */,
 				1207956820C1707200B215E9 /* UIViewController+SafeAreaInsets.swift in Sources */,
 				1248ACF32077E8D4000C1881 /* TemplateLayoutCollectionViewCell.swift in Sources */,
 				9B2D70D81FAB52EB009BD89A /* CustomRichEditorView+Extensions.swift in Sources */,
+				9B329D36210643190025EAEB /* ColorKeyboard.swift in Sources */,
 				9BD4D26F1FCCBBF5007620F4 /* defaultParameters.swift in Sources */,
 				125E223A2073F76100E8CE47 /* sectionHeaderView.swift in Sources */,
 				9B43498C1FD1FAF30009E899 /* ImageHandler.swift in Sources */,
@@ -859,7 +874,6 @@
 				9B604E4A208FB8A000406A61 /* ImageCropperViewController.swift in Sources */,
 				9B88F60C206592C50047ED2C /* FilliingEffects.swift in Sources */,
 				9B999C8E2038461F00F14891 /* keyLists.swift in Sources */,
-				9B224F2E20816707003D4A0A /* CustomKeyboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

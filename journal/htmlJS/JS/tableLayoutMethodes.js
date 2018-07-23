@@ -10,11 +10,18 @@ touchBlockFocused = false;
 var hLine = document.getElementById("hLine");
 var vLine = document.getElementById("vLine");
 
-function initNewDomPos() {
+function bodyInsertHTML(html) {
+    alert("something");
+    //RE.editor.insertAdjacentHTML( 'beforeend', html);  // afterbegin
+    document.getElementsByTagName("BODY")[0].insertAdjacentHTML( 'beforeend', html);  // Test, Diqing 19.07.2018
+    
+};
+
+function initNewDomPos() {  // For now only work to initial floatingTouchBlock's position
     var newDom = document.getElementById("1");
     var initTop = window.pageYOffset+200;
     newDom.style.top = initTop + "px";
-    newDom.id = "0"
+    newDom.id = "0";
 }
 
 function hasHightlight() {
@@ -237,7 +244,6 @@ function method_touchMoveFloating(e){
 }
 
 function method_touchEndFunction(e){
-    
     if(pressed) {
         pressed = false;
         if(isResized){
@@ -404,30 +410,56 @@ function setEndOfContenteditable()
     }
 }
 
-// return nearest div of selection
 function changeParentFontBy(fontType) {
-    //
     var parentNode = getSelectionParentElement();
-    if (parentNode == null) {
+    if (parentNode == null) {  // null: only edit highlighted text
         document.execCommand("fontName", false, fontType);
-    } else {
+    } else {  // !=null: no highlighted text, edit whole parent node where cursor is placed
         parentNode.style.fontFamily = fontType;
     }
 }
 
 function changeParentFontSizeBy(step) {
-    var parentNode = getSelectionParentElement();
-    //var parentDiv = upTo(parentNode, "div");
-    
-    //var fontSize = parentNode.style.fontSize;
-    var style = window.getComputedStyle(parentNode, null).getPropertyValue('font-size');
-    //document.getElementById("demo").innerHTML = parentNode + "  " + style
-    //alert(fontSize);
+    var highlightDoms = getHighlightDoms();  // all Doms that contain highlighted text
+    var style = window.getComputedStyle(highlightDoms[0], null).getPropertyValue('font-size');
     var sizeInFloat = parseFloat(style);
     sizeInFloat += step;
-    //if (fontSizeInt<7) {fontSizeInt += 1;}
-    parentNode.style.fontSize = sizeInFloat + "px";
-    parentNode.style.lineHeight = "1.7";
+    for (var i=0, dom; dom = highlightDoms[i]; i++) {
+        dom.style.fontSize = sizeInFloat + "px";
+        dom.style.lineHeight = "1.7";
+    }
+}
+
+
+function changeNodeFontSize(node, step) {  // change node font size by step width, no longer used
+    var style = window.getComputedStyle(node, null).getPropertyValue('font-size');
+    var sizeInFloat = parseFloat(style);
+    sizeInFloat += step;
+    node.style.fontSize = sizeInFloat + "px";
+    node.style.lineHeight = "1.7";
+}
+
+
+function getHighlightDoms() {
+    // get all Doms that contain the highlighted text
+    var allSelected = [];
+    var selection = window.getSelection();
+    var range = selection.getRangeAt(0);
+    var parentEl = range.commonAncestorContainer;
+    if (parentEl.nodeType != 1) {  // if highlight doesn't cover multiple DOMs node type will not be 1
+        allSelected.push(parentEl.parentNode);
+    } else {
+        var allWithinRangeParent =     parentEl.getElementsByTagName("*");
+        for (var i=0, el; el = allWithinRangeParent[i]; i++) {
+            //The second parameter says to include the element
+            //even if it's not fully selected
+            if (selection.containsNode(el, true) ) {
+                allSelected.push(el);
+            }
+        }
+    }
+    //console.log('All selected =', allSelected);
+    return allSelected;
 }
 
 // return parent element of selection
