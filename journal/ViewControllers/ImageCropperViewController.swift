@@ -66,7 +66,6 @@ class ImageCropperViewController: UIViewController{
         let topPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.topViewDidDragged(_:)))
         topPanBar.addGestureRecognizer(topPanGesture)
         
-        initKeyboardView()
         resetCropViews()
 
         if image != nil {
@@ -123,10 +122,23 @@ class ImageCropperViewController: UIViewController{
     // MARK: Actions
     
     @IBAction func shareAction(_ sender: Any) {
-        self.attachTextView.becomeFirstResponder()
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     // MARK: Private Methods
+    @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your jounral has been saved as image to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
     private func resetCropViews(){
         bottomPanToBottom.constant = 0
         sidePanToRight.constant = 0
@@ -138,46 +150,11 @@ class ImageCropperViewController: UIViewController{
         cropAreaToTop.constant = 0
         
     }
-    
-    private func initKeyboardView() {
-        
-        // instantiate a gesture recognizer to allow dismiss keyboard on tap
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        self.attachTextView.resignFirstResponder()
-    }
 
 }
 
 extension ImageCropperViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
-    }
-}
-
-extension ImageCropperViewController: KeyboardDelegate {
-    func keyWasTapped(color: UIColor) {
-        print("key was tapped")
-    }
-    
-    func cutomKeyTapped(keyId: String) {
-        switch keyId {
-        case "iosphoto":
-            //Save it to the camera roll
-            if let image = self.imageView.image {
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            }
-        default:
-            print("share to wechat")
-        }
-        self.dismissKeyboard()
     }
 }
