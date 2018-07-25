@@ -32,8 +32,8 @@ class Touchblocks {
 
 class Templates {
     static let templateList:[htmlFile] = [
-        htmlFile(htmlFileName: "index1", image: UIImage(named: "Aqua"),isAppended: false),
-        htmlFile(htmlFileName: "index2", image: UIImage(named: "Darkgreen"),isAppended: false),
+        htmlFile(htmlFileName: "index1", image: UIImage(named: "templateEmpty"),isAppended: false),
+        htmlFile(htmlFileName: "tpl_homesickness", image: UIImage(named: "template3"),isAppended: false),
         htmlFile(htmlFileName: "tpl_bridge", image: UIImage(named: "template2"), isAppended: false),
         htmlFile(htmlFileName: "tpl_chiemsee", image: UIImage(named: "template1"), isAppended: false)
     ]
