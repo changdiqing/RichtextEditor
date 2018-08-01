@@ -346,20 +346,22 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         let webViewFrame = webView.frame
         
         var imageHeight: CGFloat?
+        let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
+        imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
+        let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
+        webView.frame = myFrame
         
         if isFullSize {
-            let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
-            imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
-            let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
-            webView.frame = myFrame
+//            let stringHeight = runJS("document.getElementById('editor').scrollHeight;")
+//            imageHeight = CGFloat(Float(stringHeight) ?? 0.00)
+//            let myFrame = CGRect(x: webViewFrame.origin.x, y: webViewFrame.origin.y, width: webView.scrollView.contentSize.width, height: imageHeight!)
+//            webView.frame = myFrame
             UIGraphicsBeginImageContextWithOptions(CGSize(width: webView.scrollView.contentSize.width, height: imageHeight!), false, 0)
             
         } else {
-            imageHeight = webViewFrame.height
-            if webViewFrame.width < webViewFrame.height {
-                imageHeight = webViewFrame.width
-            }
-            UIGraphicsBeginImageContextWithOptions(CGSize(width: imageHeight!, height: imageHeight!), false, 0)
+            
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: webView.scrollView.contentSize.width, height: webView.scrollView.contentSize.width), false, 0)
+
             
         }
         
