@@ -291,8 +291,7 @@
 				9BDF12CD20E01F43009D89E3 /* jquery-3.3.1.min.js */,
 				9B53BFCF20153F4800648A32 /* rich_editor.js */,
 			);
-			name = JS;
-			path = "New Group";
+			path = JS;
 			sourceTree = "<group>";
 		};
 		9B329D47210657960025EAEB /* CSS */ = {
@@ -301,8 +300,7 @@
 				9B8684BF200BA01800A82C7E /* style.css */,
 				9B8684C1200BA05500A82C7E /* normalize.css */,
 			);
-			name = CSS;
-			path = "New Group1";
+			path = CSS;
 			sourceTree = "<group>";
 		};
 		9B3B86001FDB49D40019B943 /* htmlJS */ = {
