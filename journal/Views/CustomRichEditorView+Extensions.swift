@@ -37,6 +37,11 @@ extension CustomRichEditorView{
     }
     //MARK: Touchblock Methods
     
+    public func bodySetContentEditable(_ isEditable: Bool) {
+        let value = isEditable ? "true" : "false"
+        runJS("bodySetContentEditable('\(value)');")
+    }
+    
     public func bodyAppendHtml(_ html: String) {
         runJS("RE.appendHTML('\(html)');")
     }
@@ -116,6 +121,10 @@ extension CustomRichEditorView{
     
     public func enterContentMode() {
         runJS("method_enterContentMode();")
+    }
+    
+    public func layoutOnlyImage() {
+        runJS("layoutOnlyImage();")
     }
     
     public func setTouchblockTextOrientationVertical() {

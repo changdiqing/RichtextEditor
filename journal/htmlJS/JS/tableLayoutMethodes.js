@@ -17,6 +17,10 @@ function bodyInsertHTML(html) {
     
 };
 
+function bodySetContentEditable(isEditable) {
+    document.getElementsByTagName("BODY")[0].contentEditable = isEditable;
+}
+
 function initNewDomPos() {  // For now only work to initial floatingTouchBlock's position
     var newDom = document.getElementById("1");
     var initTop = window.pageYOffset+200;
@@ -44,8 +48,6 @@ function setJustifyFull() {
 function setEditorFonts(fontsType) {
     RE.editor.style.fontFamily = fontsType;
 }
-
-
 
 function getImgSrcs() {
     var allImg=document.getElementsByTagName("img"), i=0, img;
@@ -119,6 +121,46 @@ function method_enterLayoutMode() {
     }
 }
 
+// Disable layout of touchblocks by hiding resizing masks,
+// Enable layout of images by addEventListener
+function layoutOnlyImage() {
+    
+    hasSelected = false;  // contentMode can not have any selected div
+    
+    var selCovers = document.querySelectorAll("#thisCover");
+    for (var i = 0; i < selCovers.length ; i++) {
+        selCovers[i].id = "";
+    }
+    
+    var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover");
+    for (var i = 0; i < myMoveCovers.length ; i++) {
+        myMoveCovers[i].style.display= "none";
+    }
+    
+    var myResizeCovers = document.querySelectorAll("div.touchblockResizeCover");
+    for (var i = 0; i < myResizeCovers.length ; i++) {
+        myResizeCovers[i].style.display= "none";
+    }
+    
+    var myImgs = document.querySelectorAll("img:not(#thisCover)");
+    for (var i = 0; i < myImgs.length ; i++) {
+        myImgs[i].addEventListener('touchstart', method_imgTouchStart, false);
+        myImgs[i].addEventListener('touchmove', method_imgMoveFunction, false);
+    }
+}
+
+function method_enterContentMode() {
+    
+    hasSelected = false;  // contentMode can not have any selected div
+    
+    var selCovers = document.querySelectorAll("#thisCover");
+    for (var i = 0; i < selCovers.length ; i++) {
+        selCovers[i].id = "";
+    }
+    
+    removeMasksButThis();
+}
+
 function removeMasksButThis() {
     var myMoveCovers = document.querySelectorAll("div.touchblockMoveCover:not(#thisCover)");
     for (var i = 0; i < myMoveCovers.length ; i++) {
@@ -135,18 +177,6 @@ function removeMasksButThis() {
         myImgs[i].removeEventListener('touchstart', method_imgTouchStart, false);
         myImgs[i].removeEventListener('touchmove', method_imgMoveFunction, false);
     }
-}
-
-function method_enterContentMode() {
-    
-    hasSelected = false;  // contentMode can not have any selected div
-    
-    var selCovers = document.querySelectorAll("#thisCover");
-    for (var i = 0; i < selCovers.length ; i++) {
-        selCovers[i].id = "";
-    }
-    
-    removeMasksButThis();
 }
 
 function method_touchStartFunction(e){

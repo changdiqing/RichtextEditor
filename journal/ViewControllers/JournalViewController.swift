@@ -16,7 +16,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var editorView: CustomRichEditorView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var changeModeButton: UIBarButtonItem!
+    @IBOutlet weak var modeSwitcher: UISegmentedControl!
     
     var journal: Journal?
     var touchBlockClicked: Bool = false
@@ -25,32 +25,32 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     private var isContentMode: Bool = true
     private var isCreatingJournal: Bool = false
-    private let contentModeIcon = #imageLiteral(resourceName: "editMode")
-    private let layoutModeIcon = #imageLiteral(resourceName: "layoutMode")
-
     
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Get selected template
-        
-
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-        
-        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.sourceType = .photoLibrary  // Only allow photos to be picked, not taken.
         imagePickerController.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
+        // Add UISegmentControl action
+        modeSwitcher.addTarget(
+            self,
+            action:
+            #selector(self.onChange),
+            for:.valueChanged)
+        
+        // Set editoView delegate
         editorView.delegate = self as RichEditorDelegate // Diqing Debug 13.03.2017
         editorView.customDelegate = self as CustomRichEditorDelegate
         
+        // Set jsContext
         let jsContext = self.editorView.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         jsContext?.setObject(/*JavaScriptFunc()*/self, forKeyedSubscript: "javaScriptCallToSwift" as (NSCopying & NSObjectProtocol)?)
         
+        // Load selected journal or create new journal from template
         if let journal = journal {
             editorView.webView.loadHTMLString("\(journal.html)", baseURL: Bundle.main.bundleURL)
             if journal.id == nil {
@@ -60,17 +60,14 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
             isCreatingJournal = true
             let newJournalID = NSUUID() as UUID
             journal = Journal(html: "", photo: nil, month: nil, id: newJournalID)  // create an empty journal but with id, because we need this for saving temp images
-            print("my id is !!!!! \(String(describing: journal?.id))")
             
-            // if self.journal == nil there must be a selected template, load the template.
             if let filePath = Bundle.main.path(forResource: self.indexFile, ofType: "html"){
                 let url = URL(fileURLWithPath: filePath, isDirectory: false)
                 let request = URLRequest(url: url)
                 editorView.webView.loadRequest(request)
             }
         }
-        print("webview width: \(self.editorView.webView.frame)")
-        print("scrollview width: \(self.editorView.webView.scrollView.frame)")
+
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
 
@@ -152,21 +149,6 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
 
     
     // MARK: Actions
-    
-    @IBAction func changeModeAction(_ sender: Any) {
-        self.isContentMode = !self.isContentMode
-        if self.isContentMode {
-            self.changeModeButton.image = self.contentModeIcon
-            self.editorView.enterContentMode()
-            self.editorView.isEditingEnabled = true
-            self.editorView.attachKeyboardToolbar()
-        } else {
-            self.changeModeButton.image = self.layoutModeIcon
-            self.editorView.enterLayoutMode()
-            self.editorView.isEditingEnabled = false
-            self.editorView.removeKeyboardToolbar()
-        }
-    }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let fileManager = FileManager.default
@@ -301,6 +283,29 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     // MARK: Private Methods
+    
+    // Triggered when switching modes, detect sender(Normal Image or Block) index and choose action
+    @objc private func onChange(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.editorView.enterContentMode()
+            self.editorView.isEditingEnabled = true
+            self.editorView.attachKeyboardToolbar()
+        case 1:
+            self.editorView.enterLayoutMode()
+            self.editorView.isEditingEnabled = false
+            self.editorView.removeKeyboardToolbar()
+        case 2:
+            self.editorView.layoutOnlyImage()
+            self.editorView.isEditingEnabled = false
+            self.editorView.removeKeyboardToolbar()
+        default:
+            self.editorView.enterContentMode()
+            self.editorView.isEditingEnabled = true
+            self.editorView.attachKeyboardToolbar()
+        }
+    }
     
     private func saveImageAndReturnUrl(image: UIImage) -> String?{
         
