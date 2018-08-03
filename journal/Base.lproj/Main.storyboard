@@ -187,6 +187,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ytr-Mc-M0R">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="exY-h6-Znq">
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="ZaN-dQ-Vf8"/>
@@ -198,21 +199,22 @@
                                     <segue destination="aZm-Ck-CrT" kind="unwind" identifier="saveJournal" unwindAction="unwindToJournalListWithSender:" id="BG7-VR-keh"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="share" id="7VV-ht-b0I">
-                                <connections>
-                                    <segue destination="dMW-j9-RQu" kind="show" identifier="cropImage" id="GbA-rb-OZG"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="editMode" style="plain" id="YO5-iB-QUx">
-                                <connections>
-                                    <action selector="changeModeAction:" destination="BYZ-38-t0r" id="aW9-lH-4Rq"/>
-                                </connections>
+                            <barButtonItem title="Item" style="plain" id="vnT-qa-uOI">
+                                <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mtn-jc-3zb">
+                                    <rect key="frame" x="138" y="7" width="176" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="Normal"/>
+                                        <segment title="Block"/>
+                                        <segment title="Image"/>
+                                    </segments>
+                                </segmentedControl>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="changeModeButton" destination="YO5-iB-QUx" id="RTY-Wo-pOy"/>
                         <outlet property="editorView" destination="ej7-io-UHb" id="jzg-jE-XQB"/>
+                        <outlet property="modeSwitcher" destination="mtn-jc-3zb" id="cWc-hN-65m"/>
                         <outlet property="saveButton" destination="wuz-yi-aSa" id="Eur-Qg-0jd"/>
                         <outlet property="scrollViewHeight" destination="Xop-Bk-FXD" id="uzL-Vc-O3R"/>
                     </connections>
@@ -759,7 +761,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-Vv-G4t">
-                                <rect key="frame" x="320" y="144" width="55" height="479"/>
+                                <rect key="frame" x="320" y="209" width="55" height="414"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCardTableCell" rowHeight="48" id="Cgc-Ub-1ER" customClass="colorCardTableViewCell" customModule="journal" customModuleProvider="target">
@@ -791,7 +793,7 @@
                                 </prototypes>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9q-QO-dWh">
-                                <rect key="frame" x="0.0" y="95" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="114"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9ET-rE-EgN"/>
@@ -810,10 +812,10 @@
                                 </items>
                             </tabBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MMB-kh-892">
-                                <rect key="frame" x="120" y="144" width="100" height="479"/>
+                                <rect key="frame" x="120" y="209" width="100" height="414"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JR-w0-V4q">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                         <state key="normal" title="Color">
                                             <color key="titleShadowColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -822,7 +824,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-lU-2N5">
-                                        <rect key="frame" x="0.0" y="95" width="100" height="384"/>
+                                        <rect key="frame" x="0.0" y="30" width="100" height="384"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Thk-wf-ltg">
@@ -881,7 +883,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I2P-A4-s80">
-                                <rect key="frame" x="0.0" y="144" width="120" height="479"/>
+                                <rect key="frame" x="0.0" y="209" width="120" height="414"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="bsl-B5-WaC"/>
@@ -938,7 +940,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dwp-OU-CZZ">
-                                <rect key="frame" x="220" y="144" width="100" height="479"/>
+                                <rect key="frame" x="220" y="209" width="100" height="414"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="UxN-3y-VKl"/>
@@ -1106,20 +1108,17 @@
         <image name="Bridge.jpg" width="1000" height="691"/>
         <image name="border" width="32" height="32"/>
         <image name="centerImage" width="22" height="21"/>
-        <image name="editMode" width="36" height="36"/>
         <image name="filter-icon-25207" width="37" height="37"/>
         <image name="leftImage" width="22" height="22"/>
         <image name="pallete" width="37" height="37"/>
         <image name="rightImage" width="22" height="22"/>
         <image name="save" width="37" height="37"/>
         <image name="scissor" width="32" height="32"/>
-        <image name="share" width="32" height="32"/>
         <image name="textDirectionHorizontal" width="75" height="75"/>
         <image name="textDirectionVertical" width="75" height="75"/>
         <image name="unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kKl-Mt-VeH"/>
         <segue reference="aKC-kQ-gwu"/>
     </inferredMetricsTieBreakers>
 </document>
