@@ -256,7 +256,8 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setBold();")
     }
     
-    public func italic() {
+    // added @objc to adapt to #selector
+    @objc public func italic() {
         runJS("RE.setItalic();")
     }
     
@@ -269,11 +270,13 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setSuperscript();")
     }
     
-    public func strikethrough() {
+    // added @objc to adapt to #selector
+    @objc public func strikethrough() {
         runJS("RE.setStrikeThrough();")
     }
     
-    public func underline() {
+    // added @objc to adapt to #selector
+    @objc public func underline() {
         runJS("RE.setUnderline();")
     }
     
@@ -311,15 +314,18 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         runJS("RE.setBlockquote()");
     }
     
-    public func alignLeft() {
+    // added @objc to adapt to #selector
+    @objc public func alignLeft() {
         runJS("RE.setJustifyLeft();")
     }
     
-    public func alignCenter() {
+    // added @objc to adapt to #selector
+    @objc public func alignCenter() {
         runJS("RE.setJustifyCenter();")
     }
     
-    public func alignRight() {
+    // added @objc to adapt to #selector
+    @objc public func alignRight() {
         runJS("RE.setJustifyRight();")
     }
     
@@ -481,7 +487,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
         
         // XXX: Maybe find a better way to get the cursor height
         let lineHeight = CGFloat(self.lineHeight)
-        let cursorHeight = lineHeight - 4
+        //let cursorHeight = lineHeight - 4  // deprecated by Diqing
         let visiblePosition = CGFloat(relativeCaretYPosition)
         var offset: CGPoint?
         
@@ -501,7 +507,6 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
         }
-        print(offset)
         
         if let offset = offset {
             scrollView.setContentOffset(offset, animated: true)
@@ -561,7 +566,7 @@ open class RichEditorView: UIView, UIScrollViewDelegate, UIWebViewDelegate, UIGe
             // changed by Diqing Chang, 07.02.2017 to help select end of editor.
             runJS("setEndOfContenteditable()")
         } else {
-            let point = tapRecognizer.location(in: webView)
+            _ = tapRecognizer.location(in: webView)
             //focus(at: point)
         }
     }

@@ -284,7 +284,7 @@ extension CustomRichEditorView{
     @objc func doneButtonAction()
     {
         print(self.html)
-        self.resignFirstResponder()
+        let _=self.resignFirstResponder()
         self.endEditing(true)
         self.customDelegate?.richEditorSaveHTML!()
     }
@@ -337,20 +337,17 @@ extension CustomRichEditorView{
         let fileName = touchblock.htmlFileName
         let isAppended = touchblock.append
         if let path = Bundle.main.path(forResource: fileName, ofType: "html") {
-            do {
-                let htmlStr = try String(contentsOfFile: path)
-                if isAppended {
-                    //self.bodyAppendHtml(htmlStr)
-                    self.appendHTML(htmlStr)
-                    self.initNewDomPos()
-                } else {
-                    self.insertHTML(htmlStr)
-                    //self.appendHTML(htmlStr)
-                }
-                self.initTouchblockCovers()
-                self.enterContentMode()
+            let htmlStr = try! String(contentsOfFile: path)
+            if isAppended {
+                //self.bodyAppendHtml(htmlStr)
+                self.appendHTML(htmlStr)
+                self.initNewDomPos()
+            } else {
+                self.insertHTML(htmlStr)
+                //self.appendHTML(htmlStr)
             }
-            catch {"error: file not found"}
+            self.initTouchblockCovers()
+            self.enterContentMode()
         }
     }
     
