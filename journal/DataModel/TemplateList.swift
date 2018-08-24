@@ -36,6 +36,7 @@ class Templates {
         htmlFile(htmlFileName: "tpl_homesickness", image: UIImage(named: "template3"),isAppended: false),
         htmlFile(htmlFileName: "tpl_bridge", image: UIImage(named: "template2"), isAppended: false),
         htmlFile(htmlFileName: "tpl_chiemsee", image: UIImage(named: "template1"), isAppended: false),
-        htmlFile(htmlFileName: "tpl_developer", image: UIImage(named: "developer"), isAppended: false)
+        htmlFile(htmlFileName: "tpl_developer", image: UIImage(named: "developer"), isAppended: false),
+        htmlFile(htmlFileName: "tpl_guide", image: UIImage(named: "guide"), isAppended: false)
     ]
 }
