@@ -384,7 +384,7 @@ function method_changeStartBackgroundImage(url, alt) {
 };
 
 function mehtod_setStartTextOrientationVertical() {
-    $(start).find('.touchblockContentCover').css("writing-mode", "vertical-lr");
+    $(start).find('.touchblockContentCover').css("writing-mode", "vertical-rl");
 };
 
 function mehtod_setStartTextOrientationHorizon() {
