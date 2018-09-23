@@ -72,6 +72,10 @@ extension CustomRichEditorView{
         let imgSrcs = callJs("getImgSrcs();");
         return imgSrcs
     }
+    
+    public func deleteSelImg() {
+        runJS("method_deleteSelImg();")
+    }
         
     public func setImgFilter(_ filterType: String) {
         runJS("method_setImgFilter('\(filterType)');")

@@ -67,7 +67,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 editorView.webView.loadRequest(request)
             }
         }
-
+        
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
 
@@ -134,13 +134,17 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         switch(segue.identifier ?? "") {
         case "cropImage":
-            guard let imageCropperViewController = segue.destination as? ImageCropperViewController else {
+            guard let destinationController = segue.destination as? ImageCropperViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             if let screenshot = takeUIWebViewScreenShot(webView: self.editorView.webView, isFullSize: true) {
-                imageCropperViewController.image = screenshot
+                destinationController.image = screenshot
             }
-            
+        case "showHelp":
+            guard let destinationController = segue.destination as? HelpTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            destinationController.helpInfo = HelpInfo.journalEditorHelp
         default:
             fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
         }
@@ -151,30 +155,29 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     // MARK: Actions
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        let fileManager = FileManager.default
-        let imgDir = ImageHandler.getDocumentsDirectory()
-        if isCreatingJournal {
-            let filepath = imgDir.appendingPathComponent((journal?.id?.uuidString)!)
-            print(filepath)
-            do {
-                try fileManager.removeItem(at: filepath)
-                print("I think this is removed..... \(filepath)")
-            }
-            catch let error as NSError {
-                print("Ooops! Something went wrong: \(error)")
-            }
-        }
         
-        let isPresentingInAddJournalMode = presentingViewController is UINavigationController
+        let alertController = UIAlertController(title: "End Editing", message: "Do you want to exit without saving?", preferredStyle: .alert)
         
-        if isPresentingInAddJournalMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController {
-            owningNavigationController.popViewController(animated: true)
-        }else {
-            fatalError("The JournalViewController is not inside a navigation controller.")
+        // Create OK button
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            print("Ok button tapped")
+            self.noSaveEditingAction()
+            
         }
+        alertController.addAction(OKAction)
+        
+        // Create Cancel button
+        let cancelAction = UIAlertAction(title: "我先冷静冷静。。", style: .cancel) { (action:UIAlertAction!) in
+            print("End canceled")
+        }
+        alertController.addAction(cancelAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
     }
+    
     
     @IBAction func unwindToRichtextEditor(sender: UIStoryboardSegue) {
         
@@ -268,7 +271,9 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                 self.editorView.setImgFloat("none")
             }  else if sender.identifier == "floatRight" {
                 self.editorView.setImgFloat("right")
-            }else if sender.identifier == "cancel"{
+            } else if sender.identifier == "delete" {
+                self.editorView.removeClickedTouchblock()
+            } else if sender.identifier == "cancel"{
                 print("Canceled")
             } else if sender.identifier == "setFilter" {
                 if let selectedFilter = sourceViewController.selectedFilter{
@@ -283,6 +288,33 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     // MARK: Private Methods
+    
+    // If end without saving, return to the galary and clean the temp files.
+    private func noSaveEditingAction() {
+        let fileManager = FileManager.default
+        let imgDir = ImageHandler.getDocumentsDirectory()
+        if isCreatingJournal {
+            let filepath = imgDir.appendingPathComponent((journal?.id?.uuidString)!)
+            print(filepath)
+            do {
+                try fileManager.removeItem(at: filepath)
+                print("I think this is removed..... \(filepath)")
+            }
+            catch let error as NSError {
+                print("Ooops! Something went wrong: \(error)")
+            }
+        }
+        
+        let isPresentingInAddJournalMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddJournalMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }else {
+            fatalError("The JournalViewController is not inside a navigation controller.")
+        }
+    }
     
     // Triggered when switching modes, detect sender(Normal Image or Block) index and choose action
     @objc private func onChange(sender: UISegmentedControl) {
@@ -422,14 +454,14 @@ extension JournalViewController: JavaScriptFuncProtocol {
     func showTouchblockMenu() {
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "colorCardViewController") as! ColorCardTableViewController
+        let colorCardViewController = storyBoard.instantiateViewController(withIdentifier: "touchBlockEditMenuNavi") as! UINavigationController
         self.present(colorCardViewController, animated:true, completion:nil)
     }
     
     func showImgMenu() {
         touchBlockClicked = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let imgEditMenuController = storyBoard.instantiateViewController(withIdentifier: "imageEditMenuController") as! ImageEditMenuController
+        let imgEditMenuController = storyBoard.instantiateViewController(withIdentifier: "imageEditMenuNavi") as! UINavigationController
         self.present(imgEditMenuController, animated:true, completion:nil)
     }
     
@@ -441,6 +473,13 @@ extension JournalViewController: RichEditorDelegate {
         self.editorView.initTouchblockCovers()
         let docDirectory = ImageHandler.getDocumentsDirectory().path + "/"
         self.editorView.updateImgSrcs(docDirectory)
+        
+        
+        // You might want to ask: What the hell are you doing here!?
+        // Well.. I do not understand either..but..without following codes.
+        // But they stop app from crashing....
+        self.editorView.becomeFirstResponder()
+        self.editorView.endEditing(true)
     }
     
     func richEditorInsertImage() {

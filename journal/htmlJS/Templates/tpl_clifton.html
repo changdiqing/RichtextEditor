@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="user-scalable=no">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" type="text/css" href="normalize.css">
+                    <link rel="stylesheet" type="text/css" href="style.css">
+                        </head>
+    <body>
+        <div id="hLine" class="hLine" style="top: 288px; display: none;"></div>
+        <div id="vLine" class="vLine" style="left: 360px; display: none;"></div>
+        <div id="editor" style="background-color: white; line-height: 28px;" contenteditable="true" placeholder="" class="placeholder"><img src="clifton.jpeg" alt="" class="block" style="height: auto; width: 363px; margin-top: 20px; margin-bottom: 10px;" id=""></div>
+        
+        <script src="rich_editor.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="tableLayoutMethodes.js"></script>
+        
+        
+        <div id="" contenteditable="false" tabindex="-1" class="floatingTouchblock" onclick="myFunction();" onfocus="myFunction();" style="top: 213px; left: 205px; position: absolute; width: 155px; height: 75px;">
+            <div contenteditable="false" tabindex="-1" class="touchblockResizeCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockMoveCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockBGICover" style="background-image: none; background-color: rgb(255, 255, 255); filter: opacity(30%);"></div>
+            <div contenteditable="true" tabindex="-1" class="touchblockContentCover" onclick="myFunction();" onfocusout="focusoutFunction();"><div style="text-align: right; font-size: 14px; line-height: 1.7;"><span style="-webkit-text-size-adjust: 100%; font-size: 14px; line-height: 1.7;"><font face="Chalkduster" style="font-size: 14px; line-height: 1.7;"><i style="font-size: 14px; line-height: 1.7;">The Clifton</i></font></span></div><div style="text-align: right; font-size: 14px; line-height: 1.7;"><font face="Chalkduster" style="font-size: 14px; line-height: 1.7;"><i style="font-size: 14px; line-height: 1.7;">Suspension Bridge</i></font></div><div style="text-align: right; font-size: 16px; line-height: 1.7;"><font face="Chalkduster" style="font-size: 16px; line-height: 1.7;">214m, 19c30s</font></div></div>
+        </div>
+    </body>
+
+    
+</html>
+

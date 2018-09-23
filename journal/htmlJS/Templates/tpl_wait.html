@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="user-scalable=no">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" type="text/css" href="normalize.css">
+                    <link rel="stylesheet" type="text/css" href="style.css">
+                        </head>
+    <body>
+        <div id="hLine" class="hLine" style="top: 446px; display: none;"></div>
+        <div id="vLine" class="vLine" style="left: 210px; display: none;"></div>
+        <div id="editor" style="background-color: white; line-height: 28px;" contenteditable="true" placeholder="" class="placeholder"><img src="wait.jpeg" alt="" class="block" style="height: auto; width: 349px; margin-top: 20px; margin-bottom: 10px;" id=""></div>
+        
+        <script src="rich_editor.js"></script>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="tableLayoutMethodes.js"></script>
+        
+        
+        <div id="" contenteditable="false" tabindex="-1" class="floatingTouchblock" onclick="myFunction();" onfocus="myFunction();" style="top: 259px; left: 55px; position: absolute; width: 110px; height: 135px;">
+            <div contenteditable="false" tabindex="-1" class="touchblockResizeCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockMoveCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockBGICover" style="background-image: none; background-color: rgb(181, 198, 137); filter: opacity(30%);"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockContentCover" onclick="myFunction();" onfocusout="focusoutFunction();" style="writing-mode: vertical-lr;"><p style="text-align: center; font-stretch: normal; font-size: 12px; line-height: normal;"><span style="font-size: 36px; line-height: 1.7; color: rgb(255, 255, 255);"><font face="Heiti SC">独 自</font></span></p></div>
+        </div>
+        <div id="" contenteditable="false" tabindex="-1" class="floatingTouchblock" onclick="myFunction();" onfocus="myFunction();" style="top: 356px; left: 113px; position: absolute; width: 97px; height: 90px;">
+            <div contenteditable="false" tabindex="-1" class="touchblockResizeCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockMoveCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockBGICover" style="background-image: none; background-color: rgb(18, 135, 168); filter: opacity(30%);"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockContentCover" onclick="myFunction();" onfocusout="focusoutFunction();" style="writing-mode: vertical-lr;"><p style="text-align: center; font-stretch: normal; font-size: 12px; line-height: normal;"><span style="font-size: 30px; -webkit-text-size-adjust: 100%; line-height: 1.7; color: rgb(255, 255, 255);"><font face="Heiti SC">等 待</font></span></p></div>
+        </div>
+        <div id="" contenteditable="false" tabindex="-1" class="floatingTouchblock" onclick="myFunction();" onfocus="myFunction();" style="top: 321px; left: 291px; position: absolute; width: 114px; height: 150px;">
+            <div contenteditable="false" tabindex="-1" class="touchblockResizeCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockMoveCover" id="" style="display: none;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockBGICover" style="background-image: none; background-color: transparent;"></div>
+            <div contenteditable="false" tabindex="-1" class="touchblockContentCover" onclick="myFunction();" onfocusout="focusoutFunction();" style="writing-mode: vertical-lr;"><p style="font-stretch: normal; font-size: 12px; line-height: normal; font-family: &quot;.PingFang SC&quot;;"><span style="font-family: &quot;.PingFangSC-Regular&quot;; font-size: 12pt; color: rgb(255, 255, 255);">伦敦希思罗机场</span></p><p style="font-stretch: normal; line-height: normal;"><span style="-webkit-text-size-adjust: 100%; background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255);">2018.7.2</span><span style="color: rgb(69, 69, 69); font-family: &quot;.PingFangSC-Regular&quot;; font-size: 12pt;"><br></span></p></div>
+        </div>
+    </body>
+    
+</html>

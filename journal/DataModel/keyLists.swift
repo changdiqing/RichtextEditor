@@ -14,8 +14,8 @@ struct mokupItem {
     let coverImage: UIImage
     let jsCommand: String
     
-    init(name _filterName: String, coverImage _coverImage: UIImage, jsCommand _jsCommand: String) {
-        name = _filterName
+    init(name _name: String, coverImage _coverImage: UIImage, jsCommand _jsCommand: String) {
+        name = _name
         jsCommand = _jsCommand
         coverImage = _coverImage
     }

@@ -105,16 +105,25 @@ class ImageEditMenuController: UIViewController{
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "setFilter" {
+        switch(segue.identifier ?? "") {
+        case "setFilter":
             let cell = sender as! CustomCollectionViewCell
             if let indexPath = self.filterCollectionView!.indexPath(for: cell){
                 selectedFilter = filterList[indexPath.row]
             }
-        } else if segue.identifier == "setBorder" {
+        case "setBorder":
             let cell = sender as! CustomCollectionViewCell
             if let indexPath = self.borderCollectionView!.indexPath(for: cell){
                 selectedBorder = borderList[indexPath.row]
             }
+        case "showHelp":
+            guard let destinationController = segue.destination as? HelpTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            destinationController.helpInfo = HelpInfo.imgEditMenuHelpInfo
+        default:
+            print("Other segue: \(segue.identifier)")
+            //fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
         }
         
     }

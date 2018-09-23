@@ -35,7 +35,6 @@ class ImageCropperViewController: UIViewController{
     
     private var attachTextView: UITextView!
     var image: UIImage?
-    
     var translation: CGPoint!
     
     var cropArea:CGRect{
