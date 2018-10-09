@@ -91,12 +91,14 @@ class TemplateCollectionViewController: UICollectionViewController {
 extension TemplateCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var itemSize = collectionView.sa_safeAreaFrame.width
-        if itemSize > collectionView.sa_safeAreaFrame.height {
-            itemSize = collectionView.sa_safeAreaFrame.height
+        var screenWidth = collectionView.sa_safeAreaFrame.width
+        if screenWidth > collectionView.sa_safeAreaFrame.height {
+            screenWidth = collectionView.sa_safeAreaFrame.height
         }
-        let itemWidth = itemSize / 2.3
-        let itemHeight = itemWidth / 9 * 16
+        let thisImage = templateList[indexPath.row].image
+        let thisRatio = thisImage.size.height / thisImage.size.width
+        let itemWidth = screenWidth / 2.3
+        let itemHeight = itemWidth * thisRatio
         return CGSize(width: itemWidth, height: itemHeight)
     }
     

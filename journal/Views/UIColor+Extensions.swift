@@ -37,6 +37,11 @@ extension UIColor
         return String(format: "#%02x%02x%02x%02x", Int(rgba.red * 255), Int(rgba.green * 255), Int(rgba.blue * 255), Int(rgba.alpha * 255) )
     }
     
+    class func defaultUIColor() -> UIColor
+    {
+        return UIColor(red: 33/255.0, green: 93/255.0, blue: 255/255.0, alpha:1.0)
+    }
+    
     class func darkestIndigo() -> UIColor
     {
         return UIColor(red: 9/255.0, green: 49/255.0, blue: 69/255.0, alpha:1.0)

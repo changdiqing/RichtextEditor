@@ -133,7 +133,7 @@ class ColorCardTableViewController: UIViewController, UITableViewDataSource{
             }
             destinationController.helpInfo = HelpInfo.touchblockEditMenuHelpInfo
         default:
-            print("other segue \(segue.identifier)")
+            print("other segue \(String(describing: segue.identifier))")
             //fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
         }
         

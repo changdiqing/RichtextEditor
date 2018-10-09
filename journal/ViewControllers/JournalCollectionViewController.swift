@@ -18,7 +18,7 @@ class JournalCollectionViewController: UICollectionViewController {
     fileprivate let reuseIdentifier = "journalCell"
     fileprivate var myJournals = [[Journal]]()
     fileprivate var editingMode: Bool = false
-    @IBOutlet weak var journalAddButton: UIBarButtonItem!
+    @IBOutlet var journalAddButton: UIBarButtonItem!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
@@ -50,8 +50,8 @@ class JournalCollectionViewController: UICollectionViewController {
         // Flowlayout insets
         self.flowLayout.minimumLineSpacing = 10
         self.flowLayout.minimumInteritemSpacing = 5
-        self.flowLayout.headerReferenceSize = CGSize(width: 0, height: 40)
-        self.flowLayout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        self.flowLayout.headerReferenceSize = CGSize(width: 0, height: 57)
+        self.flowLayout.sectionInset = UIEdgeInsets(top: 3, left: 8, bottom: 3, right: 8)
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,7 +123,7 @@ class JournalCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.photo.image = myJournals[indexPath.section][indexPath.item].photo
         cell.checkboxImageView.isHidden = !self.editingMode
-        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 1
         return cell
      
@@ -258,7 +258,6 @@ class JournalCollectionViewController: UICollectionViewController {
         
         for id in IDs {
             let filepath = imgDir.appendingPathComponent(id)
-            print(filepath)
             do {
                 try fileManager.removeItem(at: filepath)
                 print("I think this is removed..... \(filepath)")
@@ -270,7 +269,6 @@ class JournalCollectionViewController: UICollectionViewController {
         
         do {
             let fileURLs = try fileManager.contentsOfDirectory(at: imgDir, includingPropertiesForKeys: nil)
-            print(fileURLs.count)
             // process files
         } catch {
             print("Error while enumerating files \(imgDir.path): \(error.localizedDescription)")
@@ -324,6 +322,12 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
         let itemHeight = itemSize / 4.4
         return CGSize(width: itemWidth, height: itemHeight)
     }
+    
+    /*
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.width, height: 57)
+    }*/
     
 }
 

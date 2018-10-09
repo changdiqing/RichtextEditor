@@ -122,7 +122,7 @@ class ImageEditMenuController: UIViewController{
             }
             destinationController.helpInfo = HelpInfo.imgEditMenuHelpInfo
         default:
-            print("Other segue: \(segue.identifier)")
+            print("Other segue: \(String(describing: segue.identifier))")
             //fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
         }
         

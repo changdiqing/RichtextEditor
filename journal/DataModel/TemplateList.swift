@@ -39,8 +39,9 @@ class Templates {
         htmlFile(htmlFileName: "tpl_developer", image: UIImage(named: "developer"), isAppended: false),
         htmlFile(htmlFileName: "tpl_brightanddark", image: UIImage(named: "tpl_brightanddark"), isAppended: false),
         htmlFile(htmlFileName: "tpl_julyfire", image: UIImage(named: "julyfire"), isAppended: false),
+        htmlFile(htmlFileName: "tpl_shiplake", image: UIImage(named: "tpl_shiplake"), isAppended: false),
         htmlFile(htmlFileName: "tpl_wait", image: UIImage(named: "tpl_wait"), isAppended: false),
-        htmlFile(htmlFileName: "tpl_clifton", image: UIImage(named: "tpl_clifton"), isAppended: false),
-        htmlFile(htmlFileName: "tpl_shiplake", image: UIImage(named: "tpl_shiplake"), isAppended: false)
+        htmlFile(htmlFileName: "tpl_clifton", image: UIImage(named: "tpl_clifton"), isAppended: false)
+        
     ]
 }

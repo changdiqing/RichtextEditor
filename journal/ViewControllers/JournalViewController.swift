@@ -202,7 +202,7 @@ class JournalViewController: UIViewController,UIImagePickerControllerDelegate, U
                         self.present(imagePickerController, animated: true, completion: nil)
                     }
                 } else {
-                    fatalError("Unexpected filling effect type: \(fillingEffect.type)")
+                    fatalError("Unexpected filling effect type: \(String(describing: fillingEffect.type))")
                 }
             } else if sender.identifier == "textHorizon"{
                 self.editorView.setTouchblockTextOrientationHorizon()
@@ -478,7 +478,7 @@ extension JournalViewController: RichEditorDelegate {
         // You might want to ask: What the hell are you doing here!?
         // Well.. I do not understand either..but..without following codes.
         // But they stop app from crashing....
-        self.editorView.becomeFirstResponder()
+        _ = self.editorView.becomeFirstResponder()
         self.editorView.endEditing(true)
     }
     
