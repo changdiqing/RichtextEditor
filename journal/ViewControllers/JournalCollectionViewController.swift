@@ -327,8 +327,8 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
         if itemSize > collectionView.sa_safeAreaFrame.height {
             itemSize = collectionView.sa_safeAreaFrame.height
         }
-        let itemWidth = itemSize / 3.25
-        let itemHeight = itemSize / 3.25 + 20
+        let itemWidth = itemSize / 3.4
+        let itemHeight = itemSize / 3.4 + 20
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
