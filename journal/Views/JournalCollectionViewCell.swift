@@ -11,9 +11,9 @@ import UIKit
 class JournalCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var checkboxImageView: UIImageView!
+    @IBOutlet weak var time: UILabel!
     private let checkedIcon = UIImage(named: "checked")
     private let uncheckedIcon = UIImage(named: "unchecked")
-    
     override var isSelected: Bool {
         didSet {
             if self.isSelected == true {

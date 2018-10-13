@@ -122,9 +122,15 @@ class JournalCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         cell.photo.image = myJournals[indexPath.section][indexPath.item].photo
+        cell.photo.layer.borderColor = UIColor.gray.cgColor
+        cell.photo.layer.borderWidth = 1
         cell.checkboxImageView.isHidden = !self.editingMode
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderWidth = 1
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY-MM-dd hh:mm"
+        let labelTime = myJournals[indexPath.section][indexPath.item].month
+        cell.time.text = dateFormatter.string(from: labelTime ?? Date())
+        //cell.layer.borderColor = UIColor.gray.cgColor
+        //cell.layer.borderWidth = 1
         return cell
      
     }
@@ -278,6 +284,9 @@ class JournalCollectionViewController: UICollectionViewController {
     
     @objc private func deleteSelectedItemsAction(sender: UIBarButtonItem) {
         let selectedIndexPaths: [NSIndexPath] = self.collectionView!.indexPathsForSelectedItems! as [NSIndexPath]
+        if selectedIndexPaths.isEmpty {
+            return}
+        
         var IDs = [String]()
         
         // Remove selected journals and their saved images
@@ -318,8 +327,8 @@ extension JournalCollectionViewController: UICollectionViewDelegateFlowLayout {
         if itemSize > collectionView.sa_safeAreaFrame.height {
             itemSize = collectionView.sa_safeAreaFrame.height
         }
-        let itemWidth = itemSize / 4.4
-        let itemHeight = itemSize / 4.4
+        let itemWidth = itemSize / 3.25
+        let itemHeight = itemSize / 3.25 + 20
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
